@@ -19,7 +19,23 @@ class TimeMenuViewController: MenuViewController {
     }
 
     override func buildMenu() -> MenuInfo? {
-        return nil
+        return MenuInfo(title: "Game Duration", buttons: [
+            ButtonCellInfo(title: "45 seconds") {
+                // TODO
+            },
+            ButtonCellInfo(title: "90 seconds") {
+                // TODO
+            },
+            ButtonCellInfo(title: "3 minutes") {
+                // TODO
+            },
+            ButtonCellInfo(title: "5 minutes") {
+                // TODO
+            },
+            ButtonCellInfo(title: "10 minutes") {
+                // TODO
+            }
+        ])
     }
 
     override class func loadFromStoryboard() -> MenuViewController {

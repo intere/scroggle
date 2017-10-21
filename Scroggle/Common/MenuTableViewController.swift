@@ -67,9 +67,3 @@ class MenuTableViewController: UITableViewController {
     }
 
 }
-
-// MARK: - Implementation
-
-extension MenuTableViewController {
-
-}
