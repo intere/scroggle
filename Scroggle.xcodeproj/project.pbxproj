@@ -21,8 +21,12 @@
 		365630411F8AA10500E4312B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36A77BFC1F8A65D10057A874 /* Assets.xcassets */; };
 		365630421F8BA42D00E4312B /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3656302D1F8A8D6F00E4312B /* Menu.storyboard */; };
 		365630441F8BA6DB00E4312B /* MenuHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365630431F8BA6DB00E4312B /* MenuHeaderTableViewCell.swift */; };
+		369765431F9BEE7A00E66395 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 369765421F9BEE7600E66395 /* art.scnassets */; };
+		369765441F9BEE7F00E66395 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 36A77BFE1F8A65F60057A874 /* Info.plist */; };
 		36A77BD31F8A64AB0057A874 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A77BD21F8A64AB0057A874 /* AppDelegate.swift */; };
 		36A77BEA1F8A64AB0057A874 /* ScroggleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A77BE91F8A64AB0057A874 /* ScroggleTests.swift */; };
+		4FD72B7D461376FF67D005F9 /* Pods_Scroggle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F358BEAF58BB9834F21533 /* Pods_Scroggle.framework */; };
+		54925A97B646C3D4473488DF /* Pods_ScroggleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC2660262C043314B6F772A /* Pods_ScroggleTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00668C1EA3E1A7B6F972AD30 /* Pods-ScroggleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScroggleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScroggleTests/Pods-ScroggleTests.release.xcconfig"; sourceTree = "<group>"; };
+		1AC2660262C043314B6F772A /* Pods_ScroggleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScroggleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		25529459E731704F950900DB /* Pods-Scroggle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scroggle.release.xcconfig"; path = "Pods/Target Support Files/Pods-Scroggle/Pods-Scroggle.release.xcconfig"; sourceTree = "<group>"; };
 		36243FCC1F8BAA88008AB92C /* Time.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Time.storyboard; sourceTree = "<group>"; };
 		36243FCE1F8BAF56008AB92C /* TimeMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMenuViewController.swift; sourceTree = "<group>"; };
 		3656302D1F8A8D6F00E4312B /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
@@ -49,14 +56,17 @@
 		3656303D1F8A96CF00E4312B /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		3656303F1F8A9C0700E4312B /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		365630431F8BA6DB00E4312B /* MenuHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		369765421F9BEE7600E66395 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		36A77BCF1F8A64AB0057A874 /* Scroggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scroggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36A77BD21F8A64AB0057A874 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36A77BE51F8A64AB0057A874 /* ScroggleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScroggleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		36A77BE91F8A64AB0057A874 /* ScroggleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScroggleTests.swift; sourceTree = "<group>"; };
 		36A77BEB1F8A64AB0057A874 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36A77BFC1F8A65D10057A874 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		36A77BFD1F8A65F10057A874 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		36A77BFE1F8A65F60057A874 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56761BE71EB11B903BA848D5 /* Pods-ScroggleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScroggleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScroggleTests/Pods-ScroggleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C7F358BEAF58BB9834F21533 /* Pods_Scroggle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Scroggle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6689E82EF5FEDD53035E2C3 /* Pods-Scroggle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scroggle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Scroggle/Pods-Scroggle.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FD72B7D461376FF67D005F9 /* Pods_Scroggle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54925A97B646C3D4473488DF /* Pods_ScroggleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +104,8 @@
 				36A77BD11F8A64AB0057A874 /* Scroggle */,
 				36A77BE81F8A64AB0057A874 /* ScroggleTests */,
 				36A77BD01F8A64AB0057A874 /* Products */,
+				48ECA28F33CF624D24747C0B /* Pods */,
+				652403BA083F7711179AAB97 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -170,7 +184,7 @@
 		36A77BFB1F8A65AC0057A874 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				36A77BFD1F8A65F10057A874 /* art.scnassets */,
+				369765421F9BEE7600E66395 /* art.scnassets */,
 				36A77BFC1F8A65D10057A874 /* Assets.xcassets */,
 				36A77BFE1F8A65F60057A874 /* Info.plist */,
 				3656303F1F8A9C0700E4312B /* Launch.storyboard */,
@@ -192,6 +206,26 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		48ECA28F33CF624D24747C0B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D6689E82EF5FEDD53035E2C3 /* Pods-Scroggle.debug.xcconfig */,
+				25529459E731704F950900DB /* Pods-Scroggle.release.xcconfig */,
+				56761BE71EB11B903BA848D5 /* Pods-ScroggleTests.debug.xcconfig */,
+				00668C1EA3E1A7B6F972AD30 /* Pods-ScroggleTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		652403BA083F7711179AAB97 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C7F358BEAF58BB9834F21533 /* Pods_Scroggle.framework */,
+				1AC2660262C043314B6F772A /* Pods_ScroggleTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -199,9 +233,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 36A77BEE1F8A64AB0057A874 /* Build configuration list for PBXNativeTarget "Scroggle" */;
 			buildPhases = (
+				76BD573C80928A6701C3085E /* [CP] Check Pods Manifest.lock */,
 				36A77BCB1F8A64AB0057A874 /* Sources */,
 				36A77BCC1F8A64AB0057A874 /* Frameworks */,
 				36A77BCD1F8A64AB0057A874 /* Resources */,
+				36C0158E1F9BF0830075F3F4 /* Fabric */,
+				6D0E0AE15F6141FBD711B65F /* [CP] Embed Pods Frameworks */,
+				A82A6854A97EB952BEEE4ED7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -216,9 +254,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 36A77BF11F8A64AB0057A874 /* Build configuration list for PBXNativeTarget "ScroggleTests" */;
 			buildPhases = (
+				CD66309355E9F2602129E6E2 /* [CP] Check Pods Manifest.lock */,
 				36A77BE11F8A64AB0057A874 /* Sources */,
 				36A77BE21F8A64AB0057A874 /* Frameworks */,
 				36A77BE31F8A64AB0057A874 /* Resources */,
+				7FF0D40C8F22329F8CA4DA53 /* [CP] Embed Pods Frameworks */,
+				9BD0844BB8196B9C57A19F53 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -276,10 +317,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3656303C1F8A96AD00E4312B /* MainMenu.storyboard in Resources */,
+				369765431F9BEE7A00E66395 /* art.scnassets in Resources */,
 				365630411F8AA10500E4312B /* Assets.xcassets in Resources */,
 				36243FCD1F8BAA88008AB92C /* Time.storyboard in Resources */,
 				365630401F8A9C0700E4312B /* Launch.storyboard in Resources */,
 				365630421F8BA42D00E4312B /* Menu.storyboard in Resources */,
+				369765441F9BEE7F00E66395 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +334,119 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		36C0158E1F9BF0830075F3F4 /* Fabric */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Fabric;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 99752fe5767d740492ad9c6b02fa7fb83ab82979 5503770e9e563caf2023b79aabb52ad1794b46eae0d3152d1c4b4c79087d6199";
+		};
+		6D0E0AE15F6141FBD711B65F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Scroggle/Pods-Scroggle-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		76BD573C80928A6701C3085E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Scroggle-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7FF0D40C8F22329F8CA4DA53 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScroggleTests/Pods-ScroggleTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9BD0844BB8196B9C57A19F53 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScroggleTests/Pods-ScroggleTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A82A6854A97EB952BEEE4ED7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Scroggle/Pods-Scroggle-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD66309355E9F2602129E6E2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ScroggleTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		36A77BCB1F8A64AB0057A874 /* Sources */ = {
@@ -438,11 +594,13 @@
 		};
 		36A77BEF1F8A64AB0057A874 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D6689E82EF5FEDD53035E2C3 /* Pods-Scroggle.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 268S5GJFWZ;
 				INFOPLIST_FILE = "$(SRCROOT)/Scroggle/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.icolasoft.Word-Up";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -453,11 +611,13 @@
 		};
 		36A77BF01F8A64AB0057A874 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25529459E731704F950900DB /* Pods-Scroggle.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 268S5GJFWZ;
 				INFOPLIST_FILE = "$(SRCROOT)/Scroggle/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.icolasoft.Word-Up";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -468,6 +628,7 @@
 		};
 		36A77BF21F8A64AB0057A874 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56761BE71EB11B903BA848D5 /* Pods-ScroggleTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -485,6 +646,7 @@
 		};
 		36A77BF31F8A64AB0057A874 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00668C1EA3E1A7B6F972AD30 /* Pods-ScroggleTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

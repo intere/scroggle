@@ -1,0 +1,6 @@
+framework module Pods_Scroggle {
+  umbrella header "Pods-Scroggle-umbrella.h"
+
+  export *
+  module * { export * }
+}
