@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Crashlytics
 
 func DLog(_ msg: @autoclosure () -> String, _ file: String = #file, _ line: Int = #line) {
 
@@ -19,4 +20,37 @@ func DLog(_ msg: @autoclosure () -> String, _ file: String = #file, _ line: Int 
     #else
         CLSLogv("[%@:%d] %@\n", getVaList([filename, line, msg()]))
     #endif
+}
+
+func recordSystemError(_ error: NSError, _ file: String = #file, _ line: Int = #line) {
+    DLog("ERROR: \(error.localizedDescription)", file, line)
+    Crashlytics.sharedInstance().recordError(error)
+}
+
+func recordSystemError(_ error: Error, _ file: String = #file, _ line: Int = #line) {
+    DLog("ERROR: \(error.localizedDescription)", file, line)
+    Crashlytics.sharedInstance().recordError(error)
+}
+
+func recordFatalError(_ error: NSError) -> Never {
+    DLog("FATAL: \(error.localizedDescription)")
+    Crashlytics.sharedInstance().recordError(error)
+    fatalError(error.localizedDescription)
+}
+
+func recordFatalError(_ error: Error) -> Never {
+    DLog("FATAL: \(error.localizedDescription)")
+    Crashlytics.sharedInstance().recordError(error)
+    fatalError(error.localizedDescription)
+}
+
+// MARK: - Errors
+
+let ScroggleErrorDomain = "ScroggleError"
+
+
+enum ApplicationError: Error {
+    case generalError(message: String)
+    case sceneError(message: String)
+
 }
