@@ -441,7 +441,7 @@ extension GameScene {
         let z: Float = -6.75 + row * factor
 
         let die = Die3D(size: diceSize, die: dieModel)
-        die.eulerAngles = SCNVector3Make(Float(M_PI * -90.0), 0, 0)
+        die.eulerAngles = SCNVector3Make(Float(Double.pi * -90.0), 0, 0)
 
         die.position = SCNVector3Make(x, y, z)
         //        DLog("die position (\(index)): \(die.position)")

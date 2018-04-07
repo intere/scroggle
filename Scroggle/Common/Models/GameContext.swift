@@ -32,7 +32,7 @@ public extension GameContext {
     var longestWord: Int {
         var longest: Int = 0
         for word in game.words {
-            longest = max(longest, word.characters.count)
+            longest = max(longest, word.count)
         }
         return longest
     }

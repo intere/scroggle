@@ -15,11 +15,12 @@ class SettingsService {
         static var isTesting: Bool {
             #if targetEnvironment(simulator)
                 return true
-            #endif
+            #else
             if let _ = NSClassFromString("XCTest") {
                 return true
             }
             return false
+            #endif
         }
     }
     

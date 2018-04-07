@@ -359,9 +359,9 @@
 				36A77BCB1F8A64AB0057A874 /* Sources */,
 				36A77BCC1F8A64AB0057A874 /* Frameworks */,
 				36A77BCD1F8A64AB0057A874 /* Resources */,
-				36C0158E1F9BF0830075F3F4 /* Fabric */,
 				6D0E0AE15F6141FBD711B65F /* [CP] Embed Pods Frameworks */,
 				A82A6854A97EB952BEEE4ED7 /* [CP] Copy Pods Resources */,
+				36C0158E1F9BF0830075F3F4 /* Fabric */,
 			);
 			buildRules = (
 			);
