@@ -13,6 +13,9 @@ class SettingsService {
     struct Configuration {
         /// Are we running in the unit test fixture?
         static var isTesting: Bool {
+            #if targetEnvironment(simulator)
+                return true
+            #endif
             if let _ = NSClassFromString("XCTest") {
                 return true
             }

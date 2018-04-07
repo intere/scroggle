@@ -1,61 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Time Menu View Controller-->
-        <scene sceneID="JAV-Sc-GaM">
+        <scene sceneID="4hw-2z-eSE">
             <objects>
-                <viewController storyboardIdentifier="TimeMenuViewController" id="nX6-1b-HUc" customClass="TimeMenuViewController" customModule="Scroggle" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="P7J-Dl-gcn">
+                <viewController storyboardIdentifier="TimeMenuViewController" id="Qkr-lp-Rt5" customClass="TimeMenuViewController" customModule="Scroggle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Z00-tp-bf5">
                         <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeScreen2-16x9" translatesAutoresizingMaskIntoConstraints="NO" id="Pbs-VL-R6c">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PzT-fp-UzS">
                                 <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
-                            </imageView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uKj-Mx-nZl">
-                                <rect key="frame" x="36.666666666666686" y="20.666666666666657" width="662.66666666666674" height="372.66666666666663"/>
                                 <connections>
-                                    <segue destination="1S9-JE-YwY" kind="embed" id="VU5-al-7LS"/>
+                                    <segue destination="8M2-2w-ocO" kind="embed" id="66i-MH-ybQ"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="uKj-Mx-nZl" firstAttribute="width" secondItem="P7J-Dl-gcn" secondAttribute="width" multiplier="0.9" id="1EG-nl-rYY"/>
-                            <constraint firstItem="uKj-Mx-nZl" firstAttribute="centerX" secondItem="P7J-Dl-gcn" secondAttribute="centerX" id="4et-d4-D7e"/>
-                            <constraint firstItem="uKj-Mx-nZl" firstAttribute="centerY" secondItem="P7J-Dl-gcn" secondAttribute="centerY" id="H8x-9a-BMn"/>
-                            <constraint firstItem="Pbs-VL-R6c" firstAttribute="leading" secondItem="PRn-KW-bcd" secondAttribute="leading" id="IcD-hc-AlO"/>
-                            <constraint firstItem="Pbs-VL-R6c" firstAttribute="bottom" secondItem="PRn-KW-bcd" secondAttribute="bottom" id="SCX-dk-ePB"/>
-                            <constraint firstItem="Pbs-VL-R6c" firstAttribute="trailing" secondItem="PRn-KW-bcd" secondAttribute="trailing" id="jEw-hV-h5T"/>
-                            <constraint firstItem="Pbs-VL-R6c" firstAttribute="top" secondItem="PRn-KW-bcd" secondAttribute="top" id="mck-lc-FCI"/>
-                            <constraint firstItem="uKj-Mx-nZl" firstAttribute="height" secondItem="P7J-Dl-gcn" secondAttribute="height" multiplier="0.9" id="p1a-6o-m21"/>
+                            <constraint firstItem="maO-Dw-FBJ" firstAttribute="trailing" secondItem="PzT-fp-UzS" secondAttribute="trailing" id="3fa-XF-3Rf"/>
+                            <constraint firstItem="maO-Dw-FBJ" firstAttribute="bottom" secondItem="PzT-fp-UzS" secondAttribute="bottom" id="42L-8w-Lm4"/>
+                            <constraint firstItem="PzT-fp-UzS" firstAttribute="top" secondItem="maO-Dw-FBJ" secondAttribute="top" id="DGP-1l-Vvo"/>
+                            <constraint firstItem="PzT-fp-UzS" firstAttribute="leading" secondItem="maO-Dw-FBJ" secondAttribute="leading" id="Eg1-2s-WH8"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="PRn-KW-bcd"/>
+                        <viewLayoutGuide key="safeArea" id="maO-Dw-FBJ"/>
                     </view>
+                    <navigationItem key="navigationItem" id="E1h-Ki-XlG"/>
+                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PvJ-RY-62b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TrK-m5-6mA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-321.19565217391306" y="95.652173913043484"/>
+            <point key="canvasLocation" x="-220" y="-439"/>
         </scene>
-        <!--MenuTableViewController-->
-        <scene sceneID="7XT-fJ-1uQ">
+        <!--MenuContainerViewController-->
+        <scene sceneID="gPn-Uy-c36">
             <objects>
-                <viewControllerPlaceholder storyboardName="Menu" referencedIdentifier="MenuTableViewController" id="1S9-JE-YwY" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="v5P-hI-lud" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Menu" referencedIdentifier="MenuContainerViewController" id="8M2-2w-ocO" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x6f-Cd-nkZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-321" y="626"/>
+            <point key="canvasLocation" x="-220" y="117"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="HomeScreen2-16x9" width="736" height="414"/>
-    </resources>
 </document>

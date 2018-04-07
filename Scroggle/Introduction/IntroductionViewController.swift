@@ -87,12 +87,10 @@ extension IntroductionViewController {
             DLog("Can't find the IntroVC in the Navigation Stack")
             return
         }
-        let storyboard = UIStoryboard(name: "Menu", bundle: Bundle.main)
-        guard let menuNavVC = storyboard.instantiateInitialViewController() as? UINavigationController, let menuVC = menuNavVC.viewControllers.first else {
-            DLog("Couldn't create a MenuVC")
-            return
-        }
-        controllerStack[index] = menuVC
+
+        let mainMenuVC = MainMenuViewController.loadFromStoryboard()
+
+        controllerStack[index] = mainMenuVC
         navigationController.setViewControllers(controllerStack, animated: true)
     }
 

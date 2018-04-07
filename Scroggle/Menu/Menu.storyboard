@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7r6-Kk-jJj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7r6-Kk-jJj">
     <device id="retina5_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Chalkduster.ttf">
-            <string>Chalkduster</string>
-        </array>
-    </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Menu Container View Controller-->
         <scene sceneID="EMm-U0-J7e">
             <objects>
-                <viewController id="7r6-Kk-jJj" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuContainerViewController" id="7r6-Kk-jJj" customClass="MenuContainerViewController" customModule="Scroggle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U8L-t8-Ipw">
                         <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xr7-62-tbu">
-                                <rect key="frame" x="37.333333333333314" y="20.666666666666657" width="662.66666666666674" height="372.66666666666663"/>
+                                <rect key="frame" x="37.333333333333314" y="20.666666666666657" width="662.66666666666674" height="372.66666666666674"/>
                                 <connections>
                                     <segue destination="jdD-QB-NiX" kind="embed" identifier="EmbedMenuSegue" id="oEL-44-ScX"/>
                                 </connections>
@@ -47,6 +43,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nOM-Ps-DMw"/>
                     </view>
+                    <connections>
+                        <outlet property="proportionalHeightConstraint" destination="4Xz-ty-p4Q" id="gaD-su-lGw"/>
+                        <outlet property="proportionalWidthConstraint" destination="bLS-tq-qau" id="AqM-bB-1ap"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CyN-0M-64j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -57,19 +57,19 @@
             <objects>
                 <tableViewController storyboardIdentifier="MenuTableViewController" id="jdD-QB-NiX" customClass="MenuTableViewController" customModule="Scroggle" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ldd-ci-Yu5">
-                        <rect key="frame" x="0.0" y="0.0" width="662.66666666666674" height="372.66666666666663"/>
+                        <rect key="frame" x="0.0" y="0.0" width="662.66666666666674" height="372.66666666666674"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeaderCell" rowHeight="70" id="BfH-zo-oZ5" customClass="MenuHeaderTableViewCell" customModule="Scroggle">
-                                <rect key="frame" x="0.0" y="28" width="662.5" height="70"/>
+                                <rect key="frame" x="0.0" y="28" width="662.66666666666674" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BfH-zo-oZ5" id="bfy-wF-Mp6">
-                                    <rect key="frame" x="0.0" y="0.0" width="662.5" height="70"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="662.66666666666674" height="70"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scroggle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yrp-d7-Jua">
-                                            <rect key="frame" x="8" y="18" width="646.66666666666663" height="41"/>
+                                            <rect key="frame" x="20" y="21" width="622.66666666666663" height="35"/>
                                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="30"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -88,14 +88,14 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ButtonCell" rowHeight="92" id="XEF-ol-lbF" customClass="ButtonTableViewCell" customModule="Scroggle">
-                                <rect key="frame" x="0.0" y="98" width="662.5" height="92"/>
+                                <rect key="frame" x="0.0" y="98" width="662.66666666666674" height="92"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XEF-ol-lbF" id="dfF-YW-nlt">
-                                    <rect key="frame" x="0.0" y="0.0" width="662.5" height="92"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="662.66666666666674" height="92"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hea-2R-loy">
-                                            <rect key="frame" x="131" y="16" width="400" height="60"/>
+                                            <rect key="frame" x="131" y="19" width="400" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="eKa-Ay-PPd"/>
                                             </constraints>
@@ -111,6 +111,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Hea-2R-loy" firstAttribute="top" secondItem="dfF-YW-nlt" secondAttribute="topMargin" constant="8" id="0jp-Hy-jQ3"/>
+                                        <constraint firstItem="Hea-2R-loy" firstAttribute="centerY" secondItem="dfF-YW-nlt" secondAttribute="centerY" id="Gdk-8J-h8i"/>
                                         <constraint firstItem="Hea-2R-loy" firstAttribute="centerX" secondItem="dfF-YW-nlt" secondAttribute="centerX" id="pVn-yG-ofP"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Hea-2R-loy" secondAttribute="bottom" constant="8" id="yVw-7j-bue"/>
                                     </constraints>

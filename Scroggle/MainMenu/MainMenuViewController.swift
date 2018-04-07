@@ -8,13 +8,29 @@
 
 import UIKit
 
-class MainMenuViewController: MenuViewController {
+class MainMenuViewController: UIViewController {
+
+    var menuContainerVC: MenuContainerViewController? {
+        didSet {
+            menuContainerVC?.menuBuilder = self
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
-    override func buildMenu() -> MenuInfo? {
+    class func loadFromStoryboard() -> MainMenuViewController {
+        return UIStoryboard(name: "MainMenu", bundle: nil).instantiateViewController(withIdentifier: "MainMenuViewController") as! MainMenuViewController
+    }
+
+}
+
+// MARK: - MenuBuilding
+
+extension MainMenuViewController: MenuBuilding {
+
+    func buildMenu() -> MenuInfo? {
         return MenuInfo(title: "Scroggle", buttons: [
             ButtonCellInfo(title: "New Game", action: {
                 DLog("Clicked New Game")
@@ -26,8 +42,17 @@ class MainMenuViewController: MenuViewController {
         ])
     }
 
-    override class func loadFromStoryboard() -> MenuViewController {
-        return UIStoryboard(name: "MainMenu", bundle: nil).instantiateViewController(withIdentifier: "MainMenuViewController") as! MainMenuViewController
+}
+
+
+// MARK: - Navigation
+
+extension MainMenuViewController {
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let menuContainerVC = segue.destination as? MenuContainerViewController {
+            self.menuContainerVC = menuContainerVC
+        }
     }
 
 }

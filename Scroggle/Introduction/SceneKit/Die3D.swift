@@ -114,9 +114,14 @@ extension Die3D {
     }
 
     func introAnimateDice(duration: TimeInterval = 0.2) {
-        randomRotateRandomHeight(x: position.x, z: position.z, duration: duration) {
-            self.randomRotateOriginalHeight(x: self.position.x, z: self.position.z, duration: duration) {
-                self.introAnimateDice(duration: duration)
+        randomRotateRandomHeight(x: position.x, z: position.z, duration: duration) { [weak self] in
+            guard let strongSelf = self else {
+                return
+            }
+            strongSelf.randomRotateOriginalHeight(x: strongSelf.position.x, z: strongSelf.position.z, duration: duration) {
+                DispatchQueue.main.async { [weak self] in
+                    self?.introAnimateDice(duration: duration)
+                }
             }
         }
     }

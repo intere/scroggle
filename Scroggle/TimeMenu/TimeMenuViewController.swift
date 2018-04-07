@@ -8,17 +8,25 @@
 
 import UIKit
 
-class TimeMenuViewController: MenuViewController {
+class TimeMenuViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    var menuContainerVC: MenuContainerViewController? {
+        didSet {
+            menuContainerVC?.menuBuilder = self
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    class func loadFromStoryboard() -> TimeMenuViewController {
+        return UIStoryboard(name: "Time", bundle: nil).instantiateViewController(withIdentifier: "TimeMenuViewController") as! TimeMenuViewController
     }
 
-    override func buildMenu() -> MenuInfo? {
+}
+
+// MARK: - MenuBuilding
+
+extension TimeMenuViewController: MenuBuilding {
+
+    func buildMenu() -> MenuInfo? {
         return MenuInfo(title: "Game Duration", buttons: [
             ButtonCellInfo(title: "45 seconds") {
                 // TODO
@@ -37,9 +45,18 @@ class TimeMenuViewController: MenuViewController {
             }
         ])
     }
+}
 
-    override class func loadFromStoryboard() -> MenuViewController {
-        return UIStoryboard(name: "Time", bundle: nil).instantiateViewController(withIdentifier: "TimeMenuViewController") as! TimeMenuViewController
+
+
+// MARK: - Navigation
+
+extension TimeMenuViewController {
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let menuContainerVC = segue.destination as? MenuContainerViewController {
+            self.menuContainerVC = menuContainerVC
+        }
     }
 
 }
