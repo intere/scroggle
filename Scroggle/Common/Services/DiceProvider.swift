@@ -8,10 +8,10 @@
 
 import UIKit
 
-// TODO: Rename to DiceService (and extract a protocol)
+// TODO: extract a protocol (DiceService) from DiceProvider
 
 class DiceProvider {
-    open static let instance = DiceProvider()
+    static let instance = DiceProvider()
 
     var fourByFour: [[String]] = [[]]   // The 4x4 2-D Array (dice, faces of dice)
 
@@ -21,7 +21,7 @@ class DiceProvider {
         loadDiceFromBundle()
     }
 
-    open func rollDice() -> GameBoard? {
+    func rollDice() -> GameBoard? {
         var board: GameBoard? = nil
         let copyFrom = NSMutableArray(array: fourByFour)
         let shuffled = NSMutableArray()

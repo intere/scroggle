@@ -8,17 +8,15 @@
 
 import Foundation
 
-// TODO: Rename ScoreProvider to ScoreService (extract a protocol)
+// TODO: extract a protocol (ScoreService) from ScoreProvider
 
-/**
- This class is responsible for the handling of score calculation data.
- */
-open class ScoreProvider {
+/// This class is responsible for the handling of score calculation data.
+class ScoreProvider {
     /// The Instance of this provider
-    open static let instance = ScoreProvider()
+    static let instance = ScoreProvider()
 
-    open var letterScores = [String:Int]()
-    open var lengthFactors = [Int:Int]()
+    var letterScores = [String:Int]()
+    var lengthFactors = [Int:Int]()
 
     init() {
         loadScoreData()
@@ -28,14 +26,14 @@ open class ScoreProvider {
 
 // MARK: - API
 
-public extension ScoreProvider {
+extension ScoreProvider {
 
     /**
      Gives you the score for the provided word.
      - Parameter word: The word to be scored.
      - Returns: The score for the provided word.
      */
-    public func scoreWord(_ word: String) -> Int {
+    func scoreWord(_ word: String) -> Int {
         let lcaseWord = Array(word.lowercased())
 
         // TODO: Minimum characters
@@ -77,7 +75,7 @@ public extension ScoreProvider {
 
 // MARK: - Helper Methods
 
-extension ScoreProvider {
+private extension ScoreProvider {
 
     /**
      Loads the Score Data from the scores.json file and populates the letterScores and lengthFactors.

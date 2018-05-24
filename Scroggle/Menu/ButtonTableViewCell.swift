@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// This is the code behind the button table cell.  Literally just a cell with a button
 class ButtonTableViewCell: UITableViewCell {
 
     @IBOutlet weak var button: UIButton?
@@ -23,7 +24,8 @@ class ButtonTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    @IBAction func tappedButton(_ sender: Any) {
+    @IBAction
+    func tappedButton(_ sender: Any) {
         cellInfo?.action()
     }
 

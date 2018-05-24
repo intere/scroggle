@@ -32,5 +32,13 @@ class ScroggleTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+
+    func testDimensions() {
+        guard let screen = UIApplication.shared.keyWindow?.screen else {
+            return XCTFail("Failed to get the screen")
+        }
+
+        print("Screen Size: \(screen.bounds)")
+    }
     
 }

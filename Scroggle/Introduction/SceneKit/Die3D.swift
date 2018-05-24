@@ -105,9 +105,14 @@ extension Die3D {
         if duration <= 1 {
             animateToIndex(duration, index: index)
         } else {
-            randomRotateRandomHeight(x: position.x, z: position.z, duration: 0.2) {
-                self.randomRotateOriginalHeight(x: self.position.x, z: self.position.z, duration: 0.2) {
-                    self.animateRandomlyThenToIndex(duration - 0.4, index: index)
+            randomRotateRandomHeight(x: position.x, z: position.z, duration: 0.2) { [weak self] in
+                guard let strongSelf = self else {
+                    return
+                }
+                strongSelf.randomRotateOriginalHeight(x: strongSelf.position.x, z: strongSelf.position.z, duration: 0.2) {
+                    DispatchQueue.main.async { [weak self] in
+                        self?.animateRandomlyThenToIndex(duration - 0.4, index: index)
+                    }
                 }
             }
         }

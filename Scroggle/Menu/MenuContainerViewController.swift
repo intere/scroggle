@@ -8,11 +8,18 @@
 
 import UIKit
 
+/// The main purpose of this controller is to present a menu.
+/// The `menuBuilder` property (a `MenuBuilding` object) is the model that
+/// tells us how to build the menu.
+/// The `menuTableVC` is the actual menu view controller (it's the worker here),
+/// and uses the `menuBuilder` to build out the menu for us.
 class MenuContainerViewController: UIViewController {
 
     @IBOutlet weak var proportionalWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var proportionalHeightConstraint: NSLayoutConstraint!
 
+    /// The model that tells us how to build out the menus.  Setting this
+    /// instance will propagate the changes out to the MenuTableViewController.
     var menuBuilder: MenuBuilding? {
         didSet {
             reloadMenu()
@@ -26,7 +33,9 @@ class MenuContainerViewController: UIViewController {
         }
     }
 
-    /// Sets the menuInfo
+    /// The `MenuInfo` model (see `reloadMenu()` for more details).  Setting this
+    /// model will set the reference on the `menuTableVC` and prompt the table to reload.
+    /// This function should *only* be call on the Main Thread!
     var menu: MenuInfo? {
         get {
             return menuTableVC?.menu
@@ -37,6 +46,8 @@ class MenuContainerViewController: UIViewController {
         }
     }
 
+    /// Sets the menu (which propagates this property to the `MenuTableViewController`)
+    /// and then builds out the menu.
     func reloadMenu() {
         menu = menuBuilder?.buildMenu()
     }

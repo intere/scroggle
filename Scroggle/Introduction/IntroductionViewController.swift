@@ -28,7 +28,7 @@ class IntroductionViewController: UIViewController {
             scnView.showsStatistics = true
         #endif
 
-        guard let scene = GameScene.loadGameScene(useDemoCamera: true) else {
+        guard let scene = SCNIntroductionScene.loadGameScene(useDemoCamera: true) else {
             assert(false, "Failed to find the GameScene")
             return
         }
@@ -52,7 +52,7 @@ class IntroductionViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         timer?.invalidate()
-        guard let scene = scnView.scene as? GameScene else {
+        guard let scene = scnView.scene as? SCNIntroductionScene else {
             return
         }
         scene.delegate = nil

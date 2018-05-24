@@ -8,14 +8,12 @@
 
 import UIKit
 
+/// This View Controller serves as a Container to embed the `MenuTableViewController`
+/// and proxy the `menu` property through to the MenuTableVC.
 class MenuViewController: UIViewController {
 
     /// A reference to the embedded MenuTableViewController
-    var menuTableVC: MenuTableViewController? {
-        didSet {
-//            menu = buildMenu()
-        }
-    }
+    var menuTableVC: MenuTableViewController?
 
     /// Sets the menuInfo
     var menu: MenuInfo? {
@@ -28,14 +26,6 @@ class MenuViewController: UIViewController {
         }
     }
 
-    func reloadMenu() {
-
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
 }
 
 
@@ -44,7 +34,8 @@ class MenuViewController: UIViewController {
 private extension MenuViewController {
 
     struct Constants {
-        static let embedSgueId = "EmbedMenuSegue"
+        /// The ID of the Container View embed segue
+        static let embedSegueId = "EmbedMenuSegue"
     }
 
 }

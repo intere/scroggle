@@ -8,7 +8,7 @@
 
 import Foundation
 
-// TODO: Rename to GameContextService (and extract a protocol)
+// TODO: extract a protocol (GameContextService) from GameContextProvider
 
 class GameContextProvider {
 

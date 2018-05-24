@@ -8,13 +8,11 @@
 
 import Foundation
 
-/**
- Represents the "Game Board" itself (which is more or less just a container for the dice on the baord).
- */
-open class GameBoard {
-    open var board: [Die]
+/// Represents the "Game Board" itself (which is more or less just a container for the dice on the baord).
+class GameBoard {
+    var board: [Die]
 
-    public init(dice: [[String]]) {
+    init(dice: [[String]]) {
         board = []
         for sides in dice {
             board.append(Die(sides:sides))
@@ -25,12 +23,11 @@ open class GameBoard {
 
 // MARK: - Public Interface
 
-public extension GameBoard {
+extension GameBoard {
 
-    /**
-     Builds you a string that represents the configuration of the board.
-     - Returns: The current rolled configuration of the board.
-     */
+    /// Builds you a string that represents the configuration of the board.
+    ///
+    /// - Returns: The current rolled configuration of the board.
     func getConfiguration() -> String {
         let size = Int(sqrt(Double(board.count)))
         var result = ""
@@ -47,44 +44,40 @@ public extension GameBoard {
         return result
     }
 
-    /**
-     Get the raw board as an array.
-     - Returns: The Board as a raw array of die objects.
-     */
+    /// Get the raw board as an array.
+    ///
+    /// - Returns: The Board as a raw array of die objects.
     func getRawData() -> [Die] {
         return board
     }
 
-    /**
-     Is the board a 4x4?.
-     - Returns: True if the board is 4x4, false otherwise.
-     */
+    /// Is the board a 4x4?.
+    ///
+    /// - Returns: True if the board is 4x4, false otherwise.
     func is4x4Board() -> Bool {
         return board.count == 16
     }
 
-    /**
-     Is the board a 5x5?.
-     - Returns: True if the board is a 5x5, false otherwise.
-     */
+    /// Is the board a 5x5?.
+    ///
+    /// - Returns: True if the board is a 5x5, false otherwise.
     func is5x5Board() -> Bool {
         return board.count == 25
     }
 
-    /**
-     Is the board a 6x6?.
-     - Returns: True if the board is a 6x6, false otherwise.
-     */
+    /// Is the board a 6x6?.
+    ///
+    /// - Returns: True if the board is a 6x6, false otherwise.
     func is6x6Board() -> Bool {
         return board.count == 36
     }
 
-    /**
-     Gets you the die at the specified spot.
-     - Parameter rowIndex: The row that you want the die for.
-     - Parameter columnIndex: The column that you want the index for
-     - Returns: The die at the specified index (or nil if it's not a valid index in the board).
-     */
+    /// Gets you the die at the specified spot.
+    ///
+    /// - Parameters:
+    ///   - rowIndex: The row that you want the die for.
+    ///   - columnIndex: The column that you want the index for
+    /// - Returns: The die at the specified index (or nil if it's not a valid index in the board).
     func getDieAtRow(_ rowIndex: Int, andColumn columnIndex: Int) -> Die? {
         let multiplier: Int = self.getRowMultiplier()
         if validRow(rowIndex, andColumn: columnIndex) {
@@ -95,10 +88,9 @@ public extension GameBoard {
         return nil
     }
 
-    /**
-     Get me the row multiplier, based on the current board size.
-     - Returns: Gets you the "multiplier" for figuring out array indices based on the size of the board.
-     */
+    /// Get me the row multiplier, based on the current board size.
+    ///
+    /// - Returns: Gets you the "multiplier" for figuring out array indices based on the size of the board.
     func getRowMultiplier() -> Int {
         switch board.count {
         case 16:
@@ -115,12 +107,12 @@ public extension GameBoard {
         }
     }
 
-    /**
-     Did you provide me with a valid row?.
-     - Parameter rowIndex: The row that you want to check.
-     - Parameter columnIndex: The column that you want to check.
-     - Returns: True if it's a valid index, false otherwise.
-     */
+    /// Did you provide me with a valid row?.
+    ///
+    /// - Parameters:
+    ///   - rowIndex: The row that you want to check.
+    ///   - columnIndex: The column that you want to check.
+    /// - Returns: True if it's a valid index, false otherwise.
     func validRow(_ rowIndex: Int, andColumn columnIndex: Int) -> Bool {
         let multiplier: Int = self.getRowMultiplier()
         return (rowIndex >= 0) && (columnIndex >= 0) && (rowIndex < multiplier) && (columnIndex < multiplier)
@@ -130,7 +122,7 @@ public extension GameBoard {
 
 // MARK: - Serialization
 
-public extension GameBoard {
+extension GameBoard {
 
     func toArray() -> [AnyObject] {
         var array = [AnyObject]()

@@ -10,7 +10,7 @@ import Foundation
 import AVFoundation
 import SceneKit
 
-// TODO: Rename to SoundService
+// TODO: Extract a protocol (SoundService) from SoundProvider
 
 class SoundProvider {
     static let instance = SoundProvider()

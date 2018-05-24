@@ -8,20 +8,21 @@
 
 import Foundation
 
-/**
- This class is the Game Context.  It is responsible for tracking the Game Board, the Timer, Stats, etc.
- */
-open class GameContext {
+/// This class is the Game Context.  It is responsible for keeping track of:
+/// * The Game Board
+/// * The Timer
+/// * Game Stats
+class GameContext {
 
-    open let game = Game()
-    open var gameState: GameState = .kGameStateWaitingForMatch
-    open var isReplay = false
+    let game = Game()
+    var gameState: GameState = .kGameStateWaitingForMatch
+    var isReplay = false
 
 }
 
 // MARK: - API
 
-public extension GameContext {
+extension GameContext {
 
     func reset() {
         game.reset()

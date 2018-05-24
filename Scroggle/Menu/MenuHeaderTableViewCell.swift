@@ -8,6 +8,8 @@
 
 import UIKit
 
+/// A Cell that shows you the title in a menu.  See
+/// Menu.storyboard for more details.
 class MenuHeaderTableViewCell: UITableViewCell {
     
     @IBOutlet weak var label: UILabel?

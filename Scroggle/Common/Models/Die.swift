@@ -8,10 +8,10 @@
 
 import Foundation
 
-/**
- Represents a single Die.  This includes the sides to the die, and what side is currently selected (roll).
- */
-open class Die {
+/// Represents a single Die.  This includes:
+/// * The sides to the die
+/// * What side is currently selected (roll).
+class Die {
     struct Keys {
         static let roll = "roll"
         static let sides = "sides"
@@ -20,13 +20,13 @@ open class Die {
     var sides: [String]
     var roll: String!
 
-    public init(sides: [String]) {
+    init(sides: [String]) {
         self.sides = sides
         self.roll = Die.selectRandomDie(sides)
         patchDie()
     }
 
-    public init(sides: [String], roll: String) {
+    init(sides: [String], roll: String) {
         self.sides = sides
         self.roll = roll
         patchDie()
@@ -36,7 +36,7 @@ open class Die {
 
 // MARK: - Public Interface
 
-public extension Die {
+extension Die {
 
     func getSelectedSide() -> Int {
         for i in 0..<sides.count {
@@ -56,7 +56,7 @@ public extension Die {
 
 // MARK: - Serialization
 
-public extension Die {
+extension Die {
 
     /**
      Converts this die to a map object.

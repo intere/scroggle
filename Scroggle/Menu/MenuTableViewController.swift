@@ -8,13 +8,14 @@
 
 import UIKit
 
+/// This class is responsible for rendering the menu itself.  There are 2
+/// cell types supported, currently:
+/// * Header Cell (MenuHeaderTableViewCell) - shows a "title" for the menu
+/// * Button Cell (ButtonTableViewCell) - provides a clickalable button
+/// See Menu.storyboard to see what they look like.
 class MenuTableViewController: UITableViewController {
 
-    struct CellIdentifiers {
-        static let headerCell = "HeaderCell"
-        static let buttonCell = "ButtonCell"
-    }
-
+    /// The MenuInfo model, used to tell us what to render in the menu.
     var menu: MenuInfo? {
         didSet {
             tableView.reloadData()
@@ -27,7 +28,11 @@ class MenuTableViewController: UITableViewController {
         tableView.estimatedRowHeight = 60
     }
 
-    // MARK: - Table view data source
+}
+
+// MARK: - Table view data source
+
+extension MenuTableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -66,4 +71,14 @@ class MenuTableViewController: UITableViewController {
         return cell
     }
 
+}
+
+// MARK: - Constants
+
+private extension MenuTableViewController {
+
+    struct CellIdentifiers {
+        static let headerCell = "HeaderCell"
+        static let buttonCell = "ButtonCell"
+    }
 }

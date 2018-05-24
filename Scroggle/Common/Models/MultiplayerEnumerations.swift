@@ -11,7 +11,7 @@ import Foundation
 //
 // The State of a Multiplayer Game
 //
-public enum GameState: Int {
+enum GameState: Int {
     case kGameStateWaitingForMatch = 0           // Waiting for a match to begin
     case kGameStateWaitingForRandomNumber        // Waiting for a random number (for game start)
     case kGameStateWaitingForStart               // Waiting to start the game
@@ -33,7 +33,7 @@ public enum GameState: Int {
 //
 // The Type of message (for network games)
 //
-public enum MessageType: Int {
+enum MessageType: Int {
     case kMessageTypeRandomNumber = 0
     case kMessageTypeGameBegin
     case kMessageTypeScoreUpdate
@@ -43,7 +43,7 @@ public enum MessageType: Int {
 //
 // The result of a game
 //
-public enum GameResult: Int {
+enum GameResult: Int {
     case kGameResultYouWon = 0              // You Won
     case kGameResultYouLost                 // You Lost
     case kGameResultYouTied                 // Tied Game

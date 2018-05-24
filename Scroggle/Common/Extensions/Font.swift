@@ -10,6 +10,7 @@ import UIKit
 
 extension UIFont {
 
+    /// Scroggle font structure, used as a namespace
     struct Scroggle {
         private static let defaultFontName = "Chalkduster"
 

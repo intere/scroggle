@@ -8,31 +8,31 @@
 
 import Foundation
 
-open class Game: NSObject {
+class Game: NSObject {
 
-    open var score: Int = 0
-    open var badGuesses: Int = 0
-    open var duplicateGuesses: Int = 0
-    open var rotations = 0
-    open var words = [String]()
-    open var board: GameBoard! {
+    var score: Int = 0
+    var badGuesses: Int = 0
+    var duplicateGuesses: Int = 0
+    var rotations = 0
+    var words = [String]()
+    var board: GameBoard! {
         didSet {
             hasBoard = true
         }
     }
-    open var hasBoard = false
-    open var timer: GameTimer! {
+    var hasBoard = false
+    var timer: GameTimer! {
         didSet {
             hasTimer = true
         }
     }
-    open var hasTimer = false
+    var hasTimer = false
 
 }
 
 // MARK: - API
 
-public extension Game {
+extension Game {
 
     /// Resets the game
     func reset() {

@@ -8,34 +8,35 @@
 
 import Foundation
 
-public protocol GameTimerDelegate {
+// TODO: Stop using a Game Timer protocol and just use NotificationCenter
 
-    /**
-     Tells you that time elapsed on the game timer (for a game without a finite amount of time)
-     - Parameter source: The (source) GameTimer that the event came from
-     - Parameter time: The amount of time that's elapsed.
-     */
+protocol GameTimerDelegate {
+
+    /// Tells you that time elapsed on the game timer (for a game without a finite amount of time)
+    ///
+    /// - Parameters:
+    ///   - source: The (source) GameTimer that the event came from
+    ///   - time: The amount of time that's elapsed.
     func timeDidElapse(_ source: GameTimer, time: Int)
 
-    /**
-     Tells you that time has elapsed on the game timer and there is a finite amount of time left.
-     - Parameter source: The (source) GameTimer that the event came from.
-     - Parameter time: The amount of time that's elapsed so far.
-     - Parameter remainingTime: The amount of time that's remaining.
-     */
+    /// Tells you that time has elapsed on the game timer and there is a finite amount of time left.
+    ///
+    /// - Parameters:
+    ///   - source: The (source) GameTimer that the event came from.
+    ///   - time: The amount of time that's elapsed so far.
+    ///   - remainingTime: The amount of time that's remaining.
     func timeDidElapse(_ source: GameTimer, time: Int, remainingTime: Int)
 
-    /**
-     Tells you that time has run out on the timer.
-     - Parameter source: The (source) GameTimer that the event came from.
-     */
+    /// Tells you that time has run out on the timer.
+    ///
+    /// - Parameter source: The (source) GameTimer that the event came from.
     func timeDidRunout(_ source: GameTimer)
 
 }
 
 // MARK: - GameTimer
 
-public protocol GameTimer {
+protocol GameTimer {
     /// An optional delegate who will listen for the timer events
     var delegate: GameTimerDelegate? { get set }
 

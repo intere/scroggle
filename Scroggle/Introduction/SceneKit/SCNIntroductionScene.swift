@@ -16,7 +16,7 @@ protocol GameSceneDelegate {
 
 // TODO: Rename this to IntroductionScene
 
-class GameScene: SCNScene {
+class SCNIntroductionScene: SCNScene {
 
     var delegate: GameSceneDelegate?
     var gameContext: GameContext!
@@ -49,20 +49,20 @@ class GameScene: SCNScene {
 
 // MARK: - API
 
-extension GameScene {
+extension SCNIntroductionScene {
 
     /**
      Factory creation method.  If you want a scene that is for demos, pass true for the useDemoCamera property.
      - Parameter useDemoCamera: Whether or not to use the Demo Camera.
      - Returns: A GameScene object if it could be created.
      */
-    static func loadGameScene(useDemoCamera: Bool = false) -> GameScene? {
+    static func loadGameScene(useDemoCamera: Bool = false) -> SCNIntroductionScene? {
         guard let originalScene = SCNScene(named: "art.scnassets/GameView.scn") else {
             DLog("Failed to load GameView.scn")
             return nil
         }
 
-        let gameScene = GameScene()
+        let gameScene = SCNIntroductionScene()
         for node in originalScene.rootNode.childNodes {
             node.removeAllActions()
             gameScene.rootNode.addChildNode(node)
@@ -126,7 +126,7 @@ extension GameScene {
 
 // MARK: - Introduction APIs
 
-extension GameScene {
+extension SCNIntroductionScene {
 
     /**
      Performs the intro animation indefinitely.
@@ -141,7 +141,7 @@ extension GameScene {
 
 // MARK: - GamePlay APIs
 
-extension GameScene {
+extension SCNIntroductionScene {
 
     /// Rotates the board (true = clockwise, false = counterclockwise)
     func rotateBoard(_ clockwise: Bool) {
@@ -236,7 +236,7 @@ extension GameScene {
 
 // MARK: - GameTimerDelegate
 
-extension GameScene: GameTimerDelegate {
+extension SCNIntroductionScene: GameTimerDelegate {
 
     func timeDidRunout(_ source: GameTimer) {
         guard let delegate = delegate else {
@@ -260,7 +260,7 @@ extension GameScene: GameTimerDelegate {
 
 // MARK: - Helpers
 
-extension GameScene {
+extension SCNIntroductionScene {
 
     func updateGameCamera() {
         guard let gameCamera = gameCamera else {

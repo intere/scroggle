@@ -11,7 +11,7 @@ import Foundation
 /**
  Game Time Types (if you want the length of time per type, see GameTimer.swift).
  */
-public enum GameTimeType: Int {
+enum GameTimeType: Int {
     case undefined = 0
     case veryShort
     case short
@@ -21,11 +21,11 @@ public enum GameTimeType: Int {
     case custom
     case infinite
 
-    public static var values: [GameTimeType] {
+    static var values: [GameTimeType] {
         return [ veryShort, short, `default`, medium, long ]
     }
 
-    public static func fromRawValue(_ rawValue: Int) -> GameTimeType {
+    static func fromRawValue(_ rawValue: Int) -> GameTimeType {
 
         for value in values {
             if value.rawValue == rawValue {
@@ -61,11 +61,11 @@ public enum GameTimeType: Int {
     }
 }
 
-public enum GameTimerError: Error {
+enum GameTimerError: Error {
     case invalidGameTimerInitialization
 }
 
-public enum GameDestination: Int {
+enum GameDestination: Int {
     case basicGame = 0
 }
 
