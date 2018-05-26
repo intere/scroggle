@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36084D8620B996A000ABCEAA /* MenuSelectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36084D8520B996A000ABCEAA /* MenuSelectionService.swift */; };
 		36243FCD1F8BAA88008AB92C /* Time.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36243FCC1F8BAA88008AB92C /* Time.storyboard */; };
 		36243FCF1F8BAF56008AB92C /* TimeMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36243FCE1F8BAF56008AB92C /* TimeMenuViewController.swift */; };
 		365630341F8A8EE600E4312B /* ButtonCellInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365630331F8A8EE600E4312B /* ButtonCellInfo.swift */; };
@@ -25,7 +26,7 @@
 		365C1AD51F9C0AC6008A84EA /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1AD41F9C0AC6008A84EA /* Enumerations.swift */; };
 		365C1AD81F9C3A77008A84EA /* ScoreProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1AD71F9C3A77008A84EA /* ScoreProvider.swift */; };
 		365C1ADB1F9C3C5B008A84EA /* Extension+Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1ADA1F9C3C5B008A84EA /* Extension+Time.swift */; };
-		365C1ADE1F9C3CAE008A84EA /* SCNIntroductionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1ADD1F9C3CAE008A84EA /* SCNIntroductionScene.swift */; };
+		365C1ADE1F9C3CAE008A84EA /* IntroductionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1ADD1F9C3CAE008A84EA /* IntroductionScene.swift */; };
 		365C1AE01F9C3CDA008A84EA /* Die3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1ADF1F9C3CDA008A84EA /* Die3D.swift */; };
 		365C1AE21F9C3D20008A84EA /* SceneKitMathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1AE11F9C3D20008A84EA /* SceneKitMathExtensions.swift */; };
 		365C1AE41F9C3DA5008A84EA /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1AE31F9C3DA5008A84EA /* Font.swift */; };
@@ -67,6 +68,7 @@
 		00668C1EA3E1A7B6F972AD30 /* Pods-ScroggleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScroggleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScroggleTests/Pods-ScroggleTests.release.xcconfig"; sourceTree = "<group>"; };
 		1AC2660262C043314B6F772A /* Pods_ScroggleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScroggleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25529459E731704F950900DB /* Pods-Scroggle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scroggle.release.xcconfig"; path = "Pods/Target Support Files/Pods-Scroggle/Pods-Scroggle.release.xcconfig"; sourceTree = "<group>"; };
+		36084D8520B996A000ABCEAA /* MenuSelectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSelectionService.swift; sourceTree = "<group>"; };
 		36243FCC1F8BAA88008AB92C /* Time.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Time.storyboard; sourceTree = "<group>"; };
 		36243FCE1F8BAF56008AB92C /* TimeMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMenuViewController.swift; sourceTree = "<group>"; };
 		365630331F8A8EE600E4312B /* ButtonCellInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCellInfo.swift; sourceTree = "<group>"; };
@@ -84,7 +86,7 @@
 		365C1AD41F9C0AC6008A84EA /* Enumerations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enumerations.swift; sourceTree = "<group>"; };
 		365C1AD71F9C3A77008A84EA /* ScoreProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreProvider.swift; sourceTree = "<group>"; };
 		365C1ADA1F9C3C5B008A84EA /* Extension+Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Time.swift"; sourceTree = "<group>"; };
-		365C1ADD1F9C3CAE008A84EA /* SCNIntroductionScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNIntroductionScene.swift; sourceTree = "<group>"; };
+		365C1ADD1F9C3CAE008A84EA /* IntroductionScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionScene.swift; sourceTree = "<group>"; };
 		365C1ADF1F9C3CDA008A84EA /* Die3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Die3D.swift; sourceTree = "<group>"; };
 		365C1AE11F9C3D20008A84EA /* SceneKitMathExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitMathExtensions.swift; sourceTree = "<group>"; };
 		365C1AE31F9C3DA5008A84EA /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				365C1AE71F9C3EA6008A84EA /* DiceProvider.swift */,
 				365C1AE91F9C3F55008A84EA /* SettingsService.swift */,
 				365C1AEB1F9C401B008A84EA /* SoundProvider.swift */,
+				36084D8520B996A000ABCEAA /* MenuSelectionService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -187,7 +190,7 @@
 		365C1ADC1F9C3C9F008A84EA /* SceneKit */ = {
 			isa = PBXGroup;
 			children = (
-				365C1ADD1F9C3CAE008A84EA /* SCNIntroductionScene.swift */,
+				365C1ADD1F9C3CAE008A84EA /* IntroductionScene.swift */,
 				365C1ADF1F9C3CDA008A84EA /* Die3D.swift */,
 			);
 			path = SceneKit;
@@ -594,6 +597,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36CD6B8120B6EECF00DE8669 /* ButtonTableViewCell.swift in Sources */,
+				36084D8620B996A000ABCEAA /* MenuSelectionService.swift in Sources */,
 				365C1AEA1F9C3F55008A84EA /* SettingsService.swift in Sources */,
 				36D2A2842079021800E9C9F7 /* MenuHeaderTableViewCell.swift in Sources */,
 				36D2A2832079021800E9C9F7 /* MenuViewController.swift in Sources */,
@@ -611,7 +615,7 @@
 				365C1AD51F9C0AC6008A84EA /* Enumerations.swift in Sources */,
 				36D2A2862079022B00E9C9F7 /* MenuBuilding.swift in Sources */,
 				365C1AF01F9C40F8008A84EA /* UIDeviceExtension.swift in Sources */,
-				365C1ADE1F9C3CAE008A84EA /* SCNIntroductionScene.swift in Sources */,
+				365C1ADE1F9C3CAE008A84EA /* IntroductionScene.swift in Sources */,
 				365C1ADB1F9C3C5B008A84EA /* Extension+Time.swift in Sources */,
 				365C1AD81F9C3A77008A84EA /* ScoreProvider.swift in Sources */,
 				365C1AEC1F9C401B008A84EA /* SoundProvider.swift in Sources */,

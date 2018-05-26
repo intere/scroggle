@@ -28,20 +28,20 @@ extension TimeMenuViewController: MenuBuilding {
 
     func buildMenu() -> MenuInfo? {
         return MenuInfo(title: "Game Duration", buttons: [
-            ButtonCellInfo(title: "45 seconds") {
-                // TODO
+            ButtonCellInfo(title: "45 seconds") { [weak self] in
+                self?.select(timeType: .veryShort)
             },
-            ButtonCellInfo(title: "90 seconds") {
-                // TODO
+            ButtonCellInfo(title: "90 seconds") { [weak self] in
+                self?.select(timeType: .short)
             },
-            ButtonCellInfo(title: "3 minutes") {
-                // TODO
+            ButtonCellInfo(title: "3 minutes") { [weak self] in
+                self?.select(timeType: .default)
             },
-            ButtonCellInfo(title: "5 minutes") {
-                // TODO
+            ButtonCellInfo(title: "5 minutes") { [weak self] in
+                self?.select(timeType: .medium)
             },
-            ButtonCellInfo(title: "10 minutes") {
-                // TODO
+            ButtonCellInfo(title: "10 minutes") { [weak self] in
+                self?.select(timeType: .long)
             }
         ])
     }
@@ -59,4 +59,14 @@ extension TimeMenuViewController {
         }
     }
 
+}
+
+// MARK: - Implementation
+
+extension TimeMenuViewController {
+
+    func select(timeType: GameTimeType) {
+        MenuSelectionService.shared.timer = timeType
+        // TODO: Load the next VC
+    }
 }

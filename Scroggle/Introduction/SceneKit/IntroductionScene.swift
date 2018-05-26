@@ -14,9 +14,7 @@ protocol GameSceneDelegate {
     func gameEnded()
 }
 
-// TODO: Rename this to IntroductionScene
-
-class SCNIntroductionScene: SCNScene {
+class IntroductionScene: SCNScene {
 
     var delegate: GameSceneDelegate?
     var gameContext: GameContext!
@@ -49,20 +47,20 @@ class SCNIntroductionScene: SCNScene {
 
 // MARK: - API
 
-extension SCNIntroductionScene {
+extension IntroductionScene {
 
     /**
      Factory creation method.  If you want a scene that is for demos, pass true for the useDemoCamera property.
      - Parameter useDemoCamera: Whether or not to use the Demo Camera.
      - Returns: A GameScene object if it could be created.
      */
-    static func loadGameScene(useDemoCamera: Bool = false) -> SCNIntroductionScene? {
+    static func loadGameScene(useDemoCamera: Bool = false) -> IntroductionScene? {
         guard let originalScene = SCNScene(named: "art.scnassets/GameView.scn") else {
             DLog("Failed to load GameView.scn")
             return nil
         }
 
-        let gameScene = SCNIntroductionScene()
+        let gameScene = IntroductionScene()
         for node in originalScene.rootNode.childNodes {
             node.removeAllActions()
             gameScene.rootNode.addChildNode(node)
@@ -126,7 +124,7 @@ extension SCNIntroductionScene {
 
 // MARK: - Introduction APIs
 
-extension SCNIntroductionScene {
+extension IntroductionScene {
 
     /**
      Performs the intro animation indefinitely.
@@ -141,7 +139,7 @@ extension SCNIntroductionScene {
 
 // MARK: - GamePlay APIs
 
-extension SCNIntroductionScene {
+extension IntroductionScene {
 
     /// Rotates the board (true = clockwise, false = counterclockwise)
     func rotateBoard(_ clockwise: Bool) {
@@ -236,7 +234,7 @@ extension SCNIntroductionScene {
 
 // MARK: - GameTimerDelegate
 
-extension SCNIntroductionScene: GameTimerDelegate {
+extension IntroductionScene: GameTimerDelegate {
 
     func timeDidRunout(_ source: GameTimer) {
         guard let delegate = delegate else {
@@ -260,7 +258,7 @@ extension SCNIntroductionScene: GameTimerDelegate {
 
 // MARK: - Helpers
 
-extension SCNIntroductionScene {
+extension IntroductionScene {
 
     func updateGameCamera() {
         guard let gameCamera = gameCamera else {

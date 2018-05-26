@@ -8,6 +8,7 @@
 
 import SceneKit
 
+/// A 3d representation of a Die.
 class Die3D: SCNNode {
 
     struct Configuration {
@@ -50,7 +51,6 @@ extension Die3D {
     }
 
     func animateSelection() {
-        //        DLog("Animating Selection")
         guard let geometry = geometry else {
             return
         }
@@ -64,8 +64,8 @@ extension Die3D {
             material.emission.contents = UIColor.black
         }
 
-        runAction(SCNAction.sequence([action1, SCNAction.wait(duration: 0.5)])) {
-            self.runAction(action2)
+        runAction(SCNAction.sequence([action1, SCNAction.wait(duration: 0.5)])) { [weak self] in
+            self?.runAction(action2)
         }
     }
 
@@ -96,11 +96,11 @@ extension Die3D {
         }
     }
 
-    /**
-     This method handles the initial animation for a game.
-     - Parameter duration: How long to perform the animation for.
-     - Parameter index: The side to show.
-     */
+    /// This function handles the initial animation for a game.
+    ///
+    /// - Parameters:
+    ///   - duration: How long to perform the animation for.
+    ///   - index: The side to show.
     func animateRandomlyThenToIndex(_ duration: CFTimeInterval, index: Int) {
         if duration <= 1 {
             animateToIndex(duration, index: index)
@@ -153,12 +153,11 @@ extension Die3D {
         }
     }
 
-
-    /**
-     Animates the die to the specified index of the die (this essentially maps the index of the character to a position on the die).
-     - Parameter duration: How long to take to perform the rotation.
-     - Parameter index: The index (side) of the die to rotate to.
-     */
+    /// Animates the die to the specified index of the die (this essentially maps the index of the character to a position on the die).
+    ///
+    /// - Parameters:
+    ///   - duration: How long to take to perform the rotation.
+    ///   - index: The index (side) of the die to rotate to.
     func animateToIndex(_ duration: CFTimeInterval, index: Int) {
 
         var eulerVector: SCNVector3? = nil
