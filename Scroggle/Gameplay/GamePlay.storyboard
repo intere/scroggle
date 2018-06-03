@@ -1,7 +1,87 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TYE-sV-i3y">
+    <device id="retina4_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Game Play View Controller-->
+        <scene sceneID="RHc-fx-QEv">
+            <objects>
+                <viewController storyboardIdentifier="MenuContainerViewController" id="TYE-sV-i3y" customClass="GamePlayViewController" customModule="Scroggle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4dv-hH-aJC">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeScreen2-16x9" translatesAutoresizingMaskIntoConstraints="NO" id="F8A-AS-Wyk">
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                            </imageView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IeY-UC-Xca">
+                                <rect key="frame" x="33.5" y="19" width="600" height="337.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <segue destination="OX6-ZI-dKN" kind="embed" identifier="embedGameView" id="4gN-pj-3eT"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="IeY-UC-Xca" firstAttribute="centerY" secondItem="4dv-hH-aJC" secondAttribute="centerY" id="A5l-KN-dKF"/>
+                            <constraint firstItem="F8A-AS-Wyk" firstAttribute="bottom" secondItem="COd-ko-HV3" secondAttribute="bottom" id="J4t-Kw-nwK"/>
+                            <constraint firstItem="F8A-AS-Wyk" firstAttribute="leading" secondItem="COd-ko-HV3" secondAttribute="leading" id="Zh7-0t-eXl"/>
+                            <constraint firstItem="IeY-UC-Xca" firstAttribute="centerX" secondItem="4dv-hH-aJC" secondAttribute="centerX" id="aom-yJ-ajN"/>
+                            <constraint firstItem="IeY-UC-Xca" firstAttribute="height" secondItem="4dv-hH-aJC" secondAttribute="height" multiplier="0.9" id="qIf-Aj-cG6"/>
+                            <constraint firstItem="IeY-UC-Xca" firstAttribute="width" secondItem="4dv-hH-aJC" secondAttribute="width" multiplier="0.9" id="z7Q-0v-ken"/>
+                            <constraint firstItem="F8A-AS-Wyk" firstAttribute="top" secondItem="COd-ko-HV3" secondAttribute="top" id="z8g-bL-gGR"/>
+                            <constraint firstItem="F8A-AS-Wyk" firstAttribute="trailing" secondItem="COd-ko-HV3" secondAttribute="trailing" id="zpG-rj-7fQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="COd-ko-HV3"/>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="IeY-UC-Xca" id="v8R-oj-Jb9"/>
+                        <outlet property="proportionalHeightConstraint" destination="qIf-Aj-cG6" id="GBW-Bb-pA4"/>
+                        <outlet property="proportionalWidthConstraint" destination="z7Q-0v-ken" id="YgQ-Hu-sOR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X35-3T-xkl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-321.19565217391306" y="95.652173913043484"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="8sx-gP-5mb">
+            <objects>
+                <viewController id="OX6-ZI-dKN" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nal-hT-KTT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="337.5"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <skView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2lo-EL-DvY">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="337.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </skView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2lo-EL-DvY" firstAttribute="leading" secondItem="0P7-t9-919" secondAttribute="leading" id="D4V-SI-O7f"/>
+                            <constraint firstItem="0P7-t9-919" firstAttribute="bottom" secondItem="2lo-EL-DvY" secondAttribute="bottom" id="Sen-5G-AaX"/>
+                            <constraint firstItem="0P7-t9-919" firstAttribute="trailing" secondItem="2lo-EL-DvY" secondAttribute="trailing" id="UQ7-N6-1zP"/>
+                            <constraint firstItem="2lo-EL-DvY" firstAttribute="top" secondItem="0P7-t9-919" secondAttribute="top" id="UmM-IO-pbH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0P7-t9-919"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GXX-ae-eqk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-322" y="1030"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="HomeScreen2-16x9" width="736" height="414"/>
+    </resources>
 </document>
