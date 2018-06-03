@@ -18,6 +18,7 @@ class GamePlayViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
 
     var skView: SKView?
+    var gameScene: SCNGameScene?
 
     public static func loadFromStoryboard() -> GamePlayViewController {
         let storybaord = UIStoryboard(name: "GamePlay", bundle: nil)
@@ -44,22 +45,8 @@ extension GamePlayViewController {
             return DLog("ERROR: Couldn't get a reference to the SKView")
         }
 
-        let sceneNode = SK3DNode(viewportSize: skView.frame.size)
-        guard let trayScene = SCNScene(named: "art.scnassets/DiceTray.scn") else {
-            return assertionFailure("Failed to create the dice tray scene")
-        }
-        sceneNode.scnScene = trayScene
-        sceneNode.position = CGPoint(x: skView.frame.midX, y: skView.frame.midY)
-
-        // Debugging
-        skView.showsPhysics = true
-        sceneNode.physicsBody = SKPhysicsBody(rectangleOf: sceneNode.frame.size)
-        sceneNode.physicsBody?.affectedByGravity = false
-
-        let diceTray = SKScene(size: skView.frame.size)
-        skView.presentScene(diceTray)
-        diceTray.addChild(sceneNode)
-        
+        // Bootstrap the GameScene:
+        gameScene = SCNGameScene(withView: skView)
     }
 
 }
