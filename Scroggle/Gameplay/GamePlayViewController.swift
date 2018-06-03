@@ -49,6 +49,12 @@ extension GamePlayViewController {
             return assertionFailure("Failed to create the dice tray scene")
         }
         sceneNode.scnScene = trayScene
+        sceneNode.position = CGPoint(x: skView.frame.midX, y: skView.frame.midY)
+
+        // Debugging
+        skView.showsPhysics = true
+        sceneNode.physicsBody = SKPhysicsBody(rectangleOf: sceneNode.frame.size)
+        sceneNode.physicsBody?.affectedByGravity = false
 
         let diceTray = SKScene(size: skView.frame.size)
         skView.presentScene(diceTray)
