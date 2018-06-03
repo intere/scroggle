@@ -37,6 +37,7 @@ extension GamePlayViewController {
         }
 
         skView = segue.destination.view.subviews[0] as? SKView
+
         loadGameScene()
     }
 

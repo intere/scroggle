@@ -32,11 +32,17 @@ extension SCNGameScene {
             return assertionFailure("Failed to create the dice tray scene")
         }
         sceneNode.scnScene = trayScene
-        sceneNode.position = CGPoint(x: skView.frame.midX, y: skView.frame.midY)
+        sceneNode.position = CGPoint(x: skView.bounds.midX, y: skView.bounds.midY)
 
         let diceTray = SKScene(size: skView.frame.size)
         skView.presentScene(diceTray)
         diceTray.addChild(sceneNode)
+
+        // Debugging
+        skView.showsPhysics = true
+        sceneNode.physicsBody = SKPhysicsBody(rectangleOf: skView.frame.size)
+        sceneNode.physicsBody?.affectedByGravity = false
+        // End Debugging
 
         gameScene = trayScene
         readDiceReferences()
@@ -58,9 +64,42 @@ extension SCNGameScene {
         guard let die = dice.first, let box = die.geometry as? SCNBox else {
             return assertionFailure("Failed to get the first die")
         }
-        box.materials = DiceProvider.instance.fourByFour[0].map({self.createMaterialForText(text: $0)})
+//        box.materials = DiceProvider.instance.fourByFour[0].map({self.createMaterialForText(text: $0)})
+        box.materials = [0,1,2,3,4,5].map({self.createMaterialForText(text: "\($0)")})
+        rotate(die: die, to: 1)
     }
 
+}
+
+// MARK: - Dice rotation
+
+extension SCNGameScene {
+
+    func rotate(die: SCNNode, to index: Int) {
+        let duration: TimeInterval = 1
+        let rotation: SCNAction
+        switch index {
+        case 1:
+            rotation = SCNAction.rotateTo(x: 0, y: CGFloat(270.radians), z: 0, duration: duration)
+        case 2:
+            rotation = SCNAction.rotateTo(x: CGFloat(180.radians), y: 0, z: CGFloat(180.radians), duration: duration)
+        case 3:
+            rotation = SCNAction.rotateTo(x: 0, y: CGFloat(90.radians), z: 0, duration: duration)
+        case 4:
+            rotation = SCNAction.rotateTo(x: CGFloat(90.radians), y: 0, z: 0, duration: duration)
+        case 5:
+            rotation = SCNAction.rotateTo(x: CGFloat(270.radians), y: 0, z: 0, duration: duration)
+        default:
+            rotation = SCNAction.rotateTo(x: 0, y: 0, z: 0, duration: duration)
+        }
+
+        die.runAction(rotation)
+    }
+}
+
+// MARK: - Dice material generation
+
+extension SCNGameScene {
 
     /// Given the provided string, this function will create you a material for the
     /// given text you provide.
