@@ -9,6 +9,11 @@
 import SpriteKit
 import SceneKit
 
+/// A class that will render a Scroggle Game Board in the provided SKView.
+/// 1. A new SKScene is created (consuming the entire SKView screen)
+/// 2. The DiceTray.scn file is loaded into an SCNScne
+/// 3. A new SCN3DNode is created and added to the Scene from step 1
+/// 4. The SCNScene (from step 2) is set as the scene in the SCN3DNode
 class SCNGameScene {
 
     let skView: SKView
@@ -26,6 +31,7 @@ class SCNGameScene {
 
 extension SCNGameScene {
 
+    /// Bootstraps the scene and delegates off to other helper functions.
     func bootstrapScene() {
         let sceneNode = SK3DNode(viewportSize: skView.frame.size)
         guard let trayScene = SCNScene(named: "art.scnassets/DiceTray.scn") else {
@@ -49,6 +55,7 @@ extension SCNGameScene {
         setDiceMaterial()
     }
 
+    /// Reads the dice nodes from the scene and stores them in the `dice` array.
     func readDiceReferences() {
         dice.removeAll()
         for i in 0..<16 {
@@ -60,13 +67,17 @@ extension SCNGameScene {
         assert(dice.count == 16)
     }
 
+    /// Sets the "letters" for each side of the dice.
+    /// This is accomplished by generating images for the letters
+    /// and setting the materials for each size.
     func setDiceMaterial() {
-        guard let die = dice.first, let box = die.geometry as? SCNBox else {
-            return assertionFailure("Failed to get the first die")
+        assert(dice.count == DiceProvider.instance.fourByFour.count)
+        for i in 0..<dice.count {
+            guard let box = dice[i].geometry as? SCNBox else {
+                continue
+            }
+            box.materials = DiceProvider.instance.fourByFour[i].map({self.createMaterialForText(text: $0)})
         }
-//        box.materials = DiceProvider.instance.fourByFour[0].map({self.createMaterialForText(text: $0)})
-        box.materials = [0,1,2,3,4,5].map({self.createMaterialForText(text: "\($0)")})
-        rotate(die: die, to: 1)
     }
 
 }
@@ -75,6 +86,11 @@ extension SCNGameScene {
 
 extension SCNGameScene {
 
+    /// Rotates the provided die to the appropriate side.
+    ///
+    /// - Parameters:
+    ///   - die: The die to be rotated
+    ///   - index: The array index (from the dice string array) to be rotated to.
     func rotate(die: SCNNode, to index: Int) {
         let duration: TimeInterval = 1
         let rotation: SCNAction
