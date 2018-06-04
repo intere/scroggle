@@ -29,13 +29,22 @@
                                     <segue destination="OX6-ZI-dKN" kind="embed" identifier="embedGameView" id="4gN-pj-3eT"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="25m-IQ-Q3U">
+                                <rect key="frame" x="33.5" y="19" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="buttonTODOdeleteMe:" destination="TYE-sV-i3y" eventType="touchUpInside" id="f1e-aS-AKu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="IeY-UC-Xca" firstAttribute="centerY" secondItem="4dv-hH-aJC" secondAttribute="centerY" id="A5l-KN-dKF"/>
+                            <constraint firstItem="25m-IQ-Q3U" firstAttribute="leading" secondItem="IeY-UC-Xca" secondAttribute="leading" id="AAo-gw-BA7"/>
                             <constraint firstItem="F8A-AS-Wyk" firstAttribute="bottom" secondItem="COd-ko-HV3" secondAttribute="bottom" id="J4t-Kw-nwK"/>
                             <constraint firstItem="F8A-AS-Wyk" firstAttribute="leading" secondItem="COd-ko-HV3" secondAttribute="leading" id="Zh7-0t-eXl"/>
                             <constraint firstItem="IeY-UC-Xca" firstAttribute="centerX" secondItem="4dv-hH-aJC" secondAttribute="centerX" id="aom-yJ-ajN"/>
+                            <constraint firstItem="25m-IQ-Q3U" firstAttribute="top" secondItem="IeY-UC-Xca" secondAttribute="top" id="qCS-d1-szX"/>
                             <constraint firstItem="IeY-UC-Xca" firstAttribute="height" secondItem="4dv-hH-aJC" secondAttribute="height" multiplier="0.9" id="qIf-Aj-cG6"/>
                             <constraint firstItem="IeY-UC-Xca" firstAttribute="width" secondItem="4dv-hH-aJC" secondAttribute="width" multiplier="0.9" id="z7Q-0v-ken"/>
                             <constraint firstItem="F8A-AS-Wyk" firstAttribute="top" secondItem="COd-ko-HV3" secondAttribute="top" id="z8g-bL-gGR"/>

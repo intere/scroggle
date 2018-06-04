@@ -63,6 +63,10 @@
 		36D2A2862079022B00E9C9F7 /* MenuBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D2A2852079022B00E9C9F7 /* MenuBuilding.swift */; };
 		36D2A2882079058200E9C9F7 /* MenuContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D2A2872079058100E9C9F7 /* MenuContainerViewController.swift */; };
 		36D9DE7020C481F4007F3FC1 /* SCNGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D9DE6F20C481F4007F3FC1 /* SCNGameScene.swift */; };
+		36D9DE7220C4B017007F3FC1 /* SCNGameScene+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D9DE7120C4B017007F3FC1 /* SCNGameScene+Animations.swift */; };
+		36D9DE7420C4B88C007F3FC1 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D9DE7320C4B88C007F3FC1 /* Random.swift */; };
+		36D9DE7620C4E426007F3FC1 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D9DE7520C4E426007F3FC1 /* Common.swift */; };
+		36D9DE7920C59FFF007F3FC1 /* RandomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D9DE7820C59FFF007F3FC1 /* RandomTests.swift */; };
 		4FD72B7D461376FF67D005F9 /* Pods_Scroggle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F358BEAF58BB9834F21533 /* Pods_Scroggle.framework */; };
 		54925A97B646C3D4473488DF /* Pods_ScroggleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC2660262C043314B6F772A /* Pods_ScroggleTests.framework */; };
 /* End PBXBuildFile section */
@@ -141,6 +145,10 @@
 		36D2A2852079022B00E9C9F7 /* MenuBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBuilding.swift; sourceTree = "<group>"; };
 		36D2A2872079058100E9C9F7 /* MenuContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuContainerViewController.swift; sourceTree = "<group>"; };
 		36D9DE6F20C481F4007F3FC1 /* SCNGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNGameScene.swift; sourceTree = "<group>"; };
+		36D9DE7120C4B017007F3FC1 /* SCNGameScene+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNGameScene+Animations.swift"; sourceTree = "<group>"; };
+		36D9DE7320C4B88C007F3FC1 /* Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
+		36D9DE7520C4E426007F3FC1 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		36D9DE7820C59FFF007F3FC1 /* RandomTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomTests.swift; sourceTree = "<group>"; };
 		56761BE71EB11B903BA848D5 /* Pods-ScroggleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScroggleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScroggleTests/Pods-ScroggleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C7F358BEAF58BB9834F21533 /* Pods_Scroggle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Scroggle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6689E82EF5FEDD53035E2C3 /* Pods-Scroggle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scroggle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Scroggle/Pods-Scroggle.debug.xcconfig"; sourceTree = "<group>"; };
@@ -233,6 +241,7 @@
 				365C1AE11F9C3D20008A84EA /* SceneKitMathExtensions.swift */,
 				365C1AE31F9C3DA5008A84EA /* Font.swift */,
 				365C1AEF1F9C40F8008A84EA /* UIDeviceExtension.swift */,
+				36D9DE7320C4B88C007F3FC1 /* Random.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -295,6 +304,7 @@
 		36A77BE81F8A64AB0057A874 /* ScroggleTests */ = {
 			isa = PBXGroup;
 			children = (
+				36D9DE7720C59FF2007F3FC1 /* Extensions */,
 				36A77BE91F8A64AB0057A874 /* ScroggleTests.swift */,
 				36A77BEB1F8A64AB0057A874 /* Info.plist */,
 			);
@@ -368,6 +378,7 @@
 				365C1AD11F9C0A67008A84EA /* Protocols */,
 				365630321F8A8ECF00E4312B /* Models */,
 				365630371F8A937B00E4312B /* Logging.swift */,
+				36D9DE7520C4E426007F3FC1 /* Common.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -390,8 +401,17 @@
 			isa = PBXGroup;
 			children = (
 				36D9DE6F20C481F4007F3FC1 /* SCNGameScene.swift */,
+				36D9DE7120C4B017007F3FC1 /* SCNGameScene+Animations.swift */,
 			);
 			path = Nodes;
+			sourceTree = "<group>";
+		};
+		36D9DE7720C59FF2007F3FC1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				36D9DE7820C59FFF007F3FC1 /* RandomTests.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		48ECA28F33CF624D24747C0B /* Pods */ = {
@@ -678,6 +698,7 @@
 				3693CB8C1F9C087F004792B2 /* IntroductionViewController.swift in Sources */,
 				3656303E1F8A96CF00E4312B /* MainMenuViewController.swift in Sources */,
 				365C1ACC1F9C0961008A84EA /* Die.swift in Sources */,
+				36D9DE7420C4B88C007F3FC1 /* Random.swift in Sources */,
 				365C1ACA1F9C0947008A84EA /* Game.swift in Sources */,
 				365630341F8A8EE600E4312B /* ButtonCellInfo.swift in Sources */,
 				365630381F8A937B00E4312B /* Logging.swift in Sources */,
@@ -693,6 +714,7 @@
 				365C1ADB1F9C3C5B008A84EA /* Extension+Time.swift in Sources */,
 				365C1AD81F9C3A77008A84EA /* ScoreProvider.swift in Sources */,
 				365C1AEC1F9C401B008A84EA /* SoundProvider.swift in Sources */,
+				36D9DE7220C4B017007F3FC1 /* SCNGameScene+Animations.swift in Sources */,
 				365C1AD01F9C09F6008A84EA /* GameBoard.swift in Sources */,
 				365C1AE21F9C3D20008A84EA /* SceneKitMathExtensions.swift in Sources */,
 				36D2A2882079058200E9C9F7 /* MenuContainerViewController.swift in Sources */,
@@ -701,6 +723,7 @@
 				3656929D20C45AB200A3FE0A /* GamePlayViewController.swift in Sources */,
 				365C1AE61F9C3E6D008A84EA /* GameContextProvider.swift in Sources */,
 				365C1AC81F9C092E008A84EA /* GameContext.swift in Sources */,
+				36D9DE7620C4E426007F3FC1 /* Common.swift in Sources */,
 				36D9DE7020C481F4007F3FC1 /* SCNGameScene.swift in Sources */,
 				36D2A2822079021800E9C9F7 /* MenuTableViewController.swift in Sources */,
 				365C1AE01F9C3CDA008A84EA /* Die3D.swift in Sources */,
@@ -711,6 +734,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36D9DE7920C59FFF007F3FC1 /* RandomTests.swift in Sources */,
 				36A77BEA1F8A64AB0057A874 /* ScroggleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

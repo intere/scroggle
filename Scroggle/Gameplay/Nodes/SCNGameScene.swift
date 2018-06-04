@@ -16,10 +16,18 @@ import SceneKit
 /// 4. The SCNScene (from step 2) is set as the scene in the SCN3DNode
 class SCNGameScene {
 
+    /// The SKView that the Game Scene is being rendered within.
     let skView: SKView
+
+    /// The SCNScene (DiceTray.scn)
     var gameScene: SCNScene?
+
+    /// The SCNNodes for the dice (there should be 16 of them in a 4x4 board)
     var dice: [SCNNode] = []
 
+    /// Initializes the SCNGameScene with 
+    ///
+    /// - Parameter view: The view that we're initializing the Game Scene with.
     init(withView view: SKView) {
         skView = view
         self.bootstrapScene()
@@ -53,6 +61,7 @@ extension SCNGameScene {
         gameScene = trayScene
         readDiceReferences()
         setDiceMaterial()
+        rollDice()
     }
 
     /// Reads the dice nodes from the scene and stores them in the `dice` array.
@@ -86,30 +95,29 @@ extension SCNGameScene {
 
 extension SCNGameScene {
 
-    /// Rotates the provided die to the appropriate side.
+    /// Gets you an Euler Angle for the provided side
     ///
-    /// - Parameters:
-    ///   - die: The die to be rotated
-    ///   - index: The array index (from the dice string array) to be rotated to.
-    func rotate(die: SCNNode, to index: Int) {
-        let duration: TimeInterval = 1
-        let rotation: SCNAction
-        switch index {
+    /// - Parameter side: The side of the die (array index) that you want the Euler angle for.
+    /// - Returns: The Euler angle that correlates to the side you want
+    func eulerAngle(for side: Int) -> SCNVector3 {
+        let euler: SCNVector3
+
+        switch side {
         case 1:
-            rotation = SCNAction.rotateTo(x: 0, y: CGFloat(270.radians), z: 0, duration: duration)
+            euler = SCNVector3Make(0, 270.radians, 0)
         case 2:
-            rotation = SCNAction.rotateTo(x: CGFloat(180.radians), y: 0, z: CGFloat(180.radians), duration: duration)
+            euler = SCNVector3Make(180.radians, 0, 180.radians)
         case 3:
-            rotation = SCNAction.rotateTo(x: 0, y: CGFloat(90.radians), z: 0, duration: duration)
+            euler = SCNVector3Make(0, 90.radians, 0)
         case 4:
-            rotation = SCNAction.rotateTo(x: CGFloat(90.radians), y: 0, z: 0, duration: duration)
+            euler = SCNVector3Make(90.radians, 0, 0)
         case 5:
-            rotation = SCNAction.rotateTo(x: CGFloat(270.radians), y: 0, z: 0, duration: duration)
+            euler = SCNVector3Make(270.radians, 0, 0)
         default:
-            rotation = SCNAction.rotateTo(x: 0, y: 0, z: 0, duration: duration)
+            euler = SCNVector3Make(0, 0, 0)
         }
 
-        die.runAction(rotation)
+        return euler
     }
 }
 

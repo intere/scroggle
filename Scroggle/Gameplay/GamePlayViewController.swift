@@ -20,10 +20,18 @@ class GamePlayViewController: UIViewController {
     var skView: SKView?
     var gameScene: SCNGameScene?
 
-    public static func loadFromStoryboard() -> GamePlayViewController {
+    /// Factory instantiation function for this VC, comes from a storyboard.
+    ///
+    /// - Returns: An instance of the GamePlayViewController
+    static func loadFromStoryboard() -> GamePlayViewController {
         let storybaord = UIStoryboard(name: "GamePlay", bundle: nil)
         return storybaord.instantiateInitialViewController() as! GamePlayViewController
         // swiftlint:disable:previous force_cast
+    }
+
+    @IBAction
+    func buttonTODOdeleteMe(_ sender: Any) {
+        gameScene?.rollDice()
     }
 }
 
