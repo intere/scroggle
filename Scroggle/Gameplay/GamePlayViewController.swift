@@ -14,11 +14,21 @@ import UIKit
 class GamePlayViewController: UIViewController {
     @IBOutlet weak var proportionalWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var proportionalHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var centerYConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var containerView: UIView!
 
     var skView: SKView?
     var gameScene: SCNGameScene?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if UIDevice.current.isiPhoneX {
+            proportionalWidthConstraint.constant = -80
+            proportionalHeightConstraint.constant = -20
+            centerYConstraint.constant = -10
+        }
+    }
 
     /// Factory instantiation function for this VC, comes from a storyboard.
     ///
