@@ -22,6 +22,9 @@ class SCNGameScene {
     /// The SCNScene (DiceTray.scn)
     var gameScene: SCNScene?
 
+    /// The Camera
+    var camera: SCNCamera?
+
     /// The SCNNodes for the dice (there should be 16 of them in a 4x4 board)
     var dice: [SCNNode] = []
 
@@ -42,9 +45,11 @@ extension SCNGameScene {
     /// Bootstraps the scene and delegates off to other helper functions.
     func bootstrapScene() {
         let sceneNode = SK3DNode(viewportSize: skView.frame.size)
+
         guard let trayScene = SCNScene(named: "art.scnassets/DiceTray.scn") else {
             return assertionFailure("Failed to create the dice tray scene")
         }
+
         sceneNode.scnScene = trayScene
         sceneNode.position = CGPoint(x: skView.bounds.midX, y: skView.bounds.midY)
 
@@ -60,6 +65,7 @@ extension SCNGameScene {
 
         gameScene = trayScene
         readDiceReferences()
+        readCameraReference()
         setDiceMaterial()
         rollDice()
     }
@@ -76,16 +82,25 @@ extension SCNGameScene {
         assert(dice.count == 16)
     }
 
+    /// Reads the camera reference
+    func readCameraReference() {
+        guard let camera = gameScene?.rootNode.childNodes.filter({$0.name == "camera"}).first else {
+            return assertionFailure("Couldn't find the camera node")
+        }
+        self.camera = camera.camera
+    }
+
     /// Sets the "letters" for each side of the dice.
     /// This is accomplished by generating images for the letters
     /// and setting the materials for each size.
     func setDiceMaterial() {
         assert(dice.count == DiceProvider.instance.fourByFour.count)
+        let diceArray = DiceProvider.instance.fourByFour.shuffled()
         for i in 0..<dice.count {
             guard let box = dice[i].geometry as? SCNBox else {
                 continue
             }
-            box.materials = DiceProvider.instance.fourByFour[i].map({self.createMaterialForText(text: $0)})
+            box.materials = diceArray[i].map({self.createMaterialForText(text: $0)})
         }
     }
 
