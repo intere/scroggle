@@ -67,6 +67,6 @@ extension TimeMenuViewController {
 
     func select(timeType: GameTimeType) {
         MenuSelectionService.shared.timer = timeType
-        navigationController?.pushViewController(GamePlayViewController.loadFromStoryboard(), animated: true)
+        navigationController?.pushViewController(GameContainerViewController.loadFromStoryboard(), animated: true)
     }
 }

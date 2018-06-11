@@ -28,7 +28,7 @@
 		3656303E1F8A96CF00E4312B /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3656303D1F8A96CF00E4312B /* MainMenuViewController.swift */; };
 		365630401F8A9C0700E4312B /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3656303F1F8A9C0700E4312B /* Launch.storyboard */; };
 		365630411F8AA10500E4312B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36A77BFC1F8A65D10057A874 /* Assets.xcassets */; };
-		3656929D20C45AB200A3FE0A /* GamePlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3656929C20C45AB200A3FE0A /* GamePlayViewController.swift */; };
+		3656929D20C45AB200A3FE0A /* GameContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3656929C20C45AB200A3FE0A /* GameContainerViewController.swift */; };
 		365C1AC81F9C092E008A84EA /* GameContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1AC71F9C092E008A84EA /* GameContext.swift */; };
 		365C1ACA1F9C0947008A84EA /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1AC91F9C0947008A84EA /* Game.swift */; };
 		365C1ACC1F9C0961008A84EA /* Die.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1ACB1F9C0961008A84EA /* Die.swift */; };
@@ -47,9 +47,13 @@
 		365C1AEA1F9C3F55008A84EA /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1AE91F9C3F55008A84EA /* SettingsService.swift */; };
 		365C1AEC1F9C401B008A84EA /* SoundProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1AEB1F9C401B008A84EA /* SoundProvider.swift */; };
 		365C1AF01F9C40F8008A84EA /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1AEF1F9C40F8008A84EA /* UIDeviceExtension.swift */; };
+		366784C020CE1666004EBCB9 /* GamePlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366784BF20CE1665004EBCB9 /* GamePlayViewController.swift */; };
+		366784C220CE16E3004EBCB9 /* GamePlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 366784C120CE16E3004EBCB9 /* GamePlay.storyboard */; };
+		366784C420CE1790004EBCB9 /* WordList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 366784C320CE1790004EBCB9 /* WordList.storyboard */; };
+		366784C620CE17E8004EBCB9 /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366784C520CE17E8004EBCB9 /* WordListViewController.swift */; };
 		3686EB391F9C432D007FEB28 /* dice.json in Resources */ = {isa = PBXBuildFile; fileRef = 3686EB381F9C432D007FEB28 /* dice.json */; };
 		3686EB3B1F9C4390007FEB28 /* demo.json in Resources */ = {isa = PBXBuildFile; fileRef = 3686EB3A1F9C4390007FEB28 /* demo.json */; };
-		369303992083960500D80511 /* GamePlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 369303982083960500D80511 /* GamePlay.storyboard */; };
+		369303992083960500D80511 /* GameContainer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 369303982083960500D80511 /* GameContainer.storyboard */; };
 		3693CB8A1F9C083D004792B2 /* Introduction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3693CB891F9C083D004792B2 /* Introduction.storyboard */; };
 		3693CB8C1F9C087F004792B2 /* IntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693CB8B1F9C087F004792B2 /* IntroductionViewController.swift */; };
 		369765431F9BEE7A00E66395 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 369765421F9BEE7600E66395 /* art.scnassets */; };
@@ -105,7 +109,7 @@
 		3656303B1F8A96AD00E4312B /* MainMenu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainMenu.storyboard; sourceTree = "<group>"; };
 		3656303D1F8A96CF00E4312B /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		3656303F1F8A9C0700E4312B /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
-		3656929C20C45AB200A3FE0A /* GamePlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayViewController.swift; sourceTree = "<group>"; };
+		3656929C20C45AB200A3FE0A /* GameContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameContainerViewController.swift; sourceTree = "<group>"; };
 		365C1AC71F9C092E008A84EA /* GameContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameContext.swift; sourceTree = "<group>"; };
 		365C1AC91F9C0947008A84EA /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		365C1ACB1F9C0961008A84EA /* Die.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Die.swift; sourceTree = "<group>"; };
@@ -124,9 +128,13 @@
 		365C1AE91F9C3F55008A84EA /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		365C1AEB1F9C401B008A84EA /* SoundProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundProvider.swift; sourceTree = "<group>"; };
 		365C1AEF1F9C40F8008A84EA /* UIDeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
+		366784BF20CE1665004EBCB9 /* GamePlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayViewController.swift; sourceTree = "<group>"; };
+		366784C120CE16E3004EBCB9 /* GamePlay.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GamePlay.storyboard; sourceTree = "<group>"; };
+		366784C320CE1790004EBCB9 /* WordList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WordList.storyboard; sourceTree = "<group>"; };
+		366784C520CE17E8004EBCB9 /* WordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListViewController.swift; sourceTree = "<group>"; };
 		3686EB381F9C432D007FEB28 /* dice.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dice.json; sourceTree = "<group>"; };
 		3686EB3A1F9C4390007FEB28 /* demo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = demo.json; sourceTree = "<group>"; };
-		369303982083960500D80511 /* GamePlay.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GamePlay.storyboard; sourceTree = "<group>"; };
+		369303982083960500D80511 /* GameContainer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameContainer.storyboard; sourceTree = "<group>"; };
 		3693CB891F9C083D004792B2 /* Introduction.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Introduction.storyboard; sourceTree = "<group>"; };
 		3693CB8B1F9C087F004792B2 /* IntroductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionViewController.swift; sourceTree = "<group>"; };
 		369765421F9BEE7600E66395 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -349,9 +357,13 @@
 		36A77BFA1F8A656F0057A874 /* Gameplay */ = {
 			isa = PBXGroup;
 			children = (
+				369303982083960500D80511 /* GameContainer.storyboard */,
+				3656929C20C45AB200A3FE0A /* GameContainerViewController.swift */,
+				366784C120CE16E3004EBCB9 /* GamePlay.storyboard */,
+				366784BF20CE1665004EBCB9 /* GamePlayViewController.swift */,
 				36D9DE6E20C48115007F3FC1 /* Nodes */,
-				369303982083960500D80511 /* GamePlay.storyboard */,
-				3656929C20C45AB200A3FE0A /* GamePlayViewController.swift */,
+				366784C320CE1790004EBCB9 /* WordList.storyboard */,
+				366784C520CE17E8004EBCB9 /* WordListViewController.swift */,
 			);
 			path = Gameplay;
 			sourceTree = "<group>";
@@ -527,6 +539,7 @@
 			files = (
 				3617FA3120C41E960023F89D /* Stretch.caf in Resources */,
 				3617FA2E20C41E960023F89D /* DiceRoll.caf in Resources */,
+				366784C220CE16E3004EBCB9 /* GamePlay.storyboard in Resources */,
 				3617FA2C20C41E960023F89D /* Cave_In.caf in Resources */,
 				3693CB8A1F9C083D004792B2 /* Introduction.storyboard in Resources */,
 				3656303C1F8A96AD00E4312B /* MainMenu.storyboard in Resources */,
@@ -537,7 +550,7 @@
 				3617FA3420C41E960023F89D /* Slap.caf in Resources */,
 				369765431F9BEE7A00E66395 /* art.scnassets in Resources */,
 				36D2A2812079021800E9C9F7 /* Menu.storyboard in Resources */,
-				369303992083960500D80511 /* GamePlay.storyboard in Resources */,
+				369303992083960500D80511 /* GameContainer.storyboard in Resources */,
 				365630411F8AA10500E4312B /* Assets.xcassets in Resources */,
 				3617FA2F20C41E960023F89D /* PingPongPop.caf in Resources */,
 				36243FCD1F8BAA88008AB92C /* Time.storyboard in Resources */,
@@ -545,6 +558,7 @@
 				3617FA2D20C41E960023F89D /* Velcro.caf in Resources */,
 				3686EB391F9C432D007FEB28 /* dice.json in Resources */,
 				3686EB3B1F9C4390007FEB28 /* demo.json in Resources */,
+				366784C420CE1790004EBCB9 /* WordList.storyboard in Resources */,
 				3617FA3320C41E960023F89D /* CrystalDing.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -698,6 +712,7 @@
 				3693CB8C1F9C087F004792B2 /* IntroductionViewController.swift in Sources */,
 				3656303E1F8A96CF00E4312B /* MainMenuViewController.swift in Sources */,
 				365C1ACC1F9C0961008A84EA /* Die.swift in Sources */,
+				366784C020CE1666004EBCB9 /* GamePlayViewController.swift in Sources */,
 				36D9DE7420C4B88C007F3FC1 /* Random.swift in Sources */,
 				365C1ACA1F9C0947008A84EA /* Game.swift in Sources */,
 				365630341F8A8EE600E4312B /* ButtonCellInfo.swift in Sources */,
@@ -720,7 +735,8 @@
 				36D2A2882079058200E9C9F7 /* MenuContainerViewController.swift in Sources */,
 				365C1AE41F9C3DA5008A84EA /* Font.swift in Sources */,
 				365C1AD31F9C0A6F008A84EA /* GameTimer.swift in Sources */,
-				3656929D20C45AB200A3FE0A /* GamePlayViewController.swift in Sources */,
+				3656929D20C45AB200A3FE0A /* GameContainerViewController.swift in Sources */,
+				366784C620CE17E8004EBCB9 /* WordListViewController.swift in Sources */,
 				365C1AE61F9C3E6D008A84EA /* GameContextProvider.swift in Sources */,
 				365C1AC81F9C092E008A84EA /* GameContext.swift in Sources */,
 				36D9DE7620C4E426007F3FC1 /* Common.swift in Sources */,
