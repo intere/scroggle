@@ -20,7 +20,10 @@ class GameContainerViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool { return true }
 
+    /// The SpriteKit view that the GameScene is to be rendered in
     var skView: SKView?
+
+    /// The SceneKit Game scene
     var gameScene: SCNGameScene?
 
     override func viewDidLoad() {

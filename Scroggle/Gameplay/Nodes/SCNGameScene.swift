@@ -70,7 +70,8 @@ extension SCNGameScene {
         readDiceReferences()
         readCameraReference()
         setDiceMaterial()
-        rollDice()
+        // TODO: Reenable the rollDice function
+//        rollDice()
         addClickableTiles()
     }
 
