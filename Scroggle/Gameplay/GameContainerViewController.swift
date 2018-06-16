@@ -23,8 +23,8 @@ class GameContainerViewController: UIViewController {
     /// The SpriteKit view that the GameScene is to be rendered in
     var skView: SKView?
 
-    /// The SceneKit Game scene
-    var gameScene: SCNGameScene?
+    /// The Controller for the GameScene
+    var gameController: GameSceneController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +42,7 @@ class GameContainerViewController: UIViewController {
 
     @IBAction
     func buttonTODOdeleteMe(_ sender: Any) {
-        gameScene?.rollDice()
+        gameController?.rollDice()
     }
 }
 
@@ -70,13 +70,13 @@ extension GameContainerViewController {
             proportionalWidthConstraint.constant = -80
             proportionalHeightConstraint.constant = -20
             centerYConstraint.constant = -10
-            gameScene?.camera?.orthographicScale = 5.0
+            gameController?.camera?.orthographicScale = 5.0
         } else if UIDevice.current.isiPhone6Plus || UIDevice.current.isiPhone6 || UIDevice.current.isiPhone5 {
-            gameScene?.camera?.orthographicScale = 5.6
+            gameController?.camera?.orthographicScale = 5.6
         }
 
         if UIDevice.current.isiPad {
-            gameScene?.camera?.orthographicScale = 5
+            gameController?.camera?.orthographicScale = 5
         } else {
             backButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         }
@@ -89,7 +89,7 @@ extension GameContainerViewController {
         }
 
         // Bootstrap the GameScene:
-        gameScene = SCNGameScene(withView: skView)
+        gameController = GameSceneController(withView: skView)
     }
 
 }

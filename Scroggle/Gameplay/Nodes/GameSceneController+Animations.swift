@@ -1,5 +1,5 @@
 //
-//  SCNGameScene+Animations.swift
+//  GameSceneController+Animations.swift
 //  Scroggle
 //
 //  Created by Eric Internicola on 6/3/18.
@@ -8,7 +8,7 @@
 
 import SceneKit
 
-extension SCNGameScene {
+extension GameSceneController {
 
     /// Rolls the dice in the scene for you
     func rollDice() {
@@ -83,7 +83,7 @@ extension SCNGameScene {
 
 // MARK: - Debugging
 
-extension SCNGameScene {
+extension GameSceneController {
 
     /// Debugging function that merely animates the position of each die.
     ///

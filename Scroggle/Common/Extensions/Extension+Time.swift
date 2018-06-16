@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SpriteKit
 
 
 extension TimeInterval {
@@ -36,5 +37,9 @@ extension Int {
     /// * Seconds: 00:14
     var timeString: String {
         return TimeInterval(self).timeString
+    }
+
+    var to4x4Point: CGPoint {
+        return CGPoint(x: floor(CGFloat(self / 4)), y: CGFloat(self % 4))
     }
 }

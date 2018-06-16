@@ -1,5 +1,5 @@
 //
-//  SCNGameScene.swift
+//  GameSceneController.swift
 //  Scroggle
 //
 //  Created by Eric Internicola on 6/3/18.
@@ -14,7 +14,7 @@ import SceneKit
 /// 2. The DiceTray.scn file is loaded into an SCNScne
 /// 3. A new SCN3DNode is created and added to the Scene from step 1
 /// 4. The SCNScene (from step 2) is set as the scene in the SCN3DNode
-class SCNGameScene {
+class GameSceneController {
 
     /// The SKView that the Game Scene is being rendered within.
     let skView: SKView
@@ -31,19 +31,23 @@ class SCNGameScene {
     /// The Clickable Tiles (laid over the dice)
     var tiles: [SKShapeNode] = []
 
-    /// Initializes the SCNGameScene with 
+    /// An array of the current selection
+    var selection: [Int] = []
+
+    /// Initializes the SCNGameScene with
     ///
     /// - Parameter view: The view that we're initializing the Game Scene with.
     init(withView view: SKView) {
         skView = view
-        self.bootstrapScene()
+        debugSetup()
+        bootstrapScene()
     }
 
 }
 
 // MARK: - Implementation
 
-extension SCNGameScene {
+extension GameSceneController {
 
     /// Bootstraps the scene and delegates off to other helper functions.
     func bootstrapScene() {
@@ -56,9 +60,10 @@ extension SCNGameScene {
         sceneNode.scnScene = trayScene
         sceneNode.position = CGPoint(x: skView.bounds.midX, y: skView.bounds.midY)
 
-        let diceTray = SKScene(size: skView.frame.size)
-        skView.presentScene(diceTray)
-        diceTray.addChild(sceneNode)
+        let gameplayScene = GameScene(size: skView.frame.size)
+        gameplayScene.controller = self
+        skView.presentScene(gameplayScene)
+        gameplayScene.addChild(sceneNode)
 
         // Debugging
         skView.showsPhysics = true
@@ -100,12 +105,16 @@ extension SCNGameScene {
     /// and setting the materials for each size.
     func setDiceMaterial() {
         assert(dice.count == DiceProvider.instance.fourByFour.count)
-        let diceArray = DiceProvider.instance.fourByFour.shuffled()
+        assert(GameContextProvider.instance.currentGame != nil)
+        guard let diceArray = GameContextProvider.instance.currentGame?.game.board.board else {
+            return assertionFailure("Failed to get the dice")
+        }
         for i in 0..<dice.count {
             guard let box = dice[i].geometry as? SCNBox else {
                 continue
             }
-            box.materials = diceArray[i].map({self.createMaterialForText(text: $0)})
+            box.materials = diceArray[i].sides.map({self.createMaterialForText(text: $0)})
+            dice[i].eulerAngles = eulerAngle(for: diceArray[i].selectedSide)
         }
     }
 
@@ -113,7 +122,7 @@ extension SCNGameScene {
 
 // MARK: - Dice rotation
 
-extension SCNGameScene {
+extension GameSceneController {
 
     /// Gets you an Euler Angle for the provided side
     ///
@@ -143,7 +152,7 @@ extension SCNGameScene {
 
 // MARK: - Dice material generation
 
-extension SCNGameScene {
+extension GameSceneController {
 
     /// Given the provided string, this function will create you a material for the
     /// given text you provide.
@@ -184,4 +193,23 @@ extension SCNGameScene {
         return img!
     }
 
+}
+
+// MARK: - Debugging
+
+extension GameSceneController {
+
+    func debugSetup() {
+        GameContextProvider.Configuration.demoMode = false
+        assert(!GameContextProvider.Configuration.demoMode)
+        GameContextProvider.instance.createSinglePlayerGame(.default)
+        printBoard()
+    }
+
+    func printBoard() {
+        guard let board = GameContextProvider.instance.currentGame?.game.board.board else {
+            return DLog("Failed to get the game board")
+        }
+        DLog("Game Board:\n\(board.debugDescription)")
+    }
 }

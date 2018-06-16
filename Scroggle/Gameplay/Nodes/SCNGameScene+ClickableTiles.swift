@@ -11,7 +11,59 @@ import SpriteKit
 // This file contains functions that specifically help out with
 // things related to the "Clickable Tiles".
 
-extension SCNGameScene {
+extension GameSceneController {
+
+    /// Gets you the currently selected word
+    var currentWord: String {
+        return selection.map({ letter(for: $0) ?? "" }).joined()
+    }
+
+    /// Handles the action of a user tapping a specific point
+    ///
+    /// - Parameter point: The point in the scene that was tapped
+    func tapped(point: CGPoint) {
+        guard let index = tiles.lastIndex(where: {$0.contains(point)}) else {
+            return DLog("No tile detected")
+        }
+        addSelected(index: index)
+        DLog("Current word: \(currentWord)")
+    }
+
+    @discardableResult
+    func addSelected(index: Int) -> Bool {
+        guard isValid(move: index) else {
+            return false
+        }
+        selection.append(index)
+        DLog("Word: \(currentWord)")
+        return true
+    }
+
+    func isValid(move index: Int) -> Bool {
+        guard !selection.contains(index) else {
+            return false
+        }
+        guard let lastMove = selection.last?.to4x4Point else {
+            return true
+        }
+        return lastMove.distance(to: index.to4x4Point) < 2.0
+    }
+
+    /// Gets you the letter at the specified index.
+    ///
+    /// - Parameter index: The index that you want the letter for
+    /// - Returns: The letter(s) at the provided index or nil if it's invalid or the board is unavailable.
+    func letter(for index: Int) -> String? {
+        guard let diceArray = GameContextProvider.instance.currentGame?.game.board.board else {
+            assertionFailure("Failed to get dice array")
+            return nil
+        }
+        guard index < diceArray.count else {
+            assertionFailure("Index out of bounds")
+            return nil
+        }
+        return diceArray[index].roll
+    }
 
     /// This renders the clickable tiles for the dice and
     /// populates the `tiles` property with the clickable
@@ -47,10 +99,11 @@ extension SCNGameScene {
         }
         tiles.reverse()
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
-            self?.animateTiles()
-            self?.animateDice()
-        }
+        // Debugging - animates the tiles and dice so you can verify that the order is the same
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
+//            self?.animateTiles()
+//            self?.animateDice()
+//        }
     }
 
     /// Data structure to give you values to build the overlays
@@ -102,7 +155,7 @@ extension SCNGameScene {
 
 // MARK: - Debugging
 
-extension SCNGameScene {
+extension GameSceneController {
 
     /// Debugging tool that iterates through all of the tiles and highlights them
     ///
