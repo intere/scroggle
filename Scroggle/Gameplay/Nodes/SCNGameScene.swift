@@ -28,6 +28,9 @@ class SCNGameScene {
     /// The SCNNodes for the dice (there should be 16 of them in a 4x4 board)
     var dice: [SCNNode] = []
 
+    /// The Clickable Tiles (laid over the dice)
+    var tiles: [SKShapeNode] = []
+
     /// Initializes the SCNGameScene with 
     ///
     /// - Parameter view: The view that we're initializing the Game Scene with.
@@ -68,6 +71,7 @@ extension SCNGameScene {
         readCameraReference()
         setDiceMaterial()
         rollDice()
+        addClickableTiles()
     }
 
     /// Reads the dice nodes from the scene and stores them in the `dice` array.
