@@ -25,8 +25,43 @@ extension GameSceneController {
         guard let index = tiles.lastIndex(where: {$0.contains(point)}) else {
             return DLog("No tile detected")
         }
-        addSelected(index: index)
-        DLog("Current word: \(currentWord)")
+        if index == selection.last {
+            return guessWord()
+        }
+        guard addSelected(index: index) else {
+            return
+        }
+    }
+
+    /// Handles the dragging action.
+    ///
+    /// - Parameter point: The point in the scene that was tapped.
+    /// - Returns: the point if it was added, nil if not.
+    func handleDrag(point: CGPoint) -> CGPoint? {
+        guard let index = tiles.lastIndex(where: {$0.contains(point)}) else {
+            return nil
+        }
+        guard index != selection.last else {
+            // If it's the same tile they were dragging over before, don't add it
+            return nil
+        }
+
+        guard addSelected(index: index) else {
+            // If the selected tile couldn't be added, don't return a point
+            return nil
+        }
+
+        return point
+    }
+
+    func handleDragEnd(point: CGPoint) {
+        _ = handleDrag(point: point)
+        guessWord()
+    }
+
+    private func guessWord() {
+        DLog("Guessed word: \(currentWord)")
+        selection.removeAll()
     }
 
     @discardableResult
@@ -35,10 +70,20 @@ extension GameSceneController {
             return false
         }
         selection.append(index)
-        DLog("Word: \(currentWord)")
+        if let newLetter = letter(for: index) {
+            DLog("Selected letter: \(newLetter)")
+        }
         return true
     }
 
+    /// Is the move to the provided selection a valid move?
+    /// A move is valid if:
+    /// * This is the first index for the selection - or -
+    /// * The index is not already contained in the selection
+    /// * The move is adjacent to the last selected index
+    ///
+    /// - Parameter index: The index that you want to select
+    /// - Returns: True if it's valid, false if it's not.
     func isValid(move index: Int) -> Bool {
         guard !selection.contains(index) else {
             return false
@@ -100,10 +145,7 @@ extension GameSceneController {
         tiles.reverse()
 
         // Debugging - animates the tiles and dice so you can verify that the order is the same
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
-//            self?.animateTiles()
-//            self?.animateDice()
-//        }
+//        debugAnimateImages()
     }
 
     /// Data structure to give you values to build the overlays
@@ -156,6 +198,13 @@ extension GameSceneController {
 // MARK: - Debugging
 
 extension GameSceneController {
+
+    func debugAnimateImages() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
+            self?.animateTiles()
+            self?.animateDice()
+        }
+    }
 
     /// Debugging tool that iterates through all of the tiles and highlights them
     ///
