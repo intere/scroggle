@@ -31,7 +31,6 @@ class GameScene: SKScene {
         guard let controller = controller else {
             return assertionFailure("No controller defined")
         }
-        dragging = true
 
         for touch in touches {
             let currentPoint = touch.location(in: self)
@@ -39,6 +38,7 @@ class GameScene: SKScene {
                 guard let point = controller.handleDrag(point: currentPoint) else {
                     continue
                 }
+                dragging = true
                 beganPoint = point
             }
         }
