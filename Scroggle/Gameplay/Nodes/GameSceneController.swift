@@ -34,6 +34,9 @@ class GameSceneController {
     /// An array of the current selection
     var selection: [Int] = []
 
+    /// The visualization for a selection
+    var selectionPath: [SKShapeNode] = []
+
     /// Initializes the SCNGameScene with
     ///
     /// - Parameter view: The view that we're initializing the Game Scene with.

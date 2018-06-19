@@ -54,14 +54,20 @@ extension GameSceneController {
         return point
     }
 
+    /// Handles the end point of a drag.
+    ///
+    /// - Parameter point: The point at which the dragging has ended.
     func handleDragEnd(point: CGPoint) {
         _ = handleDrag(point: point)
         guessWord()
     }
 
+    /// Guesses a word
     private func guessWord() {
         DLog("Guessed word: \(currentWord)")
+        // TODO: Actually guess the word and take some action
         selection.removeAll()
+        clearSelection()
     }
 
     @discardableResult
@@ -73,6 +79,7 @@ extension GameSceneController {
         if let newLetter = letter(for: index) {
             DLog("Selected letter: \(newLetter)")
         }
+        renderSelection()
         return true
     }
 
@@ -125,7 +132,8 @@ extension GameSceneController {
         for column in -2...1 {
             for row in -1...2 {
                 let square = SKShapeNode(rectOf: CGSize(width: config.squareSize, height: config.squareSize))
-                square.fillColor = UIColor.red.withAlphaComponent(0.5)
+//                square.fillColor = UIColor.red.withAlphaComponent(0.5)
+                square.fillColor = .clear
                 let xPosition = scene.frame.midX - config.offsetX + CGFloat(row) * config.stepSizeX
                 let yPosition = scene.frame.midY + config.offsetY + CGFloat(column) * config.stepSizeY
                 square.position = CGPoint(x: xPosition, y: yPosition)
@@ -192,6 +200,51 @@ extension GameSceneController {
 
             return TileConfiguration(size: 45, sizeX: 77.5, sizeY: 77.5, offsetX: 37.5, offsetY: 37.5)
         }
+    }
+}
+
+// MARK: - Selection Visualization
+
+extension GameSceneController {
+
+    /// Clears out the entire selection
+    func clearSelection() {
+        selectionPath.forEach({$0.removeFromParent()})
+        selectionPath.removeAll()
+    }
+
+    /// Renders the most recent move
+    func renderSelection() {
+        guard selection.count > 1 else {
+            return
+        }
+
+        selectionPath.append(drawLine(from: selection[selection.count-1], to: selection[selection.count-2]))
+    }
+
+    /// Draws a line from the provided starting index to the provided ending index.
+    ///
+    /// - Parameters:
+    ///   - from: The index of the shape node to start drawing at
+    ///   - to: The index of the shape node to end drawing at
+    private func drawLine(from: Int, to: Int) -> SKShapeNode {
+        let startPoint = CGPoint(x: tiles[from].frame.midX, y: tiles[from].frame.midY)
+        let endPoint = CGPoint(x: tiles[to].frame.midX, y: tiles[to].frame.midY)
+
+        // Create line with SKShapeNode
+        let line = SKShapeNode()
+        let path = UIBezierPath()
+        path.move(to: startPoint)
+        path.addLine(to: endPoint)
+        line.path = path.cgPath
+        line.strokeColor = UIColor.green.withAlphaComponent(0.7)
+        line.lineWidth = 5
+        line.zPosition = 150
+        line.lineCap = .round
+
+        self.skView.scene?.addChild(line)
+
+        return line
     }
 }
 

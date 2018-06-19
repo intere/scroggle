@@ -45,10 +45,10 @@ private extension GamePlayViewController {
 
     /// Flashes the timer from red to green to alert the user that time is almost up.
     func flashTimerColor() {
-        UIView.animate(withDuration: 0.5, animations: { [weak self] in
-            self?.timerLabel.textColor = .red
-        }, completion: { [weak self] _ in
+        timerLabel.textColor = .red
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
             self?.timerLabel.textColor = .green
-        })
+        }
     }
 }
