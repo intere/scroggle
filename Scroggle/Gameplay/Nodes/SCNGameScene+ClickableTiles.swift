@@ -66,6 +66,7 @@ extension GameSceneController {
     private func guessWord() {
         DLog("Guessed word: \(currentWord)")
         // TODO: Actually guess the word and take some action
+        showGuess()
         selection.removeAll()
         clearSelection()
     }
@@ -132,8 +133,8 @@ extension GameSceneController {
         for column in -2...1 {
             for row in -1...2 {
                 let square = SKShapeNode(rectOf: CGSize(width: config.squareSize, height: config.squareSize))
-//                square.fillColor = UIColor.red.withAlphaComponent(0.5)
                 square.fillColor = .clear
+                square.strokeColor = .clear
                 let xPosition = scene.frame.midX - config.offsetX + CGFloat(row) * config.stepSizeX
                 let yPosition = scene.frame.midY + config.offsetY + CGFloat(column) * config.stepSizeY
                 square.position = CGPoint(x: xPosition, y: yPosition)
@@ -220,6 +221,25 @@ extension GameSceneController {
         }
 
         selectionPath.append(drawLine(from: selection[selection.count-1], to: selection[selection.count-2]))
+    }
+
+    /// Shows the word you guessed.
+    func showGuess() {
+        guard let scene = skView.scene, !currentWord.isEmpty else {
+            return
+        }
+        let label = SKLabelNode(fontNamed: UIFont.Scroggle.defaultFontName)
+        label.text = currentWord
+        label.fontSize = 24
+        label.fontColor = .green  // TODO: Color based on right / wrong / dupe
+        label.position = CGPoint(x: scene.frame.midX, y: scene.frame.midY)
+        label.zPosition = 200
+        scene.addChild(label)
+
+
+        label.run(SKAction.scale(to: 10, duration: 1)) {
+            label.removeFromParent()
+        }
     }
 
     /// Draws a line from the provided starting index to the provided ending index.

@@ -7,6 +7,7 @@
 //
 
 import SceneKit
+import SpriteKit
 
 extension GameSceneController {
 

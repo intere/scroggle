@@ -42,7 +42,11 @@ class GameContainerViewController: UIViewController {
 
     @IBAction
     func buttonTODOdeleteMe(_ sender: Any) {
-        gameController?.rollDice()
+//        gameController?.rollDice()
+        let timeType = GameContextProvider.instance.currentGame?.game.timer.timeType ?? .default
+        GameContextProvider.instance.createSinglePlayerGame(timeType)
+        loadGameScene()
+        updateUserInterface()
     }
 }
 

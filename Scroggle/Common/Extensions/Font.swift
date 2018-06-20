@@ -12,7 +12,7 @@ extension UIFont {
 
     /// Scroggle font structure, used as a namespace
     struct Scroggle {
-        private static let defaultFontName = "Chalkduster"
+        static let defaultFontName = "Chalkduster"
 
         /// Gives you the default font of the provided size
         ///
