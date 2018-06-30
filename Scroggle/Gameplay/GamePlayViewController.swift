@@ -6,17 +6,21 @@
 //  Copyright © 2018 Eric Internicola. All rights reserved.
 //
 
+import SpriteKit
 import UIKit
 
 class GamePlayViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var gameOverWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var skView: SKView!
 
     var seconds = 15
     var timer: Timer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        gameOverWidthConstraint.constant = 0
 
         seconds = GameContextProvider.instance.currentGame?.game.timer.timeType.seconds ?? 15
 
@@ -47,6 +51,7 @@ private extension GamePlayViewController {
         guard seconds > 0 else {
             timerLabel.textColor = .red
             timer?.invalidate()
+            showGameOver()
             Notification.Scroggle.GameEvent.gameEnded.notify()
             return
         }
@@ -63,6 +68,12 @@ private extension GamePlayViewController {
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
             self?.timerLabel.textColor = .green
+        }
+    }
+
+    func showGameOver() {
+        UIView.animate(withDuration: 0.5) {
+            self.gameOverWidthConstraint.constant = self.skView.frame.width
         }
     }
 }
