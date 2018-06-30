@@ -18,8 +18,13 @@ class GamePlayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer),
-                                     userInfo: nil, repeats: true)
+        seconds = GameContextProvider.instance.currentGame?.game.timer.timeType.seconds ?? 15
+
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self,
+                                     selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        scoreLabel.text = String(0)
+
+        Notification.Scroggle.GameEvent.scoreUpdated.addObserver(self, selector: #selector(scoreUpdated))
     }
 }
 
@@ -28,12 +33,21 @@ class GamePlayViewController: UIViewController {
 private extension GamePlayViewController {
 
     @objc
+    func scoreUpdated() {
+        guard let score = GameContextProvider.instance.currentGame?.game.score else {
+            return
+        }
+        scoreLabel.text = String(score)
+    }
+
+    @objc
     func updateTimer() {
         timerLabel.text = seconds.timeString
 
         guard seconds > 0 else {
             timerLabel.textColor = .red
             timer?.invalidate()
+            Notification.Scroggle.GameEvent.gameEnded.notify()
             return
         }
 

@@ -10,6 +10,7 @@ import Foundation
 
 // TODO: Stop using a Game Timer protocol and just use NotificationCenter
 
+@available(*, deprecated, message: "In favor of using NotificationCenter, see Notification+Scroggle.swift for more details")
 protocol GameTimerDelegate {
 
     /// Tells you that time elapsed on the game timer (for a game without a finite amount of time)
@@ -36,6 +37,7 @@ protocol GameTimerDelegate {
 
 // MARK: - GameTimer
 
+@available(*, deprecated, message: "In favor of using NotificationCenter, see Notification+Scroggle.swift for more details")
 protocol GameTimer {
     /// An optional delegate who will listen for the timer events
     var delegate: GameTimerDelegate? { get set }
@@ -69,6 +71,7 @@ protocol GameTimer {
 
 // MARK: - DefaultGameTimer
 
+@available(*, deprecated, message: "In favor of using NotificationCenter, see Notification+Scroggle.swift for more details")
 class DefaultGameTimer: GameTimer {
 
     struct Configuration {

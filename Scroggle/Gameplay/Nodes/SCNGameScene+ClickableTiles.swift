@@ -64,11 +64,23 @@ extension GameSceneController {
 
     /// Guesses a word
     private func guessWord() {
+        let currentWord = self.currentWord
         DLog("Guessed word: \(currentWord)")
-        // TODO: Actually guess the word and take some action
-        showGuess()
-        selection.removeAll()
-        clearSelection()
+
+        defer {
+            selection.removeAll()
+            clearSelection()
+        }
+
+        if LexiconProvider.instance.isValidWord(currentWord) {
+            guard !gameContext.alreadyGuessed(currentWord) else {
+                return selectionPath.forEach({$0.fillColor = .yellow ; $0.strokeColor = .yellow })
+            }
+            gameContext.addAndScoreWord(currentWord)
+            showGuess()
+        } else {
+            selectionPath.forEach({$0.fillColor = .red ; $0.strokeColor = .red })
+        }
     }
 
     @discardableResult
@@ -77,9 +89,9 @@ extension GameSceneController {
             return false
         }
         selection.append(index)
-        if let newLetter = letter(for: index) {
-            DLog("Selected letter: \(newLetter)")
-        }
+//        if let newLetter = letter(for: index) {
+//            DLog("Selected letter: \(newLetter)")
+//        }
         renderSelection()
         return true
     }
@@ -210,7 +222,11 @@ extension GameSceneController {
 
     /// Clears out the entire selection
     func clearSelection() {
-        selectionPath.forEach({$0.removeFromParent()})
+        selectionPath.forEach { (node) in
+            node.run(SKAction.fadeOut(withDuration: 0.2)) {
+                node.removeFromParent()
+            }
+        }
         selectionPath.removeAll()
     }
 
@@ -228,6 +244,7 @@ extension GameSceneController {
         guard let scene = skView.scene, !currentWord.isEmpty else {
             return
         }
+
         let label = SKLabelNode(fontNamed: UIFont.Scroggle.defaultFontName)
         label.text = currentWord
         label.fontSize = 24
@@ -235,7 +252,6 @@ extension GameSceneController {
         label.position = CGPoint(x: scene.frame.midX, y: scene.frame.midY)
         label.zPosition = 200
         scene.addChild(label)
-
 
         label.run(SKAction.scale(to: 10, duration: 1)) {
             label.removeFromParent()

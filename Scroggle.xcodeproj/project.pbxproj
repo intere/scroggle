@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		36084D8620B996A000ABCEAA /* MenuSelectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36084D8520B996A000ABCEAA /* MenuSelectionService.swift */; };
+		36115A9520E7D9F000D49AF0 /* Notification+Scroggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36115A9420E7D9F000D49AF0 /* Notification+Scroggle.swift */; };
+		36115A9720E7DB6300D49AF0 /* Notifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36115A9620E7DB6300D49AF0 /* Notifiable.swift */; };
+		36115A9920E7E72000D49AF0 /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36115A9820E7E72000D49AF0 /* WordCell.swift */; };
 		3617FA2C20C41E960023F89D /* Cave_In.caf in Resources */ = {isa = PBXBuildFile; fileRef = 3617FA2320C41E960023F89D /* Cave_In.caf */; };
 		3617FA2D20C41E960023F89D /* Velcro.caf in Resources */ = {isa = PBXBuildFile; fileRef = 3617FA2420C41E960023F89D /* Velcro.caf */; };
 		3617FA2E20C41E960023F89D /* DiceRoll.caf in Resources */ = {isa = PBXBuildFile; fileRef = 3617FA2520C41E960023F89D /* DiceRoll.caf */; };
@@ -21,6 +24,7 @@
 		3617FA3920C41ED80023F89D /* scores.json in Resources */ = {isa = PBXBuildFile; fileRef = 3617FA3820C41ED80023F89D /* scores.json */; };
 		36243FCD1F8BAA88008AB92C /* Time.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36243FCC1F8BAA88008AB92C /* Time.storyboard */; };
 		36243FCF1F8BAF56008AB92C /* TimeMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36243FCE1F8BAF56008AB92C /* TimeMenuViewController.swift */; };
+		36445E6620DFE007009013DF /* LexiconProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36445E6520DFE007009013DF /* LexiconProvider.swift */; };
 		365630341F8A8EE600E4312B /* ButtonCellInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365630331F8A8EE600E4312B /* ButtonCellInfo.swift */; };
 		365630361F8A8F5000E4312B /* MenuInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365630351F8A8F5000E4312B /* MenuInfo.swift */; };
 		365630381F8A937B00E4312B /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365630371F8A937B00E4312B /* Logging.swift */; };
@@ -51,6 +55,7 @@
 		366784C220CE16E3004EBCB9 /* GamePlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 366784C120CE16E3004EBCB9 /* GamePlay.storyboard */; };
 		366784C420CE1790004EBCB9 /* WordList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 366784C320CE1790004EBCB9 /* WordList.storyboard */; };
 		366784C620CE17E8004EBCB9 /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366784C520CE17E8004EBCB9 /* WordListViewController.swift */; };
+		36752C0F20E673140076D1F3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 36752C0E20E673140076D1F3 /* README.md */; };
 		3686EB391F9C432D007FEB28 /* dice.json in Resources */ = {isa = PBXBuildFile; fileRef = 3686EB381F9C432D007FEB28 /* dice.json */; };
 		3686EB3B1F9C4390007FEB28 /* demo.json in Resources */ = {isa = PBXBuildFile; fileRef = 3686EB3A1F9C4390007FEB28 /* demo.json */; };
 		368E464520D48894003C694E /* SCNGameScene+ClickableTiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368E464420D48894003C694E /* SCNGameScene+ClickableTiles.swift */; };
@@ -93,6 +98,9 @@
 		1AC2660262C043314B6F772A /* Pods_ScroggleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScroggleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25529459E731704F950900DB /* Pods-Scroggle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scroggle.release.xcconfig"; path = "Pods/Target Support Files/Pods-Scroggle/Pods-Scroggle.release.xcconfig"; sourceTree = "<group>"; };
 		36084D8520B996A000ABCEAA /* MenuSelectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSelectionService.swift; sourceTree = "<group>"; };
+		36115A9420E7D9F000D49AF0 /* Notification+Scroggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Scroggle.swift"; sourceTree = "<group>"; };
+		36115A9620E7DB6300D49AF0 /* Notifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifiable.swift; sourceTree = "<group>"; };
+		36115A9820E7E72000D49AF0 /* WordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
 		3617FA2320C41E960023F89D /* Cave_In.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cave_In.caf; sourceTree = "<group>"; };
 		3617FA2420C41E960023F89D /* Velcro.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Velcro.caf; sourceTree = "<group>"; };
 		3617FA2520C41E960023F89D /* DiceRoll.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DiceRoll.caf; sourceTree = "<group>"; };
@@ -106,6 +114,7 @@
 		3617FA3820C41ED80023F89D /* scores.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = scores.json; sourceTree = "<group>"; };
 		36243FCC1F8BAA88008AB92C /* Time.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Time.storyboard; sourceTree = "<group>"; };
 		36243FCE1F8BAF56008AB92C /* TimeMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMenuViewController.swift; sourceTree = "<group>"; };
+		36445E6520DFE007009013DF /* LexiconProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexiconProvider.swift; sourceTree = "<group>"; };
 		365630331F8A8EE600E4312B /* ButtonCellInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCellInfo.swift; sourceTree = "<group>"; };
 		365630351F8A8F5000E4312B /* MenuInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInfo.swift; sourceTree = "<group>"; };
 		365630371F8A937B00E4312B /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
@@ -135,6 +144,7 @@
 		366784C120CE16E3004EBCB9 /* GamePlay.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GamePlay.storyboard; sourceTree = "<group>"; };
 		366784C320CE1790004EBCB9 /* WordList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WordList.storyboard; sourceTree = "<group>"; };
 		366784C520CE17E8004EBCB9 /* WordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListViewController.swift; sourceTree = "<group>"; };
+		36752C0E20E673140076D1F3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		3686EB381F9C432D007FEB28 /* dice.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dice.json; sourceTree = "<group>"; };
 		3686EB3A1F9C4390007FEB28 /* demo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = demo.json; sourceTree = "<group>"; };
 		368E464420D48894003C694E /* SCNGameScene+ClickableTiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNGameScene+ClickableTiles.swift"; sourceTree = "<group>"; };
@@ -231,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				365C1AD21F9C0A6F008A84EA /* GameTimer.swift */,
+				36115A9620E7DB6300D49AF0 /* Notifiable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -244,6 +255,7 @@
 				365C1AE91F9C3F55008A84EA /* SettingsService.swift */,
 				365C1AEB1F9C401B008A84EA /* SoundProvider.swift */,
 				36084D8520B996A000ABCEAA /* MenuSelectionService.swift */,
+				36445E6520DFE007009013DF /* LexiconProvider.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -257,6 +269,7 @@
 				365C1AEF1F9C40F8008A84EA /* UIDeviceExtension.swift */,
 				36D9DE7320C4B88C007F3FC1 /* Random.swift */,
 				368E464920D56B97003C694E /* CGPointExtensions.swift */,
+				36115A9420E7D9F000D49AF0 /* Notification+Scroggle.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -311,6 +324,7 @@
 		36A77BD11F8A64AB0057A874 /* Scroggle */ = {
 			isa = PBXGroup;
 			children = (
+				36752C0E20E673140076D1F3 /* README.md */,
 				36D2A27C207901E600E9C9F7 /* Menu */,
 				36A77BFF1F8A663A0057A874 /* Common */,
 				36A77BF71F8A653B0057A874 /* Introduction */,
@@ -380,6 +394,7 @@
 				36D9DE6E20C48115007F3FC1 /* Nodes */,
 				366784C320CE1790004EBCB9 /* WordList.storyboard */,
 				366784C520CE17E8004EBCB9 /* WordListViewController.swift */,
+				36115A9820E7E72000D49AF0 /* WordCell.swift */,
 			);
 			path = Gameplay;
 			sourceTree = "<group>";
@@ -562,6 +577,7 @@
 				3617FA2C20C41E960023F89D /* Cave_In.caf in Resources */,
 				3693CB8A1F9C083D004792B2 /* Introduction.storyboard in Resources */,
 				3656303C1F8A96AD00E4312B /* MainMenu.storyboard in Resources */,
+				36752C0F20E673140076D1F3 /* README.md in Resources */,
 				3617FA3920C41ED80023F89D /* scores.json in Resources */,
 				3617FA3220C41E960023F89D /* Metal_Gong.caf in Resources */,
 				3617FA3020C41E960023F89D /* Blop.caf in Resources */,
@@ -727,6 +743,7 @@
 				36084D8620B996A000ABCEAA /* MenuSelectionService.swift in Sources */,
 				365C1AEA1F9C3F55008A84EA /* SettingsService.swift in Sources */,
 				36D2A2842079021800E9C9F7 /* MenuHeaderTableViewCell.swift in Sources */,
+				36115A9720E7DB6300D49AF0 /* Notifiable.swift in Sources */,
 				36D2A2832079021800E9C9F7 /* MenuViewController.swift in Sources */,
 				3693CB8C1F9C087F004792B2 /* IntroductionViewController.swift in Sources */,
 				3656303E1F8A96CF00E4312B /* MainMenuViewController.swift in Sources */,
@@ -743,11 +760,13 @@
 				365C1AE81F9C3EA6008A84EA /* DiceProvider.swift in Sources */,
 				36A77BD31F8A64AB0057A874 /* AppDelegate.swift in Sources */,
 				365630361F8A8F5000E4312B /* MenuInfo.swift in Sources */,
+				36445E6620DFE007009013DF /* LexiconProvider.swift in Sources */,
 				365C1AD51F9C0AC6008A84EA /* Enumerations.swift in Sources */,
 				36D2A2862079022B00E9C9F7 /* MenuBuilding.swift in Sources */,
 				365C1AF01F9C40F8008A84EA /* UIDeviceExtension.swift in Sources */,
 				365C1ADE1F9C3CAE008A84EA /* IntroductionScene.swift in Sources */,
 				365C1ADB1F9C3C5B008A84EA /* Extension+Time.swift in Sources */,
+				36115A9520E7D9F000D49AF0 /* Notification+Scroggle.swift in Sources */,
 				365C1AD81F9C3A77008A84EA /* ScoreProvider.swift in Sources */,
 				365C1AEC1F9C401B008A84EA /* SoundProvider.swift in Sources */,
 				36D9DE7220C4B017007F3FC1 /* GameSceneController+Animations.swift in Sources */,
@@ -755,6 +774,7 @@
 				365C1AE21F9C3D20008A84EA /* SceneKitMathExtensions.swift in Sources */,
 				36D2A2882079058200E9C9F7 /* MenuContainerViewController.swift in Sources */,
 				368E464820D5548B003C694E /* GameScene.swift in Sources */,
+				36115A9920E7E72000D49AF0 /* WordCell.swift in Sources */,
 				365C1AE41F9C3DA5008A84EA /* Font.swift in Sources */,
 				365C1AD31F9C0A6F008A84EA /* GameTimer.swift in Sources */,
 				3656929D20C45AB200A3FE0A /* GameContainerViewController.swift in Sources */,

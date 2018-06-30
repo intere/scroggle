@@ -37,12 +37,19 @@ class GameSceneController {
     /// The visualization for a selection
     var selectionPath: [SKShapeNode] = []
 
+    var gameContext: GameContext
+
     /// Initializes the SCNGameScene with
     ///
     /// - Parameter view: The view that we're initializing the Game Scene with.
-    init(withView view: SKView) {
+    init?(withView view: SKView) {
         skView = view
-        debugSetup()
+        GameSceneController.debugSetup()
+        guard let gameContext = GameContextProvider.instance.currentGame else {
+            fatalError("No Game Context could be found")
+            return nil
+        }
+        self.gameContext = gameContext
         bootstrapScene()
     }
 
@@ -202,14 +209,14 @@ extension GameSceneController {
 
 extension GameSceneController {
 
-    func debugSetup() {
+    static func debugSetup() {
         GameContextProvider.Configuration.demoMode = false
         assert(!GameContextProvider.Configuration.demoMode)
         GameContextProvider.instance.createSinglePlayerGame(.default)
         printBoard()
     }
 
-    func printBoard() {
+    static func printBoard() {
         guard let board = GameContextProvider.instance.currentGame?.game.board.board else {
             return DLog("Failed to get the game board")
         }

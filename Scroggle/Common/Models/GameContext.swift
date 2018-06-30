@@ -12,10 +12,10 @@ import Foundation
 /// * The Game Board
 /// * The Timer
 /// * Game Stats
-class GameContext {
+class GameContext: NSObject {
 
     let game = Game()
-    var gameState: GameState = .kGameStateWaitingForMatch
+    var gameState: GameState = .waitingForMatch
     var isReplay = false
 
 }
@@ -24,9 +24,10 @@ class GameContext {
 
 extension GameContext {
 
+    /// Resets the current game
     func reset() {
         game.reset()
-        gameState = .kGameStateWaitingForStart
+        gameState = .waitingForStart
     }
 
     /// Get the longest word
@@ -38,23 +39,24 @@ extension GameContext {
         return longest
     }
 
-    /**
-     Tells you if the user has already guessed the word this game.
-     - Parameter word: The word to check.
-     - Returns: True if the word is in the list of guessed words, false otherwise.
-     */
+    /// Tells you if the user has already guessed the word this game.
+    ///
+    /// - Parameter word: The word to check.
+    /// - Returns: True if the word is in the list of guessed words, false otherwise.
     func alreadyGuessed(_ word: String) -> Bool {
         return game.hasWord(word)
     }
 
-    /**
-     Adds the word to the list of words for the game and adds the points to the game score.
-     - Parameter word: The word to be added and scored.
-     */
+    /// Adds the word to the list of words for the game and adds the points to the game score.
+    ///
+    /// - Parameter word: The word to be added and scored.
     func addAndScoreWord(_ word: String) {
         let score = ScoreProvider.instance.scoreWord(word)
         game.score += score
         game.words.append(word)
+        Notification.Scroggle.GameEvent.wordGuessed.notify(withObject: word as NSString)
+        DLog("Score Updated: \(game.score)")
+        Notification.Scroggle.GameEvent.scoreUpdated.notify()
     }
 
 }
