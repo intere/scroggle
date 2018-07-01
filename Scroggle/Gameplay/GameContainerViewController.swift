@@ -29,6 +29,7 @@ class GameContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUserInterface()
+        Notification.Scroggle.GameOverAction.mainMenu.addObserver(self, selector: #selector(goToMainMenu))
     }
 
     /// Factory instantiation function for this VC, comes from a storyboard.
@@ -42,17 +43,19 @@ class GameContainerViewController: UIViewController {
 
     @IBAction
     func buttonTODOdeleteMe(_ sender: Any) {
-//        gameController?.rollDice()
-        let timeType = GameContextProvider.instance.currentGame?.game.timer.timeType ?? .default
-        GameContextProvider.instance.createSinglePlayerGame(timeType)
-        loadGameScene()
-        updateUserInterface()
+        Notification.Scroggle.GameEvent.gameEnded.notify()
+        Notification.Scroggle.GameOverAction.mainMenu.notify()
     }
 }
 
 // MARK: - Implementation
 
 extension GameContainerViewController {
+
+    @objc
+    func goToMainMenu() {
+        navigationController?.popToRootViewController(animated: true)
+    }
 
     /// For getting a reference to the embedded view controller.
     ///

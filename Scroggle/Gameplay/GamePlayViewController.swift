@@ -28,6 +28,8 @@ class GamePlayViewController: UIViewController {
         scoreLabel.text = String(0)
 
         Notification.Scroggle.GameEvent.scoreUpdated.addObserver(self, selector: #selector(scoreUpdated))
+        Notification.Scroggle.GameEvent.gameEnded.addObserver(self, selector: #selector(gameOverEvent))
+
 
         // TODO: Delay this after an "introduction animation":
         timer = Timer.scheduledTimer(timeInterval: 1, target: self,
@@ -38,6 +40,11 @@ class GamePlayViewController: UIViewController {
 // MARK: - Implementation
 
 private extension GamePlayViewController {
+
+    @objc
+    func gameOverEvent() {
+        endGame()
+    }
 
     @objc
     func scoreUpdated() {
@@ -52,7 +59,8 @@ private extension GamePlayViewController {
         timerLabel.text = seconds.timeString
 
         guard seconds > 0 else {
-            return endGame()
+            endGame()
+            return Notification.Scroggle.GameEvent.gameEnded.notify()
         }
 
         if seconds <= 10 {
@@ -83,6 +91,5 @@ private extension GamePlayViewController {
         timerLabel.textColor = .red
         timer?.invalidate()
         showGameOver()
-        Notification.Scroggle.GameEvent.gameEnded.notify()
     }
 }

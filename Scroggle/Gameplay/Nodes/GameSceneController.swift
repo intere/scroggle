@@ -20,7 +20,7 @@ class GameSceneController {
     let skView: SKView
 
     /// The SCNScene (DiceTray.scn)
-    var gameScene: SCNScene?
+    weak var gameScene: SCNScene?
 
     /// The Camera
     var camera: SCNCamera?

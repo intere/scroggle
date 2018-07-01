@@ -10,7 +10,7 @@ import SpriteKit
 
 class GameScene: SKScene {
 
-    var controller: GameSceneController?
+    weak var controller: GameSceneController?
 
     /// Keeps track of where the initial drag point originated
     private var beganPoint: CGPoint?
@@ -20,6 +20,15 @@ class GameScene: SKScene {
 
     /// The last rendered drag point
     private var lastDrag = CGPoint.zero
+
+    override init(size: CGSize) {
+        super.init(size: size)
+        Notification.Scroggle.GameEvent.gameEnded.addObserver(self, selector: #selector(gameOverEvent))
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let controller = controller else {
@@ -75,6 +84,12 @@ class GameScene: SKScene {
 // MARK: - Implementation
 
 extension GameScene {
+
+    @objc
+    func gameOverEvent() {
+        controller?.gameScene = nil
+        controller = nil
+    }
 
     /// Renders a small circle at the provided point.
     ///

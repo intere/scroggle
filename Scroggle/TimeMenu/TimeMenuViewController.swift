@@ -10,7 +10,7 @@ import UIKit
 
 class TimeMenuViewController: UIViewController {
 
-    var menuContainerVC: MenuContainerViewController? {
+    weak var menuContainerVC: MenuContainerViewController? {
         didSet {
             menuContainerVC?.menuBuilder = self
         }
@@ -65,8 +65,11 @@ extension TimeMenuViewController {
 
 extension TimeMenuViewController {
 
+    /// Selects a game with the provided time type.
+    ///
+    /// - Parameter timeType: The time length for the game.
     func select(timeType: GameTimeType) {
-        MenuSelectionService.shared.timer = timeType
+        GameContextProvider.instance.createSinglePlayerGame(timeType)
         navigationController?.pushViewController(GameContainerViewController.loadFromStoryboard(), animated: true)
     }
 }
