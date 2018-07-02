@@ -31,6 +31,7 @@ Scroggle is a word game that's based on Boggle, Scrabble and some other popular 
     - For the moment, I've added deprecation warnings
     - [ ] Hook up some sort of noise cue to tell the user that time is running out
 - [x] Hook up the score
+        - [x] Update scoring
 - [x] Hook up the Word List
 - [x] Implement a "Game Over" mechanism
 - [x] Hook up game loop
