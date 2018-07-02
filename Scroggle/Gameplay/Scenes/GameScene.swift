@@ -21,6 +21,9 @@ class GameScene: SKScene {
     /// The last rendered drag point
     private var lastDrag = CGPoint.zero
 
+    /// Did the game end?
+    var gameOver = false
+
     override init(size: CGSize) {
         super.init(size: size)
         Notification.Scroggle.GameEvent.gameEnded.addObserver(self, selector: #selector(gameOverEvent))
@@ -31,6 +34,10 @@ class GameScene: SKScene {
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard !gameOver else {
+            controller?.clearSelection()
+            return
+        }
         guard let controller = controller else {
             return assertionFailure("No controller defined")
         }
@@ -43,6 +50,10 @@ class GameScene: SKScene {
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard !gameOver else {
+            controller?.clearSelection()
+            return
+        }
         guard let controller = controller else {
             return assertionFailure("No controller defined")
         }
@@ -64,6 +75,10 @@ class GameScene: SKScene {
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard !gameOver else {
+            controller?.clearSelection()
+            return
+        }
         defer {
             dragging = false
         }
@@ -87,6 +102,7 @@ extension GameScene {
 
     @objc
     func gameOverEvent() {
+        gameOver = true
         controller?.gameScene = nil
         controller = nil
     }

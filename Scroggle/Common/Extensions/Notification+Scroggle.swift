@@ -57,6 +57,21 @@ extension Notification {
                 return self.rawValue
             }
         }
+
+        /// Actions that target the Time Menu
+        enum TimeMenuAction: String, Notifiable, CustomStringConvertible {
+            case replayCurrentBoard = "replay.current.board"
+            case playSameTime = "game.of.same.time"
+
+            static var notificationBase: String {
+                return "scroggle.time.menu.action"
+            }
+
+            var description: String {
+                return self.rawValue
+            }
+        }
+
     }
 
 }

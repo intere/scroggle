@@ -24,7 +24,7 @@ class GamePlayViewController: UIViewController {
         // Hide the "Game Over" overlay.
         gameOverWidthConstraint.constant = 0
 
-        seconds = GameContextProvider.instance.currentGame?.game.timer.timeType.seconds ?? 15
+        seconds = GameContextProvider.instance.currentGame?.game.timeType.seconds ?? 15
         scoreLabel.text = String(0)
 
         Notification.Scroggle.GameEvent.scoreUpdated.addObserver(self, selector: #selector(scoreUpdated))

@@ -61,8 +61,17 @@ extension GameContextProvider {
             }
         }
 
-        context.game.timer = DefaultGameTimer(timeType: timeType)
+        context.game.timeType = timeType
         currentGame = context
         return context
+    }
+
+    /// Clones the current game into a new game and sets the currentGame to that new copy.
+    func replayCurrentGame() {
+        guard let original = currentGame else {
+            return
+        }
+
+        currentGame = GameContext(from: original)
     }
 }

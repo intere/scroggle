@@ -18,6 +18,7 @@ class MainMenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        GameContextProvider.Configuration.demoMode = false
     }
 
     class func loadFromStoryboard() -> MainMenuViewController {

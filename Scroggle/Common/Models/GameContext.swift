@@ -14,21 +14,39 @@ import Foundation
 /// * Game Stats
 class GameContext: NSObject {
 
+    /// The game object
     let game = Game()
+
+    /// The state of the game (active, done, etc)
     var gameState: GameState = .waitingForMatch
+
+    /// Is this a replay of another game?
     var isReplay = false
+
+    /// How many times has this game been replayed?
+    var replayCount = 0
+
+    /// Default initialization, creates a new game (random board) with default options.
+    override init() {
+        super.init()
+    }
+
+    /// Initializes this context from another context.  Essentially it just copies the game board and timer
+    ///
+    /// - Parameter context: The context to initialize from.
+    init(from context: GameContext) {
+        super.init()
+        isReplay = true
+        game.board = context.game.board
+        game.timeType = context.game.timeType
+        replayCount = context.replayCount + 1
+    }
 
 }
 
 // MARK: - API
 
 extension GameContext {
-
-    /// Resets the current game
-    func reset() {
-        game.reset()
-        gameState = .waitingForStart
-    }
 
     /// Get the longest word
     var longestWord: Int {

@@ -16,6 +16,12 @@ class TimeMenuViewController: UIViewController {
         }
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        Notification.Scroggle.TimeMenuAction.playSameTime.addObserver(self, selector: #selector(replayCurrentGameTime))
+        Notification.Scroggle.TimeMenuAction.replayCurrentBoard.addObserver(self, selector: #selector(replayCurrentBoard))
+    }
+
     class func loadFromStoryboard() -> TimeMenuViewController {
         return UIStoryboard(name: "Time", bundle: nil).instantiateViewController(withIdentifier: "TimeMenuViewController") as! TimeMenuViewController
     }
@@ -65,11 +71,29 @@ extension TimeMenuViewController {
 
 extension TimeMenuViewController {
 
+    @objc
+    func replayCurrentBoard() {
+        GameContextProvider.instance.replayCurrentGame()
+        goToGameVC()
+    }
+
+    @objc
+    func replayCurrentGameTime() {
+        guard let timeType = GameContextProvider.instance.currentGame?.game.timeType else {
+            return DLog("ERROR: No current game to get time type from")
+        }
+        select(timeType: timeType)
+    }
+
     /// Selects a game with the provided time type.
     ///
     /// - Parameter timeType: The time length for the game.
     func select(timeType: GameTimeType) {
         GameContextProvider.instance.createSinglePlayerGame(timeType)
+        goToGameVC()
+    }
+
+    private func goToGameVC() {
         navigationController?.pushViewController(GameContainerViewController.loadFromStoryboard(), animated: true)
     }
 }
