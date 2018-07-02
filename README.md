@@ -19,14 +19,21 @@ Scroggle is a word game that's based on Boggle, Scrabble and some other popular 
 - SpriteKit (for Gameplay)
 - UIKit (for menus)
 
-## TODO (General Features)
+## TODO (MVP Features)
 - [ ] Login: Game Center
 - [ ] Leaderboards
-- [ ] Challenge Friends (Messages)
-- [ ] Help Menu
-- [ ] Board Rotation
+- [ ] Help menu
+- [ ] Introduction animation
+
+## TODO (Roadmap)
+- [ ] Realtime multiplayer
+- [ ] Single player challenges
+- [ ] Challenge friends (Messages Integration)
+
 
 ## TODO (feature/NewScenes)
+- [ ] Board rotation
+- [ ] Sounds
 - [x] Nuke the GameTimer object and just have the Game UI manage it
     - [ ] Hook up some sort of noise cue to tell the user that time is running out
 - [x] Hook up the score
