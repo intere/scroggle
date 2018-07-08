@@ -73,7 +73,7 @@ extension GameContext {
         game.score += score
         game.words.append(word)
         Notification.Scroggle.GameEvent.wordGuessed.notify(withObject: word as NSString)
-        DLog("Score Updated: \(game.score)")
+//        DLog("Score Updated: \(game.score)")
         Notification.Scroggle.GameEvent.scoreUpdated.notify()
     }
 

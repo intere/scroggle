@@ -60,11 +60,13 @@ private extension GamePlayViewController {
 
         guard seconds > 0 else {
             endGame()
+            SoundProvider.instance.playGongSound()
             return Notification.Scroggle.GameEvent.gameEnded.notify()
         }
 
         if seconds <= 10 {
             flashTimerColor()
+            SoundProvider.instance.playTimeSound()
         }
         seconds -= 1
     }

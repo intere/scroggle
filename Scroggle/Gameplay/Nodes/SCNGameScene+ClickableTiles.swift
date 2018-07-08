@@ -65,7 +65,6 @@ extension GameSceneController {
     /// Guesses a word
     private func guessWord() {
         let currentWord = self.currentWord
-        DLog("Guessed word: \(currentWord)")
 
         defer {
             selection.removeAll()
@@ -89,9 +88,6 @@ extension GameSceneController {
             return false
         }
         selection.append(index)
-//        if let newLetter = letter(for: index) {
-//            DLog("Selected letter: \(newLetter)")
-//        }
         renderSelection()
         return true
     }
@@ -253,7 +249,7 @@ extension GameSceneController {
         label.zPosition = 200
         scene.addChild(label)
 
-        label.run(SKAction.scale(to: 10, duration: 1)) {
+        label.run(SKAction.scale(to: 10, duration: 0.5)) {
             label.removeFromParent()
         }
     }

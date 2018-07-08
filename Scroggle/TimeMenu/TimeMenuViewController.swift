@@ -89,6 +89,7 @@ extension TimeMenuViewController {
     ///
     /// - Parameter timeType: The time length for the game.
     func select(timeType: GameTimeType) {
+        SoundProvider.instance.playMenuSelectionSound()
         GameContextProvider.instance.createSinglePlayerGame(timeType)
         goToGameVC()
     }
