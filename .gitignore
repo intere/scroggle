@@ -38,6 +38,7 @@ xcuserdata
 #Pods/
 
 # Fastlane Exclusions
+fastlane/test_output
 fastlane/report.xml
 fastlane/screenshots
 fastlane.log
