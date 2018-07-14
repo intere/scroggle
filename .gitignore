@@ -42,5 +42,6 @@ fastlane/report.xml
 fastlane/screenshots
 fastlane.log
 fastlane/README.md
+fastlane/test_output/
 *.dSYM.zip
 *.mobileprovision
