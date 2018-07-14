@@ -35,7 +35,7 @@ class Die: CustomDebugStringConvertible {
 
     init(sides: [String], roll: String) {
         self.sides = sides
-        selectedSide = sides.lastIndex(of: roll) ?? 0
+        selectedSide = sides.index(of: roll) ?? 0
     }
 
     var debugDescription: String {

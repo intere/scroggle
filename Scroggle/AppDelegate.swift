@@ -16,16 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
 
         #if !DEBUG
         Fabric.with([Crashlytics.self])
-        #endif
-
-        // TODO: Delete this next debugging line
-        #if DEBUG
-        GameContextProvider.instance.createSinglePlayerGame(.veryShort)
         #endif
 
         return true

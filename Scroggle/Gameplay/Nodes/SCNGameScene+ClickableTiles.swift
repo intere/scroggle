@@ -22,7 +22,7 @@ extension GameSceneController {
     ///
     /// - Parameter point: The point in the scene that was tapped
     func tapped(point: CGPoint) {
-        guard let index = tiles.lastIndex(where: {$0.contains(point)}) else {
+        guard let index = tiles.index(where: {$0.contains(point)}) else {
             return DLog("No tile detected")
         }
         if index == selection.last {
@@ -38,7 +38,7 @@ extension GameSceneController {
     /// - Parameter point: The point in the scene that was tapped.
     /// - Returns: the point if it was added, nil if not.
     func handleDrag(point: CGPoint) -> CGPoint? {
-        guard let index = tiles.lastIndex(where: {$0.contains(point)}) else {
+        guard let index = tiles.index(where: {$0.contains(point)}) else {
             return nil
         }
         guard index != selection.last else {
@@ -65,7 +65,6 @@ extension GameSceneController {
     /// Guesses a word
     private func guessWord() {
         let currentWord = self.currentWord
-        DLog("Guessed word: \(currentWord)")
 
         defer {
             selection.removeAll()
@@ -89,9 +88,6 @@ extension GameSceneController {
             return false
         }
         selection.append(index)
-//        if let newLetter = letter(for: index) {
-//            DLog("Selected letter: \(newLetter)")
-//        }
         renderSelection()
         return true
     }
@@ -253,7 +249,7 @@ extension GameSceneController {
         label.zPosition = 200
         scene.addChild(label)
 
-        label.run(SKAction.scale(to: 10, duration: 1)) {
+        label.run(SKAction.scale(to: 10, duration: 0.5)) {
             label.removeFromParent()
         }
     }

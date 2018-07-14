@@ -40,6 +40,6 @@ private extension ButtonTableViewCell {
             return
         }
 
-        button?.setTitle(cellInfo.title, for: UIControl.State.normal)
+        button?.setTitle(cellInfo.title, for: .normal)
     }
 }

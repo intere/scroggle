@@ -51,7 +51,7 @@ extension DiceProvider {
 
     func hasEnoughVowels(_ board: GameBoard) -> Bool {
         var count = 0
-        for die in board.getRawData() {
+        for die in board.rawData {
             if vowels.contains(die.roll) {
                 count += 1
             }

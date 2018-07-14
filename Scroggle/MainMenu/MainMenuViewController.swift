@@ -18,6 +18,7 @@ class MainMenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        GameContextProvider.Configuration.demoMode = false
     }
 
     class func loadFromStoryboard() -> MainMenuViewController {
@@ -33,10 +34,12 @@ extension MainMenuViewController: MenuBuilding {
     func buildMenu() -> MenuInfo? {
         return MenuInfo(title: "Scroggle", buttons: [
             ButtonCellInfo(title: "New Game", action: {
+                SoundProvider.instance.playMenuSelectionSound()
                 DLog("Clicked New Game")
                 self.navigationController?.pushViewController(TimeMenuViewController.loadFromStoryboard(), animated: true)
             }),
             ButtonCellInfo(title: "Login: GameCenter", action: {
+                SoundProvider.instance.playMenuSelectionSound()
                 DLog("Clicked Login")
             })
         ])

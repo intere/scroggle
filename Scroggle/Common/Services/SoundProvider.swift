@@ -15,13 +15,17 @@ import SceneKit
 class SoundProvider {
     static let instance = SoundProvider()
 
-    let diceRollSound: SCNAudioSource? = SCNAudioSource(named: "DiceRoll.caf")
-    let selectionSound: SCNAudioSource? = SCNAudioSource(named: "Velcro.caf")
-    let correctGuessSound: SCNAudioSource? = SCNAudioSource(named: "PingPongPop.caf")
-    let dupeOrIncorrectSound: SCNAudioSource? = SCNAudioSource(named: "Slap.caf")
-    let blopSound: AVAudioPlayer? = SoundProvider.loadSound(forResource: "Blop", ofType: "caf")
-    let highScoreSound: AVAudioPlayer? = SoundProvider.loadSound(forResource: "Metal_Gong", ofType: "caf")
-    let caveInSound: AVAudioPlayer? = SoundProvider.loadSound(forResource: "Cave_In", ofType: "caf")
+    struct Constants {
+        static let diceRollSound = SCNAudioSource(named: "DiceRoll.caf")
+        static let selectionSound = SCNAudioSource(named: "Velcro.caf")
+        static let correctGuessSound = SCNAudioSource(named: "PingPongPop.caf")
+        static let dupeOrIncorrectSound = SCNAudioSource(named: "Slap.caf")
+        static let blopSound = SoundProvider.loadSound(forResource: "Blop", ofType: "caf")
+        static let highScoreSound = SoundProvider.loadSound(forResource: "Metal_Gong", ofType: "caf")
+        static let caveInSound = SoundProvider.loadSound(forResource: "Cave_In", ofType: "caf")
+        static let timeSound = SoundProvider.loadSound(forResource: "time_sound", ofType: "caf")
+        static let gongSound = SoundProvider.loadSound(forResource: "gong", ofType: "caf")
+    }
 }
 
 // MARK: - Play Sound Methods
@@ -29,31 +33,38 @@ class SoundProvider {
 extension SoundProvider {
 
     func playHighScoreSound() {
-        play(highScoreSound)
+        play(Constants.highScoreSound)
     }
 
     func playGameOverSound() {
-        play(caveInSound)
+        play(Constants.caveInSound)
     }
-
 
     func playDiceRollSound(node: SCNNode) {
-        play(sound: diceRollSound, forNode: node)
+        play(sound: Constants.diceRollSound, forNode: node)
     }
     func playDiceSelectionSound(node: SCNNode) {
-        play(sound: selectionSound, forNode: node)
+        play(sound: Constants.selectionSound, forNode: node)
     }
 
     func playCorrectGuessSound(node: SCNNode) {
-        play(sound: correctGuessSound, forNode: node)
+        play(sound: Constants.correctGuessSound, forNode: node)
     }
 
     func playDupeOrIncorrectSound(node: SCNNode) {
-        play(sound: dupeOrIncorrectSound, forNode: node)
+        play(sound: Constants.dupeOrIncorrectSound, forNode: node)
     }
 
     func playMenuSelectionSound() {
-        play(blopSound)
+        play(Constants.blopSound)
+    }
+
+    func playTimeSound() {
+        play(Constants.timeSound)
+    }
+
+    func playGongSound() {
+        play(Constants.gongSound)
     }
 
 }

@@ -29,6 +29,9 @@ class GameContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUserInterface()
+        Notification.Scroggle.GameOverAction.mainMenu.addObserver(self, selector: #selector(goToMainMenu))
+        Notification.Scroggle.GameOverAction.playAgain.addObserver(self, selector: #selector(replayNewGameSameTime))
+        Notification.Scroggle.GameOverAction.replay.addObserver(self, selector: #selector(replayCurrentBoard))
     }
 
     /// Factory instantiation function for this VC, comes from a storyboard.
@@ -42,17 +45,35 @@ class GameContainerViewController: UIViewController {
 
     @IBAction
     func buttonTODOdeleteMe(_ sender: Any) {
-//        gameController?.rollDice()
-        let timeType = GameContextProvider.instance.currentGame?.game.timer.timeType ?? .default
-        GameContextProvider.instance.createSinglePlayerGame(timeType)
-        loadGameScene()
-        updateUserInterface()
+        Notification.Scroggle.GameEvent.gameEnded.notify()
+        Notification.Scroggle.GameOverAction.mainMenu.notify()
     }
 }
 
 // MARK: - Implementation
 
 extension GameContainerViewController {
+
+    @objc
+    func replayCurrentBoard() {
+        navigationController?.popViewController(animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            Notification.Scroggle.TimeMenuAction.replayCurrentBoard.notify()
+        }
+    }
+
+    @objc
+    func replayNewGameSameTime() {
+        navigationController?.popViewController(animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            Notification.Scroggle.TimeMenuAction.playSameTime.notify()
+        }
+    }
+
+    @objc
+    func goToMainMenu() {
+        navigationController?.popToRootViewController(animated: true)
+    }
 
     /// For getting a reference to the embedded view controller.
     ///

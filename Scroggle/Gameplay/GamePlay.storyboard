@@ -79,6 +79,15 @@
                                     <segue destination="6H9-r0-CRE" kind="embed" id="8WP-8o-HVZ"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vDN-MG-Go4" userLabel="GameOverView">
+                                <rect key="frame" x="333.5" y="0.0" width="333.5" height="375"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="333.5" id="iJA-RL-aly"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="JFd-qz-Mgs" kind="embed" identifier="GameOverSegue" id="5wA-af-U5G"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -86,6 +95,7 @@
                             <constraint firstItem="RED-EM-AKd" firstAttribute="top" secondItem="dJ8-FM-DsP" secondAttribute="bottom" id="3Ev-jx-ZJO"/>
                             <constraint firstItem="2lo-EL-DvY" firstAttribute="leading" secondItem="RED-EM-AKd" secondAttribute="trailing" id="6Ov-Ep-3nm"/>
                             <constraint firstItem="2lo-EL-DvY" firstAttribute="width" secondItem="nal-hT-KTT" secondAttribute="width" multiplier="0.75" id="8zU-cl-8Ik"/>
+                            <constraint firstItem="vDN-MG-Go4" firstAttribute="top" secondItem="2lo-EL-DvY" secondAttribute="top" id="966-J5-bKS"/>
                             <constraint firstItem="dJ8-FM-DsP" firstAttribute="top" secondItem="0P7-t9-919" secondAttribute="top" id="CX1-7Y-zOi"/>
                             <constraint firstItem="RED-EM-AKd" firstAttribute="leading" secondItem="0P7-t9-919" secondAttribute="leading" id="GGP-3w-8PC"/>
                             <constraint firstItem="dJ8-FM-DsP" firstAttribute="leading" secondItem="0P7-t9-919" secondAttribute="leading" id="KSe-i9-Npa"/>
@@ -94,6 +104,8 @@
                             <constraint firstItem="2lo-EL-DvY" firstAttribute="top" secondItem="0P7-t9-919" secondAttribute="top" id="UmM-IO-pbH"/>
                             <constraint firstItem="2lo-EL-DvY" firstAttribute="leading" secondItem="dJ8-FM-DsP" secondAttribute="trailing" id="bzm-t5-ggM"/>
                             <constraint firstItem="2lo-EL-DvY" firstAttribute="width" secondItem="nal-hT-KTT" secondAttribute="width" multiplier="0.5" id="fKE-mB-Wp9"/>
+                            <constraint firstItem="vDN-MG-Go4" firstAttribute="leading" secondItem="2lo-EL-DvY" secondAttribute="leading" id="lda-jS-ERt"/>
+                            <constraint firstItem="vDN-MG-Go4" firstAttribute="bottom" secondItem="2lo-EL-DvY" secondAttribute="bottom" id="uLZ-dz-tY1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0P7-t9-919"/>
                         <variation key="default">
@@ -119,13 +131,15 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="gameOverWidthConstraint" destination="iJA-RL-aly" id="Ql5-jQ-DuH"/>
                         <outlet property="scoreLabel" destination="E7j-3T-Qqw" id="KUN-rM-G2f"/>
+                        <outlet property="skView" destination="2lo-EL-DvY" id="Hpw-RD-d2y"/>
                         <outlet property="timerLabel" destination="nX8-It-dCZ" id="QrC-23-glO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GXX-ae-eqk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-322.5" y="1027.5"/>
+            <point key="canvasLocation" x="-376" y="1025"/>
         </scene>
         <!--WordListViewController-->
         <scene sceneID="1dY-ZG-usa">
@@ -133,7 +147,43 @@
                 <viewControllerPlaceholder storyboardIdentifier="WordList" storyboardName="WordList" referencedIdentifier="WordListViewController" id="6H9-r0-CRE" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b29-D8-RHo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-324" y="1629"/>
+            <point key="canvasLocation" x="-377" y="1595"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="0mR-zj-3w6">
+            <objects>
+                <viewController id="JFd-qz-Mgs" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tKl-3F-BDZ">
+                        <rect key="frame" x="0.0" y="0.0" width="333.5" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zoA-mA-1li">
+                                <rect key="frame" x="0.0" y="0.0" width="333.5" height="375"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME OVER!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0K-Dn-JeC">
+                                <rect key="frame" x="0.0" y="0.0" width="333.5" height="375"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="85"/>
+                                <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="r0K-Dn-JeC" firstAttribute="top" secondItem="tKl-3F-BDZ" secondAttribute="top" id="5p7-aO-M2r"/>
+                            <constraint firstAttribute="trailing" secondItem="zoA-mA-1li" secondAttribute="trailing" id="8FF-3A-nDq"/>
+                            <constraint firstAttribute="bottom" secondItem="r0K-Dn-JeC" secondAttribute="bottom" id="ZnU-4P-oAs"/>
+                            <constraint firstAttribute="trailing" secondItem="r0K-Dn-JeC" secondAttribute="trailing" id="glJ-F3-fkh"/>
+                            <constraint firstItem="zoA-mA-1li" firstAttribute="top" secondItem="tKl-3F-BDZ" secondAttribute="top" id="lfC-f3-mPD"/>
+                            <constraint firstAttribute="bottom" secondItem="zoA-mA-1li" secondAttribute="bottom" id="oK6-Wb-b6Q"/>
+                            <constraint firstItem="r0K-Dn-JeC" firstAttribute="leading" secondItem="tKl-3F-BDZ" secondAttribute="leading" id="ob4-bX-dcw"/>
+                            <constraint firstItem="zoA-mA-1li" firstAttribute="leading" secondItem="tKl-3F-BDZ" secondAttribute="leading" id="uKz-1Q-9H3"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tcb-zb-jzb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="320" y="1025"/>
         </scene>
     </scenes>
 </document>

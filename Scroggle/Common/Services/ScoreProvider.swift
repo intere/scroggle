@@ -34,26 +34,34 @@ extension ScoreProvider {
      - Returns: The score for the provided word.
      */
     func scoreWord(_ word: String) -> Int {
-        let lcaseWord = Array(word.lowercased())
 
-        // TODO: Minimum characters
-        guard lcaseWord.count > 0 else {
+        let lcaseWord = word.lowercased()
+        let length = lcaseWord.utf8.count
+
+        guard length > 1 else {
             return 0
         }
 
         var score: Int = 0
 
-        for var i in 0..<lcaseWord.count {
-            let currentChar = lcaseWord[i]
+        for var i in 0..<length {
+            let start = lcaseWord.index(lcaseWord.startIndex, offsetBy: i)
+            let end = lcaseWord.index(start, offsetBy: 1)
+            let currentChar = String(lcaseWord[start..<end])
             if currentChar == "q" {
                 score += getScoreForLetter("qu")
                 i += 1
             } else {
-                score += getScoreForLetter(String(currentChar))
+                score += getScoreForLetter(currentChar)
             }
         }
 
-        return score
+        guard let factor = lengthFactors[length] else {
+            DLog("ERROR: Couldn't find the factor for length")
+            return score * length
+        }
+
+        return score * factor
     }
 
     /**

@@ -52,11 +52,6 @@ class IntroductionViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         timer?.invalidate()
-        guard let scene = scnView.scene as? IntroductionScene else {
-            return
-        }
-        scene.delegate = nil
-        scene.gameContext.game.timer.delegate = nil
     }
 
 }
