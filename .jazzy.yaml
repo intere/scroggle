@@ -1,0 +1,8 @@
+module: "Scroggle"
+author: "Eric Internicola"
+author_url: "http://intere.github.io"
+github_url: "https://github.com/intere/scroggle"
+min_acl: private
+copyright: "© 2018 [Eric Internicola](http://intere.github.io)"
+clean: true
+# swift_version: 4.0
