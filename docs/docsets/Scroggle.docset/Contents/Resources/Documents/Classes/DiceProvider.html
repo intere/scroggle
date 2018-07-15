@@ -14,7 +14,7 @@
     <a title="DiceProvider Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Scroggle Docs</a> (50% documented)</p>
+        <p><a href="../index.html">Scroggle Docs</a> (57% documented)</p>
         <p class="header-right"><a href="https://github.com/intere/scroggle"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -229,19 +229,19 @@
             <a href="../Functions.html">Functions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Functions.html#/s:8Scroggle4DLogySSyXK_SSSitF">DLog(_:_:_:)</a>
+                <a href="../Functions.html#/s:8Scroggle4DLogyySSyXK_SSSitF">DLog(_:_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Functions.html#/s:8Scroggle16recordFatalErrors5NeverOSo7NSErrorCF">recordFatalError(_:)</a>
+                <a href="../Functions.html#/s:8Scroggle16recordFatalErrorys5NeverOSo7NSErrorCF">recordFatalError(_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Functions.html#/s:8Scroggle16recordFatalErrors5NeverOs0D0_pF">recordFatalError(_:)</a>
+                <a href="../Functions.html#/s:8Scroggle16recordFatalErrorys5NeverOs0D0_pF">recordFatalError(_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Functions.html#/s:8Scroggle17recordSystemErrorySo7NSErrorC_SSSitF">recordSystemError(_:_:_:)</a>
+                <a href="../Functions.html#/s:8Scroggle17recordSystemErroryySo7NSErrorC_SSSitF">recordSystemError(_:_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Functions.html#/s:8Scroggle17recordSystemErrorys0D0_p_SSSitF">recordSystemError(_:_:_:)</a>
+                <a href="../Functions.html#/s:8Scroggle17recordSystemErroryys0D0_p_SSSitF">recordSystemError(_:_:_:)</a>
               </li>
             </ul>
           </li>
@@ -299,7 +299,9 @@
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>A Provider that will generate you GameBoards.</p>
+
+<p><strong>Note:</strong> To generate GameBoards, we depend on the <code>dice.json</code> file living in the main bundle</p>
 
           </section>
           <section class="section task-group-section">
@@ -318,7 +320,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Singleton instance, shared for everyone</p>
 
                       </div>
                       <div class="declaration">
@@ -345,7 +347,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The 4x4 2-D Array (dice, faces of dice)</p>
 
                       </div>
                       <div class="declaration">
@@ -362,9 +364,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:8Scroggle12DiceProviderC6vowelsSaySSGvp"></a>
+                    <a name="/s:8Scroggle12DiceProviderC6vowels33_29D17561765C1F7EE6369E76DD09A1AELLSaySSGvp"></a>
                     <a name="//apple_ref/swift/Property/vowels" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8Scroggle12DiceProviderC6vowelsSaySSGvp">vowels</a>
+                    <a class="token" href="#/s:8Scroggle12DiceProviderC6vowels33_29D17561765C1F7EE6369E76DD09A1AELLSaySSGvp">vowels</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -372,14 +374,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>An array of vowels (for validating a board isn&rsquo;t garbage)</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">vowels</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">let</span> <span class="nv">vowels</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
@@ -399,14 +401,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Default initialization.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">fileprivate</span> <span class="nf">init</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="nf">init</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -426,7 +428,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Using the 4x4 board, this function will roll you dice and hand that game board back to you.</p>
 
                       </div>
                       <div class="declaration">
@@ -436,6 +438,10 @@
                           <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">rollDice</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/GameBoard.html">GameBoard</a></span><span class="p">?</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A GameBoard that&rsquo;s been shuffled and a side has been randomly selected for each die.</p>
                       </div>
                     </section>
                   </div>
@@ -454,9 +460,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:8Scroggle12DiceProviderC15hasEnoughVowelsSbAA9GameBoardCF"></a>
+                    <a name="/s:8Scroggle12DiceProviderC15hasEnoughVowelsySbAA9GameBoardCF"></a>
                     <a name="//apple_ref/swift/Method/hasEnoughVowels(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8Scroggle12DiceProviderC15hasEnoughVowelsSbAA9GameBoardCF">hasEnoughVowels(_:)</a>
+                    <a class="token" href="#/s:8Scroggle12DiceProviderC15hasEnoughVowelsySbAA9GameBoardCF">hasEnoughVowels(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -464,7 +470,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Tells you if the provided board has enough vowels selected in it.</p>
 
                       </div>
                       <div class="declaration">
@@ -474,6 +480,29 @@
                           <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">hasEnoughVowels</span><span class="p">(</span><span class="n">_</span> <span class="nv">board</span><span class="p">:</span> <span class="kt"><a href="../Classes/GameBoard.html">GameBoard</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>board</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The board to check for vowels.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>True if it has at least 3 vowels</p>
                       </div>
                     </section>
                   </div>
@@ -491,7 +520,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Loads the dice.json file and populates the data structures from it.</p>
 
                       </div>
                       <div class="declaration">
@@ -518,7 +547,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Loads the demo.json file and provides back the GameBoard for that json.</p>
 
                       </div>
                       <div class="declaration">
@@ -528,6 +557,10 @@
                           <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">loadDemoDice</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/GameBoard.html">GameBoard</a></span><span class="p">?</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The GameBoard for the demo board.</p>
                       </div>
                     </section>
                   </div>

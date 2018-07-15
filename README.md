@@ -23,6 +23,7 @@ Scroggle is a word game that's based on Boggle, Scrabble and some other popular 
 - UIKit (for menus)
 
 ## TODO (MVP Features)
+- [ ] Setup Swiftlint / Address findings
 - [ ] Login: Game Center
 - [ ] Leaderboards
 - [ ] Help menu

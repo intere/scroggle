@@ -28,11 +28,10 @@ class ScoreProvider {
 
 extension ScoreProvider {
 
-    /**
-     Gives you the score for the provided word.
-     - Parameter word: The word to be scored.
-     - Returns: The score for the provided word.
-     */
+    /// Gives you the score for the provided word.
+    ///
+    /// - Parameter word: The word to be scored.
+    /// - Returns: The score for the provided word.
     func scoreWord(_ word: String) -> Int {
 
         let lcaseWord = word.lowercased()
@@ -64,11 +63,10 @@ extension ScoreProvider {
         return score * factor
     }
 
-    /**
-     Gets you the score for a specific letter sequence (typically a single character).
-     - Parameter letters: The letters to be scored.
-     - Returns: The Score for that letter.
-     */
+    /// Gets you the score for a specific letter sequence (typically a single character).
+    ///
+    /// - Parameter letters: The letters to be scored.
+    /// - Returns: The Score for that letter.
     func getScoreForLetter(_ letters: String) -> Int {
         guard let score = letterScores[letters] else {
             DLog("Could not score letters: \(letters)")
@@ -85,24 +83,22 @@ extension ScoreProvider {
 
 private extension ScoreProvider {
 
-    /**
-     Loads the Score Data from the scores.json file and populates the letterScores and lengthFactors.
-     */
+    /// Loads the Score Data from the scores.json file and populates the letterScores and lengthFactors.
     func loadScoreData() {
         guard let path = Bundle.main.path(forResource: "scores", ofType: "json")  else {
-            DLog("Error: Couldn't find the scores.json file")
-            return
+            return DLog("Error: Couldn't find the scores.json file")
         }
         guard let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
-            DLog("Couldn't load the scores.json file data")
-            return
+            return DLog("Couldn't load the scores.json file data")
         }
 
         do {
-            let jsonModel = try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as! [String:AnyObject]
+            guard let jsonModel = try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as? [String: Any] else {
+                return DLog("The scores.json file was in an unknown format")
+            }
 
             // Populate the Letter Scores
-            if let letters = jsonModel["letters"] as? [String:Int] {
+            if let letters = jsonModel["letters"] as? [String: Int] {
                 for (letter, score) in letters {
                     letterScores[letter] = score
                 }
@@ -111,14 +107,16 @@ private extension ScoreProvider {
             }
 
             // Now Populate the Length Score Factors
-            if let lengths = jsonModel["lengths"] as? [String:Int] {
-                for (length, factor) in lengths {
-                    lengthFactors[Int(length)!] = factor
-                }
-            } else {
-                DLog("Couldn't load the Length Factors from the scores.json file")
+            guard let lengths = jsonModel["lengths"] as? [String: Int] else {
+                return DLog("Couldn't load the Length Factors from the scores.json file")
             }
 
+            for (length, factor) in lengths {
+                guard let length = Int(length) else {
+                    continue
+                }
+                lengthFactors[length] = factor
+            }
         } catch {
             DLog("There was an error trying do deserialize the scores.json")
         }

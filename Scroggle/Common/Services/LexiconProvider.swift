@@ -8,11 +8,13 @@
 
 import UIKit
 
+/// Provides the ability to check the validity of a word, using a UITextChecker.
 class LexiconProvider {
 
     /// Shared instance of the LexiconProvider
     static let instance = LexiconProvider()
 
+    /// We use a UITextChecker to validate words.
     let checker = UITextChecker()
 
     /// Is the provided word a valid word?.
@@ -25,6 +27,7 @@ class LexiconProvider {
 
         let misspelledRange = checker.rangeOfMisspelledWord(in: lcaseWord, range: range, startingAt: 0, wrap: false, language: "en")
 
+        // If the misspelledRange is "Not Found", then the word is valid (there is no misspelled location in the word)
         return misspelledRange.location == NSNotFound
     }
 

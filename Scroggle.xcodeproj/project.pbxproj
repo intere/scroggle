@@ -45,7 +45,7 @@
 		365C1AD01F9C09F6008A84EA /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1ACF1F9C09F6008A84EA /* GameBoard.swift */; };
 		365C1AD51F9C0AC6008A84EA /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1AD41F9C0AC6008A84EA /* Enumerations.swift */; };
 		365C1AD81F9C3A77008A84EA /* ScoreProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1AD71F9C3A77008A84EA /* ScoreProvider.swift */; };
-		365C1ADB1F9C3C5B008A84EA /* Extension+Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1ADA1F9C3C5B008A84EA /* Extension+Time.swift */; };
+		365C1ADB1F9C3C5B008A84EA /* Extension+Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1ADA1F9C3C5B008A84EA /* Extension+Numbers.swift */; };
 		365C1ADE1F9C3CAE008A84EA /* IntroductionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1ADD1F9C3CAE008A84EA /* IntroductionScene.swift */; };
 		365C1AE01F9C3CDA008A84EA /* Die3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1ADF1F9C3CDA008A84EA /* Die3D.swift */; };
 		365C1AE21F9C3D20008A84EA /* SceneKitMathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1AE11F9C3D20008A84EA /* SceneKitMathExtensions.swift */; };
@@ -141,7 +141,7 @@
 		365C1ACF1F9C09F6008A84EA /* GameBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
 		365C1AD41F9C0AC6008A84EA /* Enumerations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enumerations.swift; sourceTree = "<group>"; };
 		365C1AD71F9C3A77008A84EA /* ScoreProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreProvider.swift; sourceTree = "<group>"; };
-		365C1ADA1F9C3C5B008A84EA /* Extension+Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Time.swift"; sourceTree = "<group>"; };
+		365C1ADA1F9C3C5B008A84EA /* Extension+Numbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Numbers.swift"; sourceTree = "<group>"; };
 		365C1ADD1F9C3CAE008A84EA /* IntroductionScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionScene.swift; sourceTree = "<group>"; };
 		365C1ADF1F9C3CDA008A84EA /* Die3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Die3D.swift; sourceTree = "<group>"; };
 		365C1AE11F9C3D20008A84EA /* SceneKitMathExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitMathExtensions.swift; sourceTree = "<group>"; };
@@ -300,7 +300,7 @@
 		365C1AD91F9C3C47008A84EA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				365C1ADA1F9C3C5B008A84EA /* Extension+Time.swift */,
+				365C1ADA1F9C3C5B008A84EA /* Extension+Numbers.swift */,
 				365C1AE11F9C3D20008A84EA /* SceneKitMathExtensions.swift */,
 				365C1AE31F9C3DA5008A84EA /* Font.swift */,
 				365C1AEF1F9C40F8008A84EA /* UIDeviceExtension.swift */,
@@ -816,7 +816,7 @@
 				36D2A2862079022B00E9C9F7 /* MenuBuilding.swift in Sources */,
 				365C1AF01F9C40F8008A84EA /* UIDeviceExtension.swift in Sources */,
 				365C1ADE1F9C3CAE008A84EA /* IntroductionScene.swift in Sources */,
-				365C1ADB1F9C3C5B008A84EA /* Extension+Time.swift in Sources */,
+				365C1ADB1F9C3C5B008A84EA /* Extension+Numbers.swift in Sources */,
 				36115A9520E7D9F000D49AF0 /* Notification+Scroggle.swift in Sources */,
 				365C1AD81F9C3A77008A84EA /* ScoreProvider.swift in Sources */,
 				365C1AEC1F9C401B008A84EA /* SoundProvider.swift in Sources */,

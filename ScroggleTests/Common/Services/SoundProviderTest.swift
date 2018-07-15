@@ -35,10 +35,6 @@ class SoundProviderTest: XCTestCase {
         XCTAssertNotNil(SoundProvider.Constants.highScoreSound)
     }
 
-    func testCaveInSoundExists() {
-        XCTAssertNotNil(SoundProvider.Constants.caveInSound)
-    }
-
     func testTimeSoundExists() {
         XCTAssertNotNil(SoundProvider.Constants.timeSound)
     }

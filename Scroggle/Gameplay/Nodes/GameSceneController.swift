@@ -208,13 +208,18 @@ extension GameSceneController {
 
 extension GameSceneController {
 
+    /// Some debugging helpers:
+    /// 1. disable demo mode
+    /// 2. load a single player game (shortest game length)
+    /// 3. print the board
     static func debugSetup() {
         GameContextProvider.Configuration.demoMode = false
         assert(!GameContextProvider.Configuration.demoMode)
-        GameContextProvider.instance.createSinglePlayerGame(.default)
+        GameContextProvider.instance.createSinglePlayerGame(.veryShort)
         printBoard()
     }
 
+    /// Prints out the board configuration
     static func printBoard() {
         guard let board = GameContextProvider.instance.currentGame?.game.board.board else {
             return DLog("Failed to get the game board")
