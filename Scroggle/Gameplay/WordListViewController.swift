@@ -8,6 +8,8 @@
 
 import UIKit
 
+/// A controller for the word list (during game play).  When a user guesses a
+/// word, it shows up in the TableView that this controls.
 class WordListViewController: UITableViewController {
 
     override func viewDidLoad() {

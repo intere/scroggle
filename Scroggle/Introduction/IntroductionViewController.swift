@@ -9,6 +9,7 @@
 import UIKit
 import SceneKit
 
+/// The controller for the Introduction Scene 
 class IntroductionViewController: UIViewController {
 
     @IBOutlet var scnView: SCNView!
@@ -60,7 +61,8 @@ class IntroductionViewController: UIViewController {
 
 extension IntroductionViewController {
 
-    @IBAction func tapped(gesture: UIGestureRecognizer) {
+    @IBAction
+    func tapped(gesture: UIGestureRecognizer) {
         timer?.invalidate()
         SoundProvider.instance.playMenuSelectionSound()
         loadMainMenu()

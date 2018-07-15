@@ -8,8 +8,12 @@
 
 import SpriteKit
 
+/// The Game Scene for the game board.  This class is mainly responsible for
+/// receiving and delegating user interaction events off to the
+// `GameSceneController`.
 class GameScene: SKScene {
 
+    /// The controller (a weak reference) for delegating user events off to
     weak var controller: GameSceneController?
 
     /// Keeps track of where the initial drag point originated
@@ -24,6 +28,9 @@ class GameScene: SKScene {
     /// Did the game end?
     var gameOver = false
 
+    /// This is the appropriate initializer to use for this class.
+    ///
+    /// - Parameter size: The size of the area that you want it to take up
     override init(size: CGSize) {
         super.init(size: size)
         Notification.Scroggle.GameEvent.gameEnded.addObserver(self, selector: #selector(gameOverEvent))
@@ -101,6 +108,7 @@ class GameScene: SKScene {
 extension GameScene {
 
     @objc
+    /// Handler for the Game Over event (cleans up)
     func gameOverEvent() {
         gameOver = true
         controller?.gameScene = nil

@@ -10,7 +10,6 @@ import Foundation
 
 /// This class is the Game Context.  It is responsible for keeping track of:
 /// * The Game Board
-/// * The Timer
 /// * Game Stats
 class GameContext: NSObject {
 
@@ -50,11 +49,7 @@ extension GameContext {
 
     /// Get the longest word
     var longestWord: Int {
-        var longest: Int = 0
-        for word in game.words {
-            longest = max(longest, word.count)
-        }
-        return longest
+        return game.words.map({$0.count}).max() ?? 0
     }
 
     /// Tells you if the user has already guessed the word this game.
@@ -73,7 +68,6 @@ extension GameContext {
         game.score += score
         game.words.append(word)
         Notification.Scroggle.GameEvent.wordGuessed.notify(withObject: word as NSString)
-//        DLog("Score Updated: \(game.score)")
         Notification.Scroggle.GameEvent.scoreUpdated.notify()
     }
 

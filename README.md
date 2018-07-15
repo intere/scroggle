@@ -1,9 +1,10 @@
 # Scroggle
 
 This is the third rewrite of [Scroggle](https://itunes.apple.com/us/app/scroggle/id994899163?mt=8):
+
 <img src="https://is4-ssl.mzstatic.com/image/thumb/Purple62/v4/d2/73/73/d27373cd-0df0-f515-8fb8-c2d811ceec54/pr_source.png/434x0w.jpg">
 
-[![Build Status](https://travis-ci.org/intere/scroggle.svg?branch=develop)](https://travis-ci.org/intere/scroggle)
+[![Build Status](https://travis-ci.org/intere/scroggle.svg?branch=develop)](https://travis-ci.org/intere/scroggle) [![Documentation](https://cdn.rawgit.com/intere/scroggle/master/docs/badge.svg)](https://intere.github.io/scroggle/docs/index.html)
 
 ## What is it?
 Scroggle is a word game that's based on Boggle, Scrabble and some other popular word games.
@@ -39,7 +40,7 @@ Scroggle is a word game that's based on Boggle, Scrabble and some other popular 
 - [x] Nuke the GameTimer object and just have the Game UI manage it
     - [ ] Hook up some sort of noise cue to tell the user that time is running out
 - [x] Hook up the score
-        - [x] Update scoring
+    - [x] Update scoring
 - [x] Hook up the Word List
 - [x] Implement a "Game Over" mechanism
 - [x] Hook up game loop

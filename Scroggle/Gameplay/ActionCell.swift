@@ -9,10 +9,15 @@
 import UIKit
 
 
+/// This is a reusable cell that is configured via a `GameOverAction`.
+/// The `GameOverAction` is used to configure the title of the button in this
+/// cell and to send out a notification when the user interacts with the button.
 class ActionCell: UITableViewCell {
 
+    /// The button that the user can click on
     @IBOutlet weak var button: UIButton!
 
+    /// The action that's used to configure this cell
     var action: Notification.Scroggle.GameOverAction = .mainMenu {
         didSet {
             button.setTitle(action.rawValue, for: .normal)
@@ -27,6 +32,9 @@ class ActionCell: UITableViewCell {
     }
 
     @IBAction
+    /// Handles the user interaction with the button.
+    ///
+    /// - Parameter sender: The source of the event (probably the `button`).
     func pressedButton(_ sender: Any) {
         DLog("Clicked: \(action.rawValue)")
         action.notify()

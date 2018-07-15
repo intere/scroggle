@@ -9,13 +9,23 @@
 import SpriteKit
 import UIKit
 
+/// The controller for the GamePlayVC (see the storyboard to see how this is
+/// all organized together)
 class GamePlayViewController: UIViewController {
+    /// The label that shows the time left in the game
     @IBOutlet weak var timerLabel: UILabel!
+    /// The label that shows the score for the game
     @IBOutlet weak var scoreLabel: UILabel!
+    /// Constraint for hiding / showing the game over message.  Note: showing
+    /// the game over view will prevent gameplay because it sits on top of the
+    /// Game board.
     @IBOutlet weak var gameOverWidthConstraint: NSLayoutConstraint!
+    /// The SpriteKit View which is the game play (game board).
     @IBOutlet weak var skView: SKView!
 
-    var seconds = 15
+    /// The amount of time left in the game
+    var seconds = GameContextProvider.instance.currentGame?.game.timeType.rawValue ?? 15
+    /// The Timer object that's used to count down the time in the game
     var timer: Timer?
 
     override func viewDidLoad() {
@@ -42,11 +52,13 @@ class GamePlayViewController: UIViewController {
 private extension GamePlayViewController {
 
     @objc
+    /// Responds to the game ending early (user clicks the exit game button)
     func gameOverEvent() {
         endGame()
     }
 
     @objc
+    /// Responds to the scoreUpdated event (by updating the game score)
     func scoreUpdated() {
         guard let score = GameContextProvider.instance.currentGame?.game.score else {
             return
@@ -55,6 +67,7 @@ private extension GamePlayViewController {
     }
 
     @objc
+    /// Responds to the time updated event
     func updateTimer() {
         timerLabel.text = seconds.timeString
 

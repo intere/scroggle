@@ -14,7 +14,7 @@
     <a title="MainMenuViewController Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Scroggle Docs</a> (39% documented)</p>
+        <p><a href="../index.html">Scroggle Docs</a> (50% documented)</p>
         <p class="header-right"><a href="https://github.com/intere/scroggle"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -299,7 +299,7 @@
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>The Controller for the Main Menu.</p>
 
           </section>
           <section class="section task-group-section">
@@ -308,9 +308,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:8Scroggle22MainMenuViewControllerC15menuContainerVCAA0cgdE0CSgvp"></a>
+                    <a name="/s:8Scroggle22MainMenuViewControllerC15menuContainerVCAA0cgdE0CSgXwvp"></a>
                     <a name="//apple_ref/swift/Property/menuContainerVC" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8Scroggle22MainMenuViewControllerC15menuContainerVCAA0cgdE0CSgvp">menuContainerVC</a>
+                    <a class="token" href="#/s:8Scroggle22MainMenuViewControllerC15menuContainerVCAA0cgdE0CSgXwvp">menuContainerVC</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -318,14 +318,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>A reference to the <code><a href="../Classes/MenuContainerViewController.html">MenuContainerViewController</a></code> so that we can wire
+this instance to the <code>menuBuilder</code> of that Controller.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">menuContainerVC</span><span class="p">:</span> <span class="kt"><a href="../Classes/MenuContainerViewController.html">MenuContainerViewController</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">weak</span> <span class="k">var</span> <span class="nv">menuContainerVC</span><span class="p">:</span> <span class="kt"><a href="../Classes/MenuContainerViewController.html">MenuContainerViewController</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -372,7 +373,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Creates you a new instance of this VC from the storyboard.</p>
 
                       </div>
                       <div class="declaration">
@@ -382,6 +383,10 @@
                           <pre class="highlight swift"><code><span class="kd">class</span> <span class="kd">func</span> <span class="nf">loadFromStoryboard</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">MainMenuViewController</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new instance of the <code>MainMenuViewController</code>.</p>
                       </div>
                     </section>
                   </div>
@@ -400,9 +405,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:8Scroggle12MenuBuildingP05buildB0AA0B4InfoCSgyF"></a>
+                    <a name="/s:8Scroggle22MainMenuViewControllerC05buildC0AA0C4InfoCSgyF"></a>
                     <a name="//apple_ref/swift/Method/buildMenu()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8Scroggle12MenuBuildingP05buildB0AA0B4InfoCSgyF">buildMenu()</a>
+                    <a class="token" href="#/s:8Scroggle22MainMenuViewControllerC05buildC0AA0C4InfoCSgyF">buildMenu()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -410,7 +415,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Builds you a new MenuInfo object for the Main Menu</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -419,6 +425,10 @@
                           <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">buildMenu</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/MenuInfo.html">MenuInfo</a></span><span class="p">?</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A MenuInfo object for the Main Menu.</p>
                       </div>
                     </section>
                   </div>

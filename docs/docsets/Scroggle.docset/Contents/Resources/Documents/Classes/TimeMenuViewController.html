@@ -14,7 +14,7 @@
     <a title="TimeMenuViewController Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Scroggle Docs</a> (39% documented)</p>
+        <p><a href="../index.html">Scroggle Docs</a> (50% documented)</p>
         <p class="header-right"><a href="https://github.com/intere/scroggle"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -299,7 +299,7 @@
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>The Controller for the TimeMenu, it&rsquo;s responsible for starting games</p>
 
           </section>
           <section class="section task-group-section">
@@ -318,7 +318,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>A reference to the <code><a href="../Classes/MenuContainerViewController.html">MenuContainerViewController</a></code> so that we can
+wire ourself as the <code>menuBuilder</code></p>
 
                       </div>
                       <div class="declaration">
@@ -372,8 +373,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -382,6 +382,10 @@
                           <pre class="highlight swift"><code><span class="kd">class</span> <span class="kd">func</span> <span class="nf">loadFromStoryboard</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">TimeMenuViewController</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new instance of the <code>TimeMenuViewController</code></p>
                       </div>
                     </section>
                   </div>
@@ -400,9 +404,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:8Scroggle12MenuBuildingP05buildB0AA0B4InfoCSgyF"></a>
+                    <a name="/s:8Scroggle22TimeMenuViewControllerC05buildC0AA0C4InfoCSgyF"></a>
                     <a name="//apple_ref/swift/Method/buildMenu()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8Scroggle12MenuBuildingP05buildB0AA0B4InfoCSgyF">buildMenu()</a>
+                    <a class="token" href="#/s:8Scroggle22TimeMenuViewControllerC05buildC0AA0C4InfoCSgyF">buildMenu()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -410,7 +414,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Builds you a new MenuInfo object for this ViewController.</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -419,6 +424,10 @@
                           <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">buildMenu</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/MenuInfo.html">MenuInfo</a></span><span class="p">?</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A MenuInfo object for the time menu</p>
                       </div>
                     </section>
                   </div>
@@ -587,7 +596,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Loads a new instance of a <code><a href="../Classes/GameContainerViewController.html">GameContainerViewController</a></code> from the
+Storyboard and then pushes it onto the <code>navigationController</code>.</p>
 
                       </div>
                       <div class="declaration">

@@ -8,8 +8,11 @@
 
 import UIKit
 
+/// The Controller for the TimeMenu, it's responsible for starting games
 class TimeMenuViewController: UIViewController {
 
+    /// A reference to the `MenuContainerViewController` so that we can
+    /// wire ourself as the `menuBuilder`
     weak var menuContainerVC: MenuContainerViewController? {
         didSet {
             menuContainerVC?.menuBuilder = self
@@ -22,6 +25,10 @@ class TimeMenuViewController: UIViewController {
         Notification.Scroggle.TimeMenuAction.replayCurrentBoard.addObserver(self, selector: #selector(replayCurrentBoard))
     }
 
+    /// Gives you an instance of this class that's instantiated via the
+    // Storyboard.
+    ///
+    /// - Returns: A new instance of the `TimeMenuViewController`
     class func loadFromStoryboard() -> TimeMenuViewController {
         return UIStoryboard(name: "Time", bundle: nil).instantiateViewController(withIdentifier: "TimeMenuViewController") as! TimeMenuViewController
     }
@@ -32,6 +39,9 @@ class TimeMenuViewController: UIViewController {
 
 extension TimeMenuViewController: MenuBuilding {
 
+    /// Builds you a new MenuInfo object for this ViewController.
+    ///
+    /// - Returns: A MenuInfo object for the time menu
     func buildMenu() -> MenuInfo? {
         return MenuInfo(title: "Game Duration", buttons: [
             ButtonCellInfo(title: "45 seconds") { [weak self] in
@@ -72,12 +82,14 @@ extension TimeMenuViewController {
 extension TimeMenuViewController {
 
     @objc
+    /// Handles the event that we should replay the current game
     func replayCurrentBoard() {
         GameContextProvider.instance.replayCurrentGame()
         goToGameVC()
     }
 
     @objc
+    /// Handles the event for replaying the current game time
     func replayCurrentGameTime() {
         guard let timeType = GameContextProvider.instance.currentGame?.game.timeType else {
             return DLog("ERROR: No current game to get time type from")
@@ -94,6 +106,8 @@ extension TimeMenuViewController {
         goToGameVC()
     }
 
+    /// Loads a new instance of a `GameContainerViewController` from the
+    /// Storyboard and then pushes it onto the `navigationController`.
     private func goToGameVC() {
         navigationController?.pushViewController(GameContainerViewController.loadFromStoryboard(), animated: true)
     }
