@@ -10,13 +10,9 @@ import Foundation
 
 import SceneKit
 
-protocol GameSceneDelegate {
-    func gameEnded()
-}
 
 class IntroductionScene: SCNScene {
 
-    var delegate: GameSceneDelegate?
     var gameContext: GameContext!
 
     // Scene related properties
@@ -230,30 +226,6 @@ extension IntroductionScene {
         selection.removeAll()
     }
 
-}
-
-// MARK: - GameTimerDelegate
-
-extension IntroductionScene: GameTimerDelegate {
-
-    func timeDidRunout(_ source: GameTimer) {
-        guard let delegate = delegate else {
-            DLog("No Delegate to notify that the game is over")
-            assert(false, "No Delegate for the GameScene")
-            return
-        }
-        delegate.gameEnded()
-    }
-
-    func timeDidElapse(_ source: GameTimer, time: Int) {
-
-    }
-
-    func timeDidElapse(_ source: GameTimer, time: Int, remainingTime: Int) {
-        DispatchQueue.main.async {
-            self.timerNode.string = TimeInterval(remainingTime).timeString
-        }
-    }
 }
 
 // MARK: - Helpers

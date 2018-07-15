@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TYE-sV-i3y">
+    <device id="retina4_0" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Game Container View Controller-->
+        <scene sceneID="RHc-fx-QEv">
+            <objects>
+                <viewController storyboardIdentifier="MenuContainerViewController" id="TYE-sV-i3y" customClass="GameContainerViewController" customModule="Scroggle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4dv-hH-aJC">
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeScreen2-16x9" translatesAutoresizingMaskIntoConstraints="NO" id="F8A-AS-Wyk">
+                                <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                            </imageView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IeY-UC-Xca">
+                                <rect key="frame" x="28.5" y="16" width="511" height="288"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <segue destination="DcH-gk-vBb" kind="embed" identifier="embedGameView" id="4gN-pj-3eT"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="25m-IQ-Q3U">
+                                <rect key="frame" x="28.5" y="16" width="45" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="⬅️"/>
+                                <connections>
+                                    <action selector="buttonTODOdeleteMe:" destination="TYE-sV-i3y" eventType="touchUpInside" id="f1e-aS-AKu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="IeY-UC-Xca" firstAttribute="centerY" secondItem="4dv-hH-aJC" secondAttribute="centerY" id="A5l-KN-dKF"/>
+                            <constraint firstItem="25m-IQ-Q3U" firstAttribute="leading" secondItem="IeY-UC-Xca" secondAttribute="leading" id="AAo-gw-BA7"/>
+                            <constraint firstItem="F8A-AS-Wyk" firstAttribute="bottom" secondItem="COd-ko-HV3" secondAttribute="bottom" id="J4t-Kw-nwK"/>
+                            <constraint firstItem="F8A-AS-Wyk" firstAttribute="leading" secondItem="COd-ko-HV3" secondAttribute="leading" id="Zh7-0t-eXl"/>
+                            <constraint firstItem="IeY-UC-Xca" firstAttribute="centerX" secondItem="4dv-hH-aJC" secondAttribute="centerX" id="aom-yJ-ajN"/>
+                            <constraint firstItem="25m-IQ-Q3U" firstAttribute="top" secondItem="IeY-UC-Xca" secondAttribute="top" id="qCS-d1-szX"/>
+                            <constraint firstItem="IeY-UC-Xca" firstAttribute="height" secondItem="4dv-hH-aJC" secondAttribute="height" multiplier="0.9" id="qIf-Aj-cG6"/>
+                            <constraint firstItem="IeY-UC-Xca" firstAttribute="width" secondItem="4dv-hH-aJC" secondAttribute="width" multiplier="0.9" id="z7Q-0v-ken"/>
+                            <constraint firstItem="F8A-AS-Wyk" firstAttribute="top" secondItem="COd-ko-HV3" secondAttribute="top" id="z8g-bL-gGR"/>
+                            <constraint firstItem="F8A-AS-Wyk" firstAttribute="trailing" secondItem="COd-ko-HV3" secondAttribute="trailing" id="zpG-rj-7fQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="COd-ko-HV3"/>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="25m-IQ-Q3U" id="GWj-Sc-VvP"/>
+                        <outlet property="centerYConstraint" destination="A5l-KN-dKF" id="T7w-RX-byp"/>
+                        <outlet property="containerView" destination="IeY-UC-Xca" id="v8R-oj-Jb9"/>
+                        <outlet property="proportionalHeightConstraint" destination="qIf-Aj-cG6" id="GBW-Bb-pA4"/>
+                        <outlet property="proportionalWidthConstraint" destination="z7Q-0v-ken" id="YgQ-Hu-sOR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X35-3T-xkl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-321.19565217391306" y="95.652173913043484"/>
+        </scene>
+        <!--GamePlayViewController-->
+        <scene sceneID="9je-pl-uhh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="GamePlay" referencedIdentifier="GamePlayViewController" id="DcH-gk-vBb" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z9W-q5-4Z6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-322" y="863"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="HomeScreen2-16x9" width="736" height="414"/>
+    </resources>
+</document>

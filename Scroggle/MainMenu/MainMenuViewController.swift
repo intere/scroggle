@@ -8,9 +8,12 @@
 
 import UIKit
 
+/// The Controller for the Main Menu.
 class MainMenuViewController: UIViewController {
 
-    var menuContainerVC: MenuContainerViewController? {
+    /// A reference to the `MenuContainerViewController` so that we can wire
+    /// this instance to the `menuBuilder` of that Controller.
+    weak var menuContainerVC: MenuContainerViewController? {
         didSet {
             menuContainerVC?.menuBuilder = self
         }
@@ -18,8 +21,12 @@ class MainMenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        GameContextProvider.Configuration.demoMode = false
     }
 
+    /// Creates you a new instance of this VC from the storyboard.
+    ///
+    /// - Returns: A new instance of the `MainMenuViewController`.
     class func loadFromStoryboard() -> MainMenuViewController {
         return UIStoryboard(name: "MainMenu", bundle: nil).instantiateViewController(withIdentifier: "MainMenuViewController") as! MainMenuViewController
     }
@@ -30,13 +37,19 @@ class MainMenuViewController: UIViewController {
 
 extension MainMenuViewController: MenuBuilding {
 
+    /// Builds you a new MenuInfo object for the Main Menu
+    ///
+    /// - Returns: A MenuInfo object for the Main Menu.
     func buildMenu() -> MenuInfo? {
         return MenuInfo(title: "Scroggle", buttons: [
             ButtonCellInfo(title: "New Game", action: {
+                SoundProvider.instance.playMenuSelectionSound()
                 DLog("Clicked New Game")
                 self.navigationController?.pushViewController(TimeMenuViewController.loadFromStoryboard(), animated: true)
             }),
+            // TODO: Toggle between "Login: GameCenter" and "View High Scores"
             ButtonCellInfo(title: "Login: GameCenter", action: {
+                SoundProvider.instance.playMenuSelectionSound()
                 DLog("Clicked Login")
             })
         ])

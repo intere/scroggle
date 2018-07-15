@@ -1,5 +1,5 @@
 //
-//  Extension+Time.swift
+//  Extension+Numbers.swift
 //  Scroggle
 //
 //  Created by Eric Internicola on 10/21/17.
@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SpriteKit
 
 
 extension TimeInterval {
@@ -36,5 +37,10 @@ extension Int {
     /// * Seconds: 00:14
     var timeString: String {
         return TimeInterval(self).timeString
+    }
+
+    /// Converts the provided index into a CGPoint (row, column) for a 4x4 board.
+    var to4x4Point: CGPoint {
+        return CGPoint(x: floor(CGFloat(self / 4)), y: CGFloat(self % 4))
     }
 }

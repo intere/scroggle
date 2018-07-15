@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fYl-oY-BSK">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="digital-7.mono.ttf">
+            <string>Digital-7Mono</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Word List View Controller-->
+        <scene sceneID="Omb-OF-Lmf">
+            <objects>
+                <tableViewController storyboardIdentifier="WordListViewController" id="fYl-oY-BSK" customClass="WordListViewController" customModule="Scroggle" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Xjp-Sw-4qg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActionCell" id="dfd-sO-f4W" customClass="ActionCell" customModule="Scroggle" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dfd-sO-f4W" id="lVK-61-sMv">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2u-uq-Gao">
+                                            <rect key="frame" x="125.5" y="8" width="124" height="28"/>
+                                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="24"/>
+                                            <inset key="contentEdgeInsets" minX="8" minY="4" maxX="4" maxY="8"/>
+                                            <state key="normal" title="Play again">
+                                                <color key="titleColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="pressedButton:" destination="dfd-sO-f4W" eventType="touchUpInside" id="IGz-CF-hwD"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="h2u-uq-Gao" secondAttribute="bottom" constant="8" id="Nu9-vU-rD5"/>
+                                        <constraint firstItem="h2u-uq-Gao" firstAttribute="top" secondItem="lVK-61-sMv" secondAttribute="top" constant="8" id="XOr-tY-oK8"/>
+                                        <constraint firstItem="h2u-uq-Gao" firstAttribute="centerX" secondItem="lVK-61-sMv" secondAttribute="centerX" id="a4e-mr-wPe"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="button" destination="h2u-uq-Gao" id="4MN-z0-rVv"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WordCell" id="WiH-wL-d38" customClass="WordCell" customModule="Scroggle" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WiH-wL-d38" id="yDD-fU-Lth">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wH8-t7-C2n">
+                                            <rect key="frame" x="16" y="11" width="33" height="22"/>
+                                            <fontDescription key="fontDescription" name="Digital-7Mono" family="Digital-7 Mono" pointSize="24"/>
+                                            <color key="textColor" red="1" green="0.45882352939999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="ABCDEFGHIJKLMNOP" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NxM-t9-ytN">
+                                            <rect key="frame" x="57" y="11" width="302" height="22"/>
+                                            <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="20"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="wH8-t7-C2n" firstAttribute="bottom" secondItem="yDD-fU-Lth" secondAttribute="bottomMargin" id="E39-Qc-oOh"/>
+                                        <constraint firstItem="wH8-t7-C2n" firstAttribute="top" secondItem="yDD-fU-Lth" secondAttribute="topMargin" id="NjK-3q-kgE"/>
+                                        <constraint firstItem="wH8-t7-C2n" firstAttribute="leading" secondItem="yDD-fU-Lth" secondAttribute="leadingMargin" id="jLq-gm-Phl"/>
+                                        <constraint firstItem="NxM-t9-ytN" firstAttribute="top" secondItem="yDD-fU-Lth" secondAttribute="topMargin" id="qiu-xV-AAq"/>
+                                        <constraint firstItem="NxM-t9-ytN" firstAttribute="trailing" secondItem="yDD-fU-Lth" secondAttribute="trailingMargin" id="v7Z-Xx-9yb"/>
+                                        <constraint firstItem="NxM-t9-ytN" firstAttribute="leading" secondItem="wH8-t7-C2n" secondAttribute="trailing" constant="8" id="vzh-WF-l9E"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="NxM-t9-ytN" secondAttribute="bottom" id="ws0-6J-pfC"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="scoreLabel" destination="wH8-t7-C2n" id="kRi-0H-3xL"/>
+                                    <outlet property="wordLabel" destination="NxM-t9-ytN" id="qwM-AJ-sZS"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="fYl-oY-BSK" id="Mqh-DO-jPF"/>
+                            <outlet property="delegate" destination="fYl-oY-BSK" id="lVr-Bp-NEF"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2bO-y5-fIs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-324" y="1859.8200899550227"/>
+        </scene>
+    </scenes>
+</document>

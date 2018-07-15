@@ -1,0 +1,1608 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/AppDelegate.swift",
+      "line": 15,
+      "symbol": "AppDelegate",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/AppDelegate.swift",
+      "line": 17,
+      "symbol": "AppDelegate.window",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/AppDelegate.swift",
+      "line": 19,
+      "symbol": "AppDelegate.application(_:didFinishLaunchingWithOptions:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Common.swift",
+      "line": 11,
+      "symbol": "GenericBlock",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Extensions/Font.swift",
+      "line": 15,
+      "symbol": "UIFont.Scroggle.defaultFontName",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Extensions/Notification+Scroggle.swift",
+      "line": 22,
+      "symbol": "Notification.Scroggle.GameEvent.wordGuessed",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Extensions/Notification+Scroggle.swift",
+      "line": 23,
+      "symbol": "Notification.Scroggle.GameEvent.scoreUpdated",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Extensions/Notification+Scroggle.swift",
+      "line": 24,
+      "symbol": "Notification.Scroggle.GameEvent.gameEnded",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Extensions/Notification+Scroggle.swift",
+      "line": 41,
+      "symbol": "Notification.Scroggle.GameOverAction.mainMenu",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Extensions/Notification+Scroggle.swift",
+      "line": 42,
+      "symbol": "Notification.Scroggle.GameOverAction.playAgain",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Extensions/Notification+Scroggle.swift",
+      "line": 43,
+      "symbol": "Notification.Scroggle.GameOverAction.replay",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Extensions/Notification+Scroggle.swift",
+      "line": 63,
+      "symbol": "Notification.Scroggle.TimeMenuAction.replayCurrentBoard",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Extensions/Notification+Scroggle.swift",
+      "line": 64,
+      "symbol": "Notification.Scroggle.TimeMenuAction.playSameTime",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Extensions/UIDeviceExtension.swift",
+      "line": 15,
+      "symbol": "UIDevice.isWidescreen",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Extensions/UIDeviceExtension.swift",
+      "line": 65,
+      "symbol": "UIDevice.getDeviceType",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Logging.swift",
+      "line": 12,
+      "symbol": "DLog(_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Logging.swift",
+      "line": 25,
+      "symbol": "recordSystemError(_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Logging.swift",
+      "line": 30,
+      "symbol": "recordSystemError(_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Logging.swift",
+      "line": 35,
+      "symbol": "recordFatalError(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Logging.swift",
+      "line": 41,
+      "symbol": "recordFatalError(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Logging.swift",
+      "line": 49,
+      "symbol": "ScroggleErrorDomain",
+      "symbol_kind": "source.lang.swift.decl.var.global",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Logging.swift",
+      "line": 52,
+      "symbol": "ApplicationError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Logging.swift",
+      "line": 53,
+      "symbol": "ApplicationError.generalError(message:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Logging.swift",
+      "line": 54,
+      "symbol": "ApplicationError.sceneError(message:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Die.swift",
+      "line": 15,
+      "symbol": "Die.Keys",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Die.swift",
+      "line": 16,
+      "symbol": "Die.Keys.roll",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Die.swift",
+      "line": 17,
+      "symbol": "Die.Keys.sides",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Die.swift",
+      "line": 31,
+      "symbol": "Die.init(sides:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Die.swift",
+      "line": 36,
+      "symbol": "Die.init(sides:roll:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Die.swift",
+      "line": 51,
+      "symbol": "Die.getSelectedSide()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Die.swift",
+      "line": 60,
+      "symbol": "Die.selectRandomDie(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Enumerations.swift",
+      "line": 15,
+      "symbol": "GameTimeType.undefined",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Enumerations.swift",
+      "line": 16,
+      "symbol": "GameTimeType.veryShort",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Enumerations.swift",
+      "line": 17,
+      "symbol": "GameTimeType.short",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Enumerations.swift",
+      "line": 18,
+      "symbol": "GameTimeType.default",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Enumerations.swift",
+      "line": 19,
+      "symbol": "GameTimeType.medium",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Enumerations.swift",
+      "line": 20,
+      "symbol": "GameTimeType.long",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Enumerations.swift",
+      "line": 21,
+      "symbol": "GameTimeType.custom",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Enumerations.swift",
+      "line": 22,
+      "symbol": "GameTimeType.infinite",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Enumerations.swift",
+      "line": 24,
+      "symbol": "GameTimeType.values",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Enumerations.swift",
+      "line": 28,
+      "symbol": "GameTimeType.fromRawValue(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Enumerations.swift",
+      "line": 64,
+      "symbol": "GameTimerError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Enumerations.swift",
+      "line": 65,
+      "symbol": "GameTimerError.invalidGameTimerInitialization",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Enumerations.swift",
+      "line": 68,
+      "symbol": "GameDestination",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Enumerations.swift",
+      "line": 69,
+      "symbol": "GameDestination.basicGame",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Enumerations.swift",
+      "line": 74,
+      "symbol": "Leaderboard",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Enumerations.swift",
+      "line": 75,
+      "symbol": "Leaderboard.key",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Enumerations.swift",
+      "line": 76,
+      "symbol": "Leaderboard.name",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Enumerations.swift",
+      "line": 77,
+      "symbol": "Leaderboard.index",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Enumerations.swift",
+      "line": 79,
+      "symbol": "Leaderboard.init(index:key:name:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Enumerations.swift",
+      "line": 87,
+      "symbol": "Leaderboard.basicGameVeryShort",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Enumerations.swift",
+      "line": 88,
+      "symbol": "Leaderboard.basicGameShort",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Enumerations.swift",
+      "line": 89,
+      "symbol": "Leaderboard.basicGameDefault",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Enumerations.swift",
+      "line": 90,
+      "symbol": "Leaderboard.basicGameMedium",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Enumerations.swift",
+      "line": 91,
+      "symbol": "Leaderboard.basicGameLong",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Enumerations.swift",
+      "line": 93,
+      "symbol": "Leaderboard.basicGameLongestWord",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/Enumerations.swift",
+      "line": 110,
+      "symbol": "Leaderboard.gameLength(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/GameBoard.swift",
+      "line": 13,
+      "symbol": "GameBoard.board",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/GameBoard.swift",
+      "line": 15,
+      "symbol": "GameBoard.init(dice:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 14,
+      "symbol": "GameState",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 15,
+      "symbol": "GameState.waitingForMatch",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 16,
+      "symbol": "GameState.waitingForRandomNumber",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 17,
+      "symbol": "GameState.waitingForStart",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 18,
+      "symbol": "GameState.active",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 19,
+      "symbol": "GameState.done",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 20,
+      "symbol": "GameState.paused",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 21,
+      "symbol": "GameState.terminated",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 23,
+      "symbol": "GameState.allowsUserInteraction()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 36,
+      "symbol": "MessageType",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 37,
+      "symbol": "MessageType.randomNumber",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 38,
+      "symbol": "MessageType.gameBegin",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 39,
+      "symbol": "MessageType.scoreUpdate",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 40,
+      "symbol": "MessageType.gameOver",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 46,
+      "symbol": "GameResult",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 47,
+      "symbol": "GameResult.youWon",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 48,
+      "symbol": "GameResult.youLost",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 49,
+      "symbol": "GameResult.youTied",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 50,
+      "symbol": "GameResult.opponentDisconnected",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 51,
+      "symbol": "GameResult.unknown",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 54,
+      "symbol": "Message",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 55,
+      "symbol": "Message.messageType",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 58,
+      "symbol": "MessageRandomNumber",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 59,
+      "symbol": "MessageRandomNumber.message",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 60,
+      "symbol": "MessageRandomNumber.randomNumber",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 63,
+      "symbol": "MessageGameBegin",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 64,
+      "symbol": "MessageGameBegin.message",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 65,
+      "symbol": "MessageGameBegin.timeLimit",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 66,
+      "symbol": "MessageGameBegin.gameBoard",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 69,
+      "symbol": "MessageScoreUpdate",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 70,
+      "symbol": "MessageScoreUpdate.message",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 71,
+      "symbol": "MessageScoreUpdate.playerScore",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 72,
+      "symbol": "MessageScoreUpdate.timeLeft",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 75,
+      "symbol": "MessageGameOver",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 76,
+      "symbol": "MessageGameOver.message",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Models/MultiplayerEnumerations.swift",
+      "line": 77,
+      "symbol": "MessageGameOver.score",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Services/GameContextProvider.swift",
+      "line": null,
+      "symbol": "GameContextProvider",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Services/GameContextProvider.swift",
+      "line": 13,
+      "symbol": "GameContextProvider",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Services/GameContextProvider.swift",
+      "line": 15,
+      "symbol": "GameContextProvider.Configuration",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Services/GameContextProvider.swift",
+      "line": 16,
+      "symbol": "GameContextProvider.Configuration.demoMode",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Services/GameContextProvider.swift",
+      "line": 19,
+      "symbol": "GameContextProvider.instance",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Services/GameContextProvider.swift",
+      "line": 42,
+      "symbol": "GameContextProvider.createSinglePlayerGame(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Services/ScoreProvider.swift",
+      "line": 18,
+      "symbol": "ScoreProvider.letterScores",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Services/ScoreProvider.swift",
+      "line": 19,
+      "symbol": "ScoreProvider.lengthFactors",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Services/ScoreProvider.swift",
+      "line": 21,
+      "symbol": "ScoreProvider.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Services/SettingsService.swift",
+      "line": 11,
+      "symbol": "SettingsService",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Services/SettingsService.swift",
+      "line": 13,
+      "symbol": "SettingsService.Configuration",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Services/SoundProvider.swift",
+      "line": 23,
+      "symbol": "SoundProvider.Constants.diceRollSound",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Services/SoundProvider.swift",
+      "line": 24,
+      "symbol": "SoundProvider.Constants.selectionSound",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Services/SoundProvider.swift",
+      "line": 25,
+      "symbol": "SoundProvider.Constants.correctGuessSound",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Services/SoundProvider.swift",
+      "line": 26,
+      "symbol": "SoundProvider.Constants.dupeOrIncorrectSound",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Services/SoundProvider.swift",
+      "line": 27,
+      "symbol": "SoundProvider.Constants.blopSound",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Services/SoundProvider.swift",
+      "line": 28,
+      "symbol": "SoundProvider.Constants.highScoreSound",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Services/SoundProvider.swift",
+      "line": 29,
+      "symbol": "SoundProvider.Constants.timeSound",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Common/Services/SoundProvider.swift",
+      "line": 30,
+      "symbol": "SoundProvider.Constants.gongSound",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/ActionCell.swift",
+      "line": 27,
+      "symbol": "ActionCell.awakeFromNib()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/ActionCell.swift",
+      "line": 38,
+      "symbol": "ActionCell.pressedButton(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/GameContainerViewController.swift",
+      "line": null,
+      "symbol": "GameContainerViewController",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/GameContainerViewController.swift",
+      "line": 14,
+      "symbol": "GameContainerViewController",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/GameContainerViewController.swift",
+      "line": 15,
+      "symbol": "GameContainerViewController.proportionalWidthConstraint",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/GameContainerViewController.swift",
+      "line": 16,
+      "symbol": "GameContainerViewController.proportionalHeightConstraint",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/GameContainerViewController.swift",
+      "line": 17,
+      "symbol": "GameContainerViewController.centerYConstraint",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/GameContainerViewController.swift",
+      "line": 18,
+      "symbol": "GameContainerViewController.containerView",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/GameContainerViewController.swift",
+      "line": 19,
+      "symbol": "GameContainerViewController.backButton",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/GameContainerViewController.swift",
+      "line": 21,
+      "symbol": "GameContainerViewController.prefersStatusBarHidden",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/GameContainerViewController.swift",
+      "line": 29,
+      "symbol": "GameContainerViewController.viewDidLoad()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/GameContainerViewController.swift",
+      "line": 47,
+      "symbol": "GameContainerViewController.buttonTODOdeleteMe(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/GameContainerViewController.swift",
+      "line": 58,
+      "symbol": "GameContainerViewController.replayCurrentBoard()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/GameContainerViewController.swift",
+      "line": 66,
+      "symbol": "GameContainerViewController.replayNewGameSameTime()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/GameContainerViewController.swift",
+      "line": 74,
+      "symbol": "GameContainerViewController.goToMainMenu()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/GamePlayViewController.swift",
+      "line": 31,
+      "symbol": "GamePlayViewController.viewDidLoad()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/GamePlayViewController.swift",
+      "line": 56,
+      "symbol": "GamePlayViewController.gameOverEvent()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/GamePlayViewController.swift",
+      "line": 62,
+      "symbol": "GamePlayViewController.scoreUpdated()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/GamePlayViewController.swift",
+      "line": 71,
+      "symbol": "GamePlayViewController.updateTimer()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/Nodes/GameSceneController+Animations.swift",
+      "line": 80,
+      "symbol": "GameSceneController.AnimationConstants",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/Nodes/GameSceneController+Animations.swift",
+      "line": 81,
+      "symbol": "GameSceneController.AnimationConstants.duration",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/Nodes/GameSceneController.swift",
+      "line": 40,
+      "symbol": "GameSceneController.gameContext",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/Nodes/SCNGameScene+ClickableTiles.swift",
+      "line": 86,
+      "symbol": "GameSceneController.addSelected(index:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/Nodes/SCNGameScene+ClickableTiles.swift",
+      "line": 170,
+      "symbol": "GameSceneController.TileConfiguration.squareSize",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/Nodes/SCNGameScene+ClickableTiles.swift",
+      "line": 171,
+      "symbol": "GameSceneController.TileConfiguration.stepSizeX",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/Nodes/SCNGameScene+ClickableTiles.swift",
+      "line": 172,
+      "symbol": "GameSceneController.TileConfiguration.stepSizeY",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/Nodes/SCNGameScene+ClickableTiles.swift",
+      "line": 173,
+      "symbol": "GameSceneController.TileConfiguration.offsetX",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/Nodes/SCNGameScene+ClickableTiles.swift",
+      "line": 174,
+      "symbol": "GameSceneController.TileConfiguration.offsetY",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/Nodes/SCNGameScene+ClickableTiles.swift",
+      "line": 287,
+      "symbol": "GameSceneController.debugAnimateImages()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/Scenes/GameScene.swift",
+      "line": null,
+      "symbol": "GameScene",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/Scenes/GameScene.swift",
+      "line": 14,
+      "symbol": "GameScene",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/Scenes/GameScene.swift",
+      "line": 39,
+      "symbol": "GameScene.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/Scenes/GameScene.swift",
+      "line": 43,
+      "symbol": "GameScene.touchesBegan(_:with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/Scenes/GameScene.swift",
+      "line": 59,
+      "symbol": "GameScene.touchesMoved(_:with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/Scenes/GameScene.swift",
+      "line": 84,
+      "symbol": "GameScene.touchesEnded(_:with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/Scenes/GameScene.swift",
+      "line": 112,
+      "symbol": "GameScene.gameOverEvent()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/WordListViewController.swift",
+      "line": 15,
+      "symbol": "WordListViewController.viewDidLoad()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/WordListViewController.swift",
+      "line": 21,
+      "symbol": "WordListViewController.numberOfSections(in:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/WordListViewController.swift",
+      "line": 25,
+      "symbol": "WordListViewController.tableView(_:numberOfRowsInSection:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/WordListViewController.swift",
+      "line": 36,
+      "symbol": "WordListViewController.tableView(_:cellForRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/IntroductionViewController.swift",
+      "line": 15,
+      "symbol": "IntroductionViewController.scnView",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/IntroductionViewController.swift",
+      "line": 17,
+      "symbol": "IntroductionViewController.timer",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/IntroductionViewController.swift",
+      "line": 19,
+      "symbol": "IntroductionViewController.viewDidLoad()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/IntroductionViewController.swift",
+      "line": 25,
+      "symbol": "IntroductionViewController.viewDidAppear(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/IntroductionViewController.swift",
+      "line": 53,
+      "symbol": "IntroductionViewController.viewWillDisappear(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/IntroductionViewController.swift",
+      "line": 65,
+      "symbol": "IntroductionViewController.tapped(gesture:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/IntroductionViewController.swift",
+      "line": 77,
+      "symbol": "IntroductionViewController.loadMainMenu()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/Die3D.swift",
+      "line": 14,
+      "symbol": "Die3D.Configuration",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/Die3D.swift",
+      "line": 15,
+      "symbol": "Die3D.Configuration.dicePopValue",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/Die3D.swift",
+      "line": 18,
+      "symbol": "Die3D.k2DText",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/Die3D.swift",
+      "line": 19,
+      "symbol": "Die3D.size",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/Die3D.swift",
+      "line": 20,
+      "symbol": "Die3D.die",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/Die3D.swift",
+      "line": 21,
+      "symbol": "Die3D.arrayIndex",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/Die3D.swift",
+      "line": 22,
+      "symbol": "Die3D.index",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/Die3D.swift",
+      "line": 24,
+      "symbol": "Die3D.roll",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/Die3D.swift",
+      "line": 28,
+      "symbol": "Die3D.init(size:die:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/Die3D.swift",
+      "line": 35,
+      "symbol": "Die3D.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/Die3D.swift",
+      "line": 45,
+      "symbol": "Die3D.point2D",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/Die3D.swift",
+      "line": 49,
+      "symbol": "Die3D.getSelectedSide()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/Die3D.swift",
+      "line": 53,
+      "symbol": "Die3D.animateSelection()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/Die3D.swift",
+      "line": 72,
+      "symbol": "Die3D.addPhysicsBody()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/Die3D.swift",
+      "line": 84,
+      "symbol": "Die3D.animateToSelectedSide(_:repeats:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/Die3D.swift",
+      "line": 121,
+      "symbol": "Die3D.introAnimateDice(duration:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/Die3D.swift",
+      "line": 134,
+      "symbol": "Die3D.randomRotateOriginalHeight(x:z:duration:completionHandler:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/Die3D.swift",
+      "line": 145,
+      "symbol": "Die3D.randomRotateRandomHeight(x:z:duration:completionHandler:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/Die3D.swift",
+      "line": 201,
+      "symbol": "Die3D.randomRadians()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/Die3D.swift",
+      "line": 205,
+      "symbol": "Die3D.randomYPosition()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/Die3D.swift",
+      "line": 209,
+      "symbol": "Die3D.createDie()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/IntroductionScene.swift",
+      "line": null,
+      "symbol": "IntroductionScene",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/IntroductionScene.swift",
+      "line": null,
+      "symbol": "IntroductionScene",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/IntroductionScene.swift",
+      "line": null,
+      "symbol": "IntroductionScene",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/IntroductionScene.swift",
+      "line": null,
+      "symbol": "IntroductionScene",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/IntroductionScene.swift",
+      "line": 14,
+      "symbol": "IntroductionScene",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/IntroductionScene.swift",
+      "line": 16,
+      "symbol": "IntroductionScene.gameContext",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/IntroductionScene.swift",
+      "line": 20,
+      "symbol": "IntroductionScene.demoCamera",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/IntroductionScene.swift",
+      "line": 21,
+      "symbol": "IntroductionScene.gameCamera",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/IntroductionScene.swift",
+      "line": 22,
+      "symbol": "IntroductionScene.selectionPath",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/IntroductionScene.swift",
+      "line": 23,
+      "symbol": "IntroductionScene.dice",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/IntroductionScene.swift",
+      "line": 24,
+      "symbol": "IntroductionScene.selection",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/IntroductionScene.swift",
+      "line": 25,
+      "symbol": "IntroductionScene.timerNode",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/IntroductionScene.swift",
+      "line": 26,
+      "symbol": "IntroductionScene.scoreNode",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/IntroductionScene.swift",
+      "line": 27,
+      "symbol": "IntroductionScene.selectedWord",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/IntroductionScene.swift",
+      "line": 28,
+      "symbol": "IntroductionScene.diceBoard",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/IntroductionScene.swift",
+      "line": 30,
+      "symbol": "IntroductionScene.board",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/IntroductionScene.swift",
+      "line": 41,
+      "symbol": "IntroductionScene.selectionLocked",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/IntroductionScene.swift",
+      "line": 202,
+      "symbol": "IntroductionScene.showDuplicateSelection()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/IntroductionScene.swift",
+      "line": 211,
+      "symbol": "IntroductionScene.showInvalidSelection()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/IntroductionScene.swift",
+      "line": 235,
+      "symbol": "IntroductionScene.updateGameCamera()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/IntroductionScene.swift",
+      "line": 357,
+      "symbol": "IntroductionScene.configure()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/IntroductionScene.swift",
+      "line": 424,
+      "symbol": "IntroductionScene.findAndRemoveCameras()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Introduction/SceneKit/IntroductionScene.swift",
+      "line": 431,
+      "symbol": "IntroductionScene.formatScore(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/MainMenu/MainMenuViewController.swift",
+      "line": 22,
+      "symbol": "MainMenuViewController.viewDidLoad()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/MainMenu/MainMenuViewController.swift",
+      "line": 65,
+      "symbol": "MainMenuViewController.prepare(for:sender:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Menu/ButtonTableViewCell.swift",
+      "line": 28,
+      "symbol": "ButtonTableViewCell.tappedButton(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Menu/MenuContainerViewController.swift",
+      "line": 18,
+      "symbol": "MenuContainerViewController.proportionalWidthConstraint",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Menu/MenuContainerViewController.swift",
+      "line": 19,
+      "symbol": "MenuContainerViewController.proportionalHeightConstraint",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Menu/MenuContainerViewController.swift",
+      "line": 55,
+      "symbol": "MenuContainerViewController.viewDidLoad()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Menu/MenuContainerViewController.swift",
+      "line": 66,
+      "symbol": "MenuContainerViewController.prepare(for:sender:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Menu/MenuHeaderTableViewCell.swift",
+      "line": 15,
+      "symbol": "MenuHeaderTableViewCell.label",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Menu/MenuHeaderTableViewCell.swift",
+      "line": 17,
+      "symbol": "MenuHeaderTableViewCell.title",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Menu/MenuHeaderTableViewCell.swift",
+      "line": 26,
+      "symbol": "MenuHeaderTableViewCell.awakeFromNib()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Menu/MenuTableViewController.swift",
+      "line": 25,
+      "symbol": "MenuTableViewController.viewDidLoad()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Menu/MenuTableViewController.swift",
+      "line": 37,
+      "symbol": "MenuTableViewController.numberOfSections(in:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Menu/MenuTableViewController.swift",
+      "line": 41,
+      "symbol": "MenuTableViewController.tableView(_:numberOfRowsInSection:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Menu/MenuTableViewController.swift",
+      "line": 49,
+      "symbol": "MenuTableViewController.tableView(_:cellForRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Menu/MenuTableViewController.swift",
+      "line": 60,
+      "symbol": "MenuTableViewController.tableView(_:heightForHeaderInSection:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Menu/MenuTableViewController.swift",
+      "line": 64,
+      "symbol": "MenuTableViewController.tableView(_:viewForHeaderInSection:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Menu/MenuTableViewController.swift",
+      "line": 80,
+      "symbol": "MenuTableViewController.CellIdentifiers",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Menu/MenuTableViewController.swift",
+      "line": 81,
+      "symbol": "MenuTableViewController.CellIdentifiers.headerCell",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Menu/MenuTableViewController.swift",
+      "line": 82,
+      "symbol": "MenuTableViewController.CellIdentifiers.buttonCell",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Menu/MenuViewController.swift",
+      "line": 36,
+      "symbol": "MenuViewController.Constants",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/TimeMenu/TimeMenuViewController.swift",
+      "line": 22,
+      "symbol": "TimeMenuViewController.viewDidLoad()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/TimeMenu/TimeMenuViewController.swift",
+      "line": 72,
+      "symbol": "TimeMenuViewController.prepare(for:sender:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/TimeMenu/TimeMenuViewController.swift",
+      "line": 86,
+      "symbol": "TimeMenuViewController.replayCurrentBoard()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/TimeMenu/TimeMenuViewController.swift",
+      "line": 93,
+      "symbol": "TimeMenuViewController.replayCurrentGameTime()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/einternicola/Code/Personal/scroggle"
+}

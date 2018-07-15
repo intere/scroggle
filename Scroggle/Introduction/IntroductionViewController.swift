@@ -9,6 +9,7 @@
 import UIKit
 import SceneKit
 
+/// The controller for the Introduction Scene 
 class IntroductionViewController: UIViewController {
 
     @IBOutlet var scnView: SCNView!
@@ -52,11 +53,6 @@ class IntroductionViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         timer?.invalidate()
-        guard let scene = scnView.scene as? IntroductionScene else {
-            return
-        }
-        scene.delegate = nil
-        scene.gameContext.game.timer.delegate = nil
     }
 
 }
@@ -65,7 +61,8 @@ class IntroductionViewController: UIViewController {
 
 extension IntroductionViewController {
 
-    @IBAction func tapped(gesture: UIGestureRecognizer) {
+    @IBAction
+    func tapped(gesture: UIGestureRecognizer) {
         timer?.invalidate()
         SoundProvider.instance.playMenuSelectionSound()
         loadMainMenu()

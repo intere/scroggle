@@ -8,55 +8,48 @@
 
 import Foundation
 
+/// A basic model that keeps track of metadata about a game.
+/// For example, the score, number of bad guesses, rotations, etc
 class Game: NSObject {
 
-    var score: Int = 0
-    var badGuesses: Int = 0
-    var duplicateGuesses: Int = 0
+    /// The current game's score
+    var score = 0
+    /// The number of incorrect guesses (strings that were not words)
+    var badGuesses = 0
+    /// The number of times a user guessed a word they'd already guessed
+    var duplicateGuesses = 0
+    /// The number of times a user rotated the game board during the game
     var rotations = 0
+    /// The list of correct word guesses for this game
     var words = [String]()
+
+    /// The game configuration (the location of the dice and their selected letters)
     var board: GameBoard! {
         didSet {
             hasBoard = true
         }
     }
-    var hasBoard = false
-    var timer: GameTimer! {
-        didSet {
-            hasTimer = true
-        }
-    }
-    var hasTimer = false
 
+    /// Does this game yet have a board?
+    var hasBoard = false
+    
+    /// The length of time that the game is for
+    var timeType = GameTimeType.default
 }
 
 // MARK: - API
 
 extension Game {
 
-    /// Resets the game
-    func reset() {
-        words.removeAll()
-        if hasTimer {
-            timer = DefaultGameTimer(timeType: timer.timeType)
-        }
-        score = 0
-        badGuesses = 0
-        duplicateGuesses = 0
-        rotations = 0
-    }
-
-    /**
-     Tells you if the provided word is already in the list of words.
-     - Parameter word: The word to check.
-     - Returns: True if the word exists in the word list already, false otherwise.
-     */
+    /// Tells you if the provided word is already in the list of words.
+    ///
+    /// - Parameter word: The word to check.
+    /// - Returns: True if the word exists in the word list already, false otherwise.
     func hasWord(_ word: String) -> Bool {
-        for wordCheck in words {
-            if wordCheck == word {
-                return true
-            }
+        for wordCheck in words where wordCheck == word {
+            return true
         }
+
         return false
     }
 }

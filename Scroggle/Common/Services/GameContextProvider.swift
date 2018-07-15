@@ -35,11 +35,10 @@ class GameContextProvider {
 extension GameContextProvider {
 
     @discardableResult
-    /**
-     Creates a Game Context, rolls the dice and sets the current game reference to be the same context we hand you back.
-     - Parameter timeType: The Game Time Type (how long the game will run).
-     - Returns: A new GameContext object that we've set to be the current game.
-     */
+    /// Creates a Game Context, rolls the dice and sets the current game reference to be the same context we hand you back.
+    ///
+    /// - Parameter timeType: The Game Time Type (how long the game will run).
+    /// - Returns: A new GameContext object that we've set to be the current game.
     func createSinglePlayerGame(_ timeType: GameTimeType) -> GameContext {
         let context = GameContext()
 
@@ -62,8 +61,17 @@ extension GameContextProvider {
             }
         }
 
-        context.game.timer = DefaultGameTimer(timeType: timeType)
+        context.game.timeType = timeType
         currentGame = context
         return context
+    }
+
+    /// Clones the current game into a new game and sets the currentGame to that new copy.
+    func replayCurrentGame() {
+        guard let original = currentGame else {
+            return
+        }
+
+        currentGame = GameContext(from: original)
     }
 }

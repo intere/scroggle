@@ -10,17 +10,27 @@ import UIKit
 
 // TODO: extract a protocol (DiceService) from DiceProvider
 
+/// A Provider that will generate you GameBoards.
+///
+/// **Note:** To generate GameBoards, we depend on the `dice.json` file living in the main bundle
 class DiceProvider {
+    /// Singleton instance, shared for everyone
     static let instance = DiceProvider()
 
-    var fourByFour: [[String]] = [[]]   // The 4x4 2-D Array (dice, faces of dice)
+    /// The 4x4 2-D Array (dice, faces of dice)
+    var fourByFour: [[String]] = [[]]
 
-    let vowels = ["A", "E", "I", "O", "U", "Y"]
+    /// An array of vowels (for validating a board isn't garbage)
+    private let vowels = ["A", "E", "I", "O", "U", "Y"]
 
-    fileprivate init() {
+    /// Default initialization.
+    private init() {
         loadDiceFromBundle()
     }
 
+    /// Using the 4x4 board, this function will roll you dice and hand that game board back to you.
+    ///
+    /// - Returns: A GameBoard that's been shuffled and a side has been randomly selected for each die.
     func rollDice() -> GameBoard? {
         var board: GameBoard? = nil
         let copyFrom = NSMutableArray(array: fourByFour)
@@ -49,48 +59,61 @@ class DiceProvider {
 
 extension DiceProvider {
 
+    /// Tells you if the provided board has enough vowels selected in it.
+    ///
+    /// - Parameter board: The board to check for vowels.
+    /// - Returns: True if it has at least 3 vowels
     func hasEnoughVowels(_ board: GameBoard) -> Bool {
-        var count = 0
-        for die in board.getRawData() {
-            if vowels.contains(die.roll) {
-                count += 1
-            }
-        }
-
-        return count > 3
+        return board.board.map({ vowels.contains($0.roll) }).filter({$0}).count > 3
     }
 
+    /// Loads the dice.json file and populates the data structures from it.
     func loadDiceFromBundle() {
-        if let path = Bundle.main.path(forResource: "dice", ofType: "json") {
-            do {
-                if let data = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8.rawValue).data(using: String.Encoding.utf8.rawValue) {
-
-                    var dict: [String : [[String]]] = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! [String : [[String]]]
-                    fourByFour = dict["4x4"]!
-                } else {
-                    DLog("Failed to convert contents of dice.json to NSData")
-                }
-            } catch {
-                DLog("Exception trying to read dice.json file")
-            }
+        defer {
+            assert(fourByFour.count > 0)
         }
-        else {
-            DLog("Couldn't find dice.json")
+        guard let path = Bundle.main.path(forResource: "dice", ofType: "json") else {
+            return DLog("Couldn't find dice.json")
+        }
+        do {
+            guard let data = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8.rawValue).data(using: String.Encoding.utf8.rawValue) else {
+                return DLog("Failed to convert contents of dice.json to NSData")
+            }
+
+            guard let dict = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as? [String : [[String]]] else {
+                return DLog("The dice.json came back in an unknown structure")
+            }
+
+            guard let boardData = dict["4x4"] else {
+                return DLog("The dice.json had a 4x4 that came back in an unknown format")
+            }
+
+            fourByFour = boardData
+        } catch {
+            DLog("Exception trying to read dice.json file")
         }
     }
 
+    /// Loads the demo.json file and provides back the GameBoard for that json.
+    ///
+    /// - Returns: The GameBoard for the demo board.
     func loadDemoDice() -> GameBoard? {
-        if let path = Bundle.main.path(forResource: "demo", ofType: "json") {
-            do {
-                if let data = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8.rawValue).data(using: String.Encoding.utf8.rawValue) {
-                    return GameBoard.fromData(data)
-                }
-            } catch {
-                DLog("Exception trying to read demo.json")
-                recordSystemError(error)
-            }
+        guard let path = Bundle.main.path(forResource: "demo", ofType: "json") else {
+            DLog("Failed to find the demo.json file")
+            return nil
         }
 
-        return nil
+        do {
+            guard let data = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8.rawValue).data(using: String.Encoding.utf8.rawValue) else {
+                DLog("Failed to load the contents of the demo.json file")
+                return nil
+            }
+
+            return GameBoard.fromData(data)
+        } catch {
+            DLog("Exception trying to read demo.json")
+            recordSystemError(error)
+            return nil
+        }
     }
 }

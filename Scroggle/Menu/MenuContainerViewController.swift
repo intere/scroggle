@@ -20,14 +20,14 @@ class MenuContainerViewController: UIViewController {
 
     /// The model that tells us how to build out the menus.  Setting this
     /// instance will propagate the changes out to the MenuTableViewController.
-    var menuBuilder: MenuBuilding? {
+    weak var menuBuilder: MenuBuilding? {
         didSet {
             reloadMenu()
         }
     }
 
     /// A reference to the embedded MenuTableViewController
-    var menuTableVC: MenuTableViewController? {
+    weak var menuTableVC: MenuTableViewController? {
         didSet {
             reloadMenu()
         }

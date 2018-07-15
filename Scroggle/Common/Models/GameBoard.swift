@@ -47,28 +47,28 @@ extension GameBoard {
     /// Get the raw board as an array.
     ///
     /// - Returns: The Board as a raw array of die objects.
-    func getRawData() -> [Die] {
+    var rawData: [Die] {
         return board
     }
 
     /// Is the board a 4x4?.
     ///
     /// - Returns: True if the board is 4x4, false otherwise.
-    func is4x4Board() -> Bool {
+    var is4x4Board: Bool {
         return board.count == 16
     }
 
     /// Is the board a 5x5?.
     ///
     /// - Returns: True if the board is a 5x5, false otherwise.
-    func is5x5Board() -> Bool {
+    var is5x5Board: Bool {
         return board.count == 25
     }
 
     /// Is the board a 6x6?.
     ///
     /// - Returns: True if the board is a 6x6, false otherwise.
-    func is6x6Board() -> Bool {
+    var is6x6Board: Bool {
         return board.count == 36
     }
 
@@ -124,39 +124,50 @@ extension GameBoard {
 
 extension GameBoard {
 
-    func toArray() -> [AnyObject] {
-        var array = [AnyObject]()
+    /// Converts the board data into an array for serialization
+    var toArray: [Any] {
+        var array = [Any]()
 
         for die in board {
-            array.append(die.toMap() as AnyObject)
+            array.append(die.toMap())
         }
 
         return array
     }
 
-    static func fromArray(_ array: [AnyObject]) -> GameBoard {
+    /// Creates a GameBoard from the provided array
+    ///
+    /// - Parameter array: A serialized array that originated (or is at least compatible) from the toArray here.
+    /// - Returns: A GameBoard with the deserialized configuration
+    static func fromArray(_ array: [Any]) -> GameBoard {
         let board = GameBoard(dice: [])
         for dieMap in array {
-            if let map = dieMap as? [String:AnyObject], let die = Die.fromMap(map) {
-                board.board.append(die)
+            guard let map = dieMap as? [String: Any], let die = Die.fromMap(map) else {
+                continue
             }
+            board.board.append(die)
         }
         return board
     }
 
-    func toJson() -> String? {
+    /// Converts this Board into a JSON String for you
+    var toJson: String? {
         do {
-            let data = try JSONSerialization.data(withJSONObject: toArray(), options: .prettyPrinted)
+            let data = try JSONSerialization.data(withJSONObject: toArray, options: .prettyPrinted)
             var buffer = [UInt8](repeating: 0, count: data.count)
             (data as NSData).getBytes(&buffer, length:data.count)
             return String(bytes: buffer, encoding: String.Encoding.utf8)
-        } catch let error as NSError {
+        } catch {
             DLog("Error trying to convert GameBoard to JSON: \(error.localizedDescription)")
             recordFatalError(error)
         }
         return nil
     }
 
+    /// Deserializes a GameBoard from the provided JSON String.
+    ///
+    /// - Parameter json: The JSON to deserialize into a GameBoard
+    /// - Returns: A GameBoard if one could be deserialized from the provided JSON.
     static func fromJson(_ json: String) -> GameBoard? {
 
         guard let data = json.data(using: String.Encoding.utf8) else {
@@ -166,6 +177,10 @@ extension GameBoard {
 
     }
 
+    /// Deserializes a GameBoard from the provided data.
+    ///
+    /// - Parameter data: The JSON Data to deserialize into a GameBoard
+    /// - Returns: A GameBoard if it could be deserialized into a GameBoard, nil if not.
     static func fromData(_ data: Data) -> GameBoard? {
         do {
             if let array = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [AnyObject] {

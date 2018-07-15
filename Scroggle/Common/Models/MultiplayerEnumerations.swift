@@ -12,17 +12,17 @@ import Foundation
 // The State of a Multiplayer Game
 //
 enum GameState: Int {
-    case kGameStateWaitingForMatch = 0           // Waiting for a match to begin
-    case kGameStateWaitingForRandomNumber        // Waiting for a random number (for game start)
-    case kGameStateWaitingForStart               // Waiting to start the game
-    case kGameStateActive                        // Game is in progress
-    case kGameStateDone                          // Game Over
-    case kGameStatePaused                        // Non-Multiplayer Games can be Paused
-    case kGameStateTerminated                    // Game was likely interrupted and terminated
+    case waitingForMatch = 0           // Waiting for a match to begin
+    case waitingForRandomNumber        // Waiting for a random number (for game start)
+    case waitingForStart               // Waiting to start the game
+    case active                        // Game is in progress
+    case done                          // Game Over
+    case paused                        // Non-Multiplayer Games can be Paused
+    case terminated                    // Game was likely interrupted and terminated
 
     func allowsUserInteraction() -> Bool {
         switch self {
-        case .kGameStateActive:
+        case .active:
             return true
         default:
             return false
@@ -34,21 +34,21 @@ enum GameState: Int {
 // The Type of message (for network games)
 //
 enum MessageType: Int {
-    case kMessageTypeRandomNumber = 0
-    case kMessageTypeGameBegin
-    case kMessageTypeScoreUpdate
-    case kMessageTypeGameOver
+    case randomNumber = 0
+    case gameBegin
+    case scoreUpdate
+    case gameOver
 }
 
 //
 // The result of a game
 //
 enum GameResult: Int {
-    case kGameResultYouWon = 0              // You Won
-    case kGameResultYouLost                 // You Lost
-    case kGameResultYouTied                 // Tied Game
-    case kGameResultOpponentDisconnected    // The Opponent Disconnected
-    case kGameResultUnknown                 // Some Unknown error occurred that prevented the game from terminating normally
+    case youWon = 0              // You Won
+    case youLost                 // You Lost
+    case youTied                 // Tied Game
+    case opponentDisconnected    // The Opponent Disconnected
+    case unknown                 // Some Unknown error occurred that prevented the game from terminating normally
 }
 
 struct Message {
