@@ -905,28 +905,35 @@
     },
     {
       "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/GamePlayViewController.swift",
-      "line": 31,
+      "line": 40,
       "symbol": "GamePlayViewController.viewDidLoad()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/GamePlayViewController.swift",
-      "line": 56,
+      "line": 63,
+      "symbol": "GamePlayViewController.prepare(for:sender:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/GamePlayViewController.swift",
+      "line": 81,
       "symbol": "GamePlayViewController.gameOverEvent()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/GamePlayViewController.swift",
-      "line": 62,
+      "line": 87,
       "symbol": "GamePlayViewController.scoreUpdated()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/einternicola/Code/Personal/scroggle/Scroggle/Gameplay/GamePlayViewController.swift",
-      "line": 71,
+      "line": 96,
       "symbol": "GamePlayViewController.updateTimer()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
