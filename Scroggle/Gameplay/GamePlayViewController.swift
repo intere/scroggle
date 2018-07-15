@@ -23,6 +23,15 @@ class GamePlayViewController: UIViewController {
     /// The SpriteKit View which is the game play (game board).
     @IBOutlet weak var skView: SKView!
 
+    /// The Game Over View container
+    @IBOutlet weak var gameOverView: UIView!
+
+    /// Computed property: The "Game Over" UILabel
+    var gameOverLabel: UILabel? {
+        return gameOverView.subviews.first?.subviews.filter({ $0 is UILabel }).first as? UILabel
+    }
+
+
     /// The amount of time left in the game
     var seconds = GameContextProvider.instance.currentGame?.game.timeType.rawValue ?? 15
     /// The Timer object that's used to count down the time in the game
@@ -45,6 +54,22 @@ class GamePlayViewController: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self,
                                      selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
+}
+
+// MARK: - Navigation
+
+extension GamePlayViewController {
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "GameOverSegue" && UIDevice.current.isiPhone5 {
+            // A bit of a hack, but the Game Over Label isn't here yet, so waiting until the next
+            // time the UI Thread is freed up seems to work just fine.
+            DispatchQueue.main.async { [weak self] in
+                self?.gameOverLabel?.font = UIFont.Scroggle.defaultFont(ofSize: 70)
+            }
+        }
+    }
+
 }
 
 // MARK: - Implementation
