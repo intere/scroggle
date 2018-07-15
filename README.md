@@ -26,7 +26,9 @@ Scroggle is a word game that's based on Boggle, Scrabble and some other popular 
 - [ ] Login: Game Center
 - [ ] Leaderboards
 - [ ] Help menu
-- [ ] Introduction animation
+- [ ] Game Introduction Animation
+- [ ] Board rotation
+- [ ] Sounds
 
 ## TODO (Roadmap)
 - [ ] Realtime multiplayer
@@ -34,16 +36,3 @@ Scroggle is a word game that's based on Boggle, Scrabble and some other popular 
 - [ ] Challenge friends (Messages Integration)
 
 
-## TODO (feature/NewScenes)
-- [ ] Board rotation
-- [ ] Sounds
-- [x] Nuke the GameTimer object and just have the Game UI manage it
-    - [ ] Hook up some sort of noise cue to tell the user that time is running out
-- [x] Hook up the score
-    - [x] Update scoring
-- [x] Hook up the Word List
-- [x] Implement a "Game Over" mechanism
-- [x] Hook up game loop
-- [x] Fix memory leaks
-- [x] Implement "Play Again"
-- [x] Implement "Replay"
