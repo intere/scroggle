@@ -28,7 +28,6 @@ class MenuViewController: UIViewController {
 
 }
 
-
 // MARK: - Implementation
 
 private extension MenuViewController {

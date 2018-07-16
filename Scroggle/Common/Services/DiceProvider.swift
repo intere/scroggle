@@ -76,11 +76,13 @@ extension DiceProvider {
             return DLog("Couldn't find dice.json")
         }
         do {
-            guard let data = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8.rawValue).data(using: String.Encoding.utf8.rawValue) else {
+            let json = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8.rawValue)
+            guard let data = json.data(using: String.Encoding.utf8.rawValue) else {
                 return DLog("Failed to convert contents of dice.json to NSData")
             }
 
-            guard let dict = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as? [String : [[String]]] else {
+            guard let dict = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                as? [String : [[String]]] else {
                 return DLog("The dice.json came back in an unknown structure")
             }
 
@@ -104,7 +106,8 @@ extension DiceProvider {
         }
 
         do {
-            guard let data = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8.rawValue).data(using: String.Encoding.utf8.rawValue) else {
+            let json = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8.rawValue)
+            guard let data = json.data(using: String.Encoding.utf8.rawValue) else {
                 DLog("Failed to load the contents of the demo.json file")
                 return nil
             }

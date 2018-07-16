@@ -7,9 +7,7 @@
 //
 
 import Foundation
-
 import SceneKit
-
 
 class IntroductionScene: SCNScene {
 
@@ -45,11 +43,10 @@ class IntroductionScene: SCNScene {
 
 extension IntroductionScene {
 
-    /**
-     Factory creation method.  If you want a scene that is for demos, pass true for the useDemoCamera property.
-     - Parameter useDemoCamera: Whether or not to use the Demo Camera.
-     - Returns: A GameScene object if it could be created.
-     */
+    /// Factory creation method.  If you want a scene that is for demos, pass true for the useDemoCamera property.
+    ///
+    /// - Parameter useDemoCamera: Whether or not to use the Demo Camera.
+    /// - Returns: A GameScene object if it could be created.
     static func loadGameScene(useDemoCamera: Bool = false) -> IntroductionScene? {
         guard let originalScene = SCNScene(named: "art.scnassets/GameView.scn") else {
             DLog("Failed to load GameView.scn")
@@ -75,10 +72,9 @@ extension IntroductionScene {
         return gameScene
     }
 
-    /**
-     Sets the camera in the scene.
-     - Parameter cameraNode: An SCNNode with a camera object.
-     */
+    /// Sets the camera in the scene.
+    ///
+    /// - Parameter cameraNode: An SCNNode with a camera object.
     func setCamera(cameraNode: SCNNode?) {
         guard let cameraNode = cameraNode, cameraNode.camera != nil else {
             assert(false, "There is no camera in the provided node")
@@ -87,31 +83,28 @@ extension IntroductionScene {
         rootNode.addChildNode(cameraNode)
     }
 
-    /**
-     Loads the board (assumes the board exists).
-     */
+    /// Loads the board (assumes the board exists).
     func loadBoard() {
         guard let board = board else {
             assert(false, "There is no board")
             return
         }
 
-        for i in 0...board.board.count-1 {
-            createDie(i)
+        for index in 0...board.board.count-1 {
+            createDie(index)
         }
     }
 
-    /**
-     What is the current word that's selected on the board?.
-     - Returns: The current word selection made by the user.
-     */
+    /// What is the current word that's selected on the board?.
+    ///
+    /// - Returns: The current word selection made by the user.
     func getCurrentWord() -> String {
         var result = ""
         for die in selection {
             guard let roll = die.die?.roll else {
                 continue
             }
-            result = result + roll
+            result += roll
         }
         return result
     }
@@ -122,9 +115,7 @@ extension IntroductionScene {
 
 extension IntroductionScene {
 
-    /**
-     Performs the intro animation indefinitely.
-     */
+    /// Performs the intro animation indefinitely.
     func introAnimation() {
         for die in dice {
             die.introAnimateDice()
@@ -161,13 +152,15 @@ extension IntroductionScene {
     ///
     /// - returns: True if everything that's needed is available, False otherwise
     func readyToStart() -> Bool {
-        guard let _ = gameContext else {
-            recordSystemError(ApplicationError.sceneError(message: "We're checking to see if we're ready to start, but there is no game context"))
+        guard gameContext != nil else {
+            let message = "We're checking to see if we're ready to start, but there is no game context"
+            recordSystemError(ApplicationError.sceneError(message: message))
             assert(false, "No Game Context")
             return false
         }
-        guard let _ = gameContext.game.board else {
-            recordSystemError(ApplicationError.sceneError(message: "We're checking to see if we're ready to start, but there is no game board"))
+        guard gameContext.game.board != nil else {
+            let message = "We're checking to see if we're ready to start, but there is no game board"
+            recordSystemError(ApplicationError.sceneError(message: message))
             assert(false, "No Game Board")
             return false
         }
@@ -175,9 +168,7 @@ extension IntroductionScene {
         return true
     }
 
-    /**
-     This method will show the currently selected word and then animate the text flying off the screen.
-     */
+    /// This method will show the currently selected word and then animate the text flying off the screen.
     func showGuessedWord() {
         guard let word = selectedWord.geometry as? SCNText else {
             return
@@ -218,9 +209,7 @@ extension IntroductionScene {
         }
     }
 
-    /**
-     Clears out the current selection.
-     */
+    /// Clears out the current selection.
     func clearSelection() {
         cleanOldShapes()
         selection.removeAll()
@@ -242,11 +231,12 @@ extension IntroductionScene {
         }
     }
 
-    /**
-     Adds a selection between the provided dice.  This function will create a new SCNNode which is the cylinder object that represents the selection.
-     - Parameter fromDie: The First die that the selection starts from.
-     - Parameter toDie: The next die that the selection goes to.
-     */
+    /// Adds a selection between the provided dice.  This function will create a
+    /// new SCNNode which is the cylinder object that represents the selection.
+    ///
+    /// - Parameters:
+    ///   - fromDie: The First die that the selection starts from.
+    ///   - toDie: The next die that the selection goes to.
     func createSelection(_ fromDie: Die3D, toDie: Die3D) {
         guard !selectionLocked else {
             return
@@ -275,10 +265,9 @@ extension IntroductionScene {
         selectionPath.append(node)
     }
 
-    /**
-     Removes the selection.  It will do it instantly (no animation) if you set animated to false.
-     - Parameter animated: Whether or not you want a nice fade out animation to accompany the removal of the shapes.
-     */
+    /// Removes the selection.  It will do it instantly (no animation) if you set animated to false.
+    ///
+    /// - Parameter animated: Whether or not you want a nice fade out animation to accompany the removal of the shapes.
     func cleanOldShapes(_ animated: Bool = true) {
         guard animated else {
             for path in selectionPath {
@@ -302,32 +291,34 @@ extension IntroductionScene {
         }
     }
 
-    /**
-     This method figures out what dice to render the individual selection segments from/to and then delegates this off to the 3D Scene.
-     */
+    /// This method figures out what dice to render the individual selection segments
+    /// from/to and then delegates this off to the 3D Scene.
     func renderSelection() {
-        if selection.count > 1 {
-            for i in 1...selection.count-1 {
-                let fromDie = selection[i-1]
-                let toDie = selection[i]
-                createSelection(fromDie, toDie: toDie)
-            }
+        guard selection.count > 1 else {
+            return
+        }
+        for index in 1...selection.count-1 {
+            let fromDie = selection[index-1]
+            let toDie = selection[index]
+            createSelection(fromDie, toDie: toDie)
         }
     }
 
-    /**
-     Given the dice positions you've provided, this will give you the angle to rotate the cylinder.  Note that the points are array index points, not the exact points of the dice themselves.  (e.g. 0,0; 3,3; 2,1; ...)
-     - Parameter point1: The starting point for the cylinder.
-     - Parameter point2: The (approximate) ending point for the cylinder.
-     - Returns: The Angle to rotate the cylinder based on the starting and ending points.
-     */
+    /// Given the dice positions you've provided, this will give you the angle to rotate the cylinder.
+    /// Note that the points are array index points, not the exact points of the dice themselves.
+    /// (e.g. 0,0; 3,3; 2,1; ...)
+    ///
+    /// - Parameters:
+    ///   - point1: The starting point for the cylinder.
+    ///   - point2: The (approximate) ending point for the cylinder.
+    /// - Returns: The Angle to rotate the cylinder based on the starting and ending points.
     func mapMovesToAngle(_ point1: CGPoint, point2: CGPoint) -> Float {
         let deltaX = Int(point1.x - point2.x)
         let deltaY = Int(point1.y - point2.y)
         var angle: Float = 0
 
         // Not very clever, is it?
-        if deltaX == 0  {
+        if deltaX == 0 {
             if deltaY == 1 {
                 angle = 270
             } else if deltaY == -1 {
@@ -356,7 +347,8 @@ extension IntroductionScene {
 
     func configure() {
         guard let chalkboard = rootNode.childNode(withName: "Chalkboard", recursively: false) else {
-            recordSystemError(ApplicationError.sceneError(message: "Couldn't get the Chalkboard node, the scene cannot be created"))
+            let message = "Couldn't get the Chalkboard node, the scene cannot be created"
+            recordSystemError(ApplicationError.sceneError(message: message))
             return
         }
         let material = SCNMaterial()
@@ -364,19 +356,23 @@ extension IntroductionScene {
         chalkboard.geometry?.materials = [material]
 
         guard let scoreTextNode = rootNode.childNode(withName: "score", recursively: false)?.geometry as? SCNText else {
-            recordSystemError(ApplicationError.sceneError(message: "Couldn't get the Score node, the scene cannot be created"))
+            let message = "Couldn't get the Score node, the scene cannot be created"
+            recordSystemError(ApplicationError.sceneError(message: message))
             return
         }
         guard let timerTextNode = rootNode.childNode(withName: "timer", recursively: false)?.geometry as? SCNText else {
-            recordSystemError(ApplicationError.sceneError(message: "Couldn't get the Timer node, the scene cannot be created"))
+            let message = "Couldn't get the Timer node, the scene cannot be created"
+            recordSystemError(ApplicationError.sceneError(message: message))
             return
         }
         guard let selectedWordNode = rootNode.childNode(withName: "selectedWord", recursively: false) else {
-            recordSystemError(ApplicationError.sceneError(message: "Couldn't get the SelectedWord Node, the scene cannot be created"))
+            let message = "Couldn't get the SelectedWord Node, the scene cannot be created"
+            recordSystemError(ApplicationError.sceneError(message: message))
             return
         }
         guard let diceBoardNode = rootNode.childNode(withName: "DiceBoard", recursively: false) else {
-            recordSystemError(ApplicationError.sceneError(message: "Couldn't get the DiceBoard Node, the scene cannot be created"))
+            let message = "Couldn't get the DiceBoard Node, the scene cannot be created"
+            recordSystemError(ApplicationError.sceneError(message: message))
             return
         }
         scoreNode = scoreTextNode
@@ -385,11 +381,9 @@ extension IntroductionScene {
         diceBoard = diceBoardNode
     }
 
-    /**
-     Renders the Dice (in the appropriate position, based on their index)..
-     - Parameter index: The Index of the die you want to create.
-     - Returns: The Die3D that was created.
-     */
+    /// Renders the Dice (in the appropriate position, based on their index)..
+    ///
+    /// - Parameter index: The Index of the die you want to create.
     func createDie(_ index: Int) {
         guard let board = board else {
             assert(false, "There is no board")
@@ -406,15 +400,16 @@ extension IntroductionScene {
         let row = Float(index / 4)
         let column = Float(index % 4)
 
+        //swiftlint:disable identifier_name
         let x: Float = -6.75 + column * factor
         let y: Float = 3
         let z: Float = -6.75 + row * factor
+        //swiftlint:enable identifier_name
 
         let die = Die3D(size: diceSize, die: dieModel)
         die.eulerAngles = SCNVector3Make(Float(Double.pi * -90.0), 0, 0)
 
         die.position = SCNVector3Make(x, y, z)
-        //        DLog("die position (\(index)): \(die.position)")
         die.arrayIndex = CGPoint(x: floor(CGFloat(index / 4)), y: CGFloat(index%4))
         die.index = index
         dice.append(die)

@@ -32,7 +32,7 @@ class Game: NSObject {
 
     /// Does this game yet have a board?
     var hasBoard = false
-    
+
     /// The length of time that the game is for
     var timeType = GameTimeType.default
 }

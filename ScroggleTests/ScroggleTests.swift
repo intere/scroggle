@@ -18,5 +18,5 @@ class ScroggleTests: XCTestCase {
 
         print("Screen Size: \(screen.bounds)")
     }
-    
+
 }

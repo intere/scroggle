@@ -31,7 +31,6 @@ class GamePlayViewController: UIViewController {
         return gameOverView.subviews.first?.subviews.filter({ $0 is UILabel }).first as? UILabel
     }
 
-
     /// The amount of time left in the game
     var seconds = GameContextProvider.instance.currentGame?.game.timeType.rawValue ?? 15
     /// The Timer object that's used to count down the time in the game
@@ -48,7 +47,6 @@ class GamePlayViewController: UIViewController {
 
         Notification.Scroggle.GameEvent.scoreUpdated.addObserver(self, selector: #selector(scoreUpdated))
         Notification.Scroggle.GameEvent.gameEnded.addObserver(self, selector: #selector(gameOverEvent))
-
 
         // TODO: Delay this after an "introduction animation":
         timer = Timer.scheduledTimer(timeInterval: 1, target: self,

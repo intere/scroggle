@@ -27,4 +27,3 @@ class ButtonCellInfo {
         self.action = action
     }
 }
-

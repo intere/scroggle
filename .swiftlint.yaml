@@ -1,0 +1,22 @@
+included:
+  - ../Scroggle
+
+excluded:
+  - Pods
+
+disabled_rules:
+  - todo
+  - vertical_whitespace
+
+function_body_length:
+    - 80
+
+line_length:
+    - 120
+
+file_length:
+  warning: 500
+
+maxEmptyLines: 3
+
+reporter: "xcode"

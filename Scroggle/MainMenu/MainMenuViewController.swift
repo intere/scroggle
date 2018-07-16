@@ -28,7 +28,10 @@ class MainMenuViewController: UIViewController {
     ///
     /// - Returns: A new instance of the `MainMenuViewController`.
     class func loadFromStoryboard() -> MainMenuViewController {
-        return UIStoryboard(name: "MainMenu", bundle: nil).instantiateViewController(withIdentifier: "MainMenuViewController") as! MainMenuViewController
+        return UIStoryboard(name: "MainMenu", bundle: nil)
+            .instantiateViewController(withIdentifier: "MainMenuViewController")
+            as! MainMenuViewController
+        //swiftlint:disable:previous force_cast
     }
 
 }
@@ -45,7 +48,8 @@ extension MainMenuViewController: MenuBuilding {
             ButtonCellInfo(title: "New Game", action: {
                 SoundProvider.instance.playMenuSelectionSound()
                 DLog("Clicked New Game")
-                self.navigationController?.pushViewController(TimeMenuViewController.loadFromStoryboard(), animated: true)
+                self.navigationController?.pushViewController(TimeMenuViewController.loadFromStoryboard(),
+                                                              animated: true)
             }),
             // TODO: Toggle between "Login: GameCenter" and "View High Scores"
             ButtonCellInfo(title: "Login: GameCenter", action: {
@@ -56,7 +60,6 @@ extension MainMenuViewController: MenuBuilding {
     }
 
 }
-
 
 // MARK: - Navigation
 

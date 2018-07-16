@@ -32,13 +32,13 @@ extension GameBoard {
         let size = Int(sqrt(Double(board.count)))
         var result = ""
 
-        for i in 0..<board.count {
-            if i % size == 0 {
+        for index in 0..<board.count {
+            if index % size == 0 {
                 result += "\n"
             } else {
                 result += " "
             }
-            result += board[i].roll
+            result += board[index].roll
         }
 
         return result

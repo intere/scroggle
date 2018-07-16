@@ -9,7 +9,7 @@
 @testable import Scroggle
 import XCTest
 
-class SoundProviderTest: XCTestCase {    
+class SoundProviderTest: XCTestCase {
 
     func testDiceRollSoundExists() {
         XCTAssertNotNil(SoundProvider.Constants.diceRollSound)

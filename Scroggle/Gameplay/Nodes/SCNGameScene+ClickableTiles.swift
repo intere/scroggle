@@ -259,9 +259,9 @@ extension GameSceneController {
     /// - Parameters:
     ///   - from: The index of the shape node to start drawing at
     ///   - to: The index of the shape node to end drawing at
-    private func drawLine(from: Int, to: Int) -> SKShapeNode {
+    private func drawLine(from: Int, to index: Int) -> SKShapeNode {
         let startPoint = CGPoint(x: tiles[from].frame.midX, y: tiles[from].frame.midY)
-        let endPoint = CGPoint(x: tiles[to].frame.midX, y: tiles[to].frame.midY)
+        let endPoint = CGPoint(x: tiles[index].frame.midX, y: tiles[index].frame.midY)
 
         // Create line with SKShapeNode
         let line = SKShapeNode()

@@ -25,7 +25,8 @@ class LexiconProvider {
         let lcaseWord = word.lowercased()
         let range = NSRange(location: 0, length: lcaseWord.utf16.count)
 
-        let misspelledRange = checker.rangeOfMisspelledWord(in: lcaseWord, range: range, startingAt: 0, wrap: false, language: "en")
+        let misspelledRange = checker.rangeOfMisspelledWord(in: lcaseWord, range: range,
+                                                            startingAt: 0, wrap: false, language: "en")
 
         // If the misspelledRange is "Not Found", then the word is valid (there is no misspelled location in the word)
         return misspelledRange.location == NSNotFound

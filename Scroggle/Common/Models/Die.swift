@@ -49,10 +49,8 @@ class Die: CustomDebugStringConvertible {
 extension Die {
 
     func getSelectedSide() -> Int {
-        for i in 0..<sides.count {
-            if sides[i] == roll {
-                return i
-            }
+        for index in 0..<sides.count where sides[index] == roll {
+            return index
         }
         return 0
     }

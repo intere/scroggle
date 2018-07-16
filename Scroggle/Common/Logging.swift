@@ -46,11 +46,9 @@ func recordFatalError(_ error: Error) -> Never {
 
 // MARK: - Errors
 
-let ScroggleErrorDomain = "ScroggleError"
-
+let scroggleErrorDomain = "ScroggleError"
 
 enum ApplicationError: Error {
     case generalError(message: String)
     case sceneError(message: String)
-
 }

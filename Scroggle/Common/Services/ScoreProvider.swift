@@ -15,8 +15,8 @@ class ScoreProvider {
     /// The Instance of this provider
     static let instance = ScoreProvider()
 
-    var letterScores = [String:Int]()
-    var lengthFactors = [Int:Int]()
+    var letterScores = [String: Int]()
+    var lengthFactors = [Int: Int]()
 
     init() {
         loadScoreData()
@@ -43,13 +43,13 @@ extension ScoreProvider {
 
         var score: Int = 0
 
-        for var i in 0..<length {
-            let start = lcaseWord.index(lcaseWord.startIndex, offsetBy: i)
+        for var index in 0..<length {
+            let start = lcaseWord.index(lcaseWord.startIndex, offsetBy: index)
             let end = lcaseWord.index(start, offsetBy: 1)
             let currentChar = String(lcaseWord[start..<end])
             if currentChar == "q" {
                 score += getScoreForLetter("qu")
-                i += 1
+                index += 1
             } else {
                 score += getScoreForLetter(currentChar)
             }
@@ -78,7 +78,6 @@ extension ScoreProvider {
 
 }
 
-
 // MARK: - Helper Methods
 
 private extension ScoreProvider {
@@ -93,7 +92,8 @@ private extension ScoreProvider {
         }
 
         do {
-            guard let jsonModel = try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as? [String: Any] else {
+            guard let jsonModel = try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments)
+                as? [String: Any] else {
                 return DLog("The scores.json file was in an unknown format")
             }
 
@@ -122,4 +122,3 @@ private extension ScoreProvider {
         }
     }
 }
-
