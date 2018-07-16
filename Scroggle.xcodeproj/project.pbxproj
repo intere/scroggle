@@ -673,7 +673,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "runSwiftLint() {\n    if which swiftlint >/dev/null; then\n      swiftlint\n    else\n      echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n    fi\n}\n\nrunSwiftLint\n";
+			shellScript = "runSwiftLint() {\n    if which swiftlint >/dev/null; then\n      swiftlint version\n      swiftlint\n    else\n      echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n    fi\n}\n\nrunSwiftLint\n";
 		};
 		36C0158E1F9BF0830075F3F4 /* Fabric */ = {
 			isa = PBXShellScriptBuildPhase;
