@@ -2,7 +2,8 @@ language: objective-c
 osx_image: xcode9.4
 
 script:
-  - echo "Swiftlint: $(swiftlint version)"
+  - echo "Swiftlint Version:"
+  - swiftlint version
   - bundle exec fastlane test
 
 notifications:
