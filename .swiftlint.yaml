@@ -1,9 +1,9 @@
 included:
   - Scroggle
 
-# excluded:
-#  - Pods
-#  - vendor
+excluded:
+  - Pods
+  - vendor
 
 disabled_rules:
   - todo
