@@ -3,6 +3,7 @@ included:
 
 excluded:
   - Pods
+  - Fastlane.swift
 
 disabled_rules:
   - todo
