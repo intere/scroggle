@@ -2,6 +2,7 @@ language: objective-c
 osx_image: xcode9.4
 
 script:
+  - swiftlint | grep -v warning
   - bundle exec fastlane test
 
 notifications:
