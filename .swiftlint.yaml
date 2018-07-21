@@ -1,9 +1,9 @@
 included:
-  - ../Scroggle
+  - Scroggle
 
-excluded:
-  - Pods
-  - Fastlane.swift
+# excluded:
+#  - Pods
+#  - vendor
 
 disabled_rules:
   - todo
