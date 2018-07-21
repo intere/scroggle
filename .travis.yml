@@ -4,6 +4,7 @@ osx_image: xcode9.4
 script:
   - echo "Swiftlint Version:"
   - swiftlint version
+  - swiftlint
   - bundle exec fastlane test
 
 notifications:

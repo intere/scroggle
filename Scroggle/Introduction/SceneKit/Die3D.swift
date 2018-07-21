@@ -73,9 +73,12 @@ extension Die3D {
         guard nil == physicsBody else {
             return
         }
+        guard let geometry = geometry else {
+            return
+        }
 
         // Physics Body makes this plummet to the ground.
-        let shape = SCNPhysicsShape(geometry: geometry!, options: [:])
+        let shape = SCNPhysicsShape(geometry: geometry, options: [:])
         let dieBody = SCNPhysicsBody(type: .dynamic, shape: shape)
         physicsBody = dieBody
 
