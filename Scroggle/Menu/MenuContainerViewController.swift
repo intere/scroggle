@@ -58,7 +58,6 @@ class MenuContainerViewController: UIViewController {
 
 }
 
-
 // MARK: - Navigation
 
 extension MenuContainerViewController {

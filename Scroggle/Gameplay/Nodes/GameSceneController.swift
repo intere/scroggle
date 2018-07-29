@@ -92,8 +92,8 @@ extension GameSceneController {
     /// Reads the dice nodes from the scene and stores them in the `dice` array.
     func readDiceReferences() {
         dice.removeAll()
-        for i in 0..<16 {
-            guard let die = gameScene?.rootNode.childNodes.filter({$0.name == "d\(i)"}).first else {
+        for index in 0..<16 {
+            guard let die = gameScene?.rootNode.childNodes.filter({$0.name == "d\(index)"}).first else {
                 continue
             }
             dice.append(die)
@@ -118,12 +118,12 @@ extension GameSceneController {
         guard let diceArray = GameContextProvider.instance.currentGame?.game.board.board else {
             return assertionFailure("Failed to get the dice")
         }
-        for i in 0..<dice.count {
-            guard let box = dice[i].geometry as? SCNBox else {
+        for index in 0..<dice.count {
+            guard let box = dice[index].geometry as? SCNBox else {
                 continue
             }
-            box.materials = diceArray[i].sides.map({self.createMaterialForText(text: $0)})
-            dice[i].eulerAngles = eulerAngle(for: diceArray[i].selectedSide)
+            box.materials = diceArray[index].sides.map({self.createMaterialForText(text: $0)})
+            dice[index].eulerAngles = eulerAngle(for: diceArray[index].selectedSide)
         }
     }
 

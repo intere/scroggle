@@ -72,10 +72,10 @@ extension UIDevice {
         let screenWidth: CGFloat = UIScreen.main.bounds.size.width
 
         if screenHeight < screenWidth {
-            screenHeight = screenWidth;
+            screenHeight = screenWidth
         }
 
-        if screenHeight > 480 && screenHeight < 667  {
+        if screenHeight > 480 && screenHeight < 667 {
             result = "iPhone 5/5s"
         } else if screenHeight > 480 && screenHeight < 736 {
             result = "iPhone 6"

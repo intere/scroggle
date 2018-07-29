@@ -9,7 +9,6 @@
 import Foundation
 import SpriteKit
 
-
 extension TimeInterval {
 
     /// Converts this TimeInterval to a string for you.
@@ -27,7 +26,6 @@ extension TimeInterval {
     }
 
 }
-
 
 extension Int {
 

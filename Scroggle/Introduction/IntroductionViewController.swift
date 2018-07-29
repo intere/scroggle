@@ -47,7 +47,9 @@ class IntroductionViewController: UIViewController {
             scene.introAnimation()
         }
 
-        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(loadMainMenu), userInfo: nil, repeats: false)
+        timer = Timer.scheduledTimer(timeInterval: 10, target: self,
+                                     selector: #selector(loadMainMenu),
+                                     userInfo: nil, repeats: false)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -92,4 +94,3 @@ extension IntroductionViewController {
     }
 
 }
-

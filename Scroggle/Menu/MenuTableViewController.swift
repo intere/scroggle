@@ -62,7 +62,8 @@ extension MenuTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.headerCell) as? MenuHeaderTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.headerCell)
+            as? MenuHeaderTableViewCell else {
             return nil
         }
 

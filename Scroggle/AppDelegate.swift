@@ -10,13 +10,13 @@ import Crashlytics
 import Fabric
 import UIKit
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions
+        launchOptions: [UIApplicationLaunchOptionsKey: Any]? = nil) -> Bool {
 
         #if !DEBUG
         Fabric.with([Crashlytics.self])
@@ -25,6 +25,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-
 }
-

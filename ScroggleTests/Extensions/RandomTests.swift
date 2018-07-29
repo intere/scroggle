@@ -10,7 +10,7 @@
 import XCTest
 
 class RandomTests: XCTestCase {
-    
+
     func testRandomMax() {
         for _ in 0..<100 {
             XCTAssertTrue(10.random <= 10)
@@ -22,5 +22,5 @@ class RandomTests: XCTestCase {
             XCTAssertTrue(10.random >= 0)
         }
     }
-    
+
 }

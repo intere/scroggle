@@ -17,5 +17,5 @@ protocol MenuBuilding: class {
     ///
     /// - Returns: A MenuInfo object that contains the menu options
     func buildMenu() -> MenuInfo?
-    
+
 }

@@ -8,7 +8,6 @@
 
 import SceneKit
 
-
 extension SCNVector3 {
 
     /// Creates a `rotateTo` SCNAction using this SCNVector3 and the provided time interval.

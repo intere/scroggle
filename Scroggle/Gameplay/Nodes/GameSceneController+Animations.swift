@@ -43,7 +43,8 @@ extension GameSceneController {
     ///   - completion: optional block to be executed after the animation is complete.
     func reset(die: SCNNode, position: SCNVector3, angle: SCNVector3, completion: GenericBlock? = nil) {
         let moveAction = SCNAction.move(to: position, duration: AnimationConstants.duration)
-        let rotateAction = SCNAction.rotateTo(x: CGFloat(angle.x), y: CGFloat(angle.y), z: CGFloat(angle.z), duration: AnimationConstants.duration)
+        let rotateAction = SCNAction.rotateTo(x: CGFloat(angle.x), y: CGFloat(angle.y),
+                                              z: CGFloat(angle.z), duration: AnimationConstants.duration)
         die.runAction(SCNAction.group([moveAction, rotateAction]))
     }
 
@@ -70,8 +71,10 @@ extension GameSceneController {
         let randomAngleY = CGFloat(360.random.radians)
         let randomAngleZ = CGFloat(360.random.radians)
 
-        let moveAction = SCNAction.move(to: SCNVector3Make(randomX, randomY, randomZ), duration: AnimationConstants.duration)
-        let rotateAction = SCNAction.rotateTo(x: randomAngleX, y: randomAngleY, z: randomAngleZ, duration: AnimationConstants.duration)
+        let moveAction = SCNAction.move(to: SCNVector3Make(randomX, randomY, randomZ),
+                                        duration: AnimationConstants.duration)
+        let rotateAction = SCNAction.rotateTo(x: randomAngleX, y: randomAngleY, z: randomAngleZ,
+                                              duration: AnimationConstants.duration)
         die.runAction(SCNAction.group([moveAction, rotateAction])) {
             completion?()
         }

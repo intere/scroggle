@@ -17,7 +17,7 @@ class Die3D: SCNNode {
 
     let k2DText: CGFloat = 0.0
     var size: CGFloat = 10.0
-    var die: Die? = nil
+    var die: Die?
     var arrayIndex: CGPoint?
     var index: Int = 0
 
@@ -57,10 +57,10 @@ extension Die3D {
 
         let material = geometry.materials[getSelectedSide()]
 
-        let action1 = SCNAction.run { (node) in
+        let action1 = SCNAction.run { _ in
             material.emission.contents = UIColor.blue
         }
-        let action2 = SCNAction.run { (node) in
+        let action2 = SCNAction.run { _ in
             material.emission.contents = UIColor.black
         }
 
@@ -73,9 +73,12 @@ extension Die3D {
         guard nil == physicsBody else {
             return
         }
+        guard let geometry = geometry else {
+            return
+        }
 
         // Physics Body makes this plummet to the ground.
-        let shape = SCNPhysicsShape(geometry: geometry!, options: [:])
+        let shape = SCNPhysicsShape(geometry: geometry, options: [:])
         let dieBody = SCNPhysicsBody(type: .dynamic, shape: shape)
         physicsBody = dieBody
 
@@ -86,12 +89,12 @@ extension Die3D {
             return
         }
 
-        for i in 0...die.sides.count-1 {
-            guard die.roll == die.sides[i] else {
+        for index in 0...die.sides.count-1 {
+            guard die.roll == die.sides[index] else {
                 continue
             }
 
-            animateRandomlyThenToIndex(duration, index: i)
+            animateRandomlyThenToIndex(duration, index: index)
             return
         }
     }
@@ -109,7 +112,8 @@ extension Die3D {
                 guard let strongSelf = self else {
                     return
                 }
-                strongSelf.randomRotateOriginalHeight(x: strongSelf.position.x, z: strongSelf.position.z, duration: 0.2) {
+                strongSelf.randomRotateOriginalHeight(x: strongSelf.position.x,
+                                                      z: strongSelf.position.z, duration: 0.2) {
                     DispatchQueue.main.async { [weak self] in
                         self?.animateRandomlyThenToIndex(duration - 0.4, index: index)
                     }
@@ -123,7 +127,8 @@ extension Die3D {
             guard let strongSelf = self else {
                 return
             }
-            strongSelf.randomRotateOriginalHeight(x: strongSelf.position.x, z: strongSelf.position.z, duration: duration) {
+            strongSelf.randomRotateOriginalHeight(x: strongSelf.position.x,
+                                                  z: strongSelf.position.z, duration: duration) {
                 DispatchQueue.main.async { [weak self] in
                     self?.introAnimateDice(duration: duration)
                 }
@@ -131,8 +136,10 @@ extension Die3D {
         }
     }
 
-    func randomRotateOriginalHeight(x: Float, z: Float, duration: TimeInterval, completionHandler block: (() -> Swift.Void)? = nil) {
-        let rotation = SCNAction.rotateTo(x: randomRadians(), y: randomRadians(), z: randomRadians(), duration: duration)
+    func randomRotateOriginalHeight(x: Float, z: Float, duration: TimeInterval, completionHandler block: (() -> Void)? = nil) {
+        //swiftlint:disable:previous identifier_name line_length
+        let rotation = SCNAction.rotateTo(x: randomRadians(), y: randomRadians(),
+                                          z: randomRadians(), duration: duration)
         let move = SCNAction.move(to: SCNVector3Make(x, 3, z), duration: duration)
         move.timingMode = .easeIn
 
@@ -142,7 +149,8 @@ extension Die3D {
         }
     }
 
-    func randomRotateRandomHeight(x: Float, z: Float, duration: TimeInterval, completionHandler block: (() -> Swift.Void)? = nil) {
+    func randomRotateRandomHeight(x: Float, z: Float, duration: TimeInterval, completionHandler block: (() -> Void)? = nil) {
+        //swiftlint:disable:previous identifier_name line_length
         let rotate1 = SCNAction.rotateTo(x: randomRadians(), y: randomRadians(), z: randomRadians(), duration: duration)
         let move1 = SCNAction.move(to: SCNVector3Make(x, randomYPosition(), z), duration: duration)
         move1.timingMode = .easeOut
@@ -153,7 +161,8 @@ extension Die3D {
         }
     }
 
-    /// Animates the die to the specified index of the die (this essentially maps the index of the character to a position on the die).
+    /// Animates the die to the specified index of the die (this essentially maps the
+    /// index of the character to a position on the die).
     ///
     /// - Parameters:
     ///   - duration: How long to take to perform the rotation.
@@ -208,8 +217,8 @@ extension Die3D {
 
     func createDie() {
         var materials: [SCNMaterial] = []
-        for i in 0...die!.sides.count-1 {
-            materials.append(createMaterialForText(die!.sides[i]))
+        for index in 0...die!.sides.count-1 {
+            materials.append(createMaterialForText(die!.sides[index]))
         }
 
         let box = SCNBox(width: size, height: size, length: size, chamferRadius: size / 8)
@@ -249,4 +258,3 @@ extension Die3D {
     }
 
 }
-

@@ -16,12 +16,12 @@ class SettingsService {
             #if targetEnvironment(simulator)
                 return true
             #else
-            if let _ = NSClassFromString("XCTest") {
+            if NSClassFromString("XCTest") != nil {
                 return true
             }
             return false
             #endif
         }
     }
-    
+
 }

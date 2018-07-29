@@ -15,7 +15,7 @@ class GameBoard {
     init(dice: [[String]]) {
         board = []
         for sides in dice {
-            board.append(Die(sides:sides))
+            board.append(Die(sides: sides))
         }
     }
 
@@ -32,13 +32,13 @@ extension GameBoard {
         let size = Int(sqrt(Double(board.count)))
         var result = ""
 
-        for i in 0..<board.count {
-            if i % size == 0 {
+        for index in 0..<board.count {
+            if index % size == 0 {
                 result += "\n"
             } else {
                 result += " "
             }
-            result += board[i].roll
+            result += board[index].roll
         }
 
         return result
@@ -155,7 +155,7 @@ extension GameBoard {
         do {
             let data = try JSONSerialization.data(withJSONObject: toArray, options: .prettyPrinted)
             var buffer = [UInt8](repeating: 0, count: data.count)
-            (data as NSData).getBytes(&buffer, length:data.count)
+            (data as NSData).getBytes(&buffer, length: data.count)
             return String(bytes: buffer, encoding: String.Encoding.utf8)
         } catch {
             DLog("Error trying to convert GameBoard to JSON: \(error.localizedDescription)")

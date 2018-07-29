@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 /// This is a reusable cell that is configured via a `GameOverAction`.
 /// The `GameOverAction` is used to configure the title of the button in this
 /// cell and to send out a notification when the user interacts with the button.
@@ -40,4 +39,3 @@ class ActionCell: UITableViewCell {
         action.notify()
     }
 }
-

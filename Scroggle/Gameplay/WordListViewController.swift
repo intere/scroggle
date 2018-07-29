@@ -36,7 +36,10 @@ class WordListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            return isGameOver ? dequeueActionCell(for: tableView, indexPath: indexPath) : dequeWordCell(for: tableView, indexPath: indexPath)
+            guard isGameOver else {
+                return dequeWordCell(for: tableView, indexPath: indexPath)
+            }
+            return dequeueActionCell(for: tableView, indexPath: indexPath)
 
         default:
             return dequeWordCell(for: tableView, indexPath: indexPath)

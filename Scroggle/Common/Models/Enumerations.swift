@@ -27,10 +27,8 @@ enum GameTimeType: Int {
 
     static func fromRawValue(_ rawValue: Int) -> GameTimeType {
 
-        for value in values {
-            if value.rawValue == rawValue {
-                return value
-            }
+        for value in values where value.rawValue == rawValue {
+            return value
         }
 
         return .undefined
@@ -84,13 +82,25 @@ struct Leaderboard {
 
     // MARK: Leaderboard Constants (configured in iTunesConnect)
 
-    static var basicGameVeryShort = Leaderboard(index: 0, key: "Basic.Game.VeryShort", name: "Basic Game (\(Leaderboard.gameLength(.veryShort)) seconds)")
-    static var basicGameShort = Leaderboard(index: 1, key: "Basic.Game.Short", name: "Basic Game (\(Leaderboard.gameLength(.short)) seconds)")
-    static var basicGameDefault = Leaderboard(index: 2, key: "Basic.Game.Default", name: "Basic Game (\(Leaderboard.gameLength(.default)) seconds)")
-    static var basicGameMedium = Leaderboard(index: 3, key: "Basic.Game.Medium", name: "Basic Game (\(Leaderboard.gameLength(.medium)) seconds)")
-    static var basicGameLong = Leaderboard(index: 4, key: "Basic.Game.Long", name: "Basic Game (\(Leaderboard.gameLength(.long)) seconds)")
+    static var basicGameVeryShort = Leaderboard(index: 0,
+                                                key: "Basic.Game.VeryShort",
+                                                name: "Basic Game (\(Leaderboard.gameLength(.veryShort)) seconds)")
+    static var basicGameShort = Leaderboard(index: 1,
+                                            key: "Basic.Game.Short",
+                                            name: "Basic Game (\(Leaderboard.gameLength(.short)) seconds)")
+    static var basicGameDefault = Leaderboard(index: 2,
+                                              key: "Basic.Game.Default",
+                                              name: "Basic Game (\(Leaderboard.gameLength(.default)) seconds)")
+    static var basicGameMedium = Leaderboard(index: 3,
+                                             key: "Basic.Game.Medium",
+                                             name: "Basic Game (\(Leaderboard.gameLength(.medium)) seconds)")
+    static var basicGameLong = Leaderboard(index: 4,
+                                           key: "Basic.Game.Long",
+                                           name: "Basic Game (\(Leaderboard.gameLength(.long)) seconds)")
 
-    static var basicGameLongestWord = Leaderboard(index: 5, key: "basicModeLongestWords", name: "Basic Game (Longest Words)")
+    static var basicGameLongestWord = Leaderboard(index: 5,
+                                                  key: "basicModeLongestWords",
+                                                  name: "Basic Game (Longest Words)")
 
     /// The Leaderboard structs for all of the Basic Game Leaderboards
     static var basicGameLeaderboards = [

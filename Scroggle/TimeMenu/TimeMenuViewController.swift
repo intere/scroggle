@@ -21,8 +21,10 @@ class TimeMenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        Notification.Scroggle.TimeMenuAction.playSameTime.addObserver(self, selector: #selector(replayCurrentGameTime))
-        Notification.Scroggle.TimeMenuAction.replayCurrentBoard.addObserver(self, selector: #selector(replayCurrentBoard))
+        Notification.Scroggle.TimeMenuAction.playSameTime.addObserver(
+            self, selector: #selector(replayCurrentGameTime))
+        Notification.Scroggle.TimeMenuAction.replayCurrentBoard.addObserver(
+            self, selector: #selector(replayCurrentBoard))
     }
 
     /// Gives you an instance of this class that's instantiated via the
@@ -30,7 +32,9 @@ class TimeMenuViewController: UIViewController {
     ///
     /// - Returns: A new instance of the `TimeMenuViewController`
     class func loadFromStoryboard() -> TimeMenuViewController {
-        return UIStoryboard(name: "Time", bundle: nil).instantiateViewController(withIdentifier: "TimeMenuViewController") as! TimeMenuViewController
+        return UIStoryboard(name: "Time", bundle: nil)
+            .instantiateViewController(withIdentifier: "TimeMenuViewController") as! TimeMenuViewController
+        //swiftlint:disable:previous force_cast
     }
 
 }
@@ -62,8 +66,6 @@ extension TimeMenuViewController: MenuBuilding {
         ])
     }
 }
-
-
 
 // MARK: - Navigation
 

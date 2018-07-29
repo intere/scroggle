@@ -8,6 +8,8 @@
 
 import Foundation
 
+// swiftlint:disable nesting
+
 extension Notification {
 
     /// Various Scroggle Notification groupings
@@ -75,3 +77,5 @@ extension Notification {
     }
 
 }
+
+// swiftlint:enable nesting

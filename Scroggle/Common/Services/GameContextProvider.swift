@@ -30,12 +30,13 @@ class GameContextProvider {
 
 }
 
-// MARK:- Public Interface
+// MARK: - Public Interface
 
 extension GameContextProvider {
 
     @discardableResult
-    /// Creates a Game Context, rolls the dice and sets the current game reference to be the same context we hand you back.
+    /// Creates a Game Context, rolls the dice and sets the current game reference
+    /// to be the same context we hand you back.
     ///
     /// - Parameter timeType: The Game Time Type (how long the game will run).
     /// - Returns: A new GameContext object that we've set to be the current game.
