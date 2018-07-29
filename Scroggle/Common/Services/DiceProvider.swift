@@ -82,7 +82,7 @@ extension DiceProvider {
             }
 
             guard let dict = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                as? [String : [[String]]] else {
+                as? [String: [[String]]] else {
                 return DLog("The dice.json came back in an unknown structure")
             }
 
