@@ -541,8 +541,6 @@
 				36A5F51120FC3E3200CEA0BE /* Swiftlint */,
 				36A77BCC1F8A64AB0057A874 /* Frameworks */,
 				36A77BCD1F8A64AB0057A874 /* Resources */,
-				6D0E0AE15F6141FBD711B65F /* [CP] Embed Pods Frameworks */,
-				A82A6854A97EB952BEEE4ED7 /* [CP] Copy Pods Resources */,
 				36C0158E1F9BF0830075F3F4 /* Fabric */,
 			);
 			buildRules = (
@@ -562,8 +560,6 @@
 				36A77BE11F8A64AB0057A874 /* Sources */,
 				36A77BE21F8A64AB0057A874 /* Frameworks */,
 				36A77BE31F8A64AB0057A874 /* Resources */,
-				7FF0D40C8F22329F8CA4DA53 /* [CP] Embed Pods Frameworks */,
-				9BD0844BB8196B9C57A19F53 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -703,21 +699,6 @@
 			shellPath = /bin/sh;
 			shellScript = "// Adapted from https://littlebitesofcocoa.com/207-annotating-swift-with-marks-todo-s-and-fixme-s\nKEYWORDS=\"TODO|FIXME|\\?\\?\\?:|\\!\\!\\!:\"\nfind \"${SRCROOT}/Scroggle\" -name '*.swift' -print0 | \\\nxargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | \\\nperl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"\n";
 		};
-		6D0E0AE15F6141FBD711B65F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Scroggle/Pods-Scroggle-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		76BD573C80928A6701C3085E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -734,51 +715,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7FF0D40C8F22329F8CA4DA53 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScroggleTests/Pods-ScroggleTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9BD0844BB8196B9C57A19F53 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScroggleTests/Pods-ScroggleTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A82A6854A97EB952BEEE4ED7 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Scroggle/Pods-Scroggle-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CD66309355E9F2602129E6E2 /* [CP] Check Pods Manifest.lock */ = {
