@@ -119,16 +119,17 @@ extension GameScene {
     ///
     /// - Parameter point: The center point of the circle
     func showTouch(at point: CGPoint) {
-        let size: CGFloat = 40
-        let rect = CGRect(origin: CGPoint(x: point.x - size/2, y: point.y - size/2),
-                          size: CGSize(width: size, height: size))
-        let circle = SKShapeNode(ellipseIn: rect)
-        circle.fillColor = UIColor.blue.withAlphaComponent(0.3)
-        circle.strokeColor = circle.fillColor
-
-        addChild(circle)
-        circle.run(SKAction.fadeOut(withDuration: 0.3)) {
-            circle.removeFromParent()
-        }
+//        let size: CGFloat = 40
+//        let rect = CGRect(origin: CGPoint(x: point.x - size/2, y: point.y - size/2),
+//                          size: CGSize(width: size, height: size))
+//        let circle = SKShapeNode(ellipseIn: rect)
+//        circle.fillColor = UIColor.blue.withAlphaComponent(0.3)
+//        circle.strokeColor = circle.fillColor
+//        circle.zPosition = 140
+//
+//        addChild(circle)
+//        circle.run(SKAction.fadeOut(withDuration: 0.3)) {
+//            circle.removeFromParent()
+//        }
     }
 }
