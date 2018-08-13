@@ -61,6 +61,7 @@ extension GameSceneController {
     /// Bootstraps the scene and delegates off to other helper functions.
     func bootstrapScene() {
         let sceneNode = SK3DNode(viewportSize: skView.frame.size)
+        sceneNode.zPosition = -1
 
         guard let trayScene = SCNScene(named: "art.scnassets/DiceTray.scn") else {
             return assertionFailure("Failed to create the dice tray scene")

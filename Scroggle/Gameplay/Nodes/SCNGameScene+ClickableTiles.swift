@@ -150,9 +150,9 @@ extension GameSceneController {
 //                print("column \(column), row \(row), x: \(xPosition), y: \(yPosition)")
                 square.position = CGPoint(x: xPosition, y: yPosition)
                 square.zPosition = 100
-                scene.addChild(square)
-                rowNodes.append(square)
                 square.name = "tile_\(column)_\(row)"
+                rowNodes.append(square)
+                scene.addChild(square)
 
                 // We have to reverse the order of this row so it's
                 // in the same order as the dice
@@ -242,7 +242,9 @@ extension GameSceneController {
 
         print("Selections: \(selection)")
 
-        let line = drawLine(from: selection[selection.count-1], to: selection[selection.count-2], name: "sel_\(selection.count)")
+        guard let line = drawLine(from: selection[selection.count-1], to: selection[selection.count-2], name: "sel_\(selection.count)") else {
+            return
+        }
 
         selectionPath.append(line)
     }
@@ -271,27 +273,34 @@ extension GameSceneController {
     /// - Parameters:
     ///   - from: The index of the shape node to start drawing at
     ///   - to: The index of the shape node to end drawing at
-    private func drawLine(from: Int, to index: Int, name: String) -> SKShapeNode {
+    private func drawLine(from: Int, to index: Int, name: String) -> SKShapeNode? {
+        guard let scene = skView.scene else {
+            print("ERROR: No scene to draw a line on")
+            return nil
+        }
+
         let startPoint = CGPoint(x: tiles[from].frame.midX, y: tiles[from].frame.midY)
         let endPoint = CGPoint(x: tiles[index].frame.midX, y: tiles[index].frame.midY)
 
-        // Create line with SKShapeNode
-        let line = SKShapeNode()
         let path = UIBezierPath()
+        path.lineWidth = 100
         path.move(to: startPoint)
         path.addLine(to: endPoint)
-        line.path = path.cgPath
-        line.strokeColor = UIColor.green.withAlphaComponent(0.7)
-        line.lineWidth = 5
-        line.zPosition = 150
-        line.lineCap = .round
-        line.name = name
+        path.close()
 
-        self.skView.scene?.addChild(line)
+        let shape = SKShapeNode(path: path.cgPath)
+        shape.fillColor = UIColor.red
+        shape.strokeColor = UIColor.blue
+        shape.lineWidth = 20
+        shape.zPosition = 150
+        shape.lineCap = .round
+        shape.name = name
+
+        scene.addChild(shape)
 
         print("Drawing line from \(startPoint) to \(endPoint)")
 
-        return line
+        return shape
     }
 }
 
