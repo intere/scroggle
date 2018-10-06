@@ -169,7 +169,7 @@ extension Die3D {
     ///   - index: The index (side) of the die to rotate to.
     func animateToIndex(_ duration: CFTimeInterval, index: Int) {
 
-        var eulerVector: SCNVector3? = nil
+        var eulerVector: SCNVector3?
 
         switch index {
         case 0:

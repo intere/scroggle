@@ -32,7 +32,7 @@ class DiceProvider {
     ///
     /// - Returns: A GameBoard that's been shuffled and a side has been randomly selected for each die.
     func rollDice() -> GameBoard? {
-        var board: GameBoard? = nil
+        var board: GameBoard?
         let copyFrom = NSMutableArray(array: fourByFour)
         let shuffled = NSMutableArray()
 

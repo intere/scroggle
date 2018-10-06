@@ -14,7 +14,7 @@ extension UIDevice {
 
     var isWidescreen: Bool {
         let height = UIScreen.main.bounds.size.height
-        return fabs(height - 568) < CGFloat(Double.ulpOfOne)
+        return abs(height - 568) < CGFloat(Double.ulpOfOne)
     }
 
     /// Is this device an iPad?

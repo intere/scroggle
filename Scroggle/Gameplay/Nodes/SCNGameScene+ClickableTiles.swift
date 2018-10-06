@@ -178,7 +178,9 @@ extension GameSceneController {
         let offsetY: CGFloat
 
         var debugDescription: String {
-            return "squareSize: \(squareSize), stepSizeX: \(stepSizeX), stepSizeY: \(stepSizeY), offsetX: \(offsetX), offsetY: \(offsetY)"
+            var result = "squareSize: \(squareSize), stepSizeX: \(stepSizeX), stepSizeY: \(stepSizeY)"
+            result += ", offsetX: \(offsetX), offsetY: \(offsetY)"
+            return result
         }
 
         /// Sets all of the required parameters for the `TileConfiguration`.
@@ -242,7 +244,11 @@ extension GameSceneController {
 
         print("Selections: \(selection)")
 
-        guard let line = drawLine(from: selection[selection.count-1], to: selection[selection.count-2], name: "sel_\(selection.count)") else {
+        let fromNode = selection[selection.count-1]
+        let toNode = selection[selection.count-2]
+        let name = "sel_\(selection.count)"
+
+        guard let line = drawLine(from: fromNode, to: toNode, name: name) else {
             return
         }
 
