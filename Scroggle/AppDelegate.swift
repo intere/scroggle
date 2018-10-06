@@ -20,6 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         #if !DEBUG
         Fabric.with([Crashlytics.self])
+        #else
+        GameContextProvider.Configuration.demoMode = false
+        GameContextProvider.instance.createSinglePlayerGame(.default)
         #endif
 
         return true

@@ -91,20 +91,20 @@ extension GameContainerViewController {
 
     /// Updates the UI to render things correctly
     func updateUserInterface() {
-        if UIDevice.current.isiPhoneX {
-            proportionalWidthConstraint.constant = -80
-            proportionalHeightConstraint.constant = -20
-            centerYConstraint.constant = -10
-            gameController?.camera?.orthographicScale = 5.0
-        } else if UIDevice.current.isiPhone6Plus || UIDevice.current.isiPhone6 || UIDevice.current.isiPhone5 {
-            gameController?.camera?.orthographicScale = 5.6
-        }
-
-        if UIDevice.current.isiPad {
-            gameController?.camera?.orthographicScale = 5
-        } else {
-            backButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-        }
+//        if UIDevice.current.isiPhoneX {
+//            proportionalWidthConstraint.constant = -80
+//            proportionalHeightConstraint.constant = -20
+//            centerYConstraint.constant = -10
+//            gameController?.camera?.orthographicScale = 5.0
+//        } else if UIDevice.current.isiPhone6Plus || UIDevice.current.isiPhone6 || UIDevice.current.isiPhone5 {
+//            gameController?.camera?.orthographicScale = 5.6
+//        }
+//
+//        if UIDevice.current.isiPad {
+//            gameController?.camera?.orthographicScale = 5
+//        } else {
+//            backButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+//        }
     }
 
     /// Updates the game scene after the view loads

@@ -46,7 +46,6 @@
 		365C1AD51F9C0AC6008A84EA /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1AD41F9C0AC6008A84EA /* Enumerations.swift */; };
 		365C1AD81F9C3A77008A84EA /* ScoreProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1AD71F9C3A77008A84EA /* ScoreProvider.swift */; };
 		365C1ADB1F9C3C5B008A84EA /* Extension+Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1ADA1F9C3C5B008A84EA /* Extension+Numbers.swift */; };
-		365C1ADE1F9C3CAE008A84EA /* IntroductionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1ADD1F9C3CAE008A84EA /* IntroductionScene.swift */; };
 		365C1AE01F9C3CDA008A84EA /* Die3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1ADF1F9C3CDA008A84EA /* Die3D.swift */; };
 		365C1AE21F9C3D20008A84EA /* SceneKitMathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1AE11F9C3D20008A84EA /* SceneKitMathExtensions.swift */; };
 		365C1AE41F9C3DA5008A84EA /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1AE31F9C3DA5008A84EA /* Font.swift */; };
@@ -54,7 +53,6 @@
 		365C1AE81F9C3EA6008A84EA /* DiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1AE71F9C3EA6008A84EA /* DiceProvider.swift */; };
 		365C1AEA1F9C3F55008A84EA /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1AE91F9C3F55008A84EA /* SettingsService.swift */; };
 		365C1AEC1F9C401B008A84EA /* SoundProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1AEB1F9C401B008A84EA /* SoundProvider.swift */; };
-		365C1AF01F9C40F8008A84EA /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1AEF1F9C40F8008A84EA /* UIDeviceExtension.swift */; };
 		366784C020CE1666004EBCB9 /* GamePlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366784BF20CE1665004EBCB9 /* GamePlayViewController.swift */; };
 		366784C220CE16E3004EBCB9 /* GamePlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 366784C120CE16E3004EBCB9 /* GamePlay.storyboard */; };
 		366784C420CE1790004EBCB9 /* WordList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 366784C320CE1790004EBCB9 /* WordList.storyboard */; };
@@ -142,7 +140,6 @@
 		365C1AD41F9C0AC6008A84EA /* Enumerations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enumerations.swift; sourceTree = "<group>"; };
 		365C1AD71F9C3A77008A84EA /* ScoreProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreProvider.swift; sourceTree = "<group>"; };
 		365C1ADA1F9C3C5B008A84EA /* Extension+Numbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Numbers.swift"; sourceTree = "<group>"; };
-		365C1ADD1F9C3CAE008A84EA /* IntroductionScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionScene.swift; sourceTree = "<group>"; };
 		365C1ADF1F9C3CDA008A84EA /* Die3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Die3D.swift; sourceTree = "<group>"; };
 		365C1AE11F9C3D20008A84EA /* SceneKitMathExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitMathExtensions.swift; sourceTree = "<group>"; };
 		365C1AE31F9C3DA5008A84EA /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
@@ -150,7 +147,6 @@
 		365C1AE71F9C3EA6008A84EA /* DiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceProvider.swift; sourceTree = "<group>"; };
 		365C1AE91F9C3F55008A84EA /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		365C1AEB1F9C401B008A84EA /* SoundProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundProvider.swift; sourceTree = "<group>"; };
-		365C1AEF1F9C40F8008A84EA /* UIDeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		366784BF20CE1665004EBCB9 /* GamePlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayViewController.swift; sourceTree = "<group>"; };
 		366784C120CE16E3004EBCB9 /* GamePlay.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GamePlay.storyboard; sourceTree = "<group>"; };
 		366784C320CE1790004EBCB9 /* WordList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WordList.storyboard; sourceTree = "<group>"; };
@@ -303,7 +299,6 @@
 				365C1ADA1F9C3C5B008A84EA /* Extension+Numbers.swift */,
 				365C1AE11F9C3D20008A84EA /* SceneKitMathExtensions.swift */,
 				365C1AE31F9C3DA5008A84EA /* Font.swift */,
-				365C1AEF1F9C40F8008A84EA /* UIDeviceExtension.swift */,
 				36D9DE7320C4B88C007F3FC1 /* Random.swift */,
 				368E464920D56B97003C694E /* CGPointExtensions.swift */,
 				36115A9420E7D9F000D49AF0 /* Notification+Scroggle.swift */,
@@ -314,7 +309,6 @@
 		365C1ADC1F9C3C9F008A84EA /* SceneKit */ = {
 			isa = PBXGroup;
 			children = (
-				365C1ADD1F9C3CAE008A84EA /* IntroductionScene.swift */,
 				365C1ADF1F9C3CDA008A84EA /* Die3D.swift */,
 			);
 			path = SceneKit;
@@ -542,6 +536,7 @@
 				36A77BCC1F8A64AB0057A874 /* Frameworks */,
 				36A77BCD1F8A64AB0057A874 /* Resources */,
 				36C0158E1F9BF0830075F3F4 /* Fabric */,
+				C20E2D54D2012E277329676E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -717,6 +712,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C20E2D54D2012E277329676E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Scroggle/Pods-Scroggle-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Cartography/Cartography.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cartography.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Scroggle/Pods-Scroggle-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		CD66309355E9F2602129E6E2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -765,8 +778,6 @@
 				36445E6620DFE007009013DF /* LexiconProvider.swift in Sources */,
 				365C1AD51F9C0AC6008A84EA /* Enumerations.swift in Sources */,
 				36D2A2862079022B00E9C9F7 /* MenuBuilding.swift in Sources */,
-				365C1AF01F9C40F8008A84EA /* UIDeviceExtension.swift in Sources */,
-				365C1ADE1F9C3CAE008A84EA /* IntroductionScene.swift in Sources */,
 				365C1ADB1F9C3C5B008A84EA /* Extension+Numbers.swift in Sources */,
 				36115A9520E7D9F000D49AF0 /* Notification+Scroggle.swift in Sources */,
 				365C1AD81F9C3A77008A84EA /* ScoreProvider.swift in Sources */,

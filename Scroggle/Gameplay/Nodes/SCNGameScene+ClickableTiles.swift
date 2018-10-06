@@ -191,21 +191,21 @@ extension GameSceneController {
 
         /// Gives you the overlay configuration for the current device
         static var currentConfiguration: TileConfiguration {
-            if UIDevice.current.isiPhoneX {
-                return TileConfiguration(size: 45, sizeX: 75, sizeY: 87.5, offsetX: 37.5, offsetY: 42.5)
-            }
-            if UIDevice.current.isiPhone5 {
-                return TileConfiguration(size: 45, sizeX: 77.5, sizeY: 77.5, offsetX: 37.5, offsetY: 37.5)
-            }
-            if UIDevice.current.isiPhone6Plus {
-                return TileConfiguration(size: 45, sizeX: 77.5, sizeY: 77.5, offsetX: 37.5, offsetY: 37.5)
-            }
-            if UIDevice.current.isiPhone6 {
-                return TileConfiguration(size: 45, sizeX: 77.5, sizeY: 77.5, offsetX: 37.5, offsetY: 37.5)
-            }
-            if UIDevice.current.isiPad {
-                return TileConfiguration(size: 45, sizeX: 77.5, sizeY: 87.5, offsetX: 37.5, offsetY: 42.5)
-            }
+//            if UIDevice.current.isiPhoneX {
+//                return TileConfiguration(size: 45, sizeX: 75, sizeY: 87.5, offsetX: 37.5, offsetY: 42.5)
+//            }
+//            if UIDevice.current.isiPhone5 {
+//                return TileConfiguration(size: 45, sizeX: 77.5, sizeY: 77.5, offsetX: 37.5, offsetY: 37.5)
+//            }
+//            if UIDevice.current.isiPhone6Plus {
+//                return TileConfiguration(size: 45, sizeX: 77.5, sizeY: 77.5, offsetX: 37.5, offsetY: 37.5)
+//            }
+//            if UIDevice.current.isiPhone6 {
+//                return TileConfiguration(size: 45, sizeX: 77.5, sizeY: 77.5, offsetX: 37.5, offsetY: 37.5)
+//            }
+//            if UIDevice.current.isiPad {
+//                return TileConfiguration(size: 45, sizeX: 77.5, sizeY: 87.5, offsetX: 37.5, offsetY: 42.5)
+//            }
 
             return TileConfiguration(size: 45, sizeX: 77.5, sizeY: 77.5, offsetX: 37.5, offsetY: 37.5)
         }
