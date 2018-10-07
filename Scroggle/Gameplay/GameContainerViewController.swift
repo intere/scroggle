@@ -6,115 +6,137 @@
 //  Copyright © 2018 Eric Internicola. All rights reserved.
 //
 
-import Foundation
+import Cartography
 import SceneKit
 import SpriteKit
 import UIKit
 
 class GameContainerViewController: UIViewController {
-    @IBOutlet weak var proportionalWidthConstraint: NSLayoutConstraint!
-    @IBOutlet weak var proportionalHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var centerYConstraint: NSLayoutConstraint!
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var backButton: UIButton!
-
-    override var prefersStatusBarHidden: Bool { return true }
-
-    /// The SpriteKit view that the GameScene is to be rendered in
-    var skView: SKView?
-
-    /// The Controller for the GameScene
-    var gameController: GameSceneController?
+    var scoreArea: UIView!
+    var gameArea: UIView!
+    var imageView: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateUserInterface()
-        Notification.Scroggle.GameOverAction.mainMenu.addObserver(self, selector: #selector(goToMainMenu))
-        Notification.Scroggle.GameOverAction.playAgain.addObserver(self, selector: #selector(replayNewGameSameTime))
-        Notification.Scroggle.GameOverAction.replay.addObserver(self, selector: #selector(replayCurrentBoard))
+        print("Bounds: \(view.bounds)")
+        print("Frame: \(view.frame)")
+
+        imageView = UIImageView(image: #imageLiteral(resourceName: "HomeScreen-4"))
+        if isPortrait {
+            imageView.transform = CGAffineTransform(rotationAngle: CGFloat(180.radians))
+        }
+        imageView.contentMode = .scaleToFill
+        view.addSubview(imageView)
+
+        scoreArea = UIView()
+        scoreArea.backgroundColor = UIColor.red.withAlphaComponent(0.4)
+        view.addSubview(scoreArea)
+
+        gameArea = UIView()
+        gameArea.backgroundColor = UIColor.blue.withAlphaComponent(0.4)
+        view.addSubview(gameArea)
+
+        constrain(view, imageView) { view, imageView in
+            imageView.top == view.top
+            imageView.bottom == view.bottom
+            imageView.left == view.left
+            imageView.right == view.right
+        }
+
+        if isPortrait {
+            buildPortrait()
+        } else {
+            buildLandscape()
+        }
     }
 
-    /// Factory instantiation function for this VC, comes from a storyboard.
-    ///
-    /// - Returns: An instance of the GamePlayViewController
-    static func loadFromStoryboard() -> GameContainerViewController {
-        let storybaord = UIStoryboard(name: "GameContainer", bundle: nil)
-        return storybaord.instantiateInitialViewController() as! GameContainerViewController
-        // swiftlint:disable:previous force_cast
+    public static func loadFromStoryboard() -> GameContainerViewController {
+        // swiftlint:disable:next force_cast
+        return UIStoryboard(name: "GameContainer", bundle: nil).instantiateInitialViewController() as! GameContainerViewController
     }
 
-    @IBAction
-    func buttonTODOdeleteMe(_ sender: Any) {
-        Notification.Scroggle.GameEvent.gameEnded.notify()
-        Notification.Scroggle.GameOverAction.mainMenu.notify()
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animate(alongsideTransition: { (context) in
+            switch UIApplication.shared.statusBarOrientation {
+            case .portrait, .portraitUpsideDown:
+                DLog("Animating to Portrait")
+                self.buildPortrait()
+
+            default:
+                DLog("Animating to Landscape")
+                self.buildLandscape()
+            }
+        }) { context in
+            DLog("rotation completed")
+        }
+        super.willTransition(to: newCollection, with: coordinator)
     }
+
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+        switch UIApplication.shared.statusBarOrientation {
+        case .portrait, .portraitUpsideDown:
+            DLog("Animating to Portrait")
+            self.buildPortrait()
+
+        default:
+            DLog("Animating to Landscape")
+            self.buildLandscape()
+        }
+    }
+
 }
 
 // MARK: - Implementation
 
 extension GameContainerViewController {
 
-    @objc
-    func replayCurrentBoard() {
-        navigationController?.popViewController(animated: true)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            Notification.Scroggle.TimeMenuAction.replayCurrentBoard.notify()
+    var isPortrait: Bool {
+        return view.bounds.height > view.bounds.width
+    }
+
+    var isLandscape: Bool {
+        return view.bounds.width > view.bounds.height
+    }
+
+    var isPad: Bool {
+        return UIDevice.current.userInterfaceIdiom == .pad
+    }
+
+    func buildPortrait() {
+        print("Yep, it's portrait mode")
+        scoreArea.removeFromSuperview()
+        gameArea.removeFromSuperview()
+        view.addSubview(scoreArea)
+        view.addSubview(gameArea)
+        constrain(view, scoreArea, gameArea) { view, scoreArea, gameArea in
+            scoreArea.top == view.layoutMarginsGuide.top
+            scoreArea.left == view.layoutMarginsGuide.left
+            scoreArea.right == view.layoutMarginsGuide.right
+            scoreArea.bottom == view.layoutMarginsGuide.centerY
+            gameArea.top == view.layoutMarginsGuide.centerY
+            gameArea.left == view.layoutMarginsGuide.left
+            gameArea.right == view.layoutMarginsGuide.right
+            gameArea.bottom == view.layoutMarginsGuide.bottom
         }
     }
 
-    @objc
-    func replayNewGameSameTime() {
-        navigationController?.popViewController(animated: true)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            Notification.Scroggle.TimeMenuAction.playSameTime.notify()
+    func buildLandscape() {
+        print("Yep, it's landscape mode")
+        scoreArea.removeFromSuperview()
+        gameArea.removeFromSuperview()
+        view.addSubview(scoreArea)
+        view.addSubview(gameArea)
+        constrain(view, scoreArea, gameArea) { view, scoreArea, gameArea in
+            scoreArea.top == view.layoutMarginsGuide.top + 20
+            scoreArea.left == view.layoutMarginsGuide.left
+            scoreArea.right == view.layoutMarginsGuide.centerX
+            scoreArea.bottom == view.layoutMarginsGuide.bottom
+
+            gameArea.top == view.layoutMarginsGuide.top + 20
+            gameArea.left == view.layoutMarginsGuide.centerX
+            gameArea.right == view.layoutMarginsGuide.right
+            gameArea.bottom == view.layoutMarginsGuide.bottom
         }
-    }
-
-    @objc
-    func goToMainMenu() {
-        navigationController?.popToRootViewController(animated: true)
-    }
-
-    /// For getting a reference to the embedded view controller.
-    ///
-    /// - Parameters:
-    ///   - segue: The segue to get the VC reference from.
-    ///   - sender: The source of the event.
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "embedGameView" else {
-            return
-        }
-
-        skView = segue.destination.view.subviews[0] as? SKView
-        loadGameScene()
-    }
-
-    /// Updates the UI to render things correctly
-    func updateUserInterface() {
-//        if UIDevice.current.isiPhoneX {
-//            proportionalWidthConstraint.constant = -80
-//            proportionalHeightConstraint.constant = -20
-//            centerYConstraint.constant = -10
-//            gameController?.camera?.orthographicScale = 5.0
-//        } else if UIDevice.current.isiPhone6Plus || UIDevice.current.isiPhone6 || UIDevice.current.isiPhone5 {
-//            gameController?.camera?.orthographicScale = 5.6
-//        }
-//
-//        if UIDevice.current.isiPad {
-//            gameController?.camera?.orthographicScale = 5
-//        } else {
-//            backButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-//        }
-    }
-
-    /// Updates the game scene after the view loads
-    func loadGameScene() {
-        guard let skView = skView else {
-            return assertionFailure("ERROR: Couldn't get a reference to the SKView")
-        }
-
-        // Bootstrap the GameScene:
-        gameController = GameSceneController(withView: skView)
     }
 
 }
