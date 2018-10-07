@@ -13,16 +13,34 @@ import UIKit
 
 class GameContainerViewController: ChalkboardViewController {
     var scoreArea: UIView!
-    var gameArea: UIView!
+    var gameArea: SKView!
+    var gameController: GameSceneController!
 
     override func viewDidLoad() {
         scoreArea = UIView()
         scoreArea.backgroundColor = UIColor.red.withAlphaComponent(0.4)
 
-        gameArea = UIView()
+        gameArea = SKView()
+        #if DEBUG
         gameArea.backgroundColor = UIColor.blue.withAlphaComponent(0.4)
+        gameArea.layer.borderColor = UIColor.blue.withAlphaComponent(0.4).cgColor
+        gameArea.layer.borderWidth = 2
+        gameArea.showsFPS = true
+        gameArea.showsPhysics = true
+        gameArea.showsDrawCount = true
+        gameArea.showsNodeCount = true
+        gameArea.showsQuadCount = true
+        #endif
 
         super.viewDidLoad()
+
+        debugSetup()
+        gameController = GameSceneController(withView: gameArea)
+    }
+
+    func debugSetup() {
+        GameContextProvider.instance.createSinglePlayerGame(.default)
+        assert(GameContextProvider.instance.currentGame != nil, "No game going yet")
     }
 
     public static func loadFromStoryboard() -> GameContainerViewController {
@@ -51,7 +69,6 @@ class GameContainerViewController: ChalkboardViewController {
         super.buildLandscape()
         contentView.subviews.forEach { $0.removeFromSuperview() }
         [scoreArea, gameArea].forEach { contentView.addSubview($0) }
-
 
         constrain(contentView, scoreArea, gameArea) { view, scoreArea, gameArea in
             scoreArea.top == view.top
