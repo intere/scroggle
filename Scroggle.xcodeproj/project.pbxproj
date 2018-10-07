@@ -79,6 +79,7 @@
 		36D2A2842079021800E9C9F7 /* MenuHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D2A2802079021800E9C9F7 /* MenuHeaderTableViewCell.swift */; };
 		36D2A2862079022B00E9C9F7 /* MenuBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D2A2852079022B00E9C9F7 /* MenuBuilding.swift */; };
 		36D2A2882079058200E9C9F7 /* MenuContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D2A2872079058100E9C9F7 /* MenuContainerViewController.swift */; };
+		36D79D86216A8ED300D7AFDF /* ChalkboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D79D85216A8ED300D7AFDF /* ChalkboardViewController.swift */; };
 		36D9DE7020C481F4007F3FC1 /* GameSceneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D9DE6F20C481F4007F3FC1 /* GameSceneController.swift */; };
 		36D9DE7220C4B017007F3FC1 /* GameSceneController+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D9DE7120C4B017007F3FC1 /* GameSceneController+Animations.swift */; };
 		36D9DE7420C4B88C007F3FC1 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D9DE7320C4B88C007F3FC1 /* Random.swift */; };
@@ -178,6 +179,7 @@
 		36D2A2802079021800E9C9F7 /* MenuHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		36D2A2852079022B00E9C9F7 /* MenuBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBuilding.swift; sourceTree = "<group>"; };
 		36D2A2872079058100E9C9F7 /* MenuContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuContainerViewController.swift; sourceTree = "<group>"; };
+		36D79D85216A8ED300D7AFDF /* ChalkboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChalkboardViewController.swift; sourceTree = "<group>"; };
 		36D9DE6F20C481F4007F3FC1 /* GameSceneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneController.swift; sourceTree = "<group>"; };
 		36D9DE7120C4B017007F3FC1 /* GameSceneController+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameSceneController+Animations.swift"; sourceTree = "<group>"; };
 		36D9DE7320C4B88C007F3FC1 /* Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
@@ -455,6 +457,7 @@
 				365630321F8A8ECF00E4312B /* Models */,
 				365630371F8A937B00E4312B /* Logging.swift */,
 				36D9DE7520C4E426007F3FC1 /* Common.swift */,
+				36D79D85216A8ED300D7AFDF /* ChalkboardViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -762,6 +765,7 @@
 				36D2A2832079021800E9C9F7 /* MenuViewController.swift in Sources */,
 				3693CB8C1F9C087F004792B2 /* IntroductionViewController.swift in Sources */,
 				3656303E1F8A96CF00E4312B /* MainMenuViewController.swift in Sources */,
+				36D79D86216A8ED300D7AFDF /* ChalkboardViewController.swift in Sources */,
 				365C1ACC1F9C0961008A84EA /* Die.swift in Sources */,
 				366784C020CE1666004EBCB9 /* GamePlayViewController.swift in Sources */,
 				36D9DE7420C4B88C007F3FC1 /* Random.swift in Sources */,
