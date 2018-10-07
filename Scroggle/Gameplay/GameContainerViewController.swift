@@ -16,6 +16,10 @@ class GameContainerViewController: UIViewController {
     var gameArea: UIView!
     var imageView: UIImageView!
 
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .all
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Bounds: \(view.bounds)")
@@ -66,9 +70,9 @@ class GameContainerViewController: UIViewController {
                 DLog("Animating to Landscape")
                 self.buildLandscape()
             }
-        }) { context in
+        }, completion: { _ in
             DLog("rotation completed")
-        }
+        })
         super.willTransition(to: newCollection, with: coordinator)
     }
 
