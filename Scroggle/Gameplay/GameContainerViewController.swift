@@ -14,7 +14,13 @@ import UIKit
 class GameContainerViewController: UIViewController {
     var scoreArea: UIView!
     var gameArea: UIView!
-    var imageView: UIImageView!
+    var contentView: UIView!
+
+    /// This is the "Wood Finish" part of the chalkboard
+    var outerImageView: UIImageView!
+
+    /// This is the inner, black chalkboard part of the chalkboard
+    var innerImageView: UIImageView!
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .all
@@ -25,27 +31,21 @@ class GameContainerViewController: UIViewController {
         print("Bounds: \(view.bounds)")
         print("Frame: \(view.frame)")
 
-        imageView = UIImageView(image: #imageLiteral(resourceName: "HomeScreen-4"))
+        outerImageView = UIImageView(image: #imageLiteral(resourceName: "wood_border"))
+        innerImageView = UIImageView(image: #imageLiteral(resourceName: "chalkboard"))
         if isPortrait {
-            imageView.transform = CGAffineTransform(rotationAngle: CGFloat(180.radians))
+            outerImageView.transform = CGAffineTransform(rotationAngle: CGFloat(180.radians))
+            innerImageView.transform = CGAffineTransform(rotationAngle: CGFloat(180.radians))
         }
-        imageView.contentMode = .scaleToFill
-        view.addSubview(imageView)
+        outerImageView.contentMode = .scaleToFill
+        innerImageView.contentMode = .scaleToFill
 
         scoreArea = UIView()
         scoreArea.backgroundColor = UIColor.red.withAlphaComponent(0.4)
-        view.addSubview(scoreArea)
 
         gameArea = UIView()
         gameArea.backgroundColor = UIColor.blue.withAlphaComponent(0.4)
-        view.addSubview(gameArea)
 
-        constrain(view, imageView) { view, imageView in
-            imageView.top == view.top
-            imageView.bottom == view.bottom
-            imageView.left == view.left
-            imageView.right == view.right
-        }
 
         if isPortrait {
             buildPortrait()
@@ -107,40 +107,118 @@ extension GameContainerViewController {
     }
 
     func buildPortrait() {
-        print("Yep, it's portrait mode")
-        scoreArea.removeFromSuperview()
-        gameArea.removeFromSuperview()
-        view.addSubview(scoreArea)
-        view.addSubview(gameArea)
-        constrain(view, scoreArea, gameArea) { view, scoreArea, gameArea in
-            scoreArea.top == view.layoutMarginsGuide.top
-            scoreArea.left == view.layoutMarginsGuide.left
-            scoreArea.right == view.layoutMarginsGuide.right
-            scoreArea.bottom == view.layoutMarginsGuide.centerY
-            gameArea.top == view.layoutMarginsGuide.centerY
-            gameArea.left == view.layoutMarginsGuide.left
-            gameArea.right == view.layoutMarginsGuide.right
-            gameArea.bottom == view.layoutMarginsGuide.bottom
+        view.subviews.forEach { $0.removeFromSuperview() }
+        view.addSubview(outerImageView)
+        view.addSubview(innerImageView)
+
+        constrain(view, outerImageView, innerImageView) { view, outerImageView, innerImageView in
+            outerImageView.top == view.top
+            outerImageView.bottom == view.bottom
+            outerImageView.left == view.left
+            outerImageView.right == view.right
+
+            if #available(iOS 11.0, *) {
+                let bottomMargin: CGFloat = 20
+                innerImageView.top == view.safeAreaLayoutGuide.topMargin
+                innerImageView.bottom == view.safeAreaLayoutGuide.bottomMargin - bottomMargin
+                innerImageView.left == view.safeAreaLayoutGuide.leftMargin + 20
+                innerImageView.right == view.safeAreaLayoutGuide.rightMargin - 20
+            } else {
+                let topMargin: CGFloat = 20
+                let bottomMargin: CGFloat = 20
+                innerImageView.top == view.layoutMarginsGuide.topMargin + topMargin
+                innerImageView.bottom == view.layoutMarginsGuide.bottomMargin - bottomMargin
+                innerImageView.left == view.layoutMarginsGuide.leftMargin
+                innerImageView.right == view.layoutMarginsGuide.rightMargin
+            }
         }
+//        print("Yep, it's portrait mode")
+//        scoreArea.removeFromSuperview()
+//        gameArea.removeFromSuperview()
+//        view.addSubview(scoreArea)
+//        view.addSubview(gameArea)
+//
+//        let topPadding: CGFloat = isPad ? 32 : 0
+//        let horizontalPadding: CGFloat = isPad ? 20 : 0
+//        let bottomPadding: CGFloat = isPad ? 42 : 0
+//
+//        constrain(view, scoreArea, gameArea) { view, scoreArea, gameArea in
+//            scoreArea.top == view.layoutMarginsGuide.top + topPadding
+//            scoreArea.left == view.layoutMarginsGuide.left + horizontalPadding
+//            scoreArea.right == view.layoutMarginsGuide.right - horizontalPadding
+//            scoreArea.bottom == view.layoutMarginsGuide.centerY
+//            gameArea.top == view.layoutMarginsGuide.centerY
+//            gameArea.left == view.layoutMarginsGuide.left + horizontalPadding
+//            gameArea.right == view.layoutMarginsGuide.right - horizontalPadding
+//            gameArea.bottom == view.layoutMarginsGuide.bottom - bottomPadding
+//        }
     }
 
     func buildLandscape() {
-        print("Yep, it's landscape mode")
-        scoreArea.removeFromSuperview()
-        gameArea.removeFromSuperview()
-        view.addSubview(scoreArea)
-        view.addSubview(gameArea)
-        constrain(view, scoreArea, gameArea) { view, scoreArea, gameArea in
-            scoreArea.top == view.layoutMarginsGuide.top + 20
-            scoreArea.left == view.layoutMarginsGuide.left
-            scoreArea.right == view.layoutMarginsGuide.centerX
-            scoreArea.bottom == view.layoutMarginsGuide.bottom
+        view.subviews.forEach { $0.removeFromSuperview() }
+        view.addSubview(outerImageView)
+        view.addSubview(innerImageView)
 
-            gameArea.top == view.layoutMarginsGuide.top + 20
-            gameArea.left == view.layoutMarginsGuide.centerX
-            gameArea.right == view.layoutMarginsGuide.right
-            gameArea.bottom == view.layoutMarginsGuide.bottom
+        constrain(view, outerImageView, innerImageView) { view, outerImageView, innerImageView in
+            outerImageView.top == view.top
+            outerImageView.bottom == view.bottom
+            outerImageView.left == view.left
+            outerImageView.right == view.right
+
+
+            let horizontalMargin: CGFloat = 20
+
+            if #available(iOS 11.0, *) {
+                let topMargin: CGFloat = isPad ? 0 : 20
+                let bottomMargin: CGFloat = isXdevice ? 0 : 20
+                innerImageView.top == view.safeAreaLayoutGuide.topMargin + topMargin
+                innerImageView.bottom == view.safeAreaLayoutGuide.bottomMargin - bottomMargin
+                innerImageView.left == view.safeAreaLayoutGuide.leftMargin + horizontalMargin
+                innerImageView.right == view.safeAreaLayoutGuide.rightMargin - horizontalMargin
+            } else {
+                let topMargin: CGFloat = 20
+                let bottomMargin: CGFloat = 20
+                innerImageView.top == view.layoutMarginsGuide.topMargin + topMargin
+                innerImageView.bottom == view.layoutMarginsGuide.bottomMargin - bottomMargin
+                innerImageView.left == view.layoutMarginsGuide.leftMargin
+                innerImageView.right == view.layoutMarginsGuide.rightMargin
+            }
         }
+//        print("Yep, it's landscape mode")
+//        scoreArea.removeFromSuperview()
+//        gameArea.removeFromSuperview()
+//        view.addSubview(scoreArea)
+//        view.addSubview(gameArea)
+//
+//        let topPadding: CGFloat = isPad ? 20 : 0
+//        let padding: CGFloat = isPad ? 30 : 0
+//
+//        constrain(view, scoreArea, gameArea) { view, scoreArea, gameArea in
+//            scoreArea.top == view.layoutMarginsGuide.top + topPadding
+//            scoreArea.left == view.layoutMarginsGuide.left + padding
+//            scoreArea.right == view.layoutMarginsGuide.centerX
+//            scoreArea.bottom == view.layoutMarginsGuide.bottom - padding
+//
+//            gameArea.top == view.layoutMarginsGuide.top + topPadding
+//            gameArea.left == view.layoutMarginsGuide.centerX
+//            gameArea.right == view.layoutMarginsGuide.right - padding
+//            gameArea.bottom == view.layoutMarginsGuide.bottom - padding
+//        }
+    }
+
+    /// Is the current device one of the "X" models?
+    /// (FWIW, I hate having to resort to this, it's an anti pattern, but it is necessary)
+    var isXdevice: Bool {
+        guard UIDevice.current.userInterfaceIdiom == .phone else {
+            return false
+        }
+        guard max(UIScreen.main.bounds.size.height, UIScreen.main.bounds.size.width) >= 812 else {
+            return false
+        }
+
+        // 812.0 on iPhone X, XS.
+        // 896.0 on iPhone XS Max, XR.
+        return true
     }
 
 }
