@@ -135,24 +135,28 @@ extension GameSceneController {
         }
         tiles.removeAll()
 
-        let config = TileConfiguration.currentConfiguration
+        let config = TileConfiguration.currentConfiguration(skView)
         var rowNodes: [SKShapeNode] = []
 
-        for column in -2...1 {
-            for row in -1...2 {
+        for column in 0...3 {
+            for row in 0...3 {
                 let square = SKShapeNode(rectOf: CGSize(width: config.squareSize, height: config.squareSize))
                 square.fillColor = .clear
                 square.strokeColor = .clear
-                let xPosition = scene.frame.midX - config.offsetX + CGFloat(row) * config.stepSizeX
-                let yPosition = scene.frame.midY + config.offsetY + CGFloat(column) * config.stepSizeY
+                let xPosition = scene.frame.midX - config.offsetX + CGFloat(row-1) * config.stepSizeX
+                let yPosition = scene.frame.midY + config.offsetY + CGFloat(column-2) * config.stepSizeY
                 square.position = CGPoint(x: xPosition, y: yPosition)
                 square.zPosition = 100
-                scene.addChild(square)
+                #if DEBUG
+                square.fillColor = UIColor.blue.withAlphaComponent(0.4)
+                #endif
+                square.name = "tile_\(column)_\(row)"
                 rowNodes.append(square)
+                scene.addChild(square)
 
                 // We have to reverse the order of this row so it's
                 // in the same order as the dice
-                if row == 2 {
+                if row == 3 {
                     rowNodes.reverse()
                     tiles.append(contentsOf: rowNodes)
                     rowNodes.removeAll()
@@ -166,12 +170,18 @@ extension GameSceneController {
     }
 
     /// Data structure to give you values to build the overlays
-    private struct TileConfiguration {
+    private struct TileConfiguration: CustomDebugStringConvertible {
         let squareSize: CGFloat
         let stepSizeX: CGFloat
         let stepSizeY: CGFloat
         let offsetX: CGFloat
         let offsetY: CGFloat
+
+        var debugDescription: String {
+            var result = "squareSize: \(squareSize), stepSizeX: \(stepSizeX), stepSizeY: \(stepSizeY)"
+            result += ", offsetX: \(offsetX), offsetY: \(offsetY)"
+            return result
+        }
 
         /// Sets all of the required parameters for the `TileConfiguration`.
         ///
@@ -190,24 +200,10 @@ extension GameSceneController {
         }
 
         /// Gives you the overlay configuration for the current device
-        static var currentConfiguration: TileConfiguration {
-//            if UIDevice.current.isiPhoneX {
-//                return TileConfiguration(size: 45, sizeX: 75, sizeY: 87.5, offsetX: 37.5, offsetY: 42.5)
-//            }
-//            if UIDevice.current.isiPhone5 {
-//                return TileConfiguration(size: 45, sizeX: 77.5, sizeY: 77.5, offsetX: 37.5, offsetY: 37.5)
-//            }
-//            if UIDevice.current.isiPhone6Plus {
-//                return TileConfiguration(size: 45, sizeX: 77.5, sizeY: 77.5, offsetX: 37.5, offsetY: 37.5)
-//            }
-//            if UIDevice.current.isiPhone6 {
-//                return TileConfiguration(size: 45, sizeX: 77.5, sizeY: 77.5, offsetX: 37.5, offsetY: 37.5)
-//            }
-//            if UIDevice.current.isiPad {
-//                return TileConfiguration(size: 45, sizeX: 77.5, sizeY: 87.5, offsetX: 37.5, offsetY: 42.5)
-//            }
-
-            return TileConfiguration(size: 45, sizeX: 77.5, sizeY: 77.5, offsetX: 37.5, offsetY: 37.5)
+        static func currentConfiguration(_ skView: SKView) -> TileConfiguration {
+            let sizeX = skView.frame.size.width / 5.25
+            let sizeY = skView.frame.size.height / 5.25
+            return TileConfiguration(size: sizeX * 0.6, sizeX: sizeX, sizeY: sizeY, offsetX: sizeX / 2, offsetY: sizeY / 2)
         }
     }
 }
@@ -231,8 +227,17 @@ extension GameSceneController {
         guard selection.count > 1 else {
             return
         }
+        print("Selections: \(selection)")
 
-        selectionPath.append(drawLine(from: selection[selection.count-1], to: selection[selection.count-2]))
+        let fromNode = selection[selection.count-1]
+        let toNode = selection[selection.count-2]
+        let name = "sel_\(selection.count)"
+
+        guard let line = drawLine(from: fromNode, to: toNode, name: name) else {
+            return
+        }
+
+        selectionPath.append(line)
     }
 
     /// Shows the word you guessed.
@@ -259,7 +264,11 @@ extension GameSceneController {
     /// - Parameters:
     ///   - from: The index of the shape node to start drawing at
     ///   - to: The index of the shape node to end drawing at
-    private func drawLine(from: Int, to index: Int) -> SKShapeNode {
+    private func drawLine(from: Int, to index: Int, name: String) -> SKShapeNode? {
+        guard let scene = skView.scene else {
+            print("ERROR: No scene to draw a line on")
+            return nil
+        }
         let startPoint = CGPoint(x: tiles[from].frame.midX, y: tiles[from].frame.midY)
         let endPoint = CGPoint(x: tiles[index].frame.midX, y: tiles[index].frame.midY)
 

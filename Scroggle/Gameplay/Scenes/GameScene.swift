@@ -33,6 +33,7 @@ class GameScene: SKScene {
     /// - Parameter size: The size of the area that you want it to take up
     override init(size: CGSize) {
         super.init(size: size)
+        backgroundColor = .green
         Notification.Scroggle.GameEvent.gameEnded.addObserver(self, selector: #selector(gameOverEvent))
     }
 
@@ -45,13 +46,13 @@ class GameScene: SKScene {
             controller?.clearSelection()
             return
         }
-//        guard let controller = controller else {
-//            return assertionFailure("No controller defined")
-//        }
+        guard let controller = controller else {
+            return assertionFailure("No controller defined")
+        }
         guard let point = touches.first?.location(in: self) else {
             return DLog("Failed to get the touch point")
         }
-        controller?.tapped(point: point)
+        controller.tapped(point: point)
         beganPoint = point
         showTouch(at: point)
     }
@@ -61,9 +62,9 @@ class GameScene: SKScene {
             controller?.clearSelection()
             return
         }
-//        guard let controller = controller else {
-//            return assertionFailure("No controller defined")
-//        }
+        guard let controller = controller else {
+            return assertionFailure("No controller defined")
+        }
 
         for touch in touches {
             let currentPoint = touch.location(in: self)
@@ -72,7 +73,7 @@ class GameScene: SKScene {
                     showTouch(at: currentPoint)
                     lastDrag = currentPoint
                 }
-                guard let point = controller?.handleDrag(point: currentPoint) else {
+                guard let point = controller.handleDrag(point: currentPoint) else {
                     continue
                 }
                 dragging = true
@@ -89,9 +90,9 @@ class GameScene: SKScene {
         defer {
             dragging = false
         }
-//        guard let controller = controller else {
-//            return assertionFailure("No controller defined")
-//        }
+        guard let controller = controller else {
+            return assertionFailure("No controller defined")
+        }
         guard dragging else {
             return
         }
@@ -99,7 +100,7 @@ class GameScene: SKScene {
             return DLog("No current point")
         }
 
-        controller?.handleDragEnd(point: currentPoint)
+        controller.handleDragEnd(point: currentPoint)
     }
 }
 

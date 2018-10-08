@@ -95,11 +95,3 @@ class GameContainerViewController: ChalkboardViewController {
     }
 
 }
-
-// MARK: - Implementation
-
-extension GameContainerViewController {
-
-
-
-}
