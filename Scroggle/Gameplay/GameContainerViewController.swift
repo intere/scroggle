@@ -35,7 +35,9 @@ class GameContainerViewController: ChalkboardViewController {
         super.viewDidLoad()
 
         debugSetup()
-        gameController = GameSceneController(withView: gameArea)
+        DispatchQueue.main.async {
+            self.gameController = GameSceneController(withView: self.gameArea)
+        }
     }
 
     func debugSetup() {
@@ -57,8 +59,13 @@ class GameContainerViewController: ChalkboardViewController {
             scoreArea.top == view.top
             scoreArea.left == view.left
             scoreArea.right == view.right
-            scoreArea.bottom == view.centerY
-            gameArea.top == view.centerY
+            if self.isPad {
+                scoreArea.bottom == view.centerY * 0.5
+            } else {
+                scoreArea.bottom == view.centerY
+            }
+
+            gameArea.top == scoreArea.bottom
             gameArea.left == view.left
             gameArea.right == view.right
             gameArea.bottom == view.bottom
@@ -73,11 +80,15 @@ class GameContainerViewController: ChalkboardViewController {
         constrain(contentView, scoreArea, gameArea) { view, scoreArea, gameArea in
             scoreArea.top == view.top
             scoreArea.left == view.left
-            scoreArea.right == view.centerX
+            if self.isPad {
+                scoreArea.right == view.centerX * 0.5
+            } else {
+                scoreArea.right == view.centerX
+            }
             scoreArea.bottom == view.bottom
 
             gameArea.top == view.top
-            gameArea.left == view.centerX
+            gameArea.left == scoreArea.right
             gameArea.right == view.right
             gameArea.bottom == view.bottom
         }

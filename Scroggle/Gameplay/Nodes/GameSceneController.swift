@@ -75,7 +75,6 @@ extension GameSceneController {
         gameplayScene.addChild(sceneNode)
 
         // Debugging
-        skView.showsPhysics = true
         sceneNode.physicsBody = SKPhysicsBody(rectangleOf: skView.frame.size)
         sceneNode.physicsBody?.affectedByGravity = false
         // End Debugging
