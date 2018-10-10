@@ -12,13 +12,18 @@ import SpriteKit
 import UIKit
 
 class GameContainerViewController: ChalkboardViewController {
-    var scoreArea: UIView!
     var gameArea: SKView!
     var gameController: GameSceneController!
+    var hudController: HUDViewController!
+
+    var scoreArea: UIView {
+        return hudController.view
+    }
 
     override func viewDidLoad() {
-        scoreArea = UIView()
+        addHudVC()
         scoreArea.backgroundColor = UIColor.red.withAlphaComponent(0.4)
+
 
         gameArea = SKView()
         #if DEBUG
@@ -50,6 +55,7 @@ class GameContainerViewController: ChalkboardViewController {
         return UIStoryboard(name: "GameContainer", bundle: nil).instantiateInitialViewController() as! GameContainerViewController
     }
 
+    /// Builds the UI for Portrait Layout
     override func buildPortrait() {
         super.buildPortrait()
         contentView.subviews.forEach { $0.removeFromSuperview() }
@@ -72,6 +78,7 @@ class GameContainerViewController: ChalkboardViewController {
         }
     }
 
+    /// Builds the screen for Landscape layout
     override func buildLandscape() {
         super.buildLandscape()
         contentView.subviews.forEach { $0.removeFromSuperview() }
@@ -92,6 +99,12 @@ class GameContainerViewController: ChalkboardViewController {
             gameArea.right == view.right
             gameArea.bottom == view.bottom
         }
+    }
+
+    private func addHudVC() {
+        hudController = HUDViewController()
+        addChild(hudController)
+        hudController.didMove(toParent: self)
     }
 
 }

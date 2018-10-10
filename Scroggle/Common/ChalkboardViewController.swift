@@ -62,6 +62,7 @@ open class ChalkboardViewController: UIViewController {
             DLog("rotation completed")
         })
         super.willTransition(to: newCollection, with: coordinator)
+        children.forEach { $0.willTransition(to: newCollection, with: coordinator) }
     }
 
     // For older iOS versions that support 
@@ -90,18 +91,6 @@ open class ChalkboardViewController: UIViewController {
 // MARK: - Implementation
 
 extension ChalkboardViewController {
-
-    var isPortrait: Bool {
-        return view.bounds.height > view.bounds.width
-    }
-
-    var isLandscape: Bool {
-        return view.bounds.width > view.bounds.height
-    }
-
-    var isPad: Bool {
-        return UIDevice.current.userInterfaceIdiom == .pad
-    }
 
     func doBuildPortrait() {
         view.subviews.forEach { $0.removeFromSuperview() }

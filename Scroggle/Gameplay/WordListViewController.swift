@@ -12,6 +12,11 @@ import UIKit
 /// word, it shows up in the TableView that this controls.
 class WordListViewController: UITableViewController {
 
+    class func loadFromStoryboard() -> WordListViewController {
+        // swiftlint:disable:next force_cast
+        return UIStoryboard(name: "WordList", bundle: nil).instantiateViewController(withIdentifier: "WordListViewController") as! WordListViewController
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         Notification.Scroggle.GameEvent.scoreUpdated.addObserver(tableView, selector: #selector(tableView.reloadData))
