@@ -44,6 +44,7 @@ class GameSceneController {
     /// - Parameter view: The view that we're initializing the Game Scene with.
     init?(withView view: SKView) {
         skView = view
+        skView.backgroundColor = .clear
         guard let gameContext = GameContextProvider.instance.currentGame else {
             fatalError("No Game Context could be found")
             return nil

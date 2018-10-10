@@ -89,8 +89,6 @@ extension HUDViewController {
             timeLabel.text = "99:99"
         }
 
-        wordTable.backgroundColor = .purple
-
         if isPortrait {
             layoutPortrait()
         } else {
@@ -106,6 +104,10 @@ extension HUDViewController {
     }
 
     func layoutPortrait() {
+        guard isPad else {
+            return layoutLandscape()
+        }
+
         removeAndReAddViews()
 
         constrain(view, timeTitleLabel, scoreTitleLabel, timeLabel, scoreLabel, wordTable) {
@@ -159,6 +161,7 @@ extension HUDViewController {
 
             scoreTitleLabel.top == timeTitleLabel.bottom + 8
             scoreTitleLabel.left == timeTitleLabel.left
+            scoreTitleLabel.right == timeTitleLabel.right
 
             scoreLabel.top == scoreTitleLabel.top
             scoreLabel.left == timeLabel.left

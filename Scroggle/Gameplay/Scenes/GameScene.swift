@@ -33,7 +33,7 @@ class GameScene: SKScene {
     /// - Parameter size: The size of the area that you want it to take up
     override init(size: CGSize) {
         super.init(size: size)
-        backgroundColor = .green
+        backgroundColor = .clear
         Notification.Scroggle.GameEvent.gameEnded.addObserver(self, selector: #selector(gameOverEvent))
     }
 

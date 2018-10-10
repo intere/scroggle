@@ -22,14 +22,9 @@ class GameContainerViewController: ChalkboardViewController {
 
     override func viewDidLoad() {
         addHudVC()
-        scoreArea.backgroundColor = UIColor.red.withAlphaComponent(0.4)
-
 
         gameArea = SKView()
         #if DEBUG
-        gameArea.backgroundColor = UIColor.blue.withAlphaComponent(0.4)
-        gameArea.layer.borderColor = UIColor.blue.withAlphaComponent(0.4).cgColor
-        gameArea.layer.borderWidth = 2
         gameArea.showsFPS = true
         gameArea.showsPhysics = true
         gameArea.showsDrawCount = true
