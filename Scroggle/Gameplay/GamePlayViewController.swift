@@ -35,7 +35,7 @@ class GamePlayViewController: UIViewController {
     }
 
     /// The amount of time left in the game
-    var seconds = GameContextProvider.instance.currentGame?.game.timeType.rawValue ?? 15
+    var seconds = GameContextProvider.instance.currentGame?.game.timeType.seconds ?? 15
     /// The Timer object that's used to count down the time in the game
     var timer: Timer?
 

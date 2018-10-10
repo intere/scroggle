@@ -11,6 +11,9 @@ import Foundation
 /// This class is the Game Context.  It is responsible for keeping track of:
 /// * The Game Board
 /// * Game Stats
+/// ## Notifications
+/// * `Notification.Scroggle.GameEvent.wordGuessed` - When a word is guessed (successfully)
+/// * `Notification.Scroggle.GameEvent.scoreUpdated` - When the score is updated
 class GameContext: NSObject {
 
     /// The game object

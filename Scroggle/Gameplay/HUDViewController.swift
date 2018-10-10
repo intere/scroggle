@@ -18,6 +18,12 @@ class HUDViewController: UIViewController {
 
     var wordListVC: WordListViewController!
 
+    /// The amount of time left in the game
+    var seconds = GameContextProvider.instance.currentGame?.game.timeType.seconds ?? 15
+
+    /// The Timer object that's used to count down the time in the game
+    var timer: Timer?
+
     var wordTable: UIView {
         return wordListVC.view
     }
@@ -26,6 +32,12 @@ class HUDViewController: UIViewController {
         super.viewDidLoad()
         addWordListVC()
         buildVC()
+
+        Notification.Scroggle.GameEvent.scoreUpdated.addObserver(self, selector: #selector(scoreUpdated(_:)))
+
+        // TODO: Delay this after an "introduction animation":
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self,
+                                     selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
 
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -54,9 +66,67 @@ class HUDViewController: UIViewController {
     }
 }
 
+// MARK: - Events
+
+extension HUDViewController {
+
+    @objc
+    /// Responds to the time updated event
+    func updateTimer() {
+        updateHud()
+
+        guard seconds > 0 else {
+            endGame()
+            SoundProvider.instance.playGongSound()
+            return Notification.Scroggle.GameEvent.gameEnded.notify()
+        }
+
+        if seconds <= 10 {
+            flashTimerColor()
+            SoundProvider.instance.playTimeSound()
+        }
+        seconds -= 1
+    }
+
+    @objc
+    func scoreUpdated(_ notification: NSNotification) {
+        updateHud()
+    }
+
+}
+
 // MARK: - Implementation
 
 extension HUDViewController {
+
+    /// Flashes the timer from red to green to alert the user that time is almost up.
+    func flashTimerColor() {
+        timeLabel.textColor = .red
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            self?.timeLabel.textColor = .green
+        }
+    }
+
+    /// Shows the "Game Over" overlay (animates it in).
+    func showGameOver() {
+        // TODO: Show the game over
+    }
+
+    /// Ends the game, and handles (or delgates) all associated logic.
+    func endGame() {
+        GameContextProvider.instance.currentGame?.gameState = .done
+        timeLabel.textColor = .red
+        timer?.invalidate()
+        showGameOver()
+    }
+
+    /// Updates the current score / time in the HUD
+    func updateHud() {
+        let score = GameContextProvider.instance.currentGame?.game.score ?? 0
+        scoreLabel.text = "\(score)"
+        timeLabel.text = "\(seconds.timeString)"
+    }
 
     /// Creates and adds the child `WordListViewController`
     func addWordListVC() {
@@ -79,21 +149,17 @@ extension HUDViewController {
 
         scoreLabel.font = scoreTitleLabel.font
         scoreLabel.textColor = .green
-        scoreLabel.text = "0"
 
         timeLabel.font = scoreTitleLabel.font
         timeLabel.textColor = .yellow
-        if let time = GameContextProvider.instance.currentGame?.game.timeType.seconds {
-            timeLabel.text = "\(time.timeString)"
-        } else {
-            timeLabel.text = "99:99"
-        }
 
         if isPortrait {
             layoutPortrait()
         } else {
             layoutLandscape()
         }
+
+        updateHud()
     }
 
     func removeAndReAddViews() {
