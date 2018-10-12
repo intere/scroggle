@@ -86,6 +86,26 @@ open class ChalkboardViewController: UIViewController {
         doBuildLandscape()
     }
 
+    /// Embeds the view from the provided view controller into the contentView and
+    /// calls the appropriate view controller functions.
+    ///
+    /// - Parameter viewController: The child view controller to add.
+    public func addContent(viewController: UIViewController) {
+        guard let childView = viewController.view else {
+            return assertionFailure("nope")
+        }
+        contentView.addSubview(childView)
+        addChild(viewController)
+        viewController.didMove(toParent: self)
+
+        constrain(contentView, childView) { view, childView in
+            childView.top == view.top
+            childView.left == view.left
+            childView.right == view.right
+            childView.bottom == view.bottom
+        }
+    }
+
 }
 
 // MARK: - Implementation

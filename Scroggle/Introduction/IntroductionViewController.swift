@@ -29,6 +29,8 @@ class IntroductionViewController: UIViewController {
             scnView.showsStatistics = true
         #endif
 
+        loadMainMenu()
+
 //        guard let scene = IntroductionScene.loadGameScene(useDemoCamera: true) else {
 //            assert(false, "Failed to find the GameScene")
 //            return

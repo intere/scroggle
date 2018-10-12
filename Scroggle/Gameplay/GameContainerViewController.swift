@@ -38,6 +38,10 @@ class GameContainerViewController: ChalkboardViewController {
         DispatchQueue.main.async {
             self.gameController = GameSceneController(withView: self.gameArea)
         }
+        
+        Notification.Scroggle.GameOverAction.mainMenu.addObserver(self, selector: #selector(mainMenu))
+        Notification.Scroggle.GameOverAction.playAgain.addObserver(self, selector: #selector(playAgain))
+        Notification.Scroggle.GameOverAction.replay.addObserver(self, selector: #selector(replay))
     }
 
     func debugSetup() {
@@ -94,6 +98,32 @@ class GameContainerViewController: ChalkboardViewController {
             gameArea.right == view.right
             gameArea.bottom == view.bottom
         }
+    }
+
+}
+
+// MARK: - Implementation
+
+extension GameContainerViewController {
+
+    @objc
+    func mainMenu() {
+        DLog("Main Menu")
+        guard let mainMenuVC = navigationController?.viewControllers.first(where: { $0 is MainMenuViewController }) else {
+            return assertionFailure("No MainMenuVC")
+        }
+        navigationController?.popToViewController(mainMenuVC, animated: true)
+    }
+
+    @objc
+    func playAgain() {
+        DLog("Play Again")
+
+    }
+
+    @objc
+    func replay() {
+        DLog("Replay")
     }
 
     private func addHudVC() {
