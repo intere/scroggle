@@ -65,19 +65,6 @@ open class ChalkboardViewController: UIViewController {
         children.forEach { $0.willTransition(to: newCollection, with: coordinator) }
     }
 
-    // For older iOS versions that support 
-    open override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
-        switch UIApplication.shared.statusBarOrientation {
-        case .portrait, .portraitUpsideDown:
-            DLog("Animating to Portrait")
-            self.buildPortrait()
-
-        default:
-            DLog("Animating to Landscape")
-            self.buildLandscape()
-        }
-    }
-
     open func buildPortrait() {
         doBuildPortrait()
     }

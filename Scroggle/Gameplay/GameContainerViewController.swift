@@ -32,26 +32,21 @@ class GameContainerViewController: ChalkboardViewController {
         gameArea.showsQuadCount = true
         #endif
 
-        super.viewDidLoad()
-
-        debugSetup()
         DispatchQueue.main.async {
             self.gameController = GameSceneController(withView: self.gameArea)
         }
-        
+
         Notification.Scroggle.GameOverAction.mainMenu.addObserver(self, selector: #selector(mainMenu))
         Notification.Scroggle.GameOverAction.playAgain.addObserver(self, selector: #selector(playAgain))
         Notification.Scroggle.GameOverAction.replay.addObserver(self, selector: #selector(replay))
-    }
 
-    func debugSetup() {
-        GameContextProvider.instance.createSinglePlayerGame(.default)
-        assert(GameContextProvider.instance.currentGame != nil, "No game going yet")
+        super.viewDidLoad()
     }
 
     public static func loadFromStoryboard() -> GameContainerViewController {
-        // swiftlint:disable:next force_cast
-        return UIStoryboard(name: "GameContainer", bundle: nil).instantiateInitialViewController() as! GameContainerViewController
+        return UIStoryboard(name: "GameContainer", bundle: nil)
+            .instantiateInitialViewController() as! GameContainerViewController
+        // swiftlint:disable:previous force_cast
     }
 
     /// Builds the UI for Portrait Layout
@@ -102,13 +97,13 @@ class GameContainerViewController: ChalkboardViewController {
 
 }
 
-// MARK: - Implementation
+// MARK: - ObjC functions
 
 extension GameContainerViewController {
 
     @objc
     func mainMenu() {
-        DLog("Main Menu")
+        SoundProvider.instance.playMenuSelectionSound()
         guard let mainMenuVC = navigationController?.viewControllers.first(where: { $0 is MainMenuViewController }) else {
             return assertionFailure("No MainMenuVC")
         }
@@ -117,13 +112,32 @@ extension GameContainerViewController {
 
     @objc
     func playAgain() {
-        DLog("Play Again")
-
+        SoundProvider.instance.playMenuSelectionSound()
+        GameContextProvider.instance.replayGameWithSameTime()
+        pushAnotherGameToNavVC()
     }
 
     @objc
     func replay() {
-        DLog("Replay")
+        SoundProvider.instance.playMenuSelectionSound()
+        GameContextProvider.instance.replayCurrentGame()
+        pushAnotherGameToNavVC()
+    }
+
+}
+
+// MARK: - Implementation
+
+extension GameContainerViewController {
+
+    private func pushAnotherGameToNavVC() {
+        guard var vcList = navigationController?.viewControllers else {
+            return DLog("ERROR: No current game to get time type from")
+        }
+        vcList.removeLast()
+        vcList.append(GameContainerViewController.loadFromStoryboard())
+
+        navigationController?.setViewControllers(vcList, animated: true)
     }
 
     private func addHudVC() {

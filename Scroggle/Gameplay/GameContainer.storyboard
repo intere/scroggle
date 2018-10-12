@@ -9,36 +9,7 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="digital-7.mono.ttf">
-            <string>Digital-7Mono</string>
-        </array>
-    </customFonts>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="cpJ-B3-EOb">
-            <objects>
-                <viewController id="Bgb-3S-iPm" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="rOX-vg-d3y">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cnm-ex-iZp">
-                                <rect key="frame" x="263" y="150" width="39" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Digital-7Mono" family="Digital-7 Mono" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="4vz-nl-D5X"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TRG-iQ-R8V" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1335" y="-1007"/>
-        </scene>
         <!--Game Container View Controller-->
         <scene sceneID="RHc-fx-QEv">
             <objects>
