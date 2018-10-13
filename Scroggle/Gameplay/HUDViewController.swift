@@ -122,8 +122,13 @@ extension HUDViewController {
                 DLog("Using font size: \(fontSize)")
             }
         } else if isXdevice {
-            fontSize = UIScreen.main.bounds.width / 8
-            DLog("Using font size: \(fontSize)")
+            if isLandscape {
+                fontSize = UIScreen.main.bounds.width / 18
+                DLog("Using font size: \(fontSize)")
+            } else {
+                fontSize = UIScreen.main.bounds.width / 8
+                DLog("Using font size: \(fontSize)")
+            }
         } else {
             if isLandscape {
                 // we're using a bit less than half the screen width
