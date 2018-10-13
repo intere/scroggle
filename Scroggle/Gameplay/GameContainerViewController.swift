@@ -15,6 +15,7 @@ class GameContainerViewController: ChalkboardViewController {
     var gameArea: SKView!
     var gameController: GameSceneController!
     var hudController: HUDViewController!
+    var isGameOver = false
 
     var scoreArea: UIView {
         return hudController.view
@@ -36,6 +37,7 @@ class GameContainerViewController: ChalkboardViewController {
             self.gameController = GameSceneController(withView: self.gameArea)
         }
 
+        Notification.Scroggle.GameEvent.gameEnded.addObserver(self, selector: #selector(gameEnded))
         Notification.Scroggle.GameOverAction.mainMenu.addObserver(self, selector: #selector(mainMenu))
         Notification.Scroggle.GameOverAction.playAgain.addObserver(self, selector: #selector(playAgain))
         Notification.Scroggle.GameOverAction.replay.addObserver(self, selector: #selector(replay))
@@ -70,6 +72,10 @@ class GameContainerViewController: ChalkboardViewController {
             gameArea.right == view.right
             gameArea.bottom == view.bottom
         }
+
+        if isGameOver {
+            buildGameOverView()
+        }
     }
 
     /// Builds the screen for Landscape layout
@@ -93,6 +99,10 @@ class GameContainerViewController: ChalkboardViewController {
             gameArea.right == view.right
             gameArea.bottom == view.bottom
         }
+
+        if isGameOver {
+            buildGameOverView()
+        }
     }
 
 }
@@ -102,7 +112,14 @@ class GameContainerViewController: ChalkboardViewController {
 extension GameContainerViewController {
 
     @objc
+    func gameEnded() {
+        isGameOver = true
+        buildGameOverView()
+    }
+
+    @objc
     func mainMenu() {
+        Notification.Scroggle.GameEvent.gameEnded.notify()
         SoundProvider.instance.playMenuSelectionSound()
         guard let mainMenuVC = navigationController?.viewControllers.first(where: { $0 is MainMenuViewController }) else {
             return assertionFailure("No MainMenuVC")
@@ -129,6 +146,46 @@ extension GameContainerViewController {
 // MARK: - Implementation
 
 extension GameContainerViewController {
+
+    /// Computes an optimal font size for the current screen orientation and size
+    private var gameOverFontSize: CGFloat {
+        var fontSize: CGFloat = 20
+        if isLandscape {
+            if isPad {
+                fontSize = UIScreen.main.bounds.width / 15
+            } else {
+                // we're using a bit less than half the screen width on phones
+                fontSize = UIScreen.main.bounds.width / 20
+            }
+        } else {
+            // we're using just less than the screen width
+            fontSize = UIScreen.main.bounds.width / 10
+        }
+        DLog("Using font size: \(fontSize)")
+        return fontSize
+    }
+
+    /// Adds the "Game Over" tile over the game play area
+    private func buildGameOverView() {
+        let view = UIView()
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        let label = UILabel()
+        label.text = "Game Over"
+        label.font = UIFont(name: "Chalkduster", size: gameOverFontSize)
+        label.textColor = .orange
+        view.addSubview(label)
+        contentView.addSubview(view)
+
+        constrain(gameArea, view, label) { (view, gameOverView, label) in
+            gameOverView.left == view.left
+            gameOverView.top == view.top
+            gameOverView.right == view.right
+            gameOverView.bottom == view.bottom
+
+            label.centerX == gameOverView.centerX
+            label.centerY == gameOverView.centerY
+        }
+    }
 
     private func pushAnotherGameToNavVC() {
         guard var vcList = navigationController?.viewControllers else {

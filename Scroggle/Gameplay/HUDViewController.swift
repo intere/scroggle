@@ -15,6 +15,7 @@ class HUDViewController: UIViewController {
     let timeTitleLabel = UILabel()
     let scoreLabel = UILabel()
     let timeLabel = UILabel()
+    let exitButton = UIButton(type: .custom)
 
     var wordListVC: WordListViewController!
 
@@ -34,14 +35,16 @@ class HUDViewController: UIViewController {
         buildVC()
 
         Notification.Scroggle.GameEvent.scoreUpdated.addObserver(self, selector: #selector(scoreUpdated(_:)))
+        Notification.Scroggle.GameEvent.gameEnded.addObserver(self, selector: #selector(gameEnded))
 
         // TODO: Delay this after an "introduction animation":
         timer = Timer.scheduledTimer(timeInterval: 1, target: self,
                                      selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
 
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        coordinator.animate(alongsideTransition: { (context) in
+    override func willTransition(to newCollection: UITraitCollection,
+                                 with coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animate(alongsideTransition: { _ in
             switch UIApplication.shared.statusBarOrientation {
             case .portrait, .portraitUpsideDown:
                 self.layoutPortrait()
@@ -93,11 +96,47 @@ extension HUDViewController {
         updateHud()
     }
 
+    @objc
+    func gameEnded() {
+        DLog("Game Ended")
+        timer?.invalidate()
+    }
+
 }
 
 // MARK: - Implementation
 
 extension HUDViewController {
+
+    /// Computes an optimal font size for the current screen orientation and size
+    private var hudTextSize: CGFloat {
+        var fontSize: CGFloat = 20
+        if isPad {
+            if isLandscape {
+                // we're using a bit less than half the screen width
+                fontSize = UIScreen.main.bounds.width / 30
+                DLog("Using font size: \(fontSize)")
+            } else {
+                // we're using just less than the screen width
+                fontSize = UIScreen.main.bounds.width / 25
+                DLog("Using font size: \(fontSize)")
+            }
+        } else if isXdevice {
+            fontSize = UIScreen.main.bounds.width / 8
+            DLog("Using font size: \(fontSize)")
+        } else {
+            if isLandscape {
+                // we're using a bit less than half the screen width
+                fontSize = UIScreen.main.bounds.width / 15
+                DLog("Using font size: \(fontSize)")
+            } else {
+                // we're using just less than the screen width
+                fontSize = UIScreen.main.bounds.width / 10
+                DLog("Using font size: \(fontSize)")
+            }
+        }
+        return fontSize
+    }
 
     /// Flashes the timer from red to green to alert the user that time is almost up.
     func flashTimerColor() {
@@ -108,17 +147,11 @@ extension HUDViewController {
         }
     }
 
-    /// Shows the "Game Over" overlay (animates it in).
-    func showGameOver() {
-        // TODO: Show the game over
-    }
-
     /// Ends the game, and handles (or delgates) all associated logic.
     func endGame() {
         GameContextProvider.instance.currentGame?.gameState = .done
         timeLabel.textColor = .red
         timer?.invalidate()
-        showGameOver()
     }
 
     /// Updates the current score / time in the HUD
@@ -137,7 +170,7 @@ extension HUDViewController {
 
     /// Builds and lays out the VC
     func buildVC() {
-        scoreTitleLabel.font = UIFont(name: "Digital-7 Mono", size: 42)
+        scoreTitleLabel.font = UIFont(name: "Digital-7 Mono", size: hudTextSize)
         scoreTitleLabel.textColor = .orange
         scoreTitleLabel.text = "SCORE:"
         scoreTitleLabel.textAlignment = .right
@@ -153,6 +186,11 @@ extension HUDViewController {
         timeLabel.font = scoreTitleLabel.font
         timeLabel.textColor = .yellow
 
+        exitButton.setImage(#imageLiteral(resourceName: "close_normal"), for: .normal)
+        exitButton.setImage(#imageLiteral(resourceName: "close_selected"), for: .selected)
+        exitButton.addTarget(self, action: #selector(exitAndGoToMainMenu), for: .touchUpInside)
+
+
         if isPortrait {
             layoutPortrait()
         } else {
@@ -162,9 +200,16 @@ extension HUDViewController {
         updateHud()
     }
 
+    @objc
+    func exitAndGoToMainMenu() {
+        // TODO: Add Analytics for exited game
+        Notification.Scroggle.GameOverAction.mainMenu.notify()
+    }
+
+    /// Removes all of the subviews from the current view and re-adds them for us.
     func removeAndReAddViews() {
         view.subviews.forEach { $0.removeFromSuperview() }
-        [wordTable, timeTitleLabel, scoreTitleLabel, timeLabel, scoreLabel].forEach {
+        [wordTable, timeTitleLabel, scoreTitleLabel, timeLabel, scoreLabel, exitButton].forEach {
             view.addSubview($0)
         }
     }
@@ -176,11 +221,11 @@ extension HUDViewController {
 
         removeAndReAddViews()
 
-        constrain(view, timeTitleLabel, scoreTitleLabel, timeLabel, scoreLabel, wordTable) {
-            view, timeTitleLabel, scoreTitleLabel, timeLabel, scoreLabel, wordTable in
+        constrain(view, timeTitleLabel, scoreTitleLabel, timeLabel, scoreLabel, wordTable, exitButton) {
+            (view, timeTitleLabel, scoreTitleLabel, timeLabel, scoreLabel, wordTable, exitButton) in
 
             //   ____________________________________________
-            //  |  Word |     timeTitleLabel | timeLabel    |
+            //  |  Word | x   timeTitleLabel | timeLabel    |
             //  | Table |    scoreTitleLabel | scoreLabel   |
             //  ---------------------------------------------
             //
@@ -189,7 +234,12 @@ extension HUDViewController {
             wordTable.bottom == view.bottom - 8
             wordTable.width == view.width * 0.6
 
-            timeTitleLabel.left == wordTable.right + 8
+            exitButton.top == view.top + 8
+            exitButton.left == wordTable.right + 8
+            exitButton.width == 40
+            exitButton.height == 40
+
+            timeTitleLabel.left == exitButton.right + 8
             timeTitleLabel.top == view.top + 8
 
             timeLabel.right == view.right - 8
@@ -209,17 +259,22 @@ extension HUDViewController {
     func layoutLandscape() {
         removeAndReAddViews()
 
-        constrain(view, timeTitleLabel, scoreTitleLabel, timeLabel, scoreLabel, wordTable) {
-            view, timeTitleLabel, scoreTitleLabel, timeLabel, scoreLabel, wordTable in
+        constrain(view, timeTitleLabel, scoreTitleLabel, timeLabel, scoreLabel, wordTable, exitButton) {
+            (view, timeTitleLabel, scoreTitleLabel, timeLabel, scoreLabel, wordTable, exitButton) in
 
             //  _____________________________________
-            //  |     timeTitleLabel | timeLabel    |
+            //  | x   timeTitleLabel | timeLabel    |
             //  |    scoreTitleLabel | scoreLabel   |
             //  -------------------------------------
             //  |            Word List              |
             //  ------------------------------------
-            timeTitleLabel.top == view.top + 8
-            timeTitleLabel.left == view.left + 8
+            exitButton.top == view.top + 8
+            exitButton.left == view.left + 8
+            exitButton.width == 40
+            exitButton.height == 40
+
+            timeTitleLabel.top == exitButton.top
+            timeTitleLabel.left == exitButton.right + 8
 
             timeLabel.top == timeTitleLabel.top
             timeLabel.left == timeTitleLabel.right + 8

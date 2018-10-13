@@ -74,7 +74,6 @@ extension GameSceneController {
         gameplayScene.controller = self
         skView.presentScene(gameplayScene)
         gameplayScene.addChild(sceneNode)
-        
 
         // Debugging
         sceneNode.physicsBody = SKPhysicsBody(rectangleOf: skView.frame.size)

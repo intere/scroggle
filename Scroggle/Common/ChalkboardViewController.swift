@@ -48,7 +48,7 @@ open class ChalkboardViewController: UIViewController {
     }
 
     open override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        coordinator.animate(alongsideTransition: { (context) in
+        coordinator.animate(alongsideTransition: { _ in
             switch UIApplication.shared.statusBarOrientation {
             case .portrait, .portraitUpsideDown:
                 //                DLog("Animating to Portrait")
@@ -63,6 +63,16 @@ open class ChalkboardViewController: UIViewController {
         })
         super.willTransition(to: newCollection, with: coordinator)
         children.forEach { $0.willTransition(to: newCollection, with: coordinator) }
+    }
+
+    open override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+        switch UIApplication.shared.statusBarOrientation {
+        case .portrait, .portraitUpsideDown:
+            self.buildPortrait()
+
+        default:
+            self.buildLandscape()
+        }
     }
 
     open func buildPortrait() {
@@ -103,7 +113,8 @@ extension ChalkboardViewController {
         view.subviews.forEach { $0.removeFromSuperview() }
         [outerImageView, innerImageView, contentView].forEach { view.addSubview($0) }
 
-        constrain(view, outerImageView, innerImageView, contentView) { view, outerImageView, innerImageView, contentView in
+        constrain(view, outerImageView, innerImageView, contentView) {
+            (view, outerImageView, innerImageView, contentView) in
             outerImageView.top == view.top
             outerImageView.bottom == view.bottom
             outerImageView.left == view.left
@@ -135,7 +146,8 @@ extension ChalkboardViewController {
         view.subviews.forEach { $0.removeFromSuperview() }
         [outerImageView, innerImageView, contentView].forEach { view.addSubview($0) }
 
-        constrain(view, outerImageView, innerImageView, contentView) { view, outerImageView, innerImageView, contentView in
+        constrain(view, outerImageView, innerImageView, contentView) {
+            (view, outerImageView, innerImageView, contentView) in
             outerImageView.top == view.top
             outerImageView.bottom == view.bottom
             outerImageView.left == view.left
@@ -163,20 +175,5 @@ extension ChalkboardViewController {
             contentView.right == innerImageView.right
             contentView.bottom == innerImageView.bottom
         }
-    }
-
-    /// Is the current device one of the "X" models?
-    /// (FWIW, I hate having to resort to this, it's an anti pattern, but it is necessary)
-    var isXdevice: Bool {
-        guard UIDevice.current.userInterfaceIdiom == .phone else {
-            return false
-        }
-        guard max(UIScreen.main.bounds.size.height, UIScreen.main.bounds.size.width) >= 812 else {
-            return false
-        }
-
-        // 812.0 on iPhone X, XS.
-        // 896.0 on iPhone XS Max, XR.
-        return true
     }
 }

@@ -147,9 +147,9 @@ extension GameSceneController {
                 let yPosition = scene.frame.midY + config.offsetY + CGFloat(column-2) * config.stepSizeY
                 square.position = CGPoint(x: xPosition, y: yPosition)
                 square.zPosition = 100
-                #if DEBUG
-                square.fillColor = UIColor.blue.withAlphaComponent(0.4)
-                #endif
+//                #if DEBUG
+//                square.fillColor = UIColor.blue.withAlphaComponent(0.4)
+//                #endif
                 square.name = "tile_\(column)_\(row)"
                 rowNodes.append(square)
                 scene.addChild(square)

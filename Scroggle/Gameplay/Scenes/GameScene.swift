@@ -112,6 +112,7 @@ extension GameScene {
     /// Handler for the Game Over event (cleans up)
     func gameOverEvent() {
         gameOver = true
+        controller?.clearSelection()
         controller?.gameScene = nil
         controller = nil
     }

@@ -24,4 +24,19 @@ extension UIViewController {
     var isPad: Bool {
         return UIDevice.current.userInterfaceIdiom == .pad
     }
+
+    /// Is the current device one of the "X" models?
+    /// (FWIW, I hate having to resort to this, it's an anti pattern, but it is necessary)
+    var isXdevice: Bool {
+        guard UIDevice.current.userInterfaceIdiom == .phone else {
+            return false
+        }
+        guard max(UIScreen.main.bounds.size.height, UIScreen.main.bounds.size.width) >= 812 else {
+            return false
+        }
+
+        // 812.0 on iPhone X, XS.
+        // 896.0 on iPhone XS Max, XR.
+        return true
+    }
 }
