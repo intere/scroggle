@@ -90,6 +90,8 @@ extension GameSceneController {
         addClickableTiles()
 
         guard !Platform.isSimulator else {
+            // If we're running in the simulator, just set the intended Euler Angles,
+            // skip the intro (roll dice) animation and start the game
             setEulerAnglesForDice()
             Notification.Scroggle.GameEvent.beginTimer.notify()
             return

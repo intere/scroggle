@@ -48,6 +48,8 @@ extension GameSceneController {
         }
     }
 
+    /// Sets the euler angles to the intended positions for each die, so that the
+    /// side that was rolled to becomes the visible side.
     func setEulerAnglesForDice() {
         guard let diceArray = GameContextProvider.instance.currentGame?.game.board.board else {
             return assertionFailure("Failed to get the dice")
@@ -65,16 +67,23 @@ extension GameSceneController {
         dice.forEach { [weak self] die in
             self?.randomlyMove(die: die) {
                 results += 1
-                if results == count {
-                    completion?()
+
+                guard results == count else {
+                    // only call back when the last die has finished moving
+                    return
                 }
+                completion?()
             }
         }
     }
 
-    /// Rotates the provided die to a random side
+    /// This is a 2 step random process:
+    /// 1. Randomly rotate the die and move it to a random position (above the board)
+    /// 2. At the apex, move it back to its original location, but with to a random side
     ///
-    /// - Parameter die: The die to be moved
+    /// - Parameters:
+    ///   - die: The die to be moved
+    ///   - completion: The callback to tell you that the animation has completed
     func randomlyMove(die: SCNNode, completion: GenericBlock? = nil) {
         let originalPosition = die.position
         let randomEuler = eulerAngle(for: 5.random)
@@ -103,7 +112,9 @@ extension GameSceneController {
 
     /// Rolls the die at the provided index.
     ///
-    /// - Parameter index: The index of the die you want to roll
+    /// - Parameters:
+    ///   - index: The index of the die you want to roll
+    ///   - completion: The callback to tell you that the random roll has completed
     func rollRandom(at index: Int, completion: GenericBlock? = nil) {
         guard index < dice.count else {
             return
@@ -118,7 +129,6 @@ extension GameSceneController {
         let randomX = Float(6.random) - 3
         let randomY = Float(6.random) - 3
         let randomZ = Float(25.random) + 5
-//        DLog("Random Position: \(Int(randomX)), \(Int(randomY)), \(Int(randomZ))")
 
         let randomAngleX = CGFloat(360.random.radians)
         let randomAngleY = CGFloat(360.random.radians)
