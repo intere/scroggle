@@ -18,7 +18,7 @@ class Die: CustomDebugStringConvertible {
     }
 
     /// The ID of this die (for uniqueness)
-    var id: Int
+    var dieId: Int
 
     /// The array of sides of the die (array of 6)
     var sides: [String]
@@ -31,15 +31,15 @@ class Die: CustomDebugStringConvertible {
         return sides[selectedSide]
     }
 
-    init(sides: [String], id: Int) {
+    init(sides: [String], dieId: Int) {
         self.sides = sides
-        self.id = id
+        self.dieId = dieId
         selectedSide = 6.random
     }
 
-    init(sides: [String], id: Int, roll: String) {
+    init(sides: [String], dieId: Int, roll: String) {
         self.sides = sides
-        self.id = id
+        self.dieId = dieId
         selectedSide = sides.index(of: roll) ?? 0
     }
 
@@ -91,6 +91,6 @@ extension Die {
             return nil
         }
 
-        return Die(sides: sides, id: index, roll: roll)
+        return Die(sides: sides, dieId: index, roll: roll)
     }
 }

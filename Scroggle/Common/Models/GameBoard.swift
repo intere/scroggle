@@ -16,7 +16,7 @@ class GameBoard {
         board = []
         var index = 0
         for sides in dice {
-            board.append(Die(sides: sides, id: index))
+            board.append(Die(sides: sides, dieId: index))
             index += 1
         }
     }

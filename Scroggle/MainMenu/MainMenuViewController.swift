@@ -15,9 +15,6 @@ class MainMenuViewController: ChalkboardViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         GameContextProvider.Configuration.demoMode = false
-        let menuVC = MenuContainerViewController.loadFromStoryboard()
-        menuVC.menuBuilder = self
-        addContent(viewController: menuVC)
     }
 
     /// Creates you a new instance of this VC from the storyboard.
@@ -41,16 +38,20 @@ extension MainMenuViewController: MenuBuilding {
     /// - Returns: A MenuInfo object for the Main Menu.
     func buildMenu() -> MenuInfo? {
         return MenuInfo(title: "Scroggle", showCloseButton: false, buttons: [
-            ButtonCellInfo(title: "New Game", action: {
+            ButtonCellInfo(title: "New Game", action: { [weak self] in
                 SoundProvider.instance.playMenuSelectionSound()
-                DLog("Clicked New Game")
-                self.navigationController?.pushViewController(TimeMenuViewController.loadFromStoryboard(),
+                self?.navigationController?.pushViewController(TimeMenuViewController.loadFromStoryboard(),
                                                               animated: true)
             }),
             // TODO: Toggle between "Login: GameCenter" and "View High Scores"
             ButtonCellInfo(title: "Login: GameCenter", action: {
                 SoundProvider.instance.playMenuSelectionSound()
                 DLog("Clicked Login")
+            }),
+            ButtonCellInfo(title: "Help", action: { [weak self] in
+                SoundProvider.instance.playMenuSelectionSound()
+                self?.navigationController?.pushViewController(HelpMenuViewController.loadFromStoryboard(),
+                                                               animated: true)
             })
         ])
     }

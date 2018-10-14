@@ -47,9 +47,18 @@ open class ChalkboardViewController: UIViewController {
         }
 
         Notification.Scroggle.MenuAction.tappedBackButton.addObserver(self, selector: #selector(tappedCloseButton(_:)))
+
+        // As a convenience, if the implementer conforms to MenuBuilding, we'll
+        // automatically create a MenuContainerVC and wire it up for you.
+        if let menuBuilding = self as? MenuBuilding {
+            let menuVC = MenuContainerViewController.loadFromStoryboard()
+            addContent(viewController: menuVC)
+            menuVC.menuBuilder = menuBuilding
+        }
     }
 
-    open override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+    open override func willTransition(to newCollection: UITraitCollection,
+                                      with coordinator: UIViewControllerTransitionCoordinator) {
         coordinator.animate(alongsideTransition: { _ in
             switch UIApplication.shared.statusBarOrientation {
             case .portrait, .portraitUpsideDown:
@@ -91,10 +100,18 @@ open class ChalkboardViewController: UIViewController {
         guard let childView = viewController.view else {
             return assertionFailure("nope")
         }
-        contentView.addSubview(childView)
+        setContentView(childView)
         addChild(viewController)
         viewController.didMove(toParent: self)
+    }
 
+    /// Adds and sets the provided view as the child view.
+    /// The view is added to the contentView and then constrained
+    /// to that view, exactly.
+    ///
+    /// - Parameter childView: The child view.
+    public func setContentView(_ childView: UIView) {
+        contentView.addSubview(childView)
         constrain(contentView, childView) { view, childView in
             childView.top == view.top
             childView.left == view.left
@@ -121,6 +138,8 @@ extension ChalkboardViewController {
 
         constrain(view, outerImageView, innerImageView, contentView) {
             (view, outerImageView, innerImageView, contentView) in
+            // swiftlint:disable:previous closure_parameter_position
+            
             outerImageView.top == view.top
             outerImageView.bottom == view.bottom
             outerImageView.left == view.left
@@ -154,6 +173,8 @@ extension ChalkboardViewController {
 
         constrain(view, outerImageView, innerImageView, contentView) {
             (view, outerImageView, innerImageView, contentView) in
+            // swiftlint:disable:previous closure_parameter_position
+            
             outerImageView.top == view.top
             outerImageView.bottom == view.bottom
             outerImageView.left == view.left
