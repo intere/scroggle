@@ -14,9 +14,30 @@ class GameBoard {
 
     init(dice: [[String]]) {
         board = []
+        var index = 0
         for sides in dice {
-            board.append(Die(sides: sides))
+            board.append(Die(sides: sides, id: index))
+            index += 1
         }
+    }
+
+}
+
+// MARK: - CustomDebugStringConvertible
+
+extension GameBoard: CustomDebugStringConvertible {
+
+    var debugDescription: String {
+        var result = "Dice:\n"
+        for die in board {
+            result += "\(die.sides)\n"
+        }
+
+        // Now print the board
+        result += "\nBoard:\n"
+        result += configuration
+
+        return result
     }
 
 }
@@ -26,9 +47,7 @@ class GameBoard {
 extension GameBoard {
 
     /// Builds you a string that represents the configuration of the board.
-    ///
-    /// - Returns: The current rolled configuration of the board.
-    func getConfiguration() -> String {
+    var configuration: String {
         let size = Int(sqrt(Double(board.count)))
         var result = ""
 
@@ -141,11 +160,13 @@ extension GameBoard {
     /// - Returns: A GameBoard with the deserialized configuration
     static func fromArray(_ array: [Any]) -> GameBoard {
         let board = GameBoard(dice: [])
+        var index = 0
         for dieMap in array {
-            guard let map = dieMap as? [String: Any], let die = Die.fromMap(map) else {
+            guard let map = dieMap as? [String: Any], let die = Die.fromMap(map, withIndex: index) else {
                 continue
             }
             board.board.append(die)
+            index += 1
         }
         return board
     }

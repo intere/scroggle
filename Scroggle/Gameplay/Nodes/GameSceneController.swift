@@ -28,6 +28,9 @@ class GameSceneController {
     /// The SCNNodes for the dice (there should be 16 of them in a 4x4 board)
     var dice: [SCNNode] = []
 
+    /// The positions for each die
+    var dicePositions = [SCNVector3]()
+
     /// The Clickable Tiles (laid over the dice)
     var tiles: [SKShapeNode] = []
 
@@ -84,19 +87,40 @@ extension GameSceneController {
         readDiceReferences()
         readCameraReference()
         setDiceMaterial()
-        // TODO: Reenable the rollDice function
-//        rollDice()
         addClickableTiles()
+
+        guard !Platform.isSimulator else {
+            // If we're running in the simulator, just set the intended Euler Angles,
+            // skip the intro (roll dice) animation and start the game
+            setEulerAnglesForDice()
+            Notification.Scroggle.GameEvent.beginTimer.notify()
+            return
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            guard let self = self else {
+                return
+            }
+            if let rootNode = self.gameScene?.rootNode {
+                SoundProvider.instance.playDiceRollSound(node: rootNode)
+            }
+            self.rollDice {
+                Notification.Scroggle.GameEvent.beginTimer.notify()
+            }
+        }
     }
 
     /// Reads the dice nodes from the scene and stores them in the `dice` array.
     func readDiceReferences() {
         dice.removeAll()
+        dicePositions.removeAll()
+
         for index in 0..<16 {
-            guard let die = gameScene?.rootNode.childNodes.filter({$0.name == "d\(index)"}).first else {
+            guard let die = getDie(at: index) else {
                 continue
             }
             dice.append(die)
+            dicePositions.append(die.position)
         }
         assert(dice.count == 16)
     }
@@ -123,7 +147,8 @@ extension GameSceneController {
                 continue
             }
             box.materials = diceArray[index].sides.map({self.createMaterialForText(text: $0)})
-            dice[index].eulerAngles = eulerAngle(for: diceArray[index].selectedSide)
+            // Let the intro animation do this part
+//            dice[index].eulerAngles = eulerAngle(for: diceArray[index].selectedSide)
         }
     }
 

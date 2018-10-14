@@ -12,25 +12,85 @@ import SpriteKit
 extension GameSceneController {
 
     /// Rolls the dice in the scene for you
-    func rollDice() {
-        helpRollDice()
+    func rollDice(completion: GenericBlock? = nil) {
+        helpRollDice { [weak self] in
+            self?.helpRollDice { [weak self] in
+                self?.helpResetDice {
+                    completion?()
+                }
+            }
+        }
+    }
+
+    /// Resets the dice into their positions
+    ///
+    /// - Parameter completion:
+    func helpResetDice(completion: GenericBlock? = nil) {
+        var results = 0
+        let count = dice.count
+
+        for index in 0..<count {
+            let die = gameContext.game.board.board[index]
+            let euler = eulerAngle(for: die.selectedSide)
+
+            rollRandom(at: index) { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                self.reset(die: self.dice[index], position: self.dicePositions[index], angle: euler) {
+                    results += 1
+                    guard results == count else {
+                        return
+                    }
+                    completion?()
+                }
+            }
+        }
+    }
+
+    /// Sets the euler angles to the intended positions for each die, so that the
+    /// side that was rolled to becomes the visible side.
+    func setEulerAnglesForDice() {
+        guard let diceArray = GameContextProvider.instance.currentGame?.game.board.board else {
+            return assertionFailure("Failed to get the dice")
+        }
+        for index in 0..<dice.count {
+            dice[index].eulerAngles = eulerAngle(for: diceArray[index].selectedSide)
+        }
     }
 
     /// Rolls all of the dice to random positions
     func helpRollDice(completion: GenericBlock? = nil) {
+        var results = 0
+        let count = dice.count
+
         dice.forEach { [weak self] die in
-            self?.randomlyMove(die: die)
+            self?.randomlyMove(die: die) {
+                results += 1
+
+                guard results == count else {
+                    // only call back when the last die has finished moving
+                    return
+                }
+                completion?()
+            }
         }
     }
 
-    /// Moves the provided die to a random position
+    /// This is a 2 step random process:
+    /// 1. Randomly rotate the die and move it to a random position (above the board)
+    /// 2. At the apex, move it back to its original location, but with to a random side
     ///
-    /// - Parameter die: The die to be moved
-    func randomlyMove(die: SCNNode) {
+    /// - Parameters:
+    ///   - die: The die to be moved
+    ///   - completion: The callback to tell you that the animation has completed
+    func randomlyMove(die: SCNNode, completion: GenericBlock? = nil) {
         let originalPosition = die.position
         let randomEuler = eulerAngle(for: 5.random)
         rollRandom(die: die) { [weak self] in
-            self?.reset(die: die, position: originalPosition, angle: randomEuler)
+            self?.reset(die: die, position: originalPosition, angle: randomEuler) {
+                completion?()
+            }
         }
     }
 
@@ -45,17 +105,21 @@ extension GameSceneController {
         let moveAction = SCNAction.move(to: position, duration: AnimationConstants.duration)
         let rotateAction = SCNAction.rotateTo(x: CGFloat(angle.x), y: CGFloat(angle.y),
                                               z: CGFloat(angle.z), duration: AnimationConstants.duration)
-        die.runAction(SCNAction.group([moveAction, rotateAction]))
+        die.runAction(SCNAction.group([moveAction, rotateAction])) {
+            completion?()
+        }
     }
 
     /// Rolls the die at the provided index.
     ///
-    /// - Parameter index: The index of the die you want to roll
+    /// - Parameters:
+    ///   - index: The index of the die you want to roll
+    ///   - completion: The callback to tell you that the random roll has completed
     func rollRandom(at index: Int, completion: GenericBlock? = nil) {
         guard index < dice.count else {
             return
         }
-        rollRandom(die: dice[index])
+        rollRandom(die: dice[index], completion: completion)
     }
 
     /// Rolls the die to a random position
@@ -65,7 +129,6 @@ extension GameSceneController {
         let randomX = Float(6.random) - 3
         let randomY = Float(6.random) - 3
         let randomZ = Float(25.random) + 5
-        DLog("Random Position: \(Int(randomX)), \(Int(randomY)), \(Int(randomZ))")
 
         let randomAngleX = CGFloat(360.random.radians)
         let randomAngleY = CGFloat(360.random.radians)
@@ -78,6 +141,23 @@ extension GameSceneController {
         die.runAction(SCNAction.group([moveAction, rotateAction])) {
             completion?()
         }
+    }
+
+    /// Gets you the SCNNode for the die at the provided index.
+    ///
+    /// - Parameter index: The index of the die you'd like.
+    /// - Returns: The SCNNode for the die at the provided index (if it could be found).
+    func getDie(at index: Int) -> SCNNode? {
+        let name = dieName(at: index)
+        return gameScene?.rootNode.childNodes.filter({ $0.name == name }).first
+    }
+
+    /// Gets you the name of the die at the provided index.
+    ///
+    /// - Parameter index: the index of the die you want.
+    /// - Returns: name of the die at the provided index.
+    func dieName(at index: Int) -> String {
+        return "d\(index)"
     }
 
     struct AnimationConstants {

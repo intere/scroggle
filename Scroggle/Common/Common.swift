@@ -9,3 +9,15 @@
 import Foundation
 
 typealias GenericBlock = () -> Void
+
+
+/// Tells us if we're running on a simulator or not.
+struct Platform {
+    static let isSimulator: Bool = {
+        var isSim = false
+        #if arch(i386) || arch(x86_64)
+        isSim = true
+        #endif
+        return isSim
+    }()
+}

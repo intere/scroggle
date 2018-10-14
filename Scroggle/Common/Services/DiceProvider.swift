@@ -8,8 +8,6 @@
 
 import UIKit
 
-// TODO: extract a protocol (DiceService) from DiceProvider
-
 /// A Provider that will generate you GameBoards.
 ///
 /// **Note:** To generate GameBoards, we depend on the `dice.json` file living in the main bundle
@@ -64,7 +62,7 @@ extension DiceProvider {
     /// - Parameter board: The board to check for vowels.
     /// - Returns: True if it has at least 3 vowels
     func hasEnoughVowels(_ board: GameBoard) -> Bool {
-        return board.board.map({ vowels.contains($0.roll) }).filter({$0}).count > 3
+        return board.board.map({ vowels.contains($0.roll) }).filter({ $0 }).count > 3
     }
 
     /// Loads the dice.json file and populates the data structures from it.
