@@ -56,8 +56,20 @@
                                     <rect key="frame" x="0.0" y="0.0" width="736" height="70"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lm4-WN-Q36">
+                                            <rect key="frame" x="24" y="15" width="40" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="KOj-06-lUZ"/>
+                                                <constraint firstAttribute="height" constant="40" id="TH2-aG-g1E"/>
+                                            </constraints>
+                                            <state key="normal" image="close_normal"/>
+                                            <state key="selected" image="close_selected"/>
+                                            <connections>
+                                                <action selector="tappedClose:" destination="BfH-zo-oZ5" eventType="touchUpInside" id="Om7-Ih-eBK"/>
+                                            </connections>
+                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scroggle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yrp-d7-Jua">
-                                            <rect key="frame" x="20" y="21" width="622.66666666666663" height="35"/>
+                                            <rect key="frame" x="68" y="21" width="648" height="35"/>
                                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="30"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -66,12 +78,17 @@
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="Yrp-d7-Jua" secondAttribute="bottom" constant="3" id="3Pb-RV-tip"/>
                                         <constraint firstItem="Yrp-d7-Jua" firstAttribute="top" secondItem="bfy-wF-Mp6" secondAttribute="topMargin" constant="10" id="8b4-Be-Bpf"/>
+                                        <constraint firstItem="Yrp-d7-Jua" firstAttribute="leading" secondItem="lm4-WN-Q36" secondAttribute="trailing" constant="4" id="H2A-wu-jS9"/>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="lm4-WN-Q36" secondAttribute="bottom" constant="4" id="HcZ-sT-puH"/>
+                                        <constraint firstItem="lm4-WN-Q36" firstAttribute="leading" secondItem="bfy-wF-Mp6" secondAttribute="leadingMargin" constant="4" id="L9g-xw-Tym"/>
                                         <constraint firstItem="Yrp-d7-Jua" firstAttribute="trailing" secondItem="bfy-wF-Mp6" secondAttribute="trailingMargin" id="NGN-UN-Zat"/>
-                                        <constraint firstItem="Yrp-d7-Jua" firstAttribute="leading" secondItem="bfy-wF-Mp6" secondAttribute="leadingMargin" id="woF-rh-Ynt"/>
+                                        <constraint firstItem="lm4-WN-Q36" firstAttribute="centerY" secondItem="bfy-wF-Mp6" secondAttribute="centerY" id="ael-zK-YpG"/>
+                                        <constraint firstItem="lm4-WN-Q36" firstAttribute="top" relation="greaterThanOrEqual" secondItem="bfy-wF-Mp6" secondAttribute="top" constant="4" id="z29-e4-178"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
+                                    <outlet property="closeButton" destination="lm4-WN-Q36" id="VGA-iw-Fdb"/>
                                     <outlet property="label" destination="Yrp-d7-Jua" id="BhO-Ag-X7w"/>
                                 </connections>
                             </tableViewCell>
@@ -120,11 +137,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rMv-w5-Zy6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-321" y="905"/>
+            <point key="canvasLocation" x="-321.19565217391306" y="904.34782608695662"/>
         </scene>
     </scenes>
     <resources>
         <image name="button_400" width="400" height="60"/>
         <image name="button_selected_400" width="408" height="68"/>
+        <image name="close_normal" width="40" height="40"/>
+        <image name="close_selected" width="40" height="40"/>
     </resources>
 </document>

@@ -68,6 +68,7 @@ extension MenuTableViewController {
         }
 
         cell.title = menu?.title
+        cell.showCloseButton = menu?.showCloseButton ?? true
 
         return cell
     }

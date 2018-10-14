@@ -16,13 +16,18 @@ class MenuInfo {
     /// An array of menu items (buttons) for the menu.  These are user actions.
     let buttons: [ButtonCellInfo]
 
+    /// Should the "close" button be visible in the menu?
+    let showCloseButton: Bool
+
     /// Initializes the MenuInfo object using the provided title and buttons.
     ///
     /// - Parameters:
     ///   - title: The menu title
+    ///   - showCloseButton: Should the close button be visible?
     ///   - buttons: The buttons in the menu (user actions)
-    init(title: String, buttons: [ButtonCellInfo]) {
+    init(title: String, showCloseButton: Bool = true, buttons: [ButtonCellInfo]) {
         self.title = title
+        self.showCloseButton = showCloseButton
         self.buttons = buttons
     }
 }

@@ -40,7 +40,7 @@ extension MainMenuViewController: MenuBuilding {
     ///
     /// - Returns: A MenuInfo object for the Main Menu.
     func buildMenu() -> MenuInfo? {
-        return MenuInfo(title: "Scroggle", buttons: [
+        return MenuInfo(title: "Scroggle", showCloseButton: false, buttons: [
             ButtonCellInfo(title: "New Game", action: {
                 SoundProvider.instance.playMenuSelectionSound()
                 DLog("Clicked New Game")

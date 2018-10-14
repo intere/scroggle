@@ -27,8 +27,8 @@ open class ChalkboardViewController: UIViewController {
 
     open override func viewDidLoad() {
         super.viewDidLoad()
-        print("Bounds: \(view.bounds)")
-        print("Frame: \(view.frame)")
+        DLog("Bounds: \(view.bounds)")
+        DLog("Frame: \(view.frame)")
 
         outerImageView = UIImageView(image: #imageLiteral(resourceName: "wood_border"))
         innerImageView = UIImageView(image: #imageLiteral(resourceName: "chalkboard"))
@@ -45,17 +45,17 @@ open class ChalkboardViewController: UIViewController {
         } else {
             buildLandscape()
         }
+
+        Notification.Scroggle.MenuAction.tappedBackButton.addObserver(self, selector: #selector(tappedCloseButton(_:)))
     }
 
     open override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         coordinator.animate(alongsideTransition: { _ in
             switch UIApplication.shared.statusBarOrientation {
             case .portrait, .portraitUpsideDown:
-                //                DLog("Animating to Portrait")
                 self.buildPortrait()
 
             default:
-                //                DLog("Animating to Landscape")
                 self.buildLandscape()
             }
         }, completion: { _ in
@@ -101,6 +101,12 @@ open class ChalkboardViewController: UIViewController {
             childView.right == view.right
             childView.bottom == view.bottom
         }
+    }
+
+    @IBAction
+    open func tappedCloseButton(_ notification: NSNotification) {
+        SoundProvider.instance.playMenuSelectionSound()
+        navigationController?.popViewController(animated: true)
     }
 
 }

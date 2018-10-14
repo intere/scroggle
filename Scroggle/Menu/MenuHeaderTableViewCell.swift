@@ -13,6 +13,7 @@ import UIKit
 class MenuHeaderTableViewCell: UITableViewCell {
 
     @IBOutlet weak var label: UILabel?
+    @IBOutlet weak var closeButton: UIButton!
 
     var title: String? {
         get {
@@ -23,8 +24,15 @@ class MenuHeaderTableViewCell: UITableViewCell {
         }
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    var showCloseButton = true {
+        didSet {
+            closeButton.isHidden = !showCloseButton
+        }
+    }
+
+    @IBAction
+    func tappedClose(_ source: Any) {
+        Notification.Scroggle.MenuAction.tappedBackButton.notify()
     }
 
 }

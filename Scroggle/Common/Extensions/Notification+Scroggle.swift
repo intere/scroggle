@@ -76,6 +76,18 @@ extension Notification {
             }
         }
 
+        /// General menu actions
+        enum MenuAction: String, Notifiable, CustomStringConvertible {
+            case tappedBackButton = "tapped.back"
+
+            static var notificationBase: String {
+                return "scroggle.menu.action"
+            }
+            var description: String {
+                return self.rawValue
+            }
+        }
+
     }
 
 }
