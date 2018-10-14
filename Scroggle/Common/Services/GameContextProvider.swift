@@ -70,9 +70,18 @@ extension GameContextProvider {
     /// Clones the current game into a new game and sets the currentGame to that new copy.
     func replayCurrentGame() {
         guard let original = currentGame else {
-            return
+            return assertionFailure("ERROR: Failed to get the current game")
         }
 
         currentGame = GameContext(from: original)
+    }
+
+    /// Creates a new game, but uses the current games time.
+    func replayGameWithSameTime() {
+        guard let currentTimeType = currentGame?.game.timeType else {
+            return assertionFailure("ERROR: Failed to get the current game time")
+        }
+
+        createSinglePlayerGame(currentTimeType)
     }
 }

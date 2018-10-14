@@ -6,115 +6,201 @@
 //  Copyright © 2018 Eric Internicola. All rights reserved.
 //
 
-import Foundation
+import Cartography
 import SceneKit
 import SpriteKit
 import UIKit
 
-class GameContainerViewController: UIViewController {
-    @IBOutlet weak var proportionalWidthConstraint: NSLayoutConstraint!
-    @IBOutlet weak var proportionalHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var centerYConstraint: NSLayoutConstraint!
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var backButton: UIButton!
+class GameContainerViewController: ChalkboardViewController {
+    var gameArea: SKView!
+    var gameController: GameSceneController!
+    var hudController: HUDViewController!
+    var isGameOver = false
 
-    override var prefersStatusBarHidden: Bool { return true }
-
-    /// The SpriteKit view that the GameScene is to be rendered in
-    var skView: SKView?
-
-    /// The Controller for the GameScene
-    var gameController: GameSceneController?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        updateUserInterface()
-        Notification.Scroggle.GameOverAction.mainMenu.addObserver(self, selector: #selector(goToMainMenu))
-        Notification.Scroggle.GameOverAction.playAgain.addObserver(self, selector: #selector(replayNewGameSameTime))
-        Notification.Scroggle.GameOverAction.replay.addObserver(self, selector: #selector(replayCurrentBoard))
+    var scoreArea: UIView {
+        return hudController.view
     }
 
-    /// Factory instantiation function for this VC, comes from a storyboard.
-    ///
-    /// - Returns: An instance of the GamePlayViewController
-    static func loadFromStoryboard() -> GameContainerViewController {
-        let storybaord = UIStoryboard(name: "GameContainer", bundle: nil)
-        return storybaord.instantiateInitialViewController() as! GameContainerViewController
+    override func viewDidLoad() {
+        addHudVC()
+
+        gameArea = SKView()
+        #if DEBUG
+        gameArea.showsFPS = true
+        gameArea.showsPhysics = true
+        gameArea.showsDrawCount = true
+        gameArea.showsNodeCount = true
+        gameArea.showsQuadCount = true
+        #endif
+
+        DispatchQueue.main.async {
+            self.gameController = GameSceneController(withView: self.gameArea)
+        }
+
+        Notification.Scroggle.GameEvent.gameEnded.addObserver(self, selector: #selector(gameEnded))
+        Notification.Scroggle.GameOverAction.mainMenu.addObserver(self, selector: #selector(mainMenu))
+        Notification.Scroggle.GameOverAction.playAgain.addObserver(self, selector: #selector(playAgain))
+        Notification.Scroggle.GameOverAction.replay.addObserver(self, selector: #selector(replay))
+
+        super.viewDidLoad()
+    }
+
+    public static func loadFromStoryboard() -> GameContainerViewController {
+        return UIStoryboard(name: "GameContainer", bundle: nil)
+            .instantiateInitialViewController() as! GameContainerViewController
         // swiftlint:disable:previous force_cast
     }
 
-    @IBAction
-    func buttonTODOdeleteMe(_ sender: Any) {
-        Notification.Scroggle.GameEvent.gameEnded.notify()
-        Notification.Scroggle.GameOverAction.mainMenu.notify()
+    /// Builds the UI for Portrait Layout
+    override func buildPortrait() {
+        super.buildPortrait()
+        contentView.subviews.forEach { $0.removeFromSuperview() }
+        [scoreArea, gameArea].forEach { contentView.addSubview($0) }
+
+        constrain(contentView, scoreArea, gameArea) { view, scoreArea, gameArea in
+            scoreArea.top == view.top
+            scoreArea.left == view.left
+            scoreArea.right == view.right
+            if self.isPad {
+                scoreArea.bottom == view.centerY * 0.5
+            } else {
+                scoreArea.bottom == view.centerY
+            }
+
+            gameArea.top == scoreArea.bottom
+            gameArea.left == view.left
+            gameArea.right == view.right
+            gameArea.bottom == view.bottom
+        }
+
+        if isGameOver {
+            buildGameOverView()
+        }
     }
+
+    /// Builds the screen for Landscape layout
+    override func buildLandscape() {
+        super.buildLandscape()
+        contentView.subviews.forEach { $0.removeFromSuperview() }
+        [scoreArea, gameArea].forEach { contentView.addSubview($0) }
+
+        constrain(contentView, scoreArea, gameArea) { view, scoreArea, gameArea in
+            scoreArea.top == view.top
+            scoreArea.left == view.left
+            if self.isPad {
+                scoreArea.right == view.centerX * 0.5
+            } else {
+                scoreArea.right == view.centerX
+            }
+            scoreArea.bottom == view.bottom
+
+            gameArea.top == view.top
+            gameArea.left == scoreArea.right
+            gameArea.right == view.right
+            gameArea.bottom == view.bottom
+        }
+
+        if isGameOver {
+            buildGameOverView()
+        }
+    }
+
+}
+
+// MARK: - ObjC functions
+
+extension GameContainerViewController {
+
+    @objc
+    func gameEnded() {
+        isGameOver = true
+        buildGameOverView()
+    }
+
+    @objc
+    func mainMenu() {
+        Notification.Scroggle.GameEvent.gameEnded.notify()
+        SoundProvider.instance.playMenuSelectionSound()
+        guard let mainMenuVC = navigationController?.viewControllers.first(where: { $0 is MainMenuViewController }) else {
+            return assertionFailure("No MainMenuVC")
+        }
+        navigationController?.popToViewController(mainMenuVC, animated: true)
+    }
+
+    @objc
+    func playAgain() {
+        SoundProvider.instance.playMenuSelectionSound()
+        GameContextProvider.instance.replayGameWithSameTime()
+        pushAnotherGameToNavVC()
+    }
+
+    @objc
+    func replay() {
+        SoundProvider.instance.playMenuSelectionSound()
+        GameContextProvider.instance.replayCurrentGame()
+        pushAnotherGameToNavVC()
+    }
+
 }
 
 // MARK: - Implementation
 
 extension GameContainerViewController {
 
-    @objc
-    func replayCurrentBoard() {
-        navigationController?.popViewController(animated: true)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            Notification.Scroggle.TimeMenuAction.replayCurrentBoard.notify()
-        }
-    }
-
-    @objc
-    func replayNewGameSameTime() {
-        navigationController?.popViewController(animated: true)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            Notification.Scroggle.TimeMenuAction.playSameTime.notify()
-        }
-    }
-
-    @objc
-    func goToMainMenu() {
-        navigationController?.popToRootViewController(animated: true)
-    }
-
-    /// For getting a reference to the embedded view controller.
-    ///
-    /// - Parameters:
-    ///   - segue: The segue to get the VC reference from.
-    ///   - sender: The source of the event.
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "embedGameView" else {
-            return
-        }
-
-        skView = segue.destination.view.subviews[0] as? SKView
-        loadGameScene()
-    }
-
-    /// Updates the UI to render things correctly
-    func updateUserInterface() {
-        if UIDevice.current.isiPhoneX {
-            proportionalWidthConstraint.constant = -80
-            proportionalHeightConstraint.constant = -20
-            centerYConstraint.constant = -10
-            gameController?.camera?.orthographicScale = 5.0
-        } else if UIDevice.current.isiPhone6Plus || UIDevice.current.isiPhone6 || UIDevice.current.isiPhone5 {
-            gameController?.camera?.orthographicScale = 5.6
-        }
-
-        if UIDevice.current.isiPad {
-            gameController?.camera?.orthographicScale = 5
+    /// Computes an optimal font size for the current screen orientation and size
+    private var gameOverFontSize: CGFloat {
+        var fontSize: CGFloat = 20
+        if isLandscape {
+            if isPad {
+                fontSize = UIScreen.main.bounds.width / 15
+            } else {
+                // we're using a bit less than half the screen width on phones
+                fontSize = UIScreen.main.bounds.width / 20
+            }
         } else {
-            backButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+            // we're using just less than the screen width
+            fontSize = UIScreen.main.bounds.width / 10
+        }
+        DLog("Using font size: \(fontSize)")
+        return fontSize
+    }
+
+    /// Adds the "Game Over" tile over the game play area
+    private func buildGameOverView() {
+        let view = UIView()
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        let label = UILabel()
+        label.text = "Game Over"
+        label.font = UIFont(name: "Chalkduster", size: gameOverFontSize)
+        label.textColor = .orange
+        view.addSubview(label)
+        contentView.addSubview(view)
+
+        constrain(gameArea, view, label) { (view, gameOverView, label) in
+            gameOverView.left == view.left
+            gameOverView.top == view.top
+            gameOverView.right == view.right
+            gameOverView.bottom == view.bottom
+
+            label.centerX == gameOverView.centerX
+            label.centerY == gameOverView.centerY
         }
     }
 
-    /// Updates the game scene after the view loads
-    func loadGameScene() {
-        guard let skView = skView else {
-            return assertionFailure("ERROR: Couldn't get a reference to the SKView")
+    private func pushAnotherGameToNavVC() {
+        guard var vcList = navigationController?.viewControllers else {
+            return DLog("ERROR: No current game to get time type from")
         }
+        vcList.removeLast()
+        vcList.append(GameContainerViewController.loadFromStoryboard())
 
-        // Bootstrap the GameScene:
-        gameController = GameSceneController(withView: skView)
+        navigationController?.setViewControllers(vcList, animated: true)
+    }
+
+    private func addHudVC() {
+        hudController = HUDViewController()
+        addChild(hudController)
+        hudController.didMove(toParent: self)
     }
 
 }

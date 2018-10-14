@@ -1,21 +1,25 @@
 PODS:
+  - Cartography (3.1.0)
   - Crashlytics (3.9.0):
     - Fabric (~> 1.7.0)
   - Fabric (1.7.0)
 
 DEPENDENCIES:
+  - Cartography
   - Crashlytics
   - Fabric
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Cartography
     - Crashlytics
     - Fabric
 
 SPEC CHECKSUMS:
+  Cartography: 1988b7578871a56c036e7af17195cb2190edf18c
   Crashlytics: 64aad5dd97249dd3ff94b979fea140144590cdd3
   Fabric: e6be012366472553807dada21243c5ab8d904151
 
-PODFILE CHECKSUM: 7bd8969b5bb3beecd5528db40d1ee633f254d795
+PODFILE CHECKSUM: d46e62005f63d4fb8ce290d9c76e193528018b4b
 
 COCOAPODS: 1.5.3

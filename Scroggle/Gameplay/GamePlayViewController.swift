@@ -14,12 +14,15 @@ import UIKit
 class GamePlayViewController: UIViewController {
     /// The label that shows the time left in the game
     @IBOutlet weak var timerLabel: UILabel!
+
     /// The label that shows the score for the game
     @IBOutlet weak var scoreLabel: UILabel!
+
     /// Constraint for hiding / showing the game over message.  Note: showing
     /// the game over view will prevent gameplay because it sits on top of the
     /// Game board.
     @IBOutlet weak var gameOverWidthConstraint: NSLayoutConstraint!
+
     /// The SpriteKit View which is the game play (game board).
     @IBOutlet weak var skView: SKView!
 
@@ -32,7 +35,7 @@ class GamePlayViewController: UIViewController {
     }
 
     /// The amount of time left in the game
-    var seconds = GameContextProvider.instance.currentGame?.game.timeType.rawValue ?? 15
+    var seconds = GameContextProvider.instance.currentGame?.game.timeType.seconds ?? 15
     /// The Timer object that's used to count down the time in the game
     var timer: Timer?
 
@@ -59,7 +62,7 @@ class GamePlayViewController: UIViewController {
 extension GamePlayViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "GameOverSegue" && UIDevice.current.isiPhone5 {
+        if segue.identifier == "GameOverSegue" {
             // A bit of a hack, but the Game Over Label isn't here yet, so waiting until the next
             // time the UI Thread is freed up seems to work just fine.
             DispatchQueue.main.async { [weak self] in

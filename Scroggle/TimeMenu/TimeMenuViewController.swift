@@ -9,15 +9,7 @@
 import UIKit
 
 /// The Controller for the TimeMenu, it's responsible for starting games
-class TimeMenuViewController: UIViewController {
-
-    /// A reference to the `MenuContainerViewController` so that we can
-    /// wire ourself as the `menuBuilder`
-    weak var menuContainerVC: MenuContainerViewController? {
-        didSet {
-            menuContainerVC?.menuBuilder = self
-        }
-    }
+class TimeMenuViewController: ChalkboardViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +17,10 @@ class TimeMenuViewController: UIViewController {
             self, selector: #selector(replayCurrentGameTime))
         Notification.Scroggle.TimeMenuAction.replayCurrentBoard.addObserver(
             self, selector: #selector(replayCurrentBoard))
+
+        let menuVC = MenuContainerViewController.loadFromStoryboard()
+        menuVC.menuBuilder = self
+        addContent(viewController: menuVC)
     }
 
     /// Gives you an instance of this class that's instantiated via the
@@ -65,18 +61,6 @@ extension TimeMenuViewController: MenuBuilding {
             }
         ])
     }
-}
-
-// MARK: - Navigation
-
-extension TimeMenuViewController {
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let menuContainerVC = segue.destination as? MenuContainerViewController {
-            self.menuContainerVC = menuContainerVC
-        }
-    }
-
 }
 
 // MARK: - Implementation

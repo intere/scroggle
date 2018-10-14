@@ -7,6 +7,7 @@ target 'Scroggle' do
 
   pod 'Fabric'
   pod 'Crashlytics'
+  pod 'Cartography'
 
   target 'ScroggleTests' do
     inherit! :search_paths

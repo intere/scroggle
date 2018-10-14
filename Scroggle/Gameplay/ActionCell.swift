@@ -35,7 +35,7 @@ class ActionCell: UITableViewCell {
     ///
     /// - Parameter sender: The source of the event (probably the `button`).
     func pressedButton(_ sender: Any) {
-        DLog("Clicked: \(action.rawValue)")
+//        DLog("Clicked: \(action.rawValue)")
         action.notify()
     }
 }

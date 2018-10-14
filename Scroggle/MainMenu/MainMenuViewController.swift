@@ -6,22 +6,18 @@
 //  Copyright © 2017 Eric Internicola. All rights reserved.
 //
 
+import Cartography
 import UIKit
 
 /// The Controller for the Main Menu.
-class MainMenuViewController: UIViewController {
-
-    /// A reference to the `MenuContainerViewController` so that we can wire
-    /// this instance to the `menuBuilder` of that Controller.
-    weak var menuContainerVC: MenuContainerViewController? {
-        didSet {
-            menuContainerVC?.menuBuilder = self
-        }
-    }
+class MainMenuViewController: ChalkboardViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         GameContextProvider.Configuration.demoMode = false
+        let menuVC = MenuContainerViewController.loadFromStoryboard()
+        menuVC.menuBuilder = self
+        addContent(viewController: menuVC)
     }
 
     /// Creates you a new instance of this VC from the storyboard.
@@ -57,18 +53,6 @@ extension MainMenuViewController: MenuBuilding {
                 DLog("Clicked Login")
             })
         ])
-    }
-
-}
-
-// MARK: - Navigation
-
-extension MainMenuViewController {
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let menuContainerVC = segue.destination as? MenuContainerViewController {
-            self.menuContainerVC = menuContainerVC
-        }
     }
 
 }

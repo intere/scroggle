@@ -33,6 +33,7 @@ class GameScene: SKScene {
     /// - Parameter size: The size of the area that you want it to take up
     override init(size: CGSize) {
         super.init(size: size)
+        backgroundColor = .clear
         Notification.Scroggle.GameEvent.gameEnded.addObserver(self, selector: #selector(gameOverEvent))
     }
 
@@ -111,6 +112,7 @@ extension GameScene {
     /// Handler for the Game Over event (cleans up)
     func gameOverEvent() {
         gameOver = true
+        controller?.clearSelection()
         controller?.gameScene = nil
         controller = nil
     }
