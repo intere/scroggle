@@ -25,6 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GameContextProvider.instance.createSinglePlayerGame(.default)
         #endif
 
+        // Kickoff our initialization with GameCenter
+        GameCenterProvider.instance.performLoginCheck()
+
         return true
     }
 

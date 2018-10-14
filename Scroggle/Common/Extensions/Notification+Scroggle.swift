@@ -79,6 +79,7 @@ extension Notification {
         /// General menu actions
         enum MenuAction: String, Notifiable, CustomStringConvertible {
             case tappedBackButton = "tapped.back"
+            case authorizationChanged = "gamecenter.authorization.changed"
 
             static var notificationBase: String {
                 return "scroggle.menu.action"

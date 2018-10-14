@@ -12,12 +12,17 @@ import UIKit
 /// The Controller for the Main Menu.
 class MainMenuViewController: ChalkboardViewController {
 
+    var menuVC: MenuContainerViewController!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         GameContextProvider.Configuration.demoMode = false
-        let menuVC = MenuContainerViewController.loadFromStoryboard()
+        menuVC = MenuContainerViewController.loadFromStoryboard()
         menuVC.menuBuilder = self
         addContent(viewController: menuVC)
+
+        Notification.Scroggle.MenuAction.authorizationChanged
+            .addObserver(self, selector: #selector(gameCenterAuthorizationChanged(_:)))
     }
 
     /// Creates you a new instance of this VC from the storyboard.
@@ -32,6 +37,17 @@ class MainMenuViewController: ChalkboardViewController {
 
 }
 
+// MARK: - Notifications
+
+extension MainMenuViewController {
+
+    @IBAction
+    func gameCenterAuthorizationChanged(_ notification: NSNotification) {
+        menuVC.reloadMenu()
+    }
+
+}
+
 // MARK: - MenuBuilding
 
 extension MainMenuViewController: MenuBuilding {
@@ -40,6 +56,9 @@ extension MainMenuViewController: MenuBuilding {
     ///
     /// - Returns: A MenuInfo object for the Main Menu.
     func buildMenu() -> MenuInfo? {
+
+        let gcTitle = GameCenterProvider.instance.loggedIn ? "Leaderboards" : "GameCenter"
+
         return MenuInfo(title: "Scroggle", showCloseButton: false, buttons: [
             ButtonCellInfo(title: "New Game", action: {
                 SoundProvider.instance.playMenuSelectionSound()
@@ -47,10 +66,18 @@ extension MainMenuViewController: MenuBuilding {
                 self.navigationController?.pushViewController(TimeMenuViewController.loadFromStoryboard(),
                                                               animated: true)
             }),
-            // TODO: Toggle between "Login: GameCenter" and "View High Scores"
-            ButtonCellInfo(title: "Login: GameCenter", action: {
+
+            ButtonCellInfo(title: gcTitle, action: { [weak self] in
                 SoundProvider.instance.playMenuSelectionSound()
-                DLog("Clicked Login")
+                DLog("Clicked GameCenter")
+                guard let self = self else {
+                    return
+                }
+                if GameCenterProvider.instance.loggedIn {
+                    GameCenterProvider.instance.showLeaderboard(from: self)
+                } else {
+                    GameCenterProvider.instance.loginToGameCenter(with: self)
+                }
             })
         ])
     }
