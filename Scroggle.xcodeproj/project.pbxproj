@@ -72,6 +72,8 @@
 		36B9BD0321739008007D3441 /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36B9BD0221739008007D3441 /* Help.storyboard */; };
 		36B9BD0521739031007D3441 /* HelpMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B9BD0421739031007D3441 /* HelpMenuViewController.swift */; };
 		36B9BD07217394FB007D3441 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B9BD06217394FB007D3441 /* WebViewController.swift */; };
+		36B9BD092174008F007D3441 /* AnalyticsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B9BD082174008F007D3441 /* AnalyticsProvider.swift */; };
+		36B9BD0B217401F6007D3441 /* ConfigurationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B9BD0A217401F6007D3441 /* ConfigurationProvider.swift */; };
 		36C0913320F1045600CC7A54 /* SoundProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C0913220F1045600CC7A54 /* SoundProviderTest.swift */; };
 		36C0913620F1078800CC7A54 /* time_sound.caf in Resources */ = {isa = PBXBuildFile; fileRef = 36C0913520F1077C00CC7A54 /* time_sound.caf */; };
 		36C0913820F1098D00CC7A54 /* gong.caf in Resources */ = {isa = PBXBuildFile; fileRef = 36C0913720F1097F00CC7A54 /* gong.caf */; };
@@ -177,6 +179,8 @@
 		36B9BD0221739008007D3441 /* Help.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Help.storyboard; sourceTree = "<group>"; };
 		36B9BD0421739031007D3441 /* HelpMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpMenuViewController.swift; sourceTree = "<group>"; };
 		36B9BD06217394FB007D3441 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		36B9BD082174008F007D3441 /* AnalyticsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsProvider.swift; sourceTree = "<group>"; };
+		36B9BD0A217401F6007D3441 /* ConfigurationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationProvider.swift; sourceTree = "<group>"; };
 		36C0913220F1045600CC7A54 /* SoundProviderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundProviderTest.swift; sourceTree = "<group>"; };
 		36C0913520F1077C00CC7A54 /* time_sound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = time_sound.caf; sourceTree = "<group>"; };
 		36C0913720F1097F00CC7A54 /* gong.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gong.caf; sourceTree = "<group>"; };
@@ -301,6 +305,7 @@
 				365C1AE91F9C3F55008A84EA /* SettingsService.swift */,
 				365C1AEB1F9C401B008A84EA /* SoundProvider.swift */,
 				36445E6520DFE007009013DF /* LexiconProvider.swift */,
+				36B9BD082174008F007D3441 /* AnalyticsProvider.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -473,6 +478,7 @@
 				365630371F8A937B00E4312B /* Logging.swift */,
 				36D9DE7520C4E426007F3FC1 /* Common.swift */,
 				36D79D85216A8ED300D7AFDF /* ChalkboardViewController.swift */,
+				36B9BD0A217401F6007D3441 /* ConfigurationProvider.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -785,6 +791,7 @@
 				365C1ACC1F9C0961008A84EA /* Die.swift in Sources */,
 				366784C020CE1666004EBCB9 /* GamePlayViewController.swift in Sources */,
 				36D9DE7420C4B88C007F3FC1 /* Random.swift in Sources */,
+				36B9BD092174008F007D3441 /* AnalyticsProvider.swift in Sources */,
 				368E464A20D56B97003C694E /* CGPointExtensions.swift in Sources */,
 				368E464520D48894003C694E /* SCNGameScene+ClickableTiles.swift in Sources */,
 				365C1ACA1F9C0947008A84EA /* Game.swift in Sources */,
@@ -798,6 +805,7 @@
 				365630361F8A8F5000E4312B /* MenuInfo.swift in Sources */,
 				36445E6620DFE007009013DF /* LexiconProvider.swift in Sources */,
 				365C1AD51F9C0AC6008A84EA /* Enumerations.swift in Sources */,
+				36B9BD0B217401F6007D3441 /* ConfigurationProvider.swift in Sources */,
 				36D2A2862079022B00E9C9F7 /* MenuBuilding.swift in Sources */,
 				365C1ADB1F9C3C5B008A84EA /* Extension+Numbers.swift in Sources */,
 				36115A9520E7D9F000D49AF0 /* Notification+Scroggle.swift in Sources */,

@@ -139,7 +139,7 @@ extension ChalkboardViewController {
         constrain(view, outerImageView, innerImageView, contentView) {
             (view, outerImageView, innerImageView, contentView) in
             // swiftlint:disable:previous closure_parameter_position
-            
+
             outerImageView.top == view.top
             outerImageView.bottom == view.bottom
             outerImageView.left == view.left
@@ -174,7 +174,7 @@ extension ChalkboardViewController {
         constrain(view, outerImageView, innerImageView, contentView) {
             (view, outerImageView, innerImageView, contentView) in
             // swiftlint:disable:previous closure_parameter_position
-            
+
             outerImageView.top == view.top
             outerImageView.bottom == view.bottom
             outerImageView.left == view.left
