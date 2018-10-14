@@ -283,7 +283,7 @@ extension GameSceneController {
         line.zPosition = 150
         line.lineCap = .round
 
-        self.skView.scene?.addChild(line)
+        scene.addChild(line)
 
         return line
     }

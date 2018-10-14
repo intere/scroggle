@@ -22,7 +22,13 @@ class WordCell: UITableViewCell {
         didSet {
             wordLabel.text = word.uppercased()
             updateScore()
+            updateSize()
         }
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        updateSize()
     }
 
 }
@@ -30,6 +36,17 @@ class WordCell: UITableViewCell {
 // MARK: - Implementation
 
 extension WordCell {
+
+    private var fontSize: CGFloat {
+        let fontSize =  frame.width / 8
+        DLog("Word Font Size: \(fontSize)")
+        return fontSize
+    }
+
+    func updateSize() {
+        scoreLabel.font = UIFont(name: scoreLabel.font.fontName, size: fontSize)
+        wordLabel.font = UIFont(name: wordLabel.font.fontName, size: fontSize)
+    }
 
     /// Updates the cell to show the score for the word.
     private func updateScore() {

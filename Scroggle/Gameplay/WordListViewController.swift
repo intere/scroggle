@@ -13,8 +13,10 @@ import UIKit
 class WordListViewController: UITableViewController {
 
     class func loadFromStoryboard() -> WordListViewController {
-        // swiftlint:disable:next force_cast
-        return UIStoryboard(name: "WordList", bundle: nil).instantiateViewController(withIdentifier: "WordListViewController") as! WordListViewController
+        return UIStoryboard(name: "WordList", bundle: nil)
+            .instantiateViewController(withIdentifier: "WordListViewController") as! WordListViewController
+        // swiftlint:disable:previous force_cast
+
     }
 
     override func viewDidLoad() {

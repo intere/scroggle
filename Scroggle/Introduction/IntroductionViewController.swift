@@ -31,24 +31,6 @@ class IntroductionViewController: UIViewController {
 
         loadMainMenu()
 
-//        guard let scene = IntroductionScene.loadGameScene(useDemoCamera: true) else {
-//            assert(false, "Failed to find the GameScene")
-//            return
-//        }
-//
-//        scene.gameContext = GameContextProvider.instance.createSinglePlayerGame(.default)
-//        GameContextProvider.instance.currentGame = nil
-//        scene.board = DiceProvider.instance.loadDemoDice()
-//        scene.loadBoard()
-//
-//        scnView.scene = scene
-//
-//        if SettingsService.Configuration.isTesting {
-//            return loadMainMenu()
-//        } else {
-//            scene.introAnimation()
-//        }
-
         timer = Timer.scheduledTimer(timeInterval: 10, target: self,
                                      selector: #selector(loadMainMenu),
                                      userInfo: nil, repeats: false)
