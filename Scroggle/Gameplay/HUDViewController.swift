@@ -36,10 +36,8 @@ class HUDViewController: UIViewController {
 
         Notification.Scroggle.GameEvent.scoreUpdated.addObserver(self, selector: #selector(scoreUpdated(_:)))
         Notification.Scroggle.GameEvent.gameEnded.addObserver(self, selector: #selector(gameEnded))
+        Notification.Scroggle.GameEvent.beginTimer.addObserver(self, selector: #selector(beginTimer(_:)))
 
-        // TODO: Delay this after an "introduction animation":
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self,
-                                     selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
 
     override func willTransition(to newCollection: UITraitCollection,
@@ -72,6 +70,12 @@ class HUDViewController: UIViewController {
 // MARK: - Events
 
 extension HUDViewController {
+
+    @objc
+    func beginTimer(_ notification: NSNotification) {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self,
+                                     selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    }
 
     @objc
     /// Responds to the time updated event

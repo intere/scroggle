@@ -20,10 +20,12 @@ extension Notification {
         /// - wordGuessed: a word was guessed
         /// - scoreUpdated: the score was updated
         /// - gameEnded: the game has ended
+        /// - beginTimer: the intro animation has completed, start the timer!
         enum GameEvent: String, Notifiable, CustomStringConvertible {
             case wordGuessed  = "word.guessed"
             case scoreUpdated = "score.updated"
             case gameEnded = "ended"
+            case beginTimer = "begin.timer"
 
             static var notificationBase: String {
                 return "scroggle.game"

@@ -17,6 +17,9 @@ class Die: CustomDebugStringConvertible {
         static let sides = "sides"
     }
 
+    /// The ID of this die (for uniqueness)
+    var id: Int
+
     /// The array of sides of the die (array of 6)
     var sides: [String]
 
@@ -28,13 +31,15 @@ class Die: CustomDebugStringConvertible {
         return sides[selectedSide]
     }
 
-    init(sides: [String]) {
+    init(sides: [String], id: Int) {
         self.sides = sides
+        self.id = id
         selectedSide = 6.random
     }
 
-    init(sides: [String], roll: String) {
+    init(sides: [String], id: Int, roll: String) {
         self.sides = sides
+        self.id = id
         selectedSide = sides.index(of: roll) ?? 0
     }
 
@@ -81,11 +86,11 @@ extension Die {
     ///
     /// - Parameter map: The Map that contains the roll and sides of the die.
     /// - Returns: A Die if it was properly deserialized, nil otherwise.
-    static func fromMap(_ map: [String: Any]) -> Die? {
-        if let roll = map[Keys.roll] as? String, let sides = map[Keys.sides] as? [String] {
-            return Die(sides: sides, roll: roll)
+    static func fromMap(_ map: [String: Any], withIndex index: Int) -> Die? {
+        guard let roll = map[Keys.roll] as? String, let sides = map[Keys.sides] as? [String] else {
+            return nil
         }
 
-        return nil
+        return Die(sides: sides, id: index, roll: roll)
     }
 }
