@@ -29,12 +29,12 @@ class WebViewController: ChalkboardViewController {
         content.addSubview(button)
 
         constrain(content, button, webView) { (view, button, webView) in
+            button.left == view.left + 8
+            button.top == view.top + 8
             webView.top == view.top
             webView.left == view.left
             webView.right == view.right
             webView.bottom == view.bottom
-            button.left == view.left
-            button.top == view.top
         }
 
         setContentView(content)

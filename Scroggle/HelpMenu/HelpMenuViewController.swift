@@ -53,7 +53,7 @@ extension HelpMenuViewController: MenuBuilding {
             }),
             ButtonCellInfo(title: "About Scroggle", action: { [weak self] in
                 SoundProvider.instance.playMenuSelectionSound()
-                // TODO: Implement me
+                self?.navigationController?.pushViewController(AboutViewController.loadFromStoryBoard(), animated: true)
             })
 
         ])
