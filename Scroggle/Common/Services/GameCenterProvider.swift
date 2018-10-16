@@ -29,7 +29,7 @@ class GameCenterProvider : NSObject {
     /// Local cache of the leaderboards
     var leaderboardCache = [String:Int64]() {
         didSet {
-            print("Leaderboards have arrived: \(leaderboardCache)")
+            DLog("Leaderboards have arrived: \(leaderboardCache)")
         }
     }
 
@@ -43,14 +43,16 @@ class GameCenterProvider : NSObject {
 
 }
 
-// MARK: - Public Interface
+// MARK: - API
 
 extension GameCenterProvider {
 
+    /// Checks to see if you're already logged into GameCenter.  If not
     func performLoginCheck() {
-        localPlayer.authenticateHandler = { (gameCenterVC, gameCenterError) in
-            if let error = gameCenterError {
-                print("Error Checking Authentication user with GameCenter: \(error.localizedDescription)")
+        localPlayer.authenticateHandler = { (gameCenterVC, error) in
+            if let error = error {
+                DLog("Error Checking Authentication user with GameCenter: \(error.localizedDescription)")
+                recordSystemError(error)
             } else if let gameCenterVC = gameCenterVC {
                 self.gameCenterVC = gameCenterVC
             } else {
@@ -73,21 +75,6 @@ extension GameCenterProvider {
         }
 
         presenter.present(gameCenterVC, animated: true, completion: nil)
-    }
-
-    private func wireAuthHandler(with presenter: UIViewController) {
-        localPlayer.authenticateHandler = { gameCenterVC, error in
-            if let error = error {
-                DLog("Error with GameCenter Auth: \(error.localizedDescription)")
-                return recordSystemError(error)
-            }
-            guard let gameCenterVC = gameCenterVC else {
-                return Notification.Scroggle.MenuAction.authorizationChanged.notify()
-            }
-            presenter.present(gameCenterVC, animated: true) {
-                Notification.Scroggle.MenuAction.authorizationChanged.notify()
-            }
-        }
     }
 
     /**
@@ -132,7 +119,7 @@ extension GameCenterProvider: GKGameCenterControllerDelegate {
     @objc
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
         gameCenterViewController.dismiss(animated: true) { () -> Void in
-            print("Dismissed GameCenterViewController")
+            DLog("Dismissed GameCenterViewController")
         }
     }
 }
@@ -140,7 +127,22 @@ extension GameCenterProvider: GKGameCenterControllerDelegate {
 
 // MARK: - Implementation
 
-extension GameCenterProvider {
+private extension GameCenterProvider {
+
+    func wireAuthHandler(with presenter: UIViewController) {
+        localPlayer.authenticateHandler = { gameCenterVC, error in
+            if let error = error {
+                DLog("Error with GameCenter Auth: \(error.localizedDescription)")
+                return recordSystemError(error)
+            }
+            guard let gameCenterVC = gameCenterVC else {
+                return Notification.Scroggle.MenuAction.authorizationChanged.notify()
+            }
+            presenter.present(gameCenterVC, animated: true) {
+                Notification.Scroggle.MenuAction.authorizationChanged.notify()
+            }
+        }
+    }
 
     func handleAuthenticationChange() {
         if self.localPlayer.isAuthenticated {
@@ -163,13 +165,15 @@ extension GameCenterProvider {
      Loads the leaderboards on a background thread.  They are stored in the leaderboardCache property.
      */
     func loadLeaderboards() {
-        if localPlayer.isAuthenticated {
-            DispatchQueue.global(qos: .background).async {
-                GameCenterProvider.loadLeaderboardsForUser()
-            }
-            DispatchQueue.global(qos: .background).async {
-                GameCenterProvider.loadGlobalHighScores()
-            }
+        guard localPlayer.isAuthenticated else {
+            return
+        }
+
+        DispatchQueue.global(qos: .background).async {
+            GameCenterProvider.loadLeaderboardsForUser()
+        }
+        DispatchQueue.global(qos: .background).async {
+            GameCenterProvider.loadGlobalHighScores()
         }
     }
 
@@ -180,7 +184,7 @@ extension GameCenterProvider {
         }
     }
 
-    public func getPlayerName() -> String {
+    func getPlayerName() -> String {
         return localPlayer.alias
     }
 
@@ -231,11 +235,11 @@ extension GameCenterProvider {
                         self.leaderboardCache[leaderboard] = Int64(score)
                     }
                 } else {
-                    print("There was an error updating your score in Game Center")
+                    DLog("There was an error updating your score in Game Center")
                 }
             }
         } else {
-            print("You're not logged in to GameCenter")
+            DLog("You're not logged in to GameCenter")
         }
     }
 
@@ -254,14 +258,15 @@ extension GameCenterProvider {
 
             leaderboard.loadScores { (scores, error) in
                 if let error = error {
-                    print("There was an error trying to load the scores: \(error.localizedDescription)")
+                    DLog("There was an error trying to load the scores: \(error.localizedDescription)")
+                    recordSystemError(error)
                 } else if let scores = scores {
                     var leaderboard = [Score]()
                     var playerIds = [String]()
                     var scoresByPlayerId = [String: Score]()
 
                     var rank = 1
-                    print("\(leaderboardKey) has \(scores.count) results")
+                    DLog("\(leaderboardKey) has \(scores.count) results")
                     for score in scores {
                         let scoreRank = Score(score: score, rank: rank)
                         leaderboard.append(scoreRank)
@@ -273,7 +278,7 @@ extension GameCenterProvider {
 
                     GKPlayer.loadPlayers(forIdentifiers: playerIds) { (players, error) in
                         if let error = error {
-                            print("There was an error trying to load the players: \(error.localizedDescription)")
+                            DLog("There was an error trying to load the players: \(error.localizedDescription)")
                         } else if let players = players {
                             for player in players {
                                 let playerID = player.playerID
@@ -283,8 +288,8 @@ extension GameCenterProvider {
                             }
                         }
 
-                        print("Leaderboard \(leaderboardKey):")
-                        print("\(leaderboard)")
+                        DLog("Leaderboard \(leaderboardKey):")
+                        DLog("\(leaderboard)")
                     }
 
                     instance.globalLeaderboards[leaderboardKey] = leaderboard

@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
 
         #if !DEBUG
-        Fabric.with([Crashlytics.self])
+        Fabric.with([Crashlytics.self, Answers.self])
         #else
         GameContextProvider.Configuration.demoMode = false
         GameContextProvider.instance.createSinglePlayerGame(.default)
