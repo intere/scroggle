@@ -18,20 +18,21 @@ Scroggle is a word game that's based on Boggle, Scrabble and some other popular 
 ## Tech Stack
 - Apple's GameCenter (for scorekeeping)
 - Fabric (for Crashlogs / Analytics)
+- Cartography (for constraintsa)
 - SceneKit (for 3D assets / animations)
 - SpriteKit (for Gameplay)
 - UIKit (for menus)
 
 ## TODO (MVP Features)
 - [x] Setup Swiftlint / Address findings
-- [ ] Login: Game Center
-- [ ] Leaderboards
-- [ ] Help menu
+- [x] Login: Game Center
+- [x] Leaderboards
+- [x] Help menu
 - [ ] Game Introduction Animation
 - [ ] Board rotation
 - [x] Sounds
 
 ## TODO (Roadmap)
-- [ ] Realtime multiplayer
-- [ ] Single player challenges
 - [ ] Challenge friends (Messages Integration)
+- [ ] Single player challenges
+- [ ] Realtime multiplayer
