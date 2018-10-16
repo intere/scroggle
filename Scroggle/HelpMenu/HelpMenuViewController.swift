@@ -43,6 +43,12 @@ extension HelpMenuViewController: MenuBuilding {
                 self?.navigationController?.pushViewController(
                     WebViewController.loadFromStoryboard(url: url), animated: true)
             }),
+            ButtonCellInfo(title: "Privacy Policy", action: { [weak self] in
+                SoundProvider.instance.playMenuSelectionSound()
+                let url = "https://intere.github.io/scroggle-support/#/privacy"
+                self?.navigationController?.pushViewController(
+                    WebViewController.loadFromStoryboard(url: url), animated: true)
+            }),
             ButtonCellInfo(title: "Email support", action: { [weak self] in
                 SoundProvider.instance.playMenuSelectionSound()
                 self?.emailSupport()
