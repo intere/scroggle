@@ -9,7 +9,7 @@
 import GameKit
 import Crashlytics
 
-class GameCenterProvider : NSObject {
+class GameCenterProvider: NSObject {
     /// Singleton Instance
     static let instance = GameCenterProvider()
 
@@ -24,16 +24,16 @@ class GameCenterProvider : NSObject {
     }
 
     /// The GameCenter View Controller (for logging in to Game Center)
-    var gameCenterVC: UIViewController? = nil
+    var gameCenterVC: UIViewController?
 
     /// Local cache of the leaderboards
-    var leaderboardCache = [String:Int64]() {
+    var leaderboardCache = [String: Int64]() {
         didSet {
             DLog("Leaderboards have arrived: \(leaderboardCache)")
         }
     }
 
-    var globalLeaderboards = [String:[Score]]()
+    var globalLeaderboards = [String: [Score]]()
 
     // MARK: - Initializers
 

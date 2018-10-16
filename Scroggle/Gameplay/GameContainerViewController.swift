@@ -119,6 +119,7 @@ extension GameContainerViewController {
 
     @objc
     func mainMenu() {
+        GameCenterProvider.instance.saveLeaderboardForGame(context: context)
         Notification.Scroggle.GameEvent.gameEnded.notify()
         SoundProvider.instance.playMenuSelectionSound()
         guard let mainMenuVC = navigationController?.viewControllers.first(where: { $0 is MainMenuViewController }) else {
@@ -129,6 +130,7 @@ extension GameContainerViewController {
 
     @objc
     func playAgain() {
+        GameCenterProvider.instance.saveLeaderboardForGame(context: context)
         SoundProvider.instance.playMenuSelectionSound()
         GameContextProvider.instance.replayGameWithSameTime()
         pushAnotherGameToNavVC()
@@ -136,6 +138,7 @@ extension GameContainerViewController {
 
     @objc
     func replay() {
+        GameCenterProvider.instance.saveLeaderboardForGame(context: context)
         SoundProvider.instance.playMenuSelectionSound()
         GameContextProvider.instance.replayCurrentGame()
         pushAnotherGameToNavVC()
@@ -146,6 +149,18 @@ extension GameContainerViewController {
 // MARK: - Implementation
 
 extension GameContainerViewController {
+
+    private var context: GameContext {
+        return gameController.gameContext
+    }
+
+    /// Gets you the high score
+    private var highScore: Int? {
+        guard let highScore = GameCenterProvider.instance.getHighScoreForType(context.game.timeType) else {
+            return nil
+        }
+        return Int(highScore)
+    }
 
     /// Computes an optimal font size for the current screen orientation and size
     private var gameOverFontSize: CGFloat {
@@ -161,14 +176,14 @@ extension GameContainerViewController {
             // we're using just less than the screen width
             fontSize = UIScreen.main.bounds.width / 10
         }
-        DLog("Using font size: \(fontSize)")
+        DLog("Game Over font size: \(fontSize)")
         return fontSize
     }
 
     /// Adds the "Game Over" tile over the game play area
     private func buildGameOverView() {
         let view = UIView()
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
         let label = UILabel()
         label.text = "Game Over"
         label.font = UIFont(name: "Chalkduster", size: gameOverFontSize)
@@ -176,14 +191,35 @@ extension GameContainerViewController {
         view.addSubview(label)
         contentView.addSubview(view)
 
-        constrain(gameArea, view, label) { (view, gameOverView, label) in
+        constrain(gameArea, view) { (view, gameOverView) in
             gameOverView.left == view.left
             gameOverView.top == view.top
             gameOverView.right == view.right
             gameOverView.bottom == view.bottom
+        }
 
-            label.centerX == gameOverView.centerX
-            label.centerY == gameOverView.centerY
+        if let highScore = highScore, context.game.score > highScore {
+            let highScoreLabel = UILabel()
+            highScoreLabel.text = "You beat the high score!"
+            highScoreLabel.numberOfLines = 3
+            highScoreLabel.font = UIFont(name: "Chalkduster", size: gameOverFontSize - 5)
+            highScoreLabel.textColor = UIColor.green
+            highScoreLabel.textAlignment = .center
+            view.addSubview(highScoreLabel)
+
+            constrain(view, label, highScoreLabel) { (gameOverView, label, highScoreLabel) in
+                label.centerX == gameOverView.centerX
+                label.bottom == gameOverView.centerY - 10
+                highScoreLabel.centerX == gameOverView.centerX
+                highScoreLabel.top == gameOverView.centerY + 10
+                highScoreLabel.left == gameOverView.leftMargin
+                highScoreLabel.right == gameOverView.rightMargin
+            }
+        } else {
+            constrain(view, label) { (gameOverView, label) in
+                label.centerX == gameOverView.centerX
+                label.centerY == gameOverView.centerY
+            }
         }
     }
 
