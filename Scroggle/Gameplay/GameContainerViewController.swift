@@ -121,7 +121,8 @@ extension GameContainerViewController {
     func mainMenu() {
         Notification.Scroggle.GameEvent.gameEnded.notify()
         SoundProvider.instance.playMenuSelectionSound()
-        guard let mainMenuVC = navigationController?.viewControllers.first(where: { $0 is MainMenuViewController }) else {
+        guard let mainMenuVC = navigationController?.viewControllers
+            .first(where: { $0 is MainMenuViewController }) else {
             return assertionFailure("No MainMenuVC")
         }
         navigationController?.popToViewController(mainMenuVC, animated: true)
