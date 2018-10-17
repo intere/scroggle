@@ -26,8 +26,10 @@ Scroggle is a word game that's based on Boggle, Scrabble and some other popular 
 - [x] Setup Swiftlint / Address findings
 - [ ] Login: Game Center
 - [ ] Leaderboards
-- [ ] Help menu
-- [ ] Game Introduction Animation
+- [x] Help menu
+    - [x] Add [Privacy Policy](http://intere.github.io/scroggle-support/#/privacy)
+    - See related [Scroggle Support](https://github.com/intere/scroggle-support) project, which is the source for the [Scroggle Support Site](http://intere.github.io/scroggle-support/)
+- [x] Game Introduction Animation
 - [ ] Board rotation
 - [x] Sounds
 
@@ -35,3 +37,6 @@ Scroggle is a word game that's based on Boggle, Scrabble and some other popular 
 - [ ] Realtime multiplayer
 - [ ] Single player challenges
 - [ ] Challenge friends (Messages Integration)
+
+## License
+- MIT
