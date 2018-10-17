@@ -11,6 +11,8 @@ import UIKit
 
 class AboutViewController: ChalkboardViewController {
 
+    let webView = UIWebView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,22 +35,31 @@ class AboutViewController: ChalkboardViewController {
             "Build: \(ConfigurationProvider.instance.appBuildNumber)"
         appInfo.text = infoText
 
-        [button, title, appInfo].forEach {
+        [button, title, appInfo, webView].forEach {
             contentView.addSubview($0)
         }
 
-        constrain(contentView, button, title, appInfo) { (view, button, title, appInfo) in
+        constrain(contentView, button, title, appInfo, webView) { (view, button, title, appInfo, webView) in
             button.width == 40
             button.height == 40
             button.left == view.left + 8
             button.top == view.top + 8
+
             title.centerY == button.centerY
             title.left == button.right + 8
             title.right == view.right - 56
+
             appInfo.top == title.bottom + 8
             appInfo.left == view.leftMargin
             appInfo.right == view.rightMargin
+
+            webView.left == view.left
+            webView.right == view.right
+            webView.top == appInfo.bottom + 8
+            webView.bottom == view.bottom
         }
+
+        webView.loadRequest(URLRequest(url: URL(string: "https://intere.github.io/scroggle-support/#/about")!))
     }
 
     class func loadFromStoryBoard() -> AboutViewController {

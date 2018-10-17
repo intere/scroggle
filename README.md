@@ -40,3 +40,6 @@ Scroggle is a word game that's based on Boggle, Scrabble and some other popular 
 
 ## License
 - MIT
+
+## Credits
+- [Digital-7 Font](https://www.1001fonts.com/digital-7-font.html)
