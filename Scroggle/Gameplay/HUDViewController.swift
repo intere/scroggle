@@ -232,6 +232,7 @@ extension HUDViewController {
 
         constrain(view, timeTitleLabel, scoreTitleLabel, timeLabel, scoreLabel, wordTable, exitButton) {
             (view, timeTitleLabel, scoreTitleLabel, timeLabel, scoreLabel, wordTable, exitButton) in
+            // swiftlint:disable:previous closure_parameter_position
 
             //   ____________________________________________
             //  |  Word | x   timeTitleLabel | timeLabel    |
@@ -270,6 +271,7 @@ extension HUDViewController {
 
         constrain(view, timeTitleLabel, scoreTitleLabel, timeLabel, scoreLabel, wordTable, exitButton) {
             (view, timeTitleLabel, scoreTitleLabel, timeLabel, scoreLabel, wordTable, exitButton) in
+            // swiftlint:disable:previous closure_parameter_position
 
             //  _____________________________________
             //  | x   timeTitleLabel | timeLabel    |

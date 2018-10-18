@@ -203,7 +203,8 @@ extension GameSceneController {
         static func currentConfiguration(_ skView: SKView) -> TileConfiguration {
             let sizeX = skView.frame.size.width / 5.25
             let sizeY = skView.frame.size.height / 5.25
-            return TileConfiguration(size: sizeX * 0.6, sizeX: sizeX, sizeY: sizeY, offsetX: sizeX / 2, offsetY: sizeY / 2)
+            return TileConfiguration(size: sizeX * 0.6, sizeX: sizeX, sizeY: sizeY,
+                                     offsetX: sizeX / 2, offsetY: sizeY / 2)
         }
     }
 }

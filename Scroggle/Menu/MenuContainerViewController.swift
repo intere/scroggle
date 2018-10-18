@@ -57,7 +57,8 @@ class MenuContainerViewController: UIViewController {
     }
 
     class func loadFromStoryboard() -> MenuContainerViewController {
-        return UIStoryboard(name: "Menu", bundle: nil).instantiateViewController(withIdentifier: "MenuContainerViewController") as! MenuContainerViewController
+        return UIStoryboard(name: "Menu", bundle: nil)
+            .instantiateViewController(withIdentifier: "MenuContainerViewController") as! MenuContainerViewController
         // swiftlint:disable:previous force_cast
     }
 

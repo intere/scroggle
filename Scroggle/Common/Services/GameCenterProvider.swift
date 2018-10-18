@@ -243,7 +243,7 @@ private extension GameCenterProvider {
         }
     }
 
-    class func loadGlobalHighScores(_ callback: (()->(Void))? = nil) {
+    class func loadGlobalHighScores(_ callback: (() -> Void)? = nil) {
         let leaderboardKeys = Leaderboard.basicGameLeaderboardKeys
 
         instance.globalLeaderboards.removeAll()

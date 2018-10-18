@@ -17,10 +17,6 @@ class TimeMenuViewController: ChalkboardViewController {
             self, selector: #selector(replayCurrentGameTime))
         Notification.Scroggle.TimeMenuAction.replayCurrentBoard.addObserver(
             self, selector: #selector(replayCurrentBoard))
-
-        let menuVC = MenuContainerViewController.loadFromStoryboard()
-        menuVC.menuBuilder = self
-        addContent(viewController: menuVC)
     }
 
     /// Gives you an instance of this class that's instantiated via the
