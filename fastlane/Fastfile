@@ -12,6 +12,10 @@ platform :ios do
     scan
   end
 
+  lane :keychain do
+    unlock_keychain(password: ENV['MATCH_KEYCHAIN_PASSWORD'])
+  end
+
   desc "Increments the build number"
   lane :build_number do
     setup_jenkins
@@ -26,8 +30,8 @@ platform :ios do
   desc "This will also make sure the profile is up to date"
   lane :beta do
     setup_jenkins
-    # match(type: "appstore") # more information: https://codesigning.guide
-    gym(scheme: "Scroggle") # Build your app - more options available
+    match(readonly: true, type: "appstore") # more information: https://codesigning.guide
+    gym(scheme: "Scroggle", export_method: 'app-store', configuration: 'Release') # Build your app - more options available
     pilot(team_id: team_id, skip_waiting_for_build_processing: true)
 
   end
@@ -35,7 +39,7 @@ platform :ios do
   desc "Deploy a new version to the App Store"
   lane :release do
     setup_jenkins
-    # match(type: "appstore")
+    match(type: "appstore", git_url: 'git@bitbucket.org:intere/scroggle-match.git') # more information: https://codesigning.guide
     # snapshot
     gym(scheme: "Scroggle") # Build your app - more options available
     deliver(force: true)
