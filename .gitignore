@@ -7,6 +7,7 @@
 build/
 DerivedData
 iTunesArtwork/
+rvm.env
 
 ## Various settings
 *.pbxuser
@@ -46,3 +47,4 @@ fastlane/README.md
 fastlane/test_output/
 *.dSYM.zip
 *.mobileprovision
+
