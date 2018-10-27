@@ -89,6 +89,23 @@ extension Notification {
             }
         }
 
+        /// Game Stat events (for after a game ends)
+        /// TODO: Wire up listeners for this so that they're consumed and shown to the user.
+        enum GameStatEvent: String, Notifiable, CustomStringConvertible {
+            case setPersonalHighScore = "set.personal.high.score"
+            case setGlobalHighScore = "set.global.high.score"
+            case setPersonalLongestWord = "set.personal.longest.word"
+            case setGlobalLongestWord = "set.global.longest.word"
+
+            static var notificationBase: String {
+                return "scroggle.game.stats"
+            }
+
+            var description: String {
+                return rawValue
+            }
+        }
+
     }
 
 }

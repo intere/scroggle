@@ -119,8 +119,8 @@ extension GameContainerViewController {
 
     @objc
     func mainMenu() {
-        GameCenterProvider.instance.saveLeaderboardForGame(context: context)
-        Notification.Scroggle.GameEvent.gameEnded.notify()
+        // No need to do this here, it's handled in the HUD VC
+//        Notification.Scroggle.GameEvent.gameEnded.notify(withObject: context)
         SoundProvider.instance.playMenuSelectionSound()
         guard let mainMenuVC = navigationController?.viewControllers
             .first(where: { $0 is MainMenuViewController }) else {
@@ -131,7 +131,6 @@ extension GameContainerViewController {
 
     @objc
     func playAgain() {
-        GameCenterProvider.instance.saveLeaderboardForGame(context: context)
         SoundProvider.instance.playMenuSelectionSound()
         GameContextProvider.instance.replayGameWithSameTime()
         pushAnotherGameToNavVC()
@@ -139,7 +138,6 @@ extension GameContainerViewController {
 
     @objc
     func replay() {
-        GameCenterProvider.instance.saveLeaderboardForGame(context: context)
         SoundProvider.instance.playMenuSelectionSound()
         GameContextProvider.instance.replayCurrentGame()
         pushAnotherGameToNavVC()

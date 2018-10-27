@@ -125,8 +125,9 @@ extension HelpMenuViewController {
     }
 
     func showSendMailErrorAlert() {
+        let message = "Your device could not send e-mail.  Please check e-mail configuration and try again."
         let alert = UIAlertController(title: "Could Not Send Email",
-                                      message: "Your device could not send e-mail.  Please check e-mail configuration and try again.",
+                                      message: message,
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)

@@ -16,7 +16,6 @@ class HUDViewController: UIViewController {
     let scoreLabel = UILabel()
     let timeLabel = UILabel()
     let exitButton = UIButton(type: .custom)
-
     var wordListVC: WordListViewController!
 
     /// The amount of time left in the game
@@ -37,7 +36,6 @@ class HUDViewController: UIViewController {
         Notification.Scroggle.GameEvent.scoreUpdated.addObserver(self, selector: #selector(scoreUpdated(_:)))
         Notification.Scroggle.GameEvent.gameEnded.addObserver(self, selector: #selector(gameEnded))
         Notification.Scroggle.GameEvent.beginTimer.addObserver(self, selector: #selector(beginTimer(_:)))
-
     }
 
     override func willTransition(to newCollection: UITraitCollection,
@@ -85,7 +83,7 @@ extension HUDViewController {
         guard seconds > 0 else {
             endGame()
             SoundProvider.instance.playGongSound()
-            return Notification.Scroggle.GameEvent.gameEnded.notify()
+            return Notification.Scroggle.GameEvent.gameEnded.notify(withObject: GameContextProvider.instance.currentGame)
         }
 
         if seconds <= 10 {
@@ -212,6 +210,9 @@ extension HUDViewController {
     @objc
     func exitAndGoToMainMenu() {
         // TODO: Add Analytics for exited game
+        if let currentGame = GameContextProvider.instance.currentGame {
+            Notification.Scroggle.GameEvent.gameEnded.notify(withObject: currentGame)
+        }
         Notification.Scroggle.GameOverAction.mainMenu.notify()
     }
 
