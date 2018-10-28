@@ -83,7 +83,10 @@ extension HUDViewController {
         guard seconds > 0 else {
             endGame()
             SoundProvider.instance.playGongSound()
-            return Notification.Scroggle.GameEvent.gameEnded.notify(withObject: GameContextProvider.instance.currentGame)
+            if let currentGame = GameContextProvider.instance.currentGame {
+                Notification.Scroggle.GameEvent.gameEnded.notify(withObject: currentGame)
+            }
+            return
         }
 
         if seconds <= 10 {
@@ -159,6 +162,8 @@ extension HUDViewController {
         GameContextProvider.instance.currentGame?.gameState = .done
         timeLabel.textColor = .red
         timer?.invalidate()
+        timer = nil
+        NotificationCenter.default.removeObserver(self)
     }
 
     /// Updates the current score / time in the HUD
