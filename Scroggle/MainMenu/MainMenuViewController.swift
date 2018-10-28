@@ -73,6 +73,11 @@ extension MainMenuViewController: MenuBuilding {
                 } else {
                     GameCenterProvider.instance.loginToGameCenter(with: self)
                 }
+            }),
+
+            ButtonCellInfo(title: "Help", action: { [weak self] in
+                self?.navigationController?.pushViewController(HelpMenuViewController.loadFromStoryboard(),
+                                                               animated: true)
             })
         ])
     }
