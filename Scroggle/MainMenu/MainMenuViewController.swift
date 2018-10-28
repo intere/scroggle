@@ -12,14 +12,9 @@ import UIKit
 /// The Controller for the Main Menu.
 class MainMenuViewController: ChalkboardViewController {
 
-    var menuVC: MenuContainerViewController!
-
     override func viewDidLoad() {
         super.viewDidLoad()
         GameContextProvider.Configuration.demoMode = false
-        menuVC = MenuContainerViewController.loadFromStoryboard()
-        menuVC.menuBuilder = self
-        addContent(viewController: menuVC)
 
         Notification.Scroggle.MenuAction.authorizationChanged
             .addObserver(self, selector: #selector(gameCenterAuthorizationChanged(_:)))
@@ -43,7 +38,7 @@ extension MainMenuViewController {
 
     @IBAction
     func gameCenterAuthorizationChanged(_ notification: NSNotification) {
-        menuVC.reloadMenu()
+        menuVC?.reloadMenu()
     }
 
 }
