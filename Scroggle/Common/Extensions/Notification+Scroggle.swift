@@ -90,7 +90,6 @@ extension Notification {
         }
 
         /// Game Stat events (for after a game ends)
-        /// TODO: Wire up listeners for this so that they're consumed and shown to the user.
         enum GameStatEvent: String, Notifiable, CustomStringConvertible {
             case setPersonalHighScore = "set.personal.high.score"
             case setGlobalHighScore = "set.global.high.score"
