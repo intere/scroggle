@@ -118,7 +118,8 @@ private extension ScoreProvider {
                 lengthFactors[length] = factor
             }
         } catch {
-            DLog("There was an error trying do deserialize the scores.json")
+            DLog("There was an error trying do deserialize the scores.json: \(error.localizedDescription)")
+            recordSystemError(error)
         }
     }
 }

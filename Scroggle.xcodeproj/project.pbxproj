@@ -57,6 +57,8 @@
 		366784C220CE16E3004EBCB9 /* GamePlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 366784C120CE16E3004EBCB9 /* GamePlay.storyboard */; };
 		366784C420CE1790004EBCB9 /* WordList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 366784C320CE1790004EBCB9 /* WordList.storyboard */; };
 		366784C620CE17E8004EBCB9 /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366784C520CE17E8004EBCB9 /* WordListViewController.swift */; };
+		367480622173CD7100B89DA8 /* GameCenterProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367480612173CD7100B89DA8 /* GameCenterProvider.swift */; };
+		367480642173D29000B89DA8 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367480632173D29000B89DA8 /* Score.swift */; };
 		36752C0F20E673140076D1F3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 36752C0E20E673140076D1F3 /* README.md */; };
 		3686EB391F9C432D007FEB28 /* dice.json in Resources */ = {isa = PBXBuildFile; fileRef = 3686EB381F9C432D007FEB28 /* dice.json */; };
 		3686EB3B1F9C4390007FEB28 /* demo.json in Resources */ = {isa = PBXBuildFile; fileRef = 3686EB3A1F9C4390007FEB28 /* demo.json */; };
@@ -160,6 +162,8 @@
 		366784C120CE16E3004EBCB9 /* GamePlay.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GamePlay.storyboard; sourceTree = "<group>"; };
 		366784C320CE1790004EBCB9 /* WordList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WordList.storyboard; sourceTree = "<group>"; };
 		366784C520CE17E8004EBCB9 /* WordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListViewController.swift; sourceTree = "<group>"; };
+		367480612173CD7100B89DA8 /* GameCenterProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterProvider.swift; sourceTree = "<group>"; };
+		367480632173D29000B89DA8 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		36752C0E20E673140076D1F3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		3686EB381F9C432D007FEB28 /* dice.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dice.json; sourceTree = "<group>"; };
 		3686EB3A1F9C4390007FEB28 /* demo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = demo.json; sourceTree = "<group>"; };
@@ -286,6 +290,7 @@
 				365C1ACD1F9C09D7008A84EA /* MultiplayerEnumerations.swift */,
 				365C1ACF1F9C09F6008A84EA /* GameBoard.swift */,
 				365C1AD41F9C0AC6008A84EA /* Enumerations.swift */,
+				367480632173D29000B89DA8 /* Score.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -308,6 +313,7 @@
 				365C1AEB1F9C401B008A84EA /* SoundProvider.swift */,
 				36445E6520DFE007009013DF /* LexiconProvider.swift */,
 				36B9BD082174008F007D3441 /* AnalyticsProvider.swift */,
+				367480612173CD7100B89DA8 /* GameCenterProvider.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -821,6 +827,7 @@
 				365C1AD01F9C09F6008A84EA /* GameBoard.swift in Sources */,
 				365C1AE21F9C3D20008A84EA /* SceneKitMathExtensions.swift in Sources */,
 				36D2A2882079058200E9C9F7 /* MenuContainerViewController.swift in Sources */,
+				367480642173D29000B89DA8 /* Score.swift in Sources */,
 				368E464820D5548B003C694E /* GameScene.swift in Sources */,
 				36E5916D20E8505E00B54E8C /* ActionCell.swift in Sources */,
 				36115A9920E7E72000D49AF0 /* WordCell.swift in Sources */,
@@ -829,6 +836,7 @@
 				366784C620CE17E8004EBCB9 /* WordListViewController.swift in Sources */,
 				365C1AE61F9C3E6D008A84EA /* GameContextProvider.swift in Sources */,
 				365C1AC81F9C092E008A84EA /* GameContext.swift in Sources */,
+				367480622173CD7100B89DA8 /* GameCenterProvider.swift in Sources */,
 				36D9DE7620C4E426007F3FC1 /* Common.swift in Sources */,
 				36D9DE7020C481F4007F3FC1 /* GameSceneController.swift in Sources */,
 				36B9BD0521739031007D3441 /* HelpMenuViewController.swift in Sources */,
@@ -979,7 +987,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 268S5GJFWZ;
 				INFOPLIST_FILE = Scroggle/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -998,7 +1006,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 268S5GJFWZ;
 				INFOPLIST_FILE = Scroggle/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

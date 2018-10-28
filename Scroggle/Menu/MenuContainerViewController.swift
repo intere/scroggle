@@ -35,7 +35,7 @@ class MenuContainerViewController: UIViewController {
 
     /// The `MenuInfo` model (see `reloadMenu()` for more details).  Setting this
     /// model will set the reference on the `menuTableVC` and prompt the table to reload.
-    /// This function should *only* be call on the Main Thread!
+    /// This variable should *only* be set on the Main Thread!
     var menu: MenuInfo? {
         get {
             return menuTableVC?.menu
@@ -50,10 +50,6 @@ class MenuContainerViewController: UIViewController {
     /// and then builds out the menu.
     func reloadMenu() {
         menu = menuBuilder?.buildMenu()
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
 
     class func loadFromStoryboard() -> MenuContainerViewController {

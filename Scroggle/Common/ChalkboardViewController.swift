@@ -10,10 +10,12 @@ import Cartography
 import UIKit
 
 
-open class ChalkboardViewController: UIViewController {
+class ChalkboardViewController: UIViewController {
+
+    var menuVC: MenuContainerViewController?
 
     /// Where you add the content
-    public var contentView: UIView!
+    var contentView: UIView!
 
     /// This is the "Wood Finish" part of the chalkboard
     private var outerImageView: UIImageView!
@@ -21,11 +23,11 @@ open class ChalkboardViewController: UIViewController {
     /// This is the inner, black chalkboard part of the chalkboard
     private var innerImageView: UIImageView!
 
-    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .all
     }
 
-    open override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         DLog("Bounds: \(view.bounds)")
         DLog("Frame: \(view.frame)")
@@ -54,10 +56,11 @@ open class ChalkboardViewController: UIViewController {
             let menuVC = MenuContainerViewController.loadFromStoryboard()
             addContent(viewController: menuVC)
             menuVC.menuBuilder = menuBuilding
+            self.menuVC = menuVC
         }
     }
 
-    open override func willTransition(to newCollection: UITraitCollection,
+    override func willTransition(to newCollection: UITraitCollection,
                                       with coordinator: UIViewControllerTransitionCoordinator) {
         coordinator.animate(alongsideTransition: { _ in
             switch UIApplication.shared.statusBarOrientation {
@@ -74,7 +77,7 @@ open class ChalkboardViewController: UIViewController {
         children.forEach { $0.willTransition(to: newCollection, with: coordinator) }
     }
 
-    open override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         switch UIApplication.shared.statusBarOrientation {
         case .portrait, .portraitUpsideDown:
             self.buildPortrait()
@@ -84,11 +87,11 @@ open class ChalkboardViewController: UIViewController {
         }
     }
 
-    open func buildPortrait() {
+    func buildPortrait() {
         doBuildPortrait()
     }
 
-    open func buildLandscape() {
+    func buildLandscape() {
         doBuildLandscape()
     }
 
@@ -96,7 +99,7 @@ open class ChalkboardViewController: UIViewController {
     /// calls the appropriate view controller functions.
     ///
     /// - Parameter viewController: The child view controller to add.
-    public func addContent(viewController: UIViewController) {
+    func addContent(viewController: UIViewController) {
         guard let childView = viewController.view else {
             return assertionFailure("nope")
         }
@@ -110,7 +113,7 @@ open class ChalkboardViewController: UIViewController {
     /// to that view, exactly.
     ///
     /// - Parameter childView: The child view.
-    public func setContentView(_ childView: UIView) {
+    func setContentView(_ childView: UIView) {
         contentView.addSubview(childView)
         constrain(contentView, childView) { view, childView in
             childView.top == view.top
@@ -121,7 +124,7 @@ open class ChalkboardViewController: UIViewController {
     }
 
     @IBAction
-    open func tappedCloseButton(_ notification: NSNotification) {
+    func tappedCloseButton(_ notification: NSNotification) {
         SoundProvider.instance.playMenuSelectionSound()
         navigationController?.popViewController(animated: true)
     }

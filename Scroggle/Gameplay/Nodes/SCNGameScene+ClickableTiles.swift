@@ -228,7 +228,7 @@ extension GameSceneController {
         guard selection.count > 1 else {
             return
         }
-        print("Selections: \(selection)")
+        DLog("Selections: \(selection)")
 
         let fromNode = selection[selection.count-1]
         let toNode = selection[selection.count-2]
@@ -267,7 +267,7 @@ extension GameSceneController {
     ///   - to: The index of the shape node to end drawing at
     private func drawLine(from: Int, to index: Int, name: String) -> SKShapeNode? {
         guard let scene = skView.scene else {
-            print("ERROR: No scene to draw a line on")
+            DLog("ERROR: No scene to draw a line on")
             return nil
         }
         let startPoint = CGPoint(x: tiles[from].frame.midX, y: tiles[from].frame.midY)

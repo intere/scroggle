@@ -79,12 +79,29 @@ extension Notification {
         /// General menu actions
         enum MenuAction: String, Notifiable, CustomStringConvertible {
             case tappedBackButton = "tapped.back"
+            case authorizationChanged = "gamecenter.authorization.changed"
 
             static var notificationBase: String {
                 return "scroggle.menu.action"
             }
             var description: String {
                 return self.rawValue
+            }
+        }
+
+        /// Game Stat events (for after a game ends)
+        enum GameStatEvent: String, Notifiable, CustomStringConvertible {
+            case setPersonalHighScore = "set.personal.high.score"
+            case setGlobalHighScore = "set.global.high.score"
+            case setPersonalLongestWord = "set.personal.longest.word"
+            case setGlobalLongestWord = "set.global.longest.word"
+
+            static var notificationBase: String {
+                return "scroggle.game.stats"
+            }
+
+            var description: String {
+                return rawValue
             }
         }
 

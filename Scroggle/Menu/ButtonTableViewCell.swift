@@ -29,6 +29,10 @@ class ButtonTableViewCell: UITableViewCell {
         cellInfo?.action()
     }
 
+    override func prepareForReuse() {
+        button?.setTitle(nil, for: .normal)
+    }
+
 }
 
 // MARK: - Implementation

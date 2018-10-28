@@ -15,6 +15,9 @@ class MainMenuViewController: ChalkboardViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         GameContextProvider.Configuration.demoMode = false
+
+        Notification.Scroggle.MenuAction.authorizationChanged
+            .addObserver(self, selector: #selector(gameCenterAuthorizationChanged(_:)))
     }
 
     /// Creates you a new instance of this VC from the storyboard.
@@ -29,6 +32,17 @@ class MainMenuViewController: ChalkboardViewController {
 
 }
 
+// MARK: - Notifications
+
+extension MainMenuViewController {
+
+    @IBAction
+    func gameCenterAuthorizationChanged(_ notification: NSNotification) {
+        menuVC?.reloadMenu()
+    }
+
+}
+
 // MARK: - MenuBuilding
 
 extension MainMenuViewController: MenuBuilding {
@@ -37,19 +51,31 @@ extension MainMenuViewController: MenuBuilding {
     ///
     /// - Returns: A MenuInfo object for the Main Menu.
     func buildMenu() -> MenuInfo? {
+
+        let gcTitle = GameCenterProvider.instance.loggedIn ? "Leaderboards" : "GameCenter"
+
         return MenuInfo(title: "Scroggle", showCloseButton: false, buttons: [
-            ButtonCellInfo(title: "New Game", action: { [weak self] in
+            ButtonCellInfo(title: "New Game", action: {
                 SoundProvider.instance.playMenuSelectionSound()
-                self?.navigationController?.pushViewController(TimeMenuViewController.loadFromStoryboard(),
+                DLog("Clicked New Game")
+                self.navigationController?.pushViewController(TimeMenuViewController.loadFromStoryboard(),
                                                               animated: true)
             }),
-            // TODO: Toggle between "Login: GameCenter" and "View High Scores"
-            ButtonCellInfo(title: "Login: GameCenter", action: {
+
+            ButtonCellInfo(title: gcTitle, action: { [weak self] in
                 SoundProvider.instance.playMenuSelectionSound()
-                DLog("Clicked Login")
+                DLog("Clicked GameCenter")
+                guard let self = self else {
+                    return
+                }
+                if GameCenterProvider.instance.loggedIn {
+                    GameCenterProvider.instance.showLeaderboard(from: self)
+                } else {
+                    GameCenterProvider.instance.loginToGameCenter(with: self)
+                }
             }),
+
             ButtonCellInfo(title: "Help", action: { [weak self] in
-                SoundProvider.instance.playMenuSelectionSound()
                 self?.navigationController?.pushViewController(HelpMenuViewController.loadFromStoryboard(),
                                                                animated: true)
             })

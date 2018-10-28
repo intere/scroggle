@@ -50,10 +50,7 @@ class GamePlayViewController: UIViewController {
 
         Notification.Scroggle.GameEvent.scoreUpdated.addObserver(self, selector: #selector(scoreUpdated))
         Notification.Scroggle.GameEvent.gameEnded.addObserver(self, selector: #selector(gameOverEvent))
-
-        // TODO: Delay this after an "introduction animation":
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self,
-                                     selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        Notification.Scroggle.GameEvent.beginTimer.addObserver(self, selector: #selector(beginTimer(_:)))
     }
 }
 
@@ -73,9 +70,15 @@ extension GamePlayViewController {
 
 }
 
-// MARK: - Implementation
+// MARK: - Notifications
 
-private extension GamePlayViewController {
+extension GamePlayViewController {
+
+    @objc
+    func beginTimer(_ notification: NSNotification) {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self,
+                                     selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    }
 
     @objc
     /// Responds to the game ending early (user clicks the exit game button)
@@ -91,6 +94,14 @@ private extension GamePlayViewController {
         }
         scoreLabel.text = String(score)
     }
+
+}
+
+
+// MARK: - Implementation
+
+private extension GamePlayViewController {
+
 
     @objc
     /// Responds to the time updated event

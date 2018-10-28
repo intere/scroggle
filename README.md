@@ -18,14 +18,15 @@ Scroggle is a word game that's based on Boggle, Scrabble and some other popular 
 ## Tech Stack
 - Apple's GameCenter (for scorekeeping)
 - Fabric (for Crashlogs / Analytics)
+- Cartography (for constraintsa)
 - SceneKit (for 3D assets / animations)
 - SpriteKit (for Gameplay)
 - UIKit (for menus)
 
 ## TODO (MVP Features)
 - [x] Setup Swiftlint / Address findings
-- [ ] Login: Game Center
-- [ ] Leaderboards
+- [x] Login: Game Center
+- [x] Leaderboards
 - [x] Help menu
     - [x] Add [Privacy Policy](http://intere.github.io/scroggle-support/#/privacy)
     - See related [Scroggle Support](https://github.com/intere/scroggle-support) project, which is the source for the [Scroggle Support Site](http://intere.github.io/scroggle-support/)
@@ -34,9 +35,9 @@ Scroggle is a word game that's based on Boggle, Scrabble and some other popular 
 - [x] Sounds
 
 ## TODO (Roadmap)
-- [ ] Realtime multiplayer
-- [ ] Single player challenges
 - [ ] Challenge friends (Messages Integration)
+- [ ] Single player challenges
+- [ ] Realtime multiplayer
 
 ## License
 - MIT
