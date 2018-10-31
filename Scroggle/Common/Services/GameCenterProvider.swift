@@ -207,29 +207,17 @@ private extension GameCenterProvider {
     /// This method is responsible for calling out to GameCenter, getting the leaderboards,
     /// then storing them in a map and handing that back to you.
     class func loadLeaderboardsForUser() {
-        guard instance.localPlayer.isAuthenticated else {
-            return
-        }
-
-        let leaderboardKeys = Leaderboard.basicGameLeaderboardKeys
-
-        for leaderboardId in leaderboardKeys {
-            let leaderboard = GKLeaderboard(players: [instance.localPlayer])
-            leaderboard.identifier = leaderboardId
-            leaderboard.timeScope = .allTime
-            leaderboard.loadScores { scores, error in
-                if let error = error {
-                    DLog("Error loading scores for identifier \(leaderboardId): \(error)")
-                    return recordSystemError(error)
-                }
-                guard let scores = scores else {
-                    return DLog("Error, no scores came back")
-                }
-
-                for score in scores where score.player == instance.localPlayer {
-                    instance.leaderboardCache[score.leaderboardIdentifier] = score.value
+        GKLocalPlayer.local.loadPlayerLeaderboards { (leaderboards, errors) in
+            if let errors = errors {
+                for error in errors {
+                    DLog("Error loading leaderboard: \(error.localizedDescription)")
+                    recordSystemError(error)
                 }
             }
+            guard let leaderboards = leaderboards else {
+                return
+            }
+            instance.leaderboardCache = leaderboards
         }
     }
 

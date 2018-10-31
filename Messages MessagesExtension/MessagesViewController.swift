@@ -12,9 +12,11 @@ import UIKit
 
 class MessagesViewController: MSMessagesAppViewController {
     
+    @IBOutlet weak var label: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        updateLabel()
     }
     
     // MARK: - Conversation Handling
@@ -24,10 +26,8 @@ class MessagesViewController: MSMessagesAppViewController {
         // This will happen when the extension is about to present UI.
         
         // Use this method to configure the extension and restore previously stored state.
-        guard GameCenterProvider.instance.loggedIn else {
-            return
-        }
-
+        print("conversation: \(conversation)")
+        wireAuthHandler()
     }
     
     override func didResignActive(with conversation: MSConversation) {
@@ -67,6 +67,36 @@ class MessagesViewController: MSMessagesAppViewController {
         // Called after the extension transitions to a new presentation style.
     
         // Use this method to finalize any behaviors associated with the change in presentation style.
+    }
+
+}
+
+// MARK: - Implementation
+
+extension MessagesViewController {
+
+    func updateLabel() {
+        if GKLocalPlayer.local.isAuthenticated {
+            label.text = "Authenticated"
+        } else {
+            label.text = "Not Authenticated"
+        }
+    }
+
+    func wireAuthHandler() {
+        GKLocalPlayer.local.authenticateHandler = { [weak self] gameCenterVC, error in
+            if let error = error {
+                return print("Error with GameCenter Auth: \(error.localizedDescription)")
+            }
+            guard let gameCenterVC = gameCenterVC else {
+                return print("No GameCenter VC")
+            }
+            self?.present(gameCenterVC, animated: true) {
+                DispatchQueue.main.async { [weak self] in
+                    self?.updateLabel()
+                }
+            }
+        }
     }
 
 }
