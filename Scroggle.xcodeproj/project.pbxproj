@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2AE7638D5DFFB1510E225533 /* Pods_Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BD334FE4B015F2AA56501F /* Pods_Messages.framework */; };
 		36115A9520E7D9F000D49AF0 /* Notification+Scroggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36115A9420E7D9F000D49AF0 /* Notification+Scroggle.swift */; };
 		36115A9720E7DB6300D49AF0 /* Notifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36115A9620E7DB6300D49AF0 /* Notifiable.swift */; };
 		36115A9920E7E72000D49AF0 /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36115A9820E7E72000D49AF0 /* WordCell.swift */; };
@@ -59,6 +60,13 @@
 		366784C620CE17E8004EBCB9 /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366784C520CE17E8004EBCB9 /* WordListViewController.swift */; };
 		367480622173CD7100B89DA8 /* GameCenterProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367480612173CD7100B89DA8 /* GameCenterProvider.swift */; };
 		367480642173D29000B89DA8 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367480632173D29000B89DA8 /* Score.swift */; };
+		367480732189510000B89DA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 367480722189510000B89DA8 /* Assets.xcassets */; };
+		3674807A2189510100B89DA8 /* Messages MessagesExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 367480792189510100B89DA8 /* Messages MessagesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3674807E2189510100B89DA8 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3674807D2189510100B89DA8 /* Messages.framework */; };
+		367480812189510100B89DA8 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367480802189510100B89DA8 /* MessagesViewController.swift */; };
+		367480842189510100B89DA8 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 367480822189510100B89DA8 /* MainInterface.storyboard */; };
+		367480862189510100B89DA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 367480852189510100B89DA8 /* Assets.xcassets */; };
+		3674808F2189529000B89DA8 /* GameCenterProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367480612173CD7100B89DA8 /* GameCenterProvider.swift */; };
 		36752C0F20E673140076D1F3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 36752C0E20E673140076D1F3 /* README.md */; };
 		3686EB391F9C432D007FEB28 /* dice.json in Resources */ = {isa = PBXBuildFile; fileRef = 3686EB381F9C432D007FEB28 /* dice.json */; };
 		3686EB3B1F9C4390007FEB28 /* demo.json in Resources */ = {isa = PBXBuildFile; fileRef = 3686EB3A1F9C4390007FEB28 /* demo.json */; };
@@ -101,6 +109,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3674807B2189510100B89DA8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 36A77BC71F8A64AB0057A874 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 367480782189510100B89DA8;
+			remoteInfo = "Messages MessagesExtension";
+		};
 		36A77BE61F8A64AB0057A874 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 36A77BC71F8A64AB0057A874 /* Project object */;
@@ -110,8 +125,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		3674808D2189510200B89DA8 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3674807A2189510100B89DA8 /* Messages MessagesExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		00668C1EA3E1A7B6F972AD30 /* Pods-ScroggleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScroggleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScroggleTests/Pods-ScroggleTests.release.xcconfig"; sourceTree = "<group>"; };
+		18BD334FE4B015F2AA56501F /* Pods_Messages.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Messages.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AC2660262C043314B6F772A /* Pods_ScroggleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScroggleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25529459E731704F950900DB /* Pods-Scroggle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scroggle.release.xcconfig"; path = "Pods/Target Support Files/Pods-Scroggle/Pods-Scroggle.release.xcconfig"; sourceTree = "<group>"; };
 		36115A9420E7D9F000D49AF0 /* Notification+Scroggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Scroggle.swift"; sourceTree = "<group>"; };
@@ -164,6 +194,15 @@
 		366784C520CE17E8004EBCB9 /* WordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListViewController.swift; sourceTree = "<group>"; };
 		367480612173CD7100B89DA8 /* GameCenterProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterProvider.swift; sourceTree = "<group>"; };
 		367480632173D29000B89DA8 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
+		36748070218950FD00B89DA8 /* Messages.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messages.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		367480722189510000B89DA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		367480742189510000B89DA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		367480792189510100B89DA8 /* Messages MessagesExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Messages MessagesExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3674807D2189510100B89DA8 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
+		367480802189510100B89DA8 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		367480832189510100B89DA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		367480852189510100B89DA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		367480872189510100B89DA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36752C0E20E673140076D1F3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		3686EB381F9C432D007FEB28 /* dice.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dice.json; sourceTree = "<group>"; };
 		3686EB3A1F9C4390007FEB28 /* demo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = demo.json; sourceTree = "<group>"; };
@@ -207,11 +246,29 @@
 		36D9DE7820C59FFF007F3FC1 /* RandomTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomTests.swift; sourceTree = "<group>"; };
 		36E5916C20E8505E00B54E8C /* ActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCell.swift; sourceTree = "<group>"; };
 		56761BE71EB11B903BA848D5 /* Pods-ScroggleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScroggleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScroggleTests/Pods-ScroggleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C2333077D39EB042A1285032 /* Pods-Messages.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Messages.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Messages/Pods-Messages.debug.xcconfig"; sourceTree = "<group>"; };
 		C7F358BEAF58BB9834F21533 /* Pods_Scroggle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Scroggle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6689E82EF5FEDD53035E2C3 /* Pods-Scroggle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scroggle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Scroggle/Pods-Scroggle.debug.xcconfig"; sourceTree = "<group>"; };
+		DF13100AF0AE643C14D22A9D /* Pods-Messages.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Messages.release.xcconfig"; path = "Pods/Target Support Files/Pods-Messages/Pods-Messages.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		041C4B4074151381F86FCE25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AE7638D5DFFB1510E225533 /* Pods_Messages.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		367480762189510100B89DA8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3674807E2189510100B89DA8 /* Messages.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		36A77BCC1F8A64AB0057A874 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -340,6 +397,26 @@
 			path = SceneKit;
 			sourceTree = "<group>";
 		};
+		36748071218950FD00B89DA8 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				367480722189510000B89DA8 /* Assets.xcassets */,
+				367480742189510000B89DA8 /* Info.plist */,
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
+		3674807F2189510100B89DA8 /* Messages MessagesExtension */ = {
+			isa = PBXGroup;
+			children = (
+				367480802189510100B89DA8 /* MessagesViewController.swift */,
+				367480822189510100B89DA8 /* MainInterface.storyboard */,
+				367480852189510100B89DA8 /* Assets.xcassets */,
+				367480872189510100B89DA8 /* Info.plist */,
+			);
+			path = "Messages MessagesExtension";
+			sourceTree = "<group>";
+		};
 		3686EB371F9C4308007FEB28 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,6 +440,8 @@
 			children = (
 				36A77BD11F8A64AB0057A874 /* Scroggle */,
 				36A77BE81F8A64AB0057A874 /* ScroggleTests */,
+				36748071218950FD00B89DA8 /* Messages */,
+				3674807F2189510100B89DA8 /* Messages MessagesExtension */,
 				36A77BD01F8A64AB0057A874 /* Products */,
 				48ECA28F33CF624D24747C0B /* Pods */,
 				652403BA083F7711179AAB97 /* Frameworks */,
@@ -374,6 +453,8 @@
 			children = (
 				36A77BCF1F8A64AB0057A874 /* Scroggle.app */,
 				36A77BE51F8A64AB0057A874 /* ScroggleTests.xctest */,
+				36748070218950FD00B89DA8 /* Messages.app */,
+				367480792189510100B89DA8 /* Messages MessagesExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -539,6 +620,8 @@
 				25529459E731704F950900DB /* Pods-Scroggle.release.xcconfig */,
 				56761BE71EB11B903BA848D5 /* Pods-ScroggleTests.debug.xcconfig */,
 				00668C1EA3E1A7B6F972AD30 /* Pods-ScroggleTests.release.xcconfig */,
+				C2333077D39EB042A1285032 /* Pods-Messages.debug.xcconfig */,
+				DF13100AF0AE643C14D22A9D /* Pods-Messages.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -551,6 +634,8 @@
 				3650077020FA654900DAF1A9 /* AVFoundation.framework */,
 				C7F358BEAF58BB9834F21533 /* Pods_Scroggle.framework */,
 				1AC2660262C043314B6F772A /* Pods_ScroggleTests.framework */,
+				3674807D2189510100B89DA8 /* Messages.framework */,
+				18BD334FE4B015F2AA56501F /* Pods_Messages.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -558,6 +643,43 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3674806F218950FD00B89DA8 /* Messages */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3674808E2189510200B89DA8 /* Build configuration list for PBXNativeTarget "Messages" */;
+			buildPhases = (
+				56E57235024E5B53673BBFAE /* [CP] Check Pods Manifest.lock */,
+				3674806E218950FD00B89DA8 /* Resources */,
+				3674808D2189510200B89DA8 /* Embed App Extensions */,
+				041C4B4074151381F86FCE25 /* Frameworks */,
+				13F4A212D309861B0FDB97B5 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3674807C2189510100B89DA8 /* PBXTargetDependency */,
+			);
+			name = Messages;
+			productName = Messages;
+			productReference = 36748070218950FD00B89DA8 /* Messages.app */;
+			productType = "com.apple.product-type.application.messages";
+		};
+		367480782189510100B89DA8 /* Messages MessagesExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3674808C2189510200B89DA8 /* Build configuration list for PBXNativeTarget "Messages MessagesExtension" */;
+			buildPhases = (
+				367480752189510100B89DA8 /* Sources */,
+				367480762189510100B89DA8 /* Frameworks */,
+				367480772189510100B89DA8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Messages MessagesExtension";
+			productName = "Messages MessagesExtension";
+			productReference = 367480792189510100B89DA8 /* Messages MessagesExtension.appex */;
+			productType = "com.apple.product-type.app-extension.messages";
+		};
 		36A77BCE1F8A64AB0057A874 /* Scroggle */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 36A77BEE1F8A64AB0057A874 /* Build configuration list for PBXNativeTarget "Scroggle" */;
@@ -605,10 +727,18 @@
 		36A77BC71F8A64AB0057A874 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0900;
+				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Eric Internicola";
 				TargetAttributes = {
+					3674806F218950FD00B89DA8 = {
+						CreatedOnToolsVersion = 10.0;
+						ProvisioningStyle = Automatic;
+					};
+					367480782189510100B89DA8 = {
+						CreatedOnToolsVersion = 10.0;
+						ProvisioningStyle = Automatic;
+					};
 					36A77BCE1F8A64AB0057A874 = {
 						CreatedOnToolsVersion = 9.0;
 						LastSwiftMigration = 1000;
@@ -637,11 +767,30 @@
 			targets = (
 				36A77BCE1F8A64AB0057A874 /* Scroggle */,
 				36A77BE41F8A64AB0057A874 /* ScroggleTests */,
+				3674806F218950FD00B89DA8 /* Messages */,
+				367480782189510100B89DA8 /* Messages MessagesExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3674806E218950FD00B89DA8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				367480732189510000B89DA8 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		367480772189510100B89DA8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				367480862189510100B89DA8 /* Assets.xcassets in Resources */,
+				367480842189510100B89DA8 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		36A77BCD1F8A64AB0057A874 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -686,6 +835,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		13F4A212D309861B0FDB97B5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Messages/Pods-Messages-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Cartography/Cartography.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cartography.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Messages/Pods-Messages-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		36A5F51120FC3E3200CEA0BE /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -727,6 +898,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "// Adapted from https://littlebitesofcocoa.com/207-annotating-swift-with-marks-todo-s-and-fixme-s\nKEYWORDS=\"TODO|FIXME|\\?\\?\\?:|\\!\\!\\!:\"\nfind \"${SRCROOT}/Scroggle\" -name '*.swift' -print0 | \\\nxargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | \\\nperl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"\n";
+		};
+		56E57235024E5B53673BBFAE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Messages-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 		76BD573C80928A6701C3085E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -785,6 +978,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		367480752189510100B89DA8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				367480812189510100B89DA8 /* MessagesViewController.swift in Sources */,
+				3674808F2189529000B89DA8 /* GameCenterProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		36A77BCB1F8A64AB0057A874 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -860,6 +1062,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3674807C2189510100B89DA8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 367480782189510100B89DA8 /* Messages MessagesExtension */;
+			targetProxy = 3674807B2189510100B89DA8 /* PBXContainerItemProxy */;
+		};
 		36A77BE71F8A64AB0057A874 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 36A77BCE1F8A64AB0057A874 /* Scroggle */;
@@ -867,7 +1074,98 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		367480822189510100B89DA8 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				367480832189510100B89DA8 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		367480882189510200B89DA8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2333077D39EB042A1285032 /* Pods-Messages.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 268S5GJFWZ;
+				INFOPLIST_FILE = Messages/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.icolasoft.Word-Up.Messages";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		367480892189510200B89DA8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF13100AF0AE643C14D22A9D /* Pods-Messages.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 268S5GJFWZ;
+				INFOPLIST_FILE = Messages/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.icolasoft.Word-Up.Messages";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3674808A2189510200B89DA8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 268S5GJFWZ;
+				INFOPLIST_FILE = "Messages MessagesExtension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.icolasoft.Word-Up.Messages.MessagesExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3674808B2189510200B89DA8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 268S5GJFWZ;
+				INFOPLIST_FILE = "Messages MessagesExtension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.icolasoft.Word-Up.Messages.MessagesExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		36A77BEC1F8A64AB0057A874 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1058,6 +1356,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3674808C2189510200B89DA8 /* Build configuration list for PBXNativeTarget "Messages MessagesExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3674808A2189510200B89DA8 /* Debug */,
+				3674808B2189510200B89DA8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3674808E2189510200B89DA8 /* Build configuration list for PBXNativeTarget "Messages" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				367480882189510200B89DA8 /* Debug */,
+				367480892189510200B89DA8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		36A77BCA1F8A64AB0057A874 /* Build configuration list for PBXProject "Scroggle" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

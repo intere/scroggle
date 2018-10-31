@@ -6,8 +6,8 @@
 //  Copyright © 2018 Eric Internicola. All rights reserved.
 //
 
-import GameKit
 import Crashlytics
+import GameKit
 
 class GameCenterProvider: NSObject {
     /// Singleton Instance
