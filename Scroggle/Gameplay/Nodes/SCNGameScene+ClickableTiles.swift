@@ -133,6 +133,7 @@ extension GameSceneController {
         guard let scene = skView.scene else {
             return assertionFailure("Failed to get the scene")
         }
+        tiles.forEach { $0.removeFromParent() }
         tiles.removeAll()
 
         let config = TileConfiguration.currentConfiguration(skView)
@@ -143,13 +144,16 @@ extension GameSceneController {
                 let square = SKShapeNode(rectOf: CGSize(width: config.squareSize, height: config.squareSize))
                 square.fillColor = .clear
                 square.strokeColor = .clear
-                let xPosition = scene.frame.midX - config.offsetX + CGFloat(row-1) * config.stepSizeX
-                let yPosition = scene.frame.midY + config.offsetY + CGFloat(column-2) * config.stepSizeY
-                square.position = CGPoint(x: xPosition, y: yPosition)
+
+                square.position = CGPoint(
+                    x: xPosition(for: row, in: scene, with: config),
+                    y: yPosition(for: column, in: scene, with: config))
                 square.zPosition = 100
-//                #if DEBUG
-//                square.fillColor = UIColor.blue.withAlphaComponent(0.4)
-//                #endif
+
+                #if DEBUG
+                square.fillColor = UIColor.blue.withAlphaComponent(0.4)
+                #endif
+                
                 square.name = "tile_\(column)_\(row)"
                 rowNodes.append(square)
                 scene.addChild(square)
@@ -167,6 +171,25 @@ extension GameSceneController {
 
         // Debugging - animates the tiles and dice so you can verify that the order is the same
 //        debugAnimateImages()
+    }
+
+    private func xPosition(for row: Int, in scene: SKScene, with config: TileConfiguration) -> CGFloat {
+        switch rotation {
+        case 90, 270:
+            return scene.frame.midY - config.offsetY + CGFloat(row-1) * config.stepSizeY
+
+        default:
+            return scene.frame.midX - config.offsetX + CGFloat(row-1) * config.stepSizeX
+        }
+    }
+
+    private func yPosition(for column: Int, in scene: SKScene, with config: TileConfiguration) -> CGFloat {
+        switch rotation {
+        case 90, 270:
+            return scene.frame.midX + config.offsetX + CGFloat(column-2) * config.stepSizeX
+        default:
+            return scene.frame.midY + config.offsetY + CGFloat(column-2) * config.stepSizeY
+        }
     }
 
     /// Data structure to give you values to build the overlays

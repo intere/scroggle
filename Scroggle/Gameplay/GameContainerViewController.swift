@@ -91,6 +91,8 @@ class GameContainerViewController: ChalkboardViewController {
             gameArea.bottom == view.bottom
         }
 
+        gameController?.addClickableTiles()
+
         if isGameOver {
             buildGameOverView()
         }
@@ -117,6 +119,8 @@ class GameContainerViewController: ChalkboardViewController {
             gameArea.right == view.right
             gameArea.bottom == view.bottom
         }
+
+        gameController?.addClickableTiles()
 
         if isGameOver {
             buildGameOverView()

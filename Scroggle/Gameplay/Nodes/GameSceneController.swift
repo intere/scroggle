@@ -21,7 +21,11 @@ class GameSceneController {
     let skView: SKView
 
     /// The current rotation amount
-    var rotation = 0
+    var rotation = 0 {
+        didSet {
+            DLog("Set rotation: \(rotation)")
+        }
+    }
 
     /// The SCNScene (DiceTray.scn)
     weak var gameScene: SCNScene?
@@ -196,6 +200,13 @@ extension GameSceneController {
     func rotateBoard(clockwise: Bool) {
         let rotateDegrees = clockwise ? 90 : -90
         rotation += rotateDegrees
+
+        if rotation < 0 {
+            rotation += 360
+        } else if rotation >= 360 {
+            rotation = rotation % 360
+        }
+
         UIView.animate(withDuration: 0.3) { [weak self] in
             guard let self = self else {
                 return
@@ -205,6 +216,7 @@ extension GameSceneController {
         for die in dice {
             die.runAction(SCNAction.rotateBy(x: 0, y: 0, z: CGFloat(rotateDegrees.radians), duration: 0.3))
         }
+        addClickableTiles()
     }
 
     /// Creates / adds the rotation gesture to the SKView.
