@@ -53,8 +53,6 @@
 		365C1AE81F9C3EA6008A84EA /* DiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1AE71F9C3EA6008A84EA /* DiceProvider.swift */; };
 		365C1AEA1F9C3F55008A84EA /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1AE91F9C3F55008A84EA /* SettingsService.swift */; };
 		365C1AEC1F9C401B008A84EA /* SoundProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C1AEB1F9C401B008A84EA /* SoundProvider.swift */; };
-		366784C020CE1666004EBCB9 /* GamePlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366784BF20CE1665004EBCB9 /* GamePlayViewController.swift */; };
-		366784C220CE16E3004EBCB9 /* GamePlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 366784C120CE16E3004EBCB9 /* GamePlay.storyboard */; };
 		366784C420CE1790004EBCB9 /* WordList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 366784C320CE1790004EBCB9 /* WordList.storyboard */; };
 		366784C620CE17E8004EBCB9 /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366784C520CE17E8004EBCB9 /* WordListViewController.swift */; };
 		367480622173CD7100B89DA8 /* GameCenterProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367480612173CD7100B89DA8 /* GameCenterProvider.swift */; };
@@ -158,8 +156,6 @@
 		365C1AE71F9C3EA6008A84EA /* DiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceProvider.swift; sourceTree = "<group>"; };
 		365C1AE91F9C3F55008A84EA /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		365C1AEB1F9C401B008A84EA /* SoundProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundProvider.swift; sourceTree = "<group>"; };
-		366784BF20CE1665004EBCB9 /* GamePlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayViewController.swift; sourceTree = "<group>"; };
-		366784C120CE16E3004EBCB9 /* GamePlay.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GamePlay.storyboard; sourceTree = "<group>"; };
 		366784C320CE1790004EBCB9 /* WordList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WordList.storyboard; sourceTree = "<group>"; };
 		366784C520CE17E8004EBCB9 /* WordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListViewController.swift; sourceTree = "<group>"; };
 		367480612173CD7100B89DA8 /* GameCenterProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterProvider.swift; sourceTree = "<group>"; };
@@ -451,8 +447,6 @@
 				368E464620D55478003C694E /* Scenes */,
 				369303982083960500D80511 /* GameContainer.storyboard */,
 				3656929C20C45AB200A3FE0A /* GameContainerViewController.swift */,
-				366784C120CE16E3004EBCB9 /* GamePlay.storyboard */,
-				366784BF20CE1665004EBCB9 /* GamePlayViewController.swift */,
 				36D9DE6E20C48115007F3FC1 /* Nodes */,
 				366784C320CE1790004EBCB9 /* WordList.storyboard */,
 				366784C520CE17E8004EBCB9 /* WordListViewController.swift */,
@@ -650,7 +644,6 @@
 				36C0913620F1078800CC7A54 /* time_sound.caf in Resources */,
 				3617FA3120C41E960023F89D /* Stretch.caf in Resources */,
 				3617FA2E20C41E960023F89D /* DiceRoll.caf in Resources */,
-				366784C220CE16E3004EBCB9 /* GamePlay.storyboard in Resources */,
 				3617FA2C20C41E960023F89D /* Cave_In.caf in Resources */,
 				3693CB8A1F9C083D004792B2 /* Introduction.storyboard in Resources */,
 				3656303C1F8A96AD00E4312B /* MainMenu.storyboard in Resources */,
@@ -799,7 +792,6 @@
 				36D79D86216A8ED300D7AFDF /* ChalkboardViewController.swift in Sources */,
 				365C1ACC1F9C0961008A84EA /* Die.swift in Sources */,
 				36B9BD0D21740626007D3441 /* AboutViewController.swift in Sources */,
-				366784C020CE1666004EBCB9 /* GamePlayViewController.swift in Sources */,
 				36D9DE7420C4B88C007F3FC1 /* Random.swift in Sources */,
 				36B9BD092174008F007D3441 /* AnalyticsProvider.swift in Sources */,
 				368E464A20D56B97003C694E /* CGPointExtensions.swift in Sources */,

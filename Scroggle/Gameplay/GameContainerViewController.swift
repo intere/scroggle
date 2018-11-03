@@ -11,13 +11,31 @@ import SceneKit
 import SpriteKit
 import UIKit
 
+/// This is the "Game Play" view controller.  It has a
+/// Game area and a Heads Up Display (HUD) area.
+/// ### Organization
+/// In terms of ViewController hierarchy, this VC has one child VC:
+/// - `HUDViewController`
+///
+/// It is also worth mentioning that there is a "Controller" (not a VC, though)
+/// that manages the interactions with the Game Scene:
+/// - `GameSceneController`
+///
 class GameContainerViewController: ChalkboardViewController {
-    var gameArea: SKView!
-    var gameController: GameSceneController!
+
+    /// The VC for the HUD
     var hudController: HUDViewController!
+
+    /// The controller for the GameScene
+    var gameController: GameSceneController!
+
+    /// The View that manages the game area
+    var gameArea: SKView!
+
     var isGameOver = false
 
-    var scoreArea: UIView {
+    /// The view from the HUD
+    var hudView: UIView {
         return hudController.view
     }
 
@@ -55,9 +73,9 @@ class GameContainerViewController: ChalkboardViewController {
     override func buildPortrait() {
         super.buildPortrait()
         contentView.subviews.forEach { $0.removeFromSuperview() }
-        [scoreArea, gameArea].forEach { contentView.addSubview($0) }
+        [hudView, gameArea].forEach { contentView.addSubview($0) }
 
-        constrain(contentView, scoreArea, gameArea) { view, scoreArea, gameArea in
+        constrain(contentView, hudView, gameArea) { view, scoreArea, gameArea in
             scoreArea.top == view.top
             scoreArea.left == view.left
             scoreArea.right == view.right
@@ -82,9 +100,9 @@ class GameContainerViewController: ChalkboardViewController {
     override func buildLandscape() {
         super.buildLandscape()
         contentView.subviews.forEach { $0.removeFromSuperview() }
-        [scoreArea, gameArea].forEach { contentView.addSubview($0) }
+        [hudView, gameArea].forEach { contentView.addSubview($0) }
 
-        constrain(contentView, scoreArea, gameArea) { view, scoreArea, gameArea in
+        constrain(contentView, hudView, gameArea) { view, scoreArea, gameArea in
             scoreArea.top == view.top
             scoreArea.left == view.left
             if self.isPad {
@@ -120,7 +138,7 @@ extension GameContainerViewController {
     @objc
     func mainMenu() {
         // No need to do this here, it's handled in the HUD VC
-//        Notification.Scroggle.GameEvent.gameEnded.notify(withObject: context)
+        // Notification.Scroggle.GameEvent.gameEnded.notify(withObject: context)
         SoundProvider.instance.playMenuSelectionSound()
         guard let mainMenuVC = navigationController?.viewControllers
             .first(where: { $0 is MainMenuViewController }) else {
