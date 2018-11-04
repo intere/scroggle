@@ -23,7 +23,21 @@ extension GameSceneController {
         guard let scene = skView.scene else {
             return .zero
         }
-        let containerSize = CGSize(width: scene.frame.width * 0.73, height: scene.frame.height * 0.77)
+
+        let containerSize: CGSize
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            if UIDevice.current.orientation == .portrait {
+                containerSize = CGSize(width: scene.frame.width * 0.79, height: scene.frame.height * 0.77)
+            } else {
+                containerSize = CGSize(width: scene.frame.width * 0.77, height: scene.frame.height * 0.77)
+            }
+        } else {
+            if UIDevice.current.orientation == .portrait {
+                containerSize = CGSize(width: scene.frame.width * 0.83, height: scene.frame.height * 0.77)
+            } else {
+                containerSize = CGSize(width: scene.frame.width * 0.73, height: scene.frame.height * 0.77)
+            }
+        }
 
         DLog("Scene       Size: \(scene.size)")
         DLog("Scene Frame Size: \(scene.frame.size)")
