@@ -29,6 +29,14 @@ extension UIDevice {
         return UIScreen.main.nativeBounds.size.height >= 2436
     }
 
+    /// Is this device an iPhone XS Max?
+    var isXSMax: Bool {
+        guard isX else {
+            return false
+        }
+        return UIScreen.main.nativeBounds.size.height == 2688
+    }
+
     /// Are we in portrait?
     var isPortrait: Bool {
         return orientation == .portrait

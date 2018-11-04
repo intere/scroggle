@@ -32,6 +32,12 @@ extension GameSceneController {
             } else {
                 containerSize = CGSize(width: scene.frame.width * 0.77, height: scene.frame.height * 0.77)
             }
+        } else if UIDevice.current.isXSMax {
+            if UIDevice.current.isLandscape {
+                containerSize = CGSize(width: scene.frame.width * 0.76, height: scene.frame.height * 0.77)
+            } else {
+                containerSize = CGSize(width: scene.frame.width * 0.81, height: scene.frame.height * 0.77)
+            }
         } else if UIDevice.current.isX {
             if UIDevice.current.isLandscape {
                 containerSize = CGSize(width: scene.frame.width * 0.83, height: scene.frame.height * 0.77)
