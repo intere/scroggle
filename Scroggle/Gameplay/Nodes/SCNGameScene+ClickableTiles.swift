@@ -25,17 +25,24 @@ extension GameSceneController {
         }
 
         let containerSize: CGSize
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            if UIDevice.current.orientation == .portrait {
+
+        if UIDevice.current.isPad {
+            if UIDevice.current.isLandscape {
                 containerSize = CGSize(width: scene.frame.width * 0.79, height: scene.frame.height * 0.77)
             } else {
                 containerSize = CGSize(width: scene.frame.width * 0.77, height: scene.frame.height * 0.77)
             }
-        } else {
-            if UIDevice.current.orientation == .portrait {
+        } else if UIDevice.current.isX {
+            if UIDevice.current.isLandscape {
                 containerSize = CGSize(width: scene.frame.width * 0.83, height: scene.frame.height * 0.77)
             } else {
                 containerSize = CGSize(width: scene.frame.width * 0.73, height: scene.frame.height * 0.77)
+            }
+        } else {
+            if UIDevice.current.isLandscape {
+                containerSize = CGSize(width: scene.frame.width * 0.81, height: scene.frame.height * 0.77)
+            } else {
+                containerSize = CGSize(width: scene.frame.width * 0.72, height: scene.frame.height * 0.77)
             }
         }
 

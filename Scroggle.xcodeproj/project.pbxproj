@@ -93,6 +93,7 @@
 		36D9DE7420C4B88C007F3FC1 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D9DE7320C4B88C007F3FC1 /* Random.swift */; };
 		36D9DE7620C4E426007F3FC1 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D9DE7520C4E426007F3FC1 /* Common.swift */; };
 		36D9DE7920C59FFF007F3FC1 /* RandomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D9DE7820C59FFF007F3FC1 /* RandomTests.swift */; };
+		36E3A798218F8BAD00777727 /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E3A797218F8BAD00777727 /* UIDeviceExtension.swift */; };
 		36E5916D20E8505E00B54E8C /* ActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E5916C20E8505E00B54E8C /* ActionCell.swift */; };
 		4FD72B7D461376FF67D005F9 /* Pods_Scroggle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F358BEAF58BB9834F21533 /* Pods_Scroggle.framework */; };
 		54925A97B646C3D4473488DF /* Pods_ScroggleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC2660262C043314B6F772A /* Pods_ScroggleTests.framework */; };
@@ -201,6 +202,7 @@
 		36D9DE7320C4B88C007F3FC1 /* Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 		36D9DE7520C4E426007F3FC1 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		36D9DE7820C59FFF007F3FC1 /* RandomTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomTests.swift; sourceTree = "<group>"; };
+		36E3A797218F8BAD00777727 /* UIDeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		36E5916C20E8505E00B54E8C /* ActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCell.swift; sourceTree = "<group>"; };
 		56761BE71EB11B903BA848D5 /* Pods-ScroggleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScroggleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScroggleTests/Pods-ScroggleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C7F358BEAF58BB9834F21533 /* Pods_Scroggle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Scroggle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -324,6 +326,7 @@
 				368E464920D56B97003C694E /* CGPointExtensions.swift */,
 				36115A9420E7D9F000D49AF0 /* Notification+Scroggle.swift */,
 				36D79D89216DA4FA00D7AFDF /* UIViewControllerExtension.swift */,
+				36E3A797218F8BAD00777727 /* UIDeviceExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -814,6 +817,7 @@
 				365C1AD81F9C3A77008A84EA /* ScoreProvider.swift in Sources */,
 				365C1AEC1F9C401B008A84EA /* SoundProvider.swift in Sources */,
 				36D9DE7220C4B017007F3FC1 /* GameSceneController+Animations.swift in Sources */,
+				36E3A798218F8BAD00777727 /* UIDeviceExtension.swift in Sources */,
 				36D79D8A216DA4FA00D7AFDF /* UIViewControllerExtension.swift in Sources */,
 				36B9BD07217394FB007D3441 /* WebViewController.swift in Sources */,
 				365C1AD01F9C09F6008A84EA /* GameBoard.swift in Sources */,
