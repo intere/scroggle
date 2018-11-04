@@ -57,6 +57,9 @@ extension GameSceneController {
     ///
     /// - Parameter point: The point in the scene that was tapped
     func tapped(point: CGPoint) {
+        guard !isRotating else {
+            return
+        }
         guard let index = tile(for: point) else {
             return DLog("Point \(point) not in tile container")
         }
@@ -74,6 +77,10 @@ extension GameSceneController {
     /// - Parameter point: The point in the scene that was tapped.
     /// - Returns: the point if it was added, nil if not.
     func handleDrag(point: CGPoint) -> CGPoint? {
+        guard !isRotating else {
+            return nil
+        }
+
         guard let index = tile(for: point) else {
             DLog("Point \(point) not in tile container")
             return nil
@@ -91,6 +98,10 @@ extension GameSceneController {
     ///
     /// - Parameter point: The point at which the dragging has ended.
     func handleDragEnd(point: CGPoint) {
+        guard !isRotating else {
+            return
+        }
+
         _ = handleDrag(point: point)
         guessWord()
     }

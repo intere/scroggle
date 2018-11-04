@@ -27,6 +27,8 @@ class GameSceneController {
         }
     }
 
+    var isRotating = false
+
     /// The SCNScene (DiceTray.scn)
     weak var gameScene: SCNScene?
 
@@ -181,6 +183,13 @@ extension GameSceneController {
     ///
     /// - Parameter rotateGesture: The rotation gesture.
     func didRotate(_ rotateGesture: UIRotationGestureRecognizer) {
+        switch rotateGesture.state {
+        case .cancelled, .ended, .failed:
+            isRotating = false
+        default:
+            isRotating = true
+        }
+
         guard rotateGesture.state == .ended else {
             return
         }
