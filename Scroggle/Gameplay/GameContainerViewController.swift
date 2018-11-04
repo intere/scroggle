@@ -91,11 +91,18 @@ class GameContainerViewController: ChalkboardViewController {
             gameArea.bottom == view.bottom
         }
 
-        gameController?.addClickableTiles()
+//        DispatchQueue.main.async { [weak self] in
+//            guard let self = self else {
+//                return
+//            }
+//            DLog("SKView      Size: \(self.gameArea.frame.size)")
+//            self.gameController?.addClickableTiles()
+//        }
 
         if isGameOver {
             buildGameOverView()
         }
+        Notification.GameScreen.sizeChanged.notify(withObject: gameArea)
     }
 
     /// Builds the screen for Landscape layout
@@ -120,11 +127,19 @@ class GameContainerViewController: ChalkboardViewController {
             gameArea.bottom == view.bottom
         }
 
-        gameController?.addClickableTiles()
+//        DispatchQueue.main.async { [weak self] in
+//            guard let self = self else {
+//                return
+//            }
+//            DLog("SKView      Size: \(self.gameArea.frame.size)")
+//            self.gameController?.addClickableTiles()
+//        }
 
         if isGameOver {
             buildGameOverView()
         }
+
+        Notification.GameScreen.sizeChanged.notify(withObject: gameArea)
     }
 
 }
@@ -260,4 +275,21 @@ extension GameContainerViewController {
         hudController.didMove(toParent: self)
     }
 
+}
+
+// MARK: - GameScreen Notification
+
+extension Notification {
+
+    enum GameScreen: String, Notifiable, CustomStringConvertible {
+        case sizeChanged = "screen.size.changed"
+
+        static var notificationBase: String {
+            return "com.icolasoft.scroggle"
+        }
+
+        var description: String {
+            return rawValue
+        }
+    }
 }

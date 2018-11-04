@@ -42,6 +42,9 @@ class GameSceneController {
     /// The Clickable Tiles (laid over the dice)
     var tiles: [SKShapeNode] = []
 
+    /// The container that holds the tiles
+    var tileContainer = SKShapeNode()
+
     /// An array of the current selection
     var selection: [Int] = []
 
@@ -66,6 +69,7 @@ class GameSceneController {
         }
         self.gameContext = gameContext
         bootstrapScene()
+        Notification.GameScreen.sizeChanged.addObserver(self, selector: #selector(viewSizeChanged(_:)))
     }
 
 }
@@ -188,6 +192,21 @@ extension GameSceneController {
         }
     }
 
+}
+
+// MARK: - Notification
+
+extension GameSceneController {
+
+    @objc
+    func viewSizeChanged(_ notification: NSNotification) {
+        guard let view = notification.object as? SKView, view == skView else {
+            return DLog("Wrong object")
+        }
+        DispatchQueue.main.async {
+            view.scene?.size = view.frame.size
+        }
+    }
 }
 
 // MARK: - Dice rotation

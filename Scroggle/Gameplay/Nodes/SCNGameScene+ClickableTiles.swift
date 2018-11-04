@@ -18,13 +18,28 @@ extension GameSceneController {
         return selection.map({ letter(for: $0) ?? "" }).joined()
     }
 
+    /// Computes the size of the tile container
+    var tileContainerSize: CGSize {
+        guard let scene = skView.scene else {
+            return .zero
+        }
+        let containerSize = CGSize(width: scene.frame.width * 0.73, height: scene.frame.height * 0.77)
+
+        DLog("Scene       Size: \(scene.size)")
+        DLog("Scene Frame Size: \(scene.frame.size)")
+        DLog("Container   Size: \(containerSize)")
+
+        return containerSize
+    }
+
     /// Handles the action of a user tapping a specific point
     ///
     /// - Parameter point: The point in the scene that was tapped
     func tapped(point: CGPoint) {
-        guard let index = tiles.index(where: {$0.contains(point)}) else {
-            return DLog("No tile detected")
+        guard let index = tile(for: point) else {
+            return DLog("Point \(point) not in tile container")
         }
+
         if index == selection.last {
             return guessWord()
         }
@@ -38,11 +53,8 @@ extension GameSceneController {
     /// - Parameter point: The point in the scene that was tapped.
     /// - Returns: the point if it was added, nil if not.
     func handleDrag(point: CGPoint) -> CGPoint? {
-        guard let index = tiles.index(where: {$0.contains(point)}) else {
-            return nil
-        }
-        guard index != selection.last else {
-            // If it's the same tile they were dragging over before, don't add it
+        guard let index = tile(for: point) else {
+            DLog("Point \(point) not in tile container")
             return nil
         }
 
@@ -65,6 +77,7 @@ extension GameSceneController {
     /// Guesses a word
     private func guessWord() {
         let currentWord = self.currentWord
+        DLog("Guessing word: '\(currentWord)'")
 
         defer {
             selection.removeAll()
@@ -133,63 +146,72 @@ extension GameSceneController {
         guard let scene = skView.scene else {
             return assertionFailure("Failed to get the scene")
         }
+
         tiles.forEach { $0.removeFromParent() }
+        tileContainer.removeFromParent()
         tiles.removeAll()
 
-        let config = TileConfiguration.currentConfiguration(skView)
-        var rowNodes: [SKShapeNode] = []
+        tileContainer = SKShapeNode(rectOf: tileContainerSize)
+        tileContainer.fillColor = UIColor.blue.withAlphaComponent(0.4)
+        tileContainer.position = CGPoint(x: scene.frame.midX, y: scene.frame.midY)
 
-        for column in 0...3 {
-            for row in 0...3 {
-                let square = SKShapeNode(rectOf: CGSize(width: config.squareSize, height: config.squareSize))
-                square.fillColor = .clear
-                square.strokeColor = .clear
+        scene.addChild(tileContainer)
 
-                square.position = CGPoint(
-                    x: xPosition(for: row, in: scene, with: config),
-                    y: yPosition(for: column, in: scene, with: config))
+        let boardSize = 4
+
+        let tileWidth = (tileContainer.frame.width / CGFloat(boardSize))
+        let tileHeight = (tileContainer.frame.height / CGFloat(boardSize))
+
+        var rowNodes = [[SKShapeNode]]()
+        for _ in 0..<boardSize {
+            rowNodes.append([SKShapeNode]())
+        }
+
+        for column in 0..<4 {
+            for row in 0..<4 {
+                let square = SKShapeNode(rectOf: CGSize(width: tileWidth * 0.7, height: tileHeight * 0.7))
+                let xPos = CGFloat(column - boardSize/2) * tileWidth + tileWidth / 2
+                let yPos = CGFloat(boardSize/2 - row) * tileHeight - tileHeight / 2
+                square.position = CGPoint(x: xPos, y: yPos)
                 square.zPosition = 100
 
                 #if DEBUG
-                square.fillColor = UIColor.blue.withAlphaComponent(0.4)
+                square.fillColor = UIColor.orange.withAlphaComponent(0.4)
                 #endif
-                
                 square.name = "tile_\(column)_\(row)"
-                rowNodes.append(square)
-                scene.addChild(square)
+                tileContainer.addChild(square)
 
-                // We have to reverse the order of this row so it's
-                // in the same order as the dice
-                if row == 3 {
-                    rowNodes.reverse()
-                    tiles.append(contentsOf: rowNodes)
-                    rowNodes.removeAll()
-                }
+                rowNodes[row].append(square)
             }
         }
-        tiles.reverse()
+
+        for index in 0..<rowNodes.count {
+            tiles.append(contentsOf: rowNodes[index])
+        }
 
         // Debugging - animates the tiles and dice so you can verify that the order is the same
 //        debugAnimateImages()
     }
 
-    private func xPosition(for row: Int, in scene: SKScene, with config: TileConfiguration) -> CGFloat {
-        switch rotation {
-        case 90, 270:
-            return scene.frame.midY - config.offsetY + CGFloat(row-1) * config.stepSizeY
-
-        default:
-            return scene.frame.midX - config.offsetX + CGFloat(row-1) * config.stepSizeX
+    /// Gets you the index or the tile based on a point in the SKView.
+    /// This has to be converted, so this function is a convenience to that end.
+    ///
+    /// - Parameter scenePoint: The point in the scene (SKView)
+    /// - Returns: The index of the tile at the point you clicked, or nil
+    private func tile(for scenePoint: CGPoint) -> Int? {
+        guard tileContainer.contains(scenePoint), let tilePoint = skView.scene?.convert(scenePoint, to: tileContainer) else {
+            return nil
         }
+
+        return tiles.index(where: { $0.contains(tilePoint) })
+    }
+
+    private func xPosition(for row: Int, in scene: SKScene, with config: TileConfiguration) -> CGFloat {
+        return scene.frame.midX - config.offsetX + CGFloat(row-1) * config.stepSizeX
     }
 
     private func yPosition(for column: Int, in scene: SKScene, with config: TileConfiguration) -> CGFloat {
-        switch rotation {
-        case 90, 270:
-            return scene.frame.midX + config.offsetX + CGFloat(column-2) * config.stepSizeX
-        default:
-            return scene.frame.midY + config.offsetY + CGFloat(column-2) * config.stepSizeY
-        }
+        return scene.frame.midY + config.offsetY + CGFloat(column-2) * config.stepSizeY
     }
 
     /// Data structure to give you values to build the overlays
@@ -307,7 +329,7 @@ extension GameSceneController {
         line.zPosition = 150
         line.lineCap = .round
 
-        scene.addChild(line)
+        tileContainer.addChild(line)
 
         return line
     }
