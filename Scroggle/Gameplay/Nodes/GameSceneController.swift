@@ -30,6 +30,9 @@ class GameSceneController {
     /// The SCNScene (DiceTray.scn)
     weak var gameScene: SCNScene?
 
+    /// The 3D Scene node
+    var sceneNode: SK3DNode!
+
     /// The Camera
     var camera: SCNCamera?
 
@@ -80,7 +83,7 @@ extension GameSceneController {
 
     /// Bootstraps the scene and delegates off to other helper functions.
     func bootstrapScene() {
-        let sceneNode = SK3DNode(viewportSize: skView.frame.size)
+        sceneNode = SK3DNode(viewportSize: skView.frame.size)
 
         guard let trayScene = SCNScene(named: "art.scnassets/DiceTray.scn") else {
             return assertionFailure("Failed to create the dice tray scene")
@@ -226,16 +229,25 @@ extension GameSceneController {
             rotation = rotation % 360
         }
 
-        UIView.animate(withDuration: 0.3) { [weak self] in
-            guard let self = self else {
-                return
-            }
-            self.skView.transform = CGAffineTransform(rotationAngle: CGFloat(self.rotation.radians))
+//        UIView.animate(withDuration: 0.3) { [weak self] in
+//            guard let self = self else {
+//                return
+//            }
+//            self.sceneNode.run(SKAction.rotate(byAngle: CGFloat(rotateDegrees.radians), duration: 0.3))
+//        }
+
+        guard let cameraNode = gameScene?.rootNode.childNodes.filter( { $0.camera != nil }).first else {
+            return assertionFailure("No cameraNode")
         }
+
+        tileContainer.run(SKAction.rotate(byAngle: CGFloat((0 - rotateDegrees).radians), duration: 0.3))
+        cameraNode.runAction(SCNAction.rotateBy(x: 0, y: 0, z: CGFloat(rotateDegrees.radians), duration: 0.3))
+
         for die in dice {
             die.runAction(SCNAction.rotateBy(x: 0, y: 0, z: CGFloat(rotateDegrees.radians), duration: 0.3))
         }
-        addClickableTiles()
+
+//        addClickableTiles()
     }
 
     /// Creates / adds the rotation gesture to the SKView.
