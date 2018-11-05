@@ -76,7 +76,6 @@
 		36B9BD0B217401F6007D3441 /* ConfigurationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B9BD0A217401F6007D3441 /* ConfigurationProvider.swift */; };
 		36B9BD0D21740626007D3441 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B9BD0C21740626007D3441 /* AboutViewController.swift */; };
 		36C0913320F1045600CC7A54 /* SoundProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C0913220F1045600CC7A54 /* SoundProviderTest.swift */; };
-		36C0913620F1078800CC7A54 /* time_sound.caf in Resources */ = {isa = PBXBuildFile; fileRef = 36C0913520F1077C00CC7A54 /* time_sound.caf */; };
 		36C0913820F1098D00CC7A54 /* gong.caf in Resources */ = {isa = PBXBuildFile; fileRef = 36C0913720F1097F00CC7A54 /* gong.caf */; };
 		36CD6B8120B6EECF00DE8669 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CD6B8020B6EECF00DE8669 /* ButtonTableViewCell.swift */; };
 		36D2A2812079021800E9C9F7 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36D2A27D2079021800E9C9F7 /* Menu.storyboard */; };
@@ -94,6 +93,7 @@
 		36D9DE7620C4E426007F3FC1 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D9DE7520C4E426007F3FC1 /* Common.swift */; };
 		36D9DE7920C59FFF007F3FC1 /* RandomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D9DE7820C59FFF007F3FC1 /* RandomTests.swift */; };
 		36E3A798218F8BAD00777727 /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E3A797218F8BAD00777727 /* UIDeviceExtension.swift */; };
+		36E3A79C218FF23300777727 /* scroggle-time.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 36E3A79B218FF23300777727 /* scroggle-time.mp4 */; };
 		36E5916D20E8505E00B54E8C /* ActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E5916C20E8505E00B54E8C /* ActionCell.swift */; };
 		4FD72B7D461376FF67D005F9 /* Pods_Scroggle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F358BEAF58BB9834F21533 /* Pods_Scroggle.framework */; };
 		54925A97B646C3D4473488DF /* Pods_ScroggleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC2660262C043314B6F772A /* Pods_ScroggleTests.framework */; };
@@ -185,7 +185,6 @@
 		36B9BD0A217401F6007D3441 /* ConfigurationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationProvider.swift; sourceTree = "<group>"; };
 		36B9BD0C21740626007D3441 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		36C0913220F1045600CC7A54 /* SoundProviderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundProviderTest.swift; sourceTree = "<group>"; };
-		36C0913520F1077C00CC7A54 /* time_sound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = time_sound.caf; sourceTree = "<group>"; };
 		36C0913720F1097F00CC7A54 /* gong.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gong.caf; sourceTree = "<group>"; };
 		36CD6B8020B6EECF00DE8669 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
 		36D2A27D2079021800E9C9F7 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
@@ -203,6 +202,7 @@
 		36D9DE7520C4E426007F3FC1 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		36D9DE7820C59FFF007F3FC1 /* RandomTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomTests.swift; sourceTree = "<group>"; };
 		36E3A797218F8BAD00777727 /* UIDeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
+		36E3A79B218FF23300777727 /* scroggle-time.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "scroggle-time.mp4"; sourceTree = "<group>"; };
 		36E5916C20E8505E00B54E8C /* ActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCell.swift; sourceTree = "<group>"; };
 		56761BE71EB11B903BA848D5 /* Pods-ScroggleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScroggleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScroggleTests/Pods-ScroggleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C7F358BEAF58BB9834F21533 /* Pods_Scroggle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Scroggle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -236,8 +236,8 @@
 		3617FA2220C41E960023F89D /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				36E3A79B218FF23300777727 /* scroggle-time.mp4 */,
 				36C0913720F1097F00CC7A54 /* gong.caf */,
-				36C0913520F1077C00CC7A54 /* time_sound.caf */,
 				3617FA2320C41E960023F89D /* Cave_In.caf */,
 				3617FA2420C41E960023F89D /* Velcro.caf */,
 				3617FA2520C41E960023F89D /* DiceRoll.caf */,
@@ -644,12 +644,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				36C0913820F1098D00CC7A54 /* gong.caf in Resources */,
-				36C0913620F1078800CC7A54 /* time_sound.caf in Resources */,
 				3617FA3120C41E960023F89D /* Stretch.caf in Resources */,
 				3617FA2E20C41E960023F89D /* DiceRoll.caf in Resources */,
 				3617FA2C20C41E960023F89D /* Cave_In.caf in Resources */,
 				3693CB8A1F9C083D004792B2 /* Introduction.storyboard in Resources */,
 				3656303C1F8A96AD00E4312B /* MainMenu.storyboard in Resources */,
+				36E3A79C218FF23300777727 /* scroggle-time.mp4 in Resources */,
 				36752C0F20E673140076D1F3 /* README.md in Resources */,
 				3617FA3920C41ED80023F89D /* scores.json in Resources */,
 				3617FA3220C41E960023F89D /* Metal_Gong.caf in Resources */,

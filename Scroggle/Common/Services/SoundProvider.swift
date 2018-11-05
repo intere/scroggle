@@ -26,7 +26,7 @@ class SoundProvider {
         static let dupeOrIncorrectSound = SCNAudioSource(named: "Slap.caf")
         static let blopSound = SoundProvider.loadSound(forResource: "Blop", ofType: "caf")
         static let highScoreSound = SoundProvider.loadSound(forResource: "Metal_Gong", ofType: "caf")
-        static let timeSound = SoundProvider.loadSound(forResource: "time_sound", ofType: "caf")
+        static let timeSound = SoundProvider.loadSound(forResource: "scroggle-time", ofType: "mp4")
         static let gongSound = SoundProvider.loadSound(forResource: "gong", ofType: "caf")
     }
 }
