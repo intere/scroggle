@@ -245,7 +245,7 @@ extension GameSceneController {
 //            self.sceneNode.run(SKAction.rotate(byAngle: CGFloat(rotateDegrees.radians), duration: 0.3))
 //        }
 
-        guard let cameraNode = gameScene?.rootNode.childNodes.filter( { $0.camera != nil }).first else {
+        guard let cameraNode = gameScene?.rootNode.childNodes.filter({ $0.camera != nil }).first else {
             return assertionFailure("No cameraNode")
         }
 
@@ -255,8 +255,6 @@ extension GameSceneController {
         for die in dice {
             die.runAction(SCNAction.rotateBy(x: 0, y: 0, z: CGFloat(rotateDegrees.radians), duration: 0.3))
         }
-
-//        addClickableTiles()
     }
 
     /// Creates / adds the rotation gesture to the SKView.

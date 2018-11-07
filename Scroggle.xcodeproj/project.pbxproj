@@ -67,6 +67,8 @@
 		3693CB8A1F9C083D004792B2 /* Introduction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3693CB891F9C083D004792B2 /* Introduction.storyboard */; };
 		3693CB8C1F9C087F004792B2 /* IntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693CB8B1F9C087F004792B2 /* IntroductionViewController.swift */; };
 		369765431F9BEE7A00E66395 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 369765421F9BEE7600E66395 /* art.scnassets */; };
+		369955E221910C14006D2B80 /* DebugToolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369955E121910C14006D2B80 /* DebugToolsViewController.swift */; };
+		369955E421931CD2006D2B80 /* ToggleButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369955E321931CD2006D2B80 /* ToggleButtonTableViewCell.swift */; };
 		36A77BD31F8A64AB0057A874 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A77BD21F8A64AB0057A874 /* AppDelegate.swift */; };
 		36A77BEA1F8A64AB0057A874 /* ScroggleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A77BE91F8A64AB0057A874 /* ScroggleTests.swift */; };
 		36B9BD0321739008007D3441 /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36B9BD0221739008007D3441 /* Help.storyboard */; };
@@ -77,6 +79,7 @@
 		36B9BD0D21740626007D3441 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B9BD0C21740626007D3441 /* AboutViewController.swift */; };
 		36C0913320F1045600CC7A54 /* SoundProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C0913220F1045600CC7A54 /* SoundProviderTest.swift */; };
 		36C0913820F1098D00CC7A54 /* gong.caf in Resources */ = {isa = PBXBuildFile; fileRef = 36C0913720F1097F00CC7A54 /* gong.caf */; };
+		36C097F521910B1B000786F8 /* DebugTools.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36C097F421910B1B000786F8 /* DebugTools.storyboard */; };
 		36CD6B8120B6EECF00DE8669 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CD6B8020B6EECF00DE8669 /* ButtonTableViewCell.swift */; };
 		36D2A2812079021800E9C9F7 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36D2A27D2079021800E9C9F7 /* Menu.storyboard */; };
 		36D2A2822079021800E9C9F7 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D2A27E2079021800E9C9F7 /* MenuTableViewController.swift */; };
@@ -171,6 +174,8 @@
 		3693CB891F9C083D004792B2 /* Introduction.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Introduction.storyboard; sourceTree = "<group>"; };
 		3693CB8B1F9C087F004792B2 /* IntroductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionViewController.swift; sourceTree = "<group>"; };
 		369765421F9BEE7600E66395 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		369955E121910C14006D2B80 /* DebugToolsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugToolsViewController.swift; sourceTree = "<group>"; };
+		369955E321931CD2006D2B80 /* ToggleButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButtonTableViewCell.swift; sourceTree = "<group>"; };
 		36A77BCF1F8A64AB0057A874 /* Scroggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scroggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36A77BD21F8A64AB0057A874 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36A77BE51F8A64AB0057A874 /* ScroggleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScroggleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,6 +191,7 @@
 		36B9BD0C21740626007D3441 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		36C0913220F1045600CC7A54 /* SoundProviderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundProviderTest.swift; sourceTree = "<group>"; };
 		36C0913720F1097F00CC7A54 /* gong.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gong.caf; sourceTree = "<group>"; };
+		36C097F421910B1B000786F8 /* DebugTools.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DebugTools.storyboard; sourceTree = "<group>"; };
 		36CD6B8020B6EECF00DE8669 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
 		36D2A27D2079021800E9C9F7 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		36D2A27E2079021800E9C9F7 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
@@ -380,16 +386,17 @@
 		36A77BD11F8A64AB0057A874 /* Scroggle */ = {
 			isa = PBXGroup;
 			children = (
-				36752C0E20E673140076D1F3 /* README.md */,
-				36D2A27C207901E600E9C9F7 /* Menu */,
+				36A77BD21F8A64AB0057A874 /* AppDelegate.swift */,
 				36A77BFF1F8A663A0057A874 /* Common */,
+				36C097F321910ADF000786F8 /* DebugTools */,
+				36A77BFA1F8A656F0057A874 /* Gameplay */,
+				36A77BF91F8A65520057A874 /* HelpMenu */,
 				36A77BF71F8A653B0057A874 /* Introduction */,
 				36A77BF41F8A64FC0057A874 /* MainMenu */,
-				36A77BF81F8A654A0057A874 /* TimeMenu */,
-				36A77BF91F8A65520057A874 /* HelpMenu */,
-				36A77BFA1F8A656F0057A874 /* Gameplay */,
+				36D2A27C207901E600E9C9F7 /* Menu */,
+				36752C0E20E673140076D1F3 /* README.md */,
 				36A77BFB1F8A65AC0057A874 /* Resources */,
-				36A77BD21F8A64AB0057A874 /* AppDelegate.swift */,
+				36A77BF81F8A654A0057A874 /* TimeMenu */,
 			);
 			path = Scroggle;
 			sourceTree = "<group>";
@@ -497,6 +504,15 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		36C097F321910ADF000786F8 /* DebugTools */ = {
+			isa = PBXGroup;
+			children = (
+				36C097F421910B1B000786F8 /* DebugTools.storyboard */,
+				369955E121910C14006D2B80 /* DebugToolsViewController.swift */,
+			);
+			path = DebugTools;
+			sourceTree = "<group>";
+		};
 		36D2A27C207901E600E9C9F7 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -507,6 +523,7 @@
 				36D2A2802079021800E9C9F7 /* MenuHeaderTableViewCell.swift */,
 				36D2A27E2079021800E9C9F7 /* MenuTableViewController.swift */,
 				36D2A27F2079021800E9C9F7 /* MenuViewController.swift */,
+				369955E321931CD2006D2B80 /* ToggleButtonTableViewCell.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -646,6 +663,7 @@
 				36C0913820F1098D00CC7A54 /* gong.caf in Resources */,
 				3617FA3120C41E960023F89D /* Stretch.caf in Resources */,
 				3617FA2E20C41E960023F89D /* DiceRoll.caf in Resources */,
+				36C097F521910B1B000786F8 /* DebugTools.storyboard in Resources */,
 				3617FA2C20C41E960023F89D /* Cave_In.caf in Resources */,
 				3693CB8A1F9C083D004792B2 /* Introduction.storyboard in Resources */,
 				3656303C1F8A96AD00E4312B /* MainMenu.storyboard in Resources */,
@@ -823,6 +841,7 @@
 				365C1AD01F9C09F6008A84EA /* GameBoard.swift in Sources */,
 				365C1AE21F9C3D20008A84EA /* SceneKitMathExtensions.swift in Sources */,
 				36D2A2882079058200E9C9F7 /* MenuContainerViewController.swift in Sources */,
+				369955E421931CD2006D2B80 /* ToggleButtonTableViewCell.swift in Sources */,
 				367480642173D29000B89DA8 /* Score.swift in Sources */,
 				368E464820D5548B003C694E /* GameScene.swift in Sources */,
 				36E5916D20E8505E00B54E8C /* ActionCell.swift in Sources */,
@@ -835,6 +854,7 @@
 				367480622173CD7100B89DA8 /* GameCenterProvider.swift in Sources */,
 				36D9DE7620C4E426007F3FC1 /* Common.swift in Sources */,
 				36D9DE7020C481F4007F3FC1 /* GameSceneController.swift in Sources */,
+				369955E221910C14006D2B80 /* DebugToolsViewController.swift in Sources */,
 				36B9BD0521739031007D3441 /* HelpMenuViewController.swift in Sources */,
 				36D2A2822079021800E9C9F7 /* MenuTableViewController.swift in Sources */,
 				365C1AE01F9C3CDA008A84EA /* Die3D.swift in Sources */,

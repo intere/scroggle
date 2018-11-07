@@ -45,7 +45,9 @@ class GameContainerViewController: ChalkboardViewController {
         gameArea = SKView()
         #if DEBUG
         gameArea.showsFPS = true
-        gameArea.showsPhysics = true
+        if SettingsService.showTiles {
+            gameArea.showsPhysics = true
+        }
         gameArea.showsDrawCount = true
         gameArea.showsNodeCount = true
         gameArea.showsQuadCount = true
@@ -118,14 +120,6 @@ class GameContainerViewController: ChalkboardViewController {
             gameArea.right == view.right
             gameArea.bottom == view.bottom
         }
-
-//        DispatchQueue.main.async { [weak self] in
-//            guard let self = self else {
-//                return
-//            }
-//            DLog("SKView      Size: \(self.gameArea.frame.size)")
-//            self.gameController?.addClickableTiles()
-//        }
 
         if isGameOver {
             buildGameOverView()

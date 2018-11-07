@@ -47,14 +47,32 @@ extension MenuTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.buttonCell, for: indexPath)
-        guard let buttonCell = cell as? ButtonTableViewCell else {
-            return cell
+        guard let menu = menu, indexPath.row < menu.buttons.count else {
+            return UITableViewCell()
         }
 
-        buttonCell.cellInfo = menu?.buttons[indexPath.row]
+        if let buttonCellInfo = menu.buttons[indexPath.row] as? ButtonCellInfo {
+            let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.buttonCell, for: indexPath)
 
-        return buttonCell
+            guard let buttonCell = cell as? ButtonTableViewCell else {
+                return cell
+            }
+
+            buttonCell.cellInfo = buttonCellInfo
+
+            return buttonCell
+        } else if let toggleCellInfo = menu.buttons[indexPath.row] as? ToggleCellInfo {
+            let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.toggleCell, for: indexPath)
+
+            guard let toggleCell = cell as? ToggleButtonTableViewCell else {
+                return cell
+            }
+            toggleCell.toggleCellInfo = toggleCellInfo
+
+            return toggleCell
+        }
+
+        return UITableViewCell()
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -82,5 +100,6 @@ private extension MenuTableViewController {
     struct CellIdentifiers {
         static let headerCell = "HeaderCell"
         static let buttonCell = "ButtonCell"
+        static let toggleCell = "ToggleCell"
     }
 }

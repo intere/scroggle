@@ -24,4 +24,19 @@ class SettingsService {
         }
     }
 
+    /// Should the tiles be visible?
+    /// debug only option.
+    static var showTiles: Bool {
+        get {
+            #if DEBUG
+            return UserDefaults.standard.bool(forKey: "show.tiles")
+            #else
+            return false
+            #endif
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "show.tiles")
+        }
+    }
+
 }

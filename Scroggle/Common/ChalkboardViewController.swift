@@ -61,7 +61,7 @@ class ChalkboardViewController: UIViewController {
     }
 
     override func willTransition(to newCollection: UITraitCollection,
-                                      with coordinator: UIViewControllerTransitionCoordinator) {
+                                 with coordinator: UIViewControllerTransitionCoordinator) {
         coordinator.animate(alongsideTransition: { _ in
             switch UIApplication.shared.statusBarOrientation {
             case .portrait, .portraitUpsideDown:

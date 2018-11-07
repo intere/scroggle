@@ -190,7 +190,9 @@ extension GameSceneController {
         tiles.removeAll()
 
         tileContainer = SKShapeNode(rectOf: tileContainerSize)
-        tileContainer.fillColor = UIColor.blue.withAlphaComponent(0.4)
+        if SettingsService.showTiles {
+            tileContainer.fillColor = UIColor.blue.withAlphaComponent(0.4)
+        }
         tileContainer.position = CGPoint(x: scene.frame.midX, y: scene.frame.midY)
 
         scene.addChild(tileContainer)
@@ -213,9 +215,9 @@ extension GameSceneController {
                 square.position = CGPoint(x: xPos, y: yPos)
                 square.zPosition = 100
 
-                #if DEBUG
-                square.fillColor = UIColor.orange.withAlphaComponent(0.4)
-                #endif
+                if SettingsService.showTiles {
+                    square.fillColor = UIColor.orange.withAlphaComponent(0.4)
+                }
                 square.name = "tile_\(column)_\(row)"
                 tileContainer.addChild(square)
 
@@ -237,7 +239,8 @@ extension GameSceneController {
     /// - Parameter scenePoint: The point in the scene (SKView)
     /// - Returns: The index of the tile at the point you clicked, or nil
     private func tile(for scenePoint: CGPoint) -> Int? {
-        guard tileContainer.contains(scenePoint), let tilePoint = skView.scene?.convert(scenePoint, to: tileContainer) else {
+        guard tileContainer.contains(scenePoint),
+            let tilePoint = skView.scene?.convert(scenePoint, to: tileContainer) else {
             return nil
         }
 
