@@ -111,13 +111,14 @@ extension HUDViewController {
         timer?.invalidate()
         timer = nil
 
-        guard let timeType = GameContextProvider.instance.currentGame?.game.timeType else {
+        guard let timeType = GameContextProvider.instance.currentGame?.game.timeType,
+            let score = GameContextProvider.instance.currentGame?.game.score else {
             return
         }
         guard seconds == 0 else {
             return AnalyticsProvider.instance.exitedGame()
         }
-        AnalyticsProvider.instance.finishedGame(timeType: timeType)
+        AnalyticsProvider.instance.finishedGame(timeType: timeType, score: score)
     }
 
 }

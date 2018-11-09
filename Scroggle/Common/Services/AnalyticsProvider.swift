@@ -104,12 +104,12 @@ class AnalyticsProvider {
     /// Tracks that a game has completed.
     ///
     /// - Parameter timeType: The time type for the game.
-    func finishedGame(timeType: GameTimeType) {
+    func finishedGame(timeType: GameTimeType, score: Int) {
         guard let timeType = timeType.timeAttribute?.rawValue else {
             return
         }
 
-        tagEvent(eventName: GameEvent.completedGame.rawValue, withAttributes: ["GameType": timeType])
+        tagEvent(eventName: GameEvent.completedGame.rawValue, withAttributes: ["GameType": timeType, "Score": score])
     }
 
 }
