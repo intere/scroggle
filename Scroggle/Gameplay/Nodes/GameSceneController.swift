@@ -238,13 +238,6 @@ extension GameSceneController {
             rotation = rotation % 360
         }
 
-//        UIView.animate(withDuration: 0.3) { [weak self] in
-//            guard let self = self else {
-//                return
-//            }
-//            self.sceneNode.run(SKAction.rotate(byAngle: CGFloat(rotateDegrees.radians), duration: 0.3))
-//        }
-
         guard let cameraNode = gameScene?.rootNode.childNodes.filter({ $0.camera != nil }).first else {
             return assertionFailure("No cameraNode")
         }
@@ -255,6 +248,8 @@ extension GameSceneController {
         for die in dice {
             die.runAction(SCNAction.rotateBy(x: 0, y: 0, z: CGFloat(rotateDegrees.radians), duration: 0.3))
         }
+
+        AnalyticsProvider.instance.rotatedBoard(clockwise: clockwise)
     }
 
     /// Creates / adds the rotation gesture to the SKView.
