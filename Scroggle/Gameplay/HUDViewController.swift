@@ -73,6 +73,10 @@ extension HUDViewController {
     func beginTimer(_ notification: NSNotification) {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self,
                                      selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        guard let timeType = GameContextProvider.instance.currentGame?.game.timeType else {
+            return
+        }
+        AnalyticsProvider.instance.startedGameWithTime(timeType: timeType)
     }
 
     @objc
@@ -105,6 +109,15 @@ extension HUDViewController {
     func gameEnded() {
         DLog("Game Ended")
         timer?.invalidate()
+        timer = nil
+
+        guard let timeType = GameContextProvider.instance.currentGame?.game.timeType else {
+            return
+        }
+        guard seconds == 0 else {
+            return AnalyticsProvider.instance.exitedGame()
+        }
+        AnalyticsProvider.instance.finishedGame(timeType: timeType)
     }
 
 }
@@ -161,8 +174,7 @@ extension HUDViewController {
     func endGame() {
         GameContextProvider.instance.currentGame?.gameState = .done
         timeLabel.textColor = .red
-        timer?.invalidate()
-        timer = nil
+        gameEnded()
         NotificationCenter.default.removeObserver(self)
     }
 

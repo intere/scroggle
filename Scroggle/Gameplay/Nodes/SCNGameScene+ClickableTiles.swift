@@ -109,11 +109,11 @@ extension GameSceneController {
         }
 
         _ = handleDrag(point: point)
-        guessWord()
+        guessWord(swiped: true)
     }
 
     /// Guesses a word
-    private func guessWord() {
+    private func guessWord(swiped: Bool = false) {
         let currentWord = self.currentWord
         DLog("Guessing word: '\(currentWord)'")
 
@@ -122,7 +122,9 @@ extension GameSceneController {
             clearSelection()
         }
 
-        if LexiconProvider.instance.isValidWord(currentWord) {
+        let isValidWord = LexiconProvider.instance.isValidWord(currentWord)
+
+        if isValidWord {
             guard !gameContext.alreadyGuessed(currentWord) else {
                 return selectionPath.forEach({$0.fillColor = .yellow ; $0.strokeColor = .yellow })
             }
@@ -130,6 +132,12 @@ extension GameSceneController {
             showGuess()
         } else {
             selectionPath.forEach({$0.fillColor = .red ; $0.strokeColor = .red })
+        }
+        
+        if swiped {
+            AnalyticsProvider.instance.swipedGuess(word: currentWord, valid: isValidWord)
+        } else {
+            AnalyticsProvider.instance.clickedWord(word: currentWord, valid: isValidWord)
         }
     }
 
