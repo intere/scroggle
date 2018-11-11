@@ -26,7 +26,7 @@ class SoundProvider {
         static let dupeOrIncorrectSound = SCNAudioSource(named: "Slap.caf")
         static let blopSound = SoundProvider.loadSound(forResource: "Blop", ofType: "caf")
         static let highScoreSound = SoundProvider.loadSound(forResource: "Metal_Gong", ofType: "caf")
-        static let timeSound = SoundProvider.loadSound(forResource: "scroggle-time", ofType: "mp4")
+        static let timeSound = SCNAudioSource(named: "scroggle-time.m4a")
         static let gongSound = SoundProvider.loadSound(forResource: "gong", ofType: "caf")
     }
 }
@@ -74,8 +74,8 @@ extension SoundProvider {
     }
 
     /// Plays the "time is running out" sound.
-    func playTimeSound() {
-        play(Constants.timeSound)
+    func playTimeSound(node: SCNNode) {
+        play(sound: Constants.timeSound, forNode: node)
     }
 
     /// Plays the "gong" sound (for game over).
@@ -108,9 +108,9 @@ extension SoundProvider {
         guard let soundAction = soundAction else {
             return
         }
-        if soundAction.isPlaying {
-            soundAction.stop()
-        }
+//        if soundAction.isPlaying {
+//            soundAction.stop()
+//        }
 
         soundAction.play()
     }

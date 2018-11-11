@@ -95,7 +95,11 @@ extension HUDViewController {
 
         if seconds <= 10 {
             flashTimerColor()
-            SoundProvider.instance.playTimeSound()
+
+            // Only play the time sound every other second
+            if seconds % 2 == 0 {
+                Notification.HUDEvent.playTimeSound.notify()
+            }
         }
         seconds -= 1
     }
@@ -322,6 +326,23 @@ extension HUDViewController {
             wordTable.right == timeLabel.right
             wordTable.top == scoreLabel.bottom + 8
             wordTable.bottom == view.bottom - 8
+        }
+    }
+}
+
+// MARK: - HUDEvent Notification
+
+extension Notification {
+
+    enum HUDEvent: String, Notifiable, CustomStringConvertible {
+        case playTimeSound = "play.time.sound"
+
+        static var notificationBase: String {
+            return "com.scroggle.hud.event"
+        }
+
+        var description: String {
+            return rawValue
         }
     }
 }

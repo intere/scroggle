@@ -73,7 +73,7 @@ extension MainMenuViewController: MenuBuilding {
                 GameCenterProvider.instance.loginToGameCenter(with: self)
             }
         }))
-        
+
         #if DEBUG
         menuItems.append(ButtonCellInfo(title: "Developer", action: { [weak self] in
             self?.navigationController?.pushViewController(

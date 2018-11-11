@@ -133,7 +133,7 @@ extension GameSceneController {
         } else {
             selectionPath.forEach({$0.fillColor = .red ; $0.strokeColor = .red })
         }
-        
+
         if swiped {
             AnalyticsProvider.instance.swipedGuess(word: currentWord, valid: isValidWord)
         } else {
@@ -360,7 +360,7 @@ extension GameSceneController {
     ///   - from: The index of the shape node to start drawing at
     ///   - to: The index of the shape node to end drawing at
     private func drawLine(from: Int, to index: Int, name: String) -> SKShapeNode? {
-        guard let scene = skView.scene else {
+        guard skView.scene != nil else {
             DLog("ERROR: No scene to draw a line on")
             return nil
         }

@@ -75,6 +75,7 @@ class GameSceneController {
         self.gameContext = gameContext
         bootstrapScene()
         Notification.GameScreen.sizeChanged.addObserver(self, selector: #selector(viewSizeChanged(_:)))
+        Notification.HUDEvent.playTimeSound.addObserver(self, selector: #selector(playTimeSound(_:)))
     }
 
 }
@@ -218,6 +219,14 @@ extension GameSceneController {
         DispatchQueue.main.async {
             view.scene?.size = view.frame.size
         }
+    }
+
+    @objc
+    func playTimeSound(_ notification: NSNotification) {
+        guard let rootNode = gameScene?.rootNode else {
+            return
+        }
+        SoundProvider.instance.playTimeSound(node: rootNode)
     }
 }
 
