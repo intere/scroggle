@@ -21,7 +21,7 @@ class WordListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        Notification.Scroggle.GameEvent.scoreUpdated.addObserver(tableView, selector: #selector(tableView.reloadData))
+        Notification.Scroggle.GameEvent.scoreUpdated.addObserver(self, selector: #selector(scoreUpdated(_:)))
         Notification.Scroggle.GameEvent.gameEnded.addObserver(tableView, selector: #selector(tableView.reloadData))
     }
 
@@ -37,7 +37,6 @@ class WordListViewController: UITableViewController {
         default:
             return wordList.count
         }
-
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -51,8 +50,41 @@ class WordListViewController: UITableViewController {
         default:
             return dequeWordCell(for: tableView, indexPath: indexPath)
         }
-
     }
+
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to: newCollection, with: coordinator)
+        DispatchQueue.main.async {
+            Notification.Scroggle.GameEvent.scoreUpdated.notify()
+        }
+    }
+
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+        super.didRotate(from: fromInterfaceOrientation)
+        Notification.Scroggle.GameEvent.scoreUpdated.notify()
+    }
+}
+
+// MARK: - FontSizeDelegate
+
+extension WordListViewController: FontSizeDelegate {
+
+    var fontSize: CGFloat {
+        return tableView.frame.width / 8
+    }
+}
+
+// MARK: - Notification
+
+extension WordListViewController {
+
+    @objc
+    func scoreUpdated(_ notification: NSNotification) {
+        tableView.reloadData()
+        tableView.setNeedsLayout()
+        tableView.setNeedsDisplay()
+    }
+
 }
 
 // MARK: - Implementation
@@ -109,6 +141,7 @@ extension WordListViewController {
             return cell
         }
 
+        wordCell.fontSizeDelegate = self
         wordCell.word = wordList[indexPath.row]
 
         return wordCell

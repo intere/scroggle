@@ -318,7 +318,7 @@ extension HUDViewController {
             scoreLabel.left == timeLabel.left
             scoreLabel.right == timeLabel.right
 
-            wordTable.left == timeTitleLabel.left
+            wordTable.left == exitButton.left
             wordTable.right == timeLabel.right
             wordTable.top == scoreLabel.bottom + 8
             wordTable.bottom == view.bottom - 8
