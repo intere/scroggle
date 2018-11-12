@@ -55,15 +55,15 @@ extension MainMenuViewController: MenuBuilding {
         let gcTitle = GameCenterProvider.instance.loggedIn ? "Leaderboards" : "GameCenter"
 
         var menuItems = [ButtonCellInfo]()
-        menuItems.append(ButtonCellInfo(title: "New Game", action: {
-            SoundProvider.instance.playMenuSelectionSound()
+        menuItems.append(ButtonCellInfo(title: "New Game", action: { [weak self] in
             DLog("Clicked New Game")
-            self.navigationController?.pushViewController(
+            SoundProvider.instance.playMenuSelectionSound()
+            self?.navigationController?.pushViewController(
                 TimeMenuViewController.loadFromStoryboard(), animated: true)
         }))
         menuItems.append(ButtonCellInfo(title: gcTitle, action: { [weak self] in
-            SoundProvider.instance.playMenuSelectionSound()
             DLog("Clicked GameCenter")
+            SoundProvider.instance.playMenuSelectionSound()
             guard let self = self else {
                 return
             }
@@ -76,12 +76,14 @@ extension MainMenuViewController: MenuBuilding {
 
         #if DEBUG
         menuItems.append(ButtonCellInfo(title: "Developer", action: { [weak self] in
+            DLog("Clicked Developer")
             self?.navigationController?.pushViewController(
                 DebugToolsViewController.loadFromStoryboard(), animated: true)
         }))
         #endif
 
         menuItems.append(ButtonCellInfo(title: "Help", action: { [weak self] in
+            DLog("Clicked Help")
             self?.navigationController?.pushViewController(
                 HelpMenuViewController.loadFromStoryboard(), animated: true)
         }))
