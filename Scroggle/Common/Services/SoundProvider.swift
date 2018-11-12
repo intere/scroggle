@@ -108,9 +108,6 @@ extension SoundProvider {
         guard let soundAction = soundAction else {
             return
         }
-//        if soundAction.isPlaying {
-//            soundAction.stop()
-//        }
 
         soundAction.play()
     }

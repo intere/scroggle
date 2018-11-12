@@ -43,15 +43,9 @@ class WordCell: UITableViewCell {
 
 extension WordCell {
 
-//    private var fontSize: CGFloat {
-//        let fontSize = (superview?.frame.width ?? frame.width) / 8
-//        DLog("Word Font Size for \(word): \(fontSize), frame size: \(frame.size)")
-//        return fontSize
-//    }
-
     func updateSize() {
         guard let fontSize = fontSizeDelegate?.fontSize else {
-            return assertionFailure("it's no good")
+            return assertionFailure("You must provide a FontSizeDelegate")
         }
         scoreLabel.font = UIFont(name: scoreLabel.font.fontName, size: fontSize)
         wordLabel.font = UIFont(name: wordLabel.font.fontName, size: fontSize)
