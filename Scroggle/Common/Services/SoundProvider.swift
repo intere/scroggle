@@ -22,8 +22,8 @@ class SoundProvider {
     struct Constants {
         static let diceRollSound = SCNAudioSource(named: "DiceRoll.caf")
         static let selectionSound = SCNAudioSource(named: "Velcro.caf")
-        static let correctGuessSound = SCNAudioSource(named: "PingPongPop.caf")
-        static let dupeOrIncorrectSound = SCNAudioSource(named: "Slap.caf")
+        static let correctGuessSound = SCNAudioSource(named: "correct.m4a")
+        static let dupeOrIncorrectSound = SCNAudioSource(named: "wrong.m4a")
         static let blopSound = SoundProvider.loadSound(forResource: "Blop", ofType: "caf")
         static let highScoreSound = SoundProvider.loadSound(forResource: "Metal_Gong", ofType: "caf")
         static let timeSound = SCNAudioSource(named: "scroggle-time.m4a")

@@ -128,9 +128,11 @@ extension GameSceneController {
             guard !gameContext.alreadyGuessed(currentWord) else {
                 return selectionPath.forEach({$0.fillColor = .yellow ; $0.strokeColor = .yellow })
             }
+            playCorrect()
             gameContext.addAndScoreWord(currentWord)
             showGuess()
         } else {
+            playWrongOrDupe()
             selectionPath.forEach({$0.fillColor = .red ; $0.strokeColor = .red })
         }
 
@@ -139,6 +141,20 @@ extension GameSceneController {
         } else {
             AnalyticsProvider.instance.clickedWord(word: currentWord, valid: isValidWord)
         }
+    }
+
+    private func playWrongOrDupe() {
+        guard let rootNode = gameScene?.rootNode else {
+            return
+        }
+        SoundProvider.instance.playDupeOrIncorrectSound(node: rootNode)
+    }
+
+    private func playCorrect() {
+        guard let rootNode = gameScene?.rootNode else {
+            return
+        }
+        SoundProvider.instance.playCorrectGuessSound(node: rootNode)
     }
 
     @discardableResult

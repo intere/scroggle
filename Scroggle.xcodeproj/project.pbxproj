@@ -13,12 +13,10 @@
 		3617FA2C20C41E960023F89D /* Cave_In.caf in Resources */ = {isa = PBXBuildFile; fileRef = 3617FA2320C41E960023F89D /* Cave_In.caf */; };
 		3617FA2D20C41E960023F89D /* Velcro.caf in Resources */ = {isa = PBXBuildFile; fileRef = 3617FA2420C41E960023F89D /* Velcro.caf */; };
 		3617FA2E20C41E960023F89D /* DiceRoll.caf in Resources */ = {isa = PBXBuildFile; fileRef = 3617FA2520C41E960023F89D /* DiceRoll.caf */; };
-		3617FA2F20C41E960023F89D /* PingPongPop.caf in Resources */ = {isa = PBXBuildFile; fileRef = 3617FA2620C41E960023F89D /* PingPongPop.caf */; };
 		3617FA3020C41E960023F89D /* Blop.caf in Resources */ = {isa = PBXBuildFile; fileRef = 3617FA2720C41E960023F89D /* Blop.caf */; };
 		3617FA3120C41E960023F89D /* Stretch.caf in Resources */ = {isa = PBXBuildFile; fileRef = 3617FA2820C41E960023F89D /* Stretch.caf */; };
 		3617FA3220C41E960023F89D /* Metal_Gong.caf in Resources */ = {isa = PBXBuildFile; fileRef = 3617FA2920C41E960023F89D /* Metal_Gong.caf */; };
 		3617FA3320C41E960023F89D /* CrystalDing.caf in Resources */ = {isa = PBXBuildFile; fileRef = 3617FA2A20C41E960023F89D /* CrystalDing.caf */; };
-		3617FA3420C41E960023F89D /* Slap.caf in Resources */ = {isa = PBXBuildFile; fileRef = 3617FA2B20C41E960023F89D /* Slap.caf */; };
 		3617FA3720C41EB60023F89D /* digital-7.mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3617FA3620C41EB60023F89D /* digital-7.mono.ttf */; };
 		3617FA3920C41ED80023F89D /* scores.json in Resources */ = {isa = PBXBuildFile; fileRef = 3617FA3820C41ED80023F89D /* scores.json */; };
 		361F5D5020EA5844003F50FE /* GameContextTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361F5D4F20EA5844003F50FE /* GameContextTest.swift */; };
@@ -70,6 +68,8 @@
 		369955E221910C14006D2B80 /* DebugToolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369955E121910C14006D2B80 /* DebugToolsViewController.swift */; };
 		369955E421931CD2006D2B80 /* ToggleButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369955E321931CD2006D2B80 /* ToggleButtonTableViewCell.swift */; };
 		369955E82198E41E006D2B80 /* scroggle-time.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 369955E72198E41E006D2B80 /* scroggle-time.m4a */; };
+		369955EA2198FA7B006D2B80 /* wrong.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 369955E92198FA7A006D2B80 /* wrong.m4a */; };
+		369955EC2199076D006D2B80 /* correct.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 369955EB2199076D006D2B80 /* correct.m4a */; };
 		36A77BD31F8A64AB0057A874 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A77BD21F8A64AB0057A874 /* AppDelegate.swift */; };
 		36A77BEA1F8A64AB0057A874 /* ScroggleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A77BE91F8A64AB0057A874 /* ScroggleTests.swift */; };
 		36B9BD0321739008007D3441 /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36B9BD0221739008007D3441 /* Help.storyboard */; };
@@ -122,12 +122,10 @@
 		3617FA2320C41E960023F89D /* Cave_In.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cave_In.caf; sourceTree = "<group>"; };
 		3617FA2420C41E960023F89D /* Velcro.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Velcro.caf; sourceTree = "<group>"; };
 		3617FA2520C41E960023F89D /* DiceRoll.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DiceRoll.caf; sourceTree = "<group>"; };
-		3617FA2620C41E960023F89D /* PingPongPop.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PingPongPop.caf; sourceTree = "<group>"; };
 		3617FA2720C41E960023F89D /* Blop.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Blop.caf; sourceTree = "<group>"; };
 		3617FA2820C41E960023F89D /* Stretch.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Stretch.caf; sourceTree = "<group>"; };
 		3617FA2920C41E960023F89D /* Metal_Gong.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Metal_Gong.caf; sourceTree = "<group>"; };
 		3617FA2A20C41E960023F89D /* CrystalDing.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CrystalDing.caf; sourceTree = "<group>"; };
-		3617FA2B20C41E960023F89D /* Slap.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Slap.caf; sourceTree = "<group>"; };
 		3617FA3620C41EB60023F89D /* digital-7.mono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7.mono.ttf"; sourceTree = "<group>"; };
 		3617FA3820C41ED80023F89D /* scores.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = scores.json; sourceTree = "<group>"; };
 		361F5D4F20EA5844003F50FE /* GameContextTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameContextTest.swift; sourceTree = "<group>"; };
@@ -177,6 +175,8 @@
 		369955E121910C14006D2B80 /* DebugToolsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugToolsViewController.swift; sourceTree = "<group>"; };
 		369955E321931CD2006D2B80 /* ToggleButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButtonTableViewCell.swift; sourceTree = "<group>"; };
 		369955E72198E41E006D2B80 /* scroggle-time.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "scroggle-time.m4a"; sourceTree = "<group>"; };
+		369955E92198FA7A006D2B80 /* wrong.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = wrong.m4a; sourceTree = "<group>"; };
+		369955EB2199076D006D2B80 /* correct.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = correct.m4a; sourceTree = "<group>"; };
 		36A77BCF1F8A64AB0057A874 /* Scroggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scroggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36A77BD21F8A64AB0057A874 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36A77BE51F8A64AB0057A874 /* ScroggleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScroggleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -242,17 +242,17 @@
 		3617FA2220C41E960023F89D /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				369955EB2199076D006D2B80 /* correct.m4a */,
+				369955E92198FA7A006D2B80 /* wrong.m4a */,
 				369955E72198E41E006D2B80 /* scroggle-time.m4a */,
 				36C0913720F1097F00CC7A54 /* gong.caf */,
 				3617FA2320C41E960023F89D /* Cave_In.caf */,
 				3617FA2420C41E960023F89D /* Velcro.caf */,
 				3617FA2520C41E960023F89D /* DiceRoll.caf */,
-				3617FA2620C41E960023F89D /* PingPongPop.caf */,
 				3617FA2720C41E960023F89D /* Blop.caf */,
 				3617FA2820C41E960023F89D /* Stretch.caf */,
 				3617FA2920C41E960023F89D /* Metal_Gong.caf */,
 				3617FA2A20C41E960023F89D /* CrystalDing.caf */,
-				3617FA2B20C41E960023F89D /* Slap.caf */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -672,20 +672,20 @@
 				3617FA3220C41E960023F89D /* Metal_Gong.caf in Resources */,
 				3617FA3020C41E960023F89D /* Blop.caf in Resources */,
 				3617FA3720C41EB60023F89D /* digital-7.mono.ttf in Resources */,
-				3617FA3420C41E960023F89D /* Slap.caf in Resources */,
 				369765431F9BEE7A00E66395 /* art.scnassets in Resources */,
 				369955E82198E41E006D2B80 /* scroggle-time.m4a in Resources */,
 				36D2A2812079021800E9C9F7 /* Menu.storyboard in Resources */,
 				369303992083960500D80511 /* GameContainer.storyboard in Resources */,
 				365630411F8AA10500E4312B /* Assets.xcassets in Resources */,
-				3617FA2F20C41E960023F89D /* PingPongPop.caf in Resources */,
 				36B9BD0321739008007D3441 /* Help.storyboard in Resources */,
 				36243FCD1F8BAA88008AB92C /* Time.storyboard in Resources */,
 				365630401F8A9C0700E4312B /* Launch.storyboard in Resources */,
 				3617FA2D20C41E960023F89D /* Velcro.caf in Resources */,
 				3686EB391F9C432D007FEB28 /* dice.json in Resources */,
 				3686EB3B1F9C4390007FEB28 /* demo.json in Resources */,
+				369955EC2199076D006D2B80 /* correct.m4a in Resources */,
 				366784C420CE1790004EBCB9 /* WordList.storyboard in Resources */,
+				369955EA2198FA7B006D2B80 /* wrong.m4a in Resources */,
 				3617FA3320C41E960023F89D /* CrystalDing.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
