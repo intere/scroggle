@@ -218,6 +218,7 @@ extension GameSceneController {
             tileContainer.fillColor = UIColor.blue.withAlphaComponent(0.4)
         }
         tileContainer.position = CGPoint(x: scene.frame.midX, y: scene.frame.midY)
+        tileContainer.strokeColor = .clear
 
         scene.addChild(tileContainer)
 
@@ -242,6 +243,7 @@ extension GameSceneController {
                 if SettingsService.showTiles {
                     square.fillColor = UIColor.orange.withAlphaComponent(0.4)
                 }
+                square.strokeColor = .clear
                 square.name = "tile_\(column)_\(row)"
                 tileContainer.addChild(square)
 

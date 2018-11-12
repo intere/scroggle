@@ -12,13 +12,6 @@ import UIKit
 /// word, it shows up in the TableView that this controls.
 class WordListViewController: UITableViewController {
 
-    class func loadFromStoryboard() -> WordListViewController {
-        return UIStoryboard(name: "WordList", bundle: nil)
-            .instantiateViewController(withIdentifier: "WordListViewController") as! WordListViewController
-        // swiftlint:disable:previous force_cast
-
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         Notification.Scroggle.GameEvent.scoreUpdated.addObserver(self, selector: #selector(scoreUpdated(_:)))
@@ -52,17 +45,21 @@ class WordListViewController: UITableViewController {
         }
     }
 
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.willTransition(to: newCollection, with: coordinator)
-        DispatchQueue.main.async {
-            Notification.Scroggle.GameEvent.scoreUpdated.notify()
-        }
-    }
-
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
-        super.didRotate(from: fromInterfaceOrientation)
         Notification.Scroggle.GameEvent.scoreUpdated.notify()
     }
+}
+
+// MARK: - API
+
+extension WordListViewController {
+
+    class func loadFromStoryboard() -> WordListViewController {
+        return UIStoryboard(name: "WordList", bundle: nil)
+            .instantiateViewController(withIdentifier: "WordListViewController") as! WordListViewController
+        // swiftlint:disable:previous force_cast
+    }
+
 }
 
 // MARK: - FontSizeDelegate
@@ -72,6 +69,7 @@ extension WordListViewController: FontSizeDelegate {
     var fontSize: CGFloat {
         return tableView.frame.width / 8
     }
+    
 }
 
 // MARK: - Notification
