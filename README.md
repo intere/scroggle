@@ -4,7 +4,7 @@ This is the third rewrite of [Scroggle](https://itunes.apple.com/us/app/scroggle
 
 [![App Store](https://9zzt1vsuo7-flywheel.netdna-ssl.com/wp-content/uploads/2018/06/app-store-button.png)](https://itunes.apple.com/us/app/scroggle/id994899163?mt=8)
 
-<img src="https://is4-ssl.mzstatic.com/image/thumb/Purple62/v4/d2/73/73/d27373cd-0df0-f515-8fb8-c2d811ceec54/pr_source.png/434x0w.jpg">
+<img src="https://user-images.githubusercontent.com/2284832/48391952-44623500-e6c6-11e8-93dc-c69c52da507b.gif">
 
 [![Build Status](https://travis-ci.org/intere/scroggle.svg?branch=develop)](https://travis-ci.org/intere/scroggle) [![Documentation](https://cdn.rawgit.com/intere/scroggle/master/docs/badge.svg)](https://intere.github.io/scroggle/docs/index.html)
 
