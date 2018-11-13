@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina5_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,16 +18,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_ipad" translatesAutoresizingMaskIntoConstraints="NO" id="knv-Qe-2MS">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wood_border" translatesAutoresizingMaskIntoConstraints="NO" id="yi5-4C-Nwe">
                                 <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chalkboard" translatesAutoresizingMaskIntoConstraints="NO" id="rIv-pm-gQR">
+                                <rect key="frame" x="20" y="20" width="696" height="374"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scroggle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wnx-BZ-Gge">
+                                <rect key="frame" x="218.66666666666663" y="167.66666666666666" width="299" height="79"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="62"/>
+                                <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.18823529411764706" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="knv-Qe-2MS" firstAttribute="trailing" secondItem="Bcu-3y-fUS" secondAttribute="trailing" id="btK-sJ-wIp"/>
-                            <constraint firstItem="knv-Qe-2MS" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" id="qP2-Fv-oHs"/>
-                            <constraint firstItem="knv-Qe-2MS" firstAttribute="bottom" secondItem="Bcu-3y-fUS" secondAttribute="bottom" id="st2-EM-FKb"/>
-                            <constraint firstItem="knv-Qe-2MS" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" id="wO1-Pe-xdc"/>
+                            <constraint firstItem="yi5-4C-Nwe" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailing" id="5Ij-DT-7PS"/>
+                            <constraint firstItem="yi5-4C-Nwe" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="78h-wW-xT0"/>
+                            <constraint firstItem="rIv-pm-gQR" firstAttribute="leading" secondItem="yi5-4C-Nwe" secondAttribute="leading" constant="20" id="9F8-po-1TZ"/>
+                            <constraint firstItem="yi5-4C-Nwe" firstAttribute="trailing" secondItem="rIv-pm-gQR" secondAttribute="trailing" constant="20" id="Cgc-dh-MJt"/>
+                            <constraint firstItem="yi5-4C-Nwe" firstAttribute="bottom" secondItem="Ze5-6b-2t3" secondAttribute="bottom" id="Gmt-AX-6P9"/>
+                            <constraint firstItem="yi5-4C-Nwe" firstAttribute="bottom" secondItem="rIv-pm-gQR" secondAttribute="bottom" constant="20" id="K3T-Rn-DDI"/>
+                            <constraint firstItem="wnx-BZ-Gge" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="hDU-6B-2GJ"/>
+                            <constraint firstItem="rIv-pm-gQR" firstAttribute="top" secondItem="yi5-4C-Nwe" secondAttribute="top" constant="20" id="hMH-V8-nyB"/>
+                            <constraint firstItem="wnx-BZ-Gge" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="mpk-PX-k7m"/>
+                            <constraint firstItem="yi5-4C-Nwe" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="nCH-0U-Djm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                     </view>
@@ -38,6 +53,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="splash_ipad" width="682" height="512"/>
+        <image name="chalkboard" width="440" height="440"/>
+        <image name="wood_border" width="245" height="245"/>
     </resources>
 </document>
