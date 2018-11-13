@@ -18,12 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions
         launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
 
-        #if !DEBUG
         Fabric.with([Crashlytics.self, Answers.self])
-        #else
-        GameContextProvider.Configuration.demoMode = false
-        GameContextProvider.instance.createSinglePlayerGame(.default)
-        #endif
 
         // Kickoff our initialization with GameCenter
         GameCenterProvider.instance.performLoginCheck()

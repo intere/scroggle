@@ -38,6 +38,7 @@ class AnalyticsProvider {
         case clickedWordGuess = "ClickWordGuess"
         case homeFromChooseTime = "HomeFromChooseTime"
         case emailCompleted = "EmailCompleted"
+        case completedGame = "CompletedGame"
     }
 
 
@@ -77,7 +78,7 @@ class AnalyticsProvider {
      - Parameter valid: Is it a valid word?
      */
     func swipedGuess(word: String, valid: Bool) {
-        tagEvent(eventName: GameEvent.rotatedBoard.rawValue, withAttributes: ["Word": word, "Valid": valid])
+        tagEvent(eventName: GameEvent.swipedWordGuess.rawValue, withAttributes: ["Word": word, "Valid": valid])
     }
 
     /**
@@ -89,32 +90,53 @@ class AnalyticsProvider {
         tagEvent(eventName: GameEvent.clickedWordGuess.rawValue, withAttributes: ["Word": word, "Valid": valid])
     }
 
+    /// Tracks that a game has started with a specific time type.
+    ///
+    /// - Parameter timeType: The time type of the game that started.
     func startedGameWithTime(timeType: GameTimeType) {
-        var eventType: String?
-        switch timeType {
-        case .veryShort:
-            eventType = NewGameTimeAttribute.veryShort.rawValue
-
-        case .short:
-            eventType = NewGameTimeAttribute.short.rawValue
-
-        case .default:
-            eventType = NewGameTimeAttribute.default.rawValue
-
-        case .medium:
-            eventType = NewGameTimeAttribute.medium.rawValue
-
-        case .long:
-            eventType = NewGameTimeAttribute.long.rawValue
-
-
-        default:
-            //nothing to do
-            break
+        guard let eventType = timeType.timeAttribute?.rawValue else {
+            return
         }
 
-        if let eventType = eventType {
-            tagEvent(eventName: eventType)
+        tagEvent(eventName: eventType)
+    }
+
+    /// Tracks that a game has completed.
+    ///
+    /// - Parameter timeType: The time type for the game.
+    func finishedGame(timeType: GameTimeType, score: Int) {
+        guard let timeType = timeType.timeAttribute?.rawValue else {
+            return
+        }
+
+        tagEvent(eventName: GameEvent.completedGame.rawValue, withAttributes: ["GameType": timeType, "Score": score])
+    }
+
+}
+
+// MARK: - GameTimeType extension
+
+extension GameTimeType {
+
+    var timeAttribute: AnalyticsProvider.NewGameTimeAttribute? {
+        switch self {
+        case .veryShort:
+            return .veryShort
+
+        case .short:
+            return .short
+
+        case .default:
+            return .default
+
+        case .medium:
+            return .medium
+
+        case .long:
+            return .long
+
+        default:
+            return nil
         }
     }
 
@@ -162,35 +184,32 @@ extension AnalyticsProvider {
 extension AnalyticsProvider {
 
     func tagEvent(eventName: String) {
-        if !ConfigurationProvider.instance.isSimulator {
-            Answers.logCustomEvent(withName: eventName, customAttributes: nil)
-        }
+        Answers.logCustomEvent(withName: eventName, customAttributes: enrich())
     }
 
     func tagEvent(eventName: String, withAttributes attributes: [String: Any]) {
-        if !ConfigurationProvider.instance.isSimulator {
-            Answers.logCustomEvent(withName: eventName, customAttributes: toStringAnyDict(attributes: attributes))
-        }
+        Answers.logCustomEvent(withName: eventName, customAttributes: enrich(attributes))
     }
 
     func tagScreen(screenName: String) {
-        if !ConfigurationProvider.instance.isSimulator {
-//            Localytics.tagScreen(screenName)
-            // TODO: Analytics for screen views
-        }
+        // TODO: Anything?
     }
 
-    func toStringAnyDict(attributes: [String: Any]) -> [String: Any] {
-        return attributes
-    }
+    /// Enriches the attributes with the configuration (debug, simulator, etc)
+    ///
+    /// - Parameter attributes: The attributes to be enriched
+    /// - Returns: the original attributes along with a couple of other standard
+    ///            attributes.
+    func enrich(_ attributes: [String: Any]? = nil) -> [String: Any] {
+        var enriched = attributes ?? [String: Any]()
+        #if DEBUG
+        enriched["debug"] = true
+        #else
+        enriched["debug"] = false
+        #endif
 
-//    func toStringAnyDict(attributes: [String: Any]) -> [String: Any ] {
-//        var stringAttributes = [String: AnyObject]()
-//
-//        attributes.forEach { key, value in
-//            stringAttributes[key] = value
-//        }
-//
-//        return stringAttributes
-//    }
+        enriched["simulator"] = ConfigurationProvider.instance.isSimulator
+
+        return enriched
+    }
 }

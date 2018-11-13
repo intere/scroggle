@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol FontSizeDelegate: class {
+    var fontSize: CGFloat { get }
+}
+
 /// This is a cell that's used to show a word that was successfully guessed on
 /// the scroggle board and the corresponding score for that word
 class WordCell: UITableViewCell {
@@ -16,6 +20,8 @@ class WordCell: UITableViewCell {
     @IBOutlet weak var scoreLabel: UILabel!
     /// The label that shows the word
     @IBOutlet weak var wordLabel: UILabel!
+
+    weak var fontSizeDelegate: FontSizeDelegate?
 
     /// The word that was guessed
     var word: String = "" {
@@ -37,19 +43,23 @@ class WordCell: UITableViewCell {
 
 extension WordCell {
 
-    private var fontSize: CGFloat {
-        let fontSize =  frame.width / 8
-        DLog("Word Font Size: \(fontSize)")
-        return fontSize
-    }
-
     func updateSize() {
+        guard let fontSize = fontSizeDelegate?.fontSize else {
+            return assertionFailure("You must provide a FontSizeDelegate")
+        }
         scoreLabel.font = UIFont(name: scoreLabel.font.fontName, size: fontSize)
         wordLabel.font = UIFont(name: wordLabel.font.fontName, size: fontSize)
+        setNeedsLayout()
+        setNeedsDisplay()
     }
 
     /// Updates the cell to show the score for the word.
     private func updateScore() {
+        guard !word.isEmpty else {
+            scoreLabel.text = nil
+            wordLabel.text = nil
+            return
+        }
         let score = ScoreProvider.instance.scoreWord(word)
         if score < 10 {
             scoreLabel.text = "0\(score)"

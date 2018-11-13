@@ -54,32 +54,44 @@ extension MainMenuViewController: MenuBuilding {
 
         let gcTitle = GameCenterProvider.instance.loggedIn ? "Leaderboards" : "GameCenter"
 
-        return MenuInfo(title: "Scroggle", showCloseButton: false, buttons: [
-            ButtonCellInfo(title: "New Game", action: {
-                SoundProvider.instance.playMenuSelectionSound()
-                DLog("Clicked New Game")
-                self.navigationController?.pushViewController(TimeMenuViewController.loadFromStoryboard(),
-                                                              animated: true)
-            }),
+        var menuItems = [ButtonCellInfo]()
+        menuItems.append(ButtonCellInfo(title: "New Game", action: { [weak self] in
+            DLog("Clicked New Game")
+            SoundProvider.instance.playMenuSelectionSound()
+            self?.navigationController?.pushViewController(
+                TimeMenuViewController.loadFromStoryboard(), animated: true)
+        }))
+        
+        menuItems.append(ButtonCellInfo(title: gcTitle, action: { [weak self] in
+            DLog("Clicked GameCenter")
+            SoundProvider.instance.playMenuSelectionSound()
+            guard let self = self else {
+                return
+            }
+            if GameCenterProvider.instance.loggedIn {
+                GameCenterProvider.instance.showLeaderboard(from: self)
+            } else {
+                GameCenterProvider.instance.loginToGameCenter(with: self)
+            }
+        }))
 
-            ButtonCellInfo(title: gcTitle, action: { [weak self] in
-                SoundProvider.instance.playMenuSelectionSound()
-                DLog("Clicked GameCenter")
-                guard let self = self else {
-                    return
-                }
-                if GameCenterProvider.instance.loggedIn {
-                    GameCenterProvider.instance.showLeaderboard(from: self)
-                } else {
-                    GameCenterProvider.instance.loginToGameCenter(with: self)
-                }
-            }),
+        #if DEBUG
+        menuItems.append(ButtonCellInfo(title: "Developer", action: { [weak self] in
+            DLog("Clicked Developer")
+            SoundProvider.instance.playMenuSelectionSound()
+            self?.navigationController?.pushViewController(
+                DebugToolsViewController.loadFromStoryboard(), animated: true)
+        }))
+        #endif
 
-            ButtonCellInfo(title: "Help", action: { [weak self] in
-                self?.navigationController?.pushViewController(HelpMenuViewController.loadFromStoryboard(),
-                                                               animated: true)
-            })
-        ])
+        menuItems.append(ButtonCellInfo(title: "Help", action: { [weak self] in
+            DLog("Clicked Help")
+            SoundProvider.instance.playMenuSelectionSound()
+            self?.navigationController?.pushViewController(
+                HelpMenuViewController.loadFromStoryboard(), animated: true)
+        }))
+
+        return MenuInfo(title: "Scroggle", showCloseButton: false, buttons: menuItems)
     }
 
 }

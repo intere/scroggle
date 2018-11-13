@@ -18,13 +18,58 @@ extension GameSceneController {
         return selection.map({ letter(for: $0) ?? "" }).joined()
     }
 
+    /// Computes the size of the tile container
+    var tileContainerSize: CGSize {
+        guard let scene = skView.scene else {
+            return .zero
+        }
+
+        let containerSize: CGSize
+
+        if UIDevice.current.isPad {
+            if UIDevice.current.isLandscape {
+                containerSize = CGSize(width: scene.frame.width * 0.79, height: scene.frame.height * 0.77)
+            } else {
+                containerSize = CGSize(width: scene.frame.width * 0.77, height: scene.frame.height * 0.77)
+            }
+        } else if UIDevice.current.isXSMax {
+            if UIDevice.current.isLandscape {
+                containerSize = CGSize(width: scene.frame.width * 0.76, height: scene.frame.height * 0.77)
+            } else {
+                containerSize = CGSize(width: scene.frame.width * 0.81, height: scene.frame.height * 0.77)
+            }
+        } else if UIDevice.current.isX {
+            if UIDevice.current.isLandscape {
+                containerSize = CGSize(width: scene.frame.width * 0.83, height: scene.frame.height * 0.77)
+            } else {
+                containerSize = CGSize(width: scene.frame.width * 0.73, height: scene.frame.height * 0.77)
+            }
+        } else {
+            if UIDevice.current.isLandscape {
+                containerSize = CGSize(width: scene.frame.width * 0.81, height: scene.frame.height * 0.77)
+            } else {
+                containerSize = CGSize(width: scene.frame.width * 0.72, height: scene.frame.height * 0.77)
+            }
+        }
+
+        DLog("Scene       Size: \(scene.size)")
+        DLog("Scene Frame Size: \(scene.frame.size)")
+        DLog("Container   Size: \(containerSize)")
+
+        return containerSize
+    }
+
     /// Handles the action of a user tapping a specific point
     ///
     /// - Parameter point: The point in the scene that was tapped
     func tapped(point: CGPoint) {
-        guard let index = tiles.index(where: {$0.contains(point)}) else {
-            return DLog("No tile detected")
+        guard !isRotating else {
+            return
         }
+        guard let index = tile(for: point) else {
+            return DLog("Point \(point) not in tile container")
+        }
+
         if index == selection.last {
             return guessWord()
         }
@@ -38,11 +83,12 @@ extension GameSceneController {
     /// - Parameter point: The point in the scene that was tapped.
     /// - Returns: the point if it was added, nil if not.
     func handleDrag(point: CGPoint) -> CGPoint? {
-        guard let index = tiles.index(where: {$0.contains(point)}) else {
+        guard !isRotating else {
             return nil
         }
-        guard index != selection.last else {
-            // If it's the same tile they were dragging over before, don't add it
+
+        guard let index = tile(for: point) else {
+            DLog("Point \(point) not in tile container")
             return nil
         }
 
@@ -58,35 +104,20 @@ extension GameSceneController {
     ///
     /// - Parameter point: The point at which the dragging has ended.
     func handleDragEnd(point: CGPoint) {
+        guard !isRotating else {
+            return
+        }
+
         _ = handleDrag(point: point)
-        guessWord()
-    }
-
-    /// Guesses a word
-    private func guessWord() {
-        let currentWord = self.currentWord
-
-        defer {
-            selection.removeAll()
-            clearSelection()
-        }
-
-        if LexiconProvider.instance.isValidWord(currentWord) {
-            guard !gameContext.alreadyGuessed(currentWord) else {
-                return selectionPath.forEach({$0.fillColor = .yellow ; $0.strokeColor = .yellow })
-            }
-            gameContext.addAndScoreWord(currentWord)
-            showGuess()
-        } else {
-            selectionPath.forEach({$0.fillColor = .red ; $0.strokeColor = .red })
-        }
+        guessWord(swiped: true)
     }
 
     @discardableResult
     func addSelected(index: Int) -> Bool {
-        guard isValid(move: index) else {
+        guard !isRotating, isValid(move: index) else {
             return false
         }
+        playAddTile()
         selection.append(index)
         renderSelection()
         return true
@@ -133,80 +164,57 @@ extension GameSceneController {
         guard let scene = skView.scene else {
             return assertionFailure("Failed to get the scene")
         }
+
+        tiles.forEach { $0.removeFromParent() }
+        tileContainer.removeFromParent()
         tiles.removeAll()
 
-        let config = TileConfiguration.currentConfiguration(skView)
-        var rowNodes: [SKShapeNode] = []
+        tileContainer = SKShapeNode(rectOf: tileContainerSize)
+        if SettingsService.showTiles {
+            tileContainer.fillColor = UIColor.blue.withAlphaComponent(0.4)
+        }
+        tileContainer.position = CGPoint(x: scene.frame.midX, y: scene.frame.midY)
+        tileContainer.strokeColor = .clear
 
-        for column in 0...3 {
-            for row in 0...3 {
-                let square = SKShapeNode(rectOf: CGSize(width: config.squareSize, height: config.squareSize))
-                square.fillColor = .clear
-                square.strokeColor = .clear
-                let xPosition = scene.frame.midX - config.offsetX + CGFloat(row-1) * config.stepSizeX
-                let yPosition = scene.frame.midY + config.offsetY + CGFloat(column-2) * config.stepSizeY
-                square.position = CGPoint(x: xPosition, y: yPosition)
+        scene.addChild(tileContainer)
+
+        let boardSize = 4
+
+        let tileWidth = (tileContainer.frame.width / CGFloat(boardSize))
+        let tileHeight = (tileContainer.frame.height / CGFloat(boardSize))
+
+        var rowNodes = [[SKShapeNode]]()
+        for _ in 0..<boardSize {
+            rowNodes.append([SKShapeNode]())
+        }
+
+        for column in 0..<4 {
+            for row in 0..<4 {
+                let square = SKShapeNode(rectOf: CGSize(width: tileWidth * 0.7, height: tileHeight * 0.7))
+                let xPos = CGFloat(column - boardSize/2) * tileWidth + tileWidth / 2
+                let yPos = CGFloat(boardSize/2 - row) * tileHeight - tileHeight / 2
+                square.position = CGPoint(x: xPos, y: yPos)
                 square.zPosition = 100
-//                #if DEBUG
-//                square.fillColor = UIColor.blue.withAlphaComponent(0.4)
-//                #endif
-                square.name = "tile_\(column)_\(row)"
-                rowNodes.append(square)
-                scene.addChild(square)
 
-                // We have to reverse the order of this row so it's
-                // in the same order as the dice
-                if row == 3 {
-                    rowNodes.reverse()
-                    tiles.append(contentsOf: rowNodes)
-                    rowNodes.removeAll()
+                if SettingsService.showTiles {
+                    square.fillColor = UIColor.orange.withAlphaComponent(0.4)
                 }
+                square.strokeColor = .clear
+                square.name = "tile_\(column)_\(row)"
+                tileContainer.addChild(square)
+
+                rowNodes[row].append(square)
             }
         }
-        tiles.reverse()
+
+        for index in 0..<rowNodes.count {
+            tiles.append(contentsOf: rowNodes[index])
+        }
 
         // Debugging - animates the tiles and dice so you can verify that the order is the same
 //        debugAnimateImages()
     }
 
-    /// Data structure to give you values to build the overlays
-    private struct TileConfiguration: CustomDebugStringConvertible {
-        let squareSize: CGFloat
-        let stepSizeX: CGFloat
-        let stepSizeY: CGFloat
-        let offsetX: CGFloat
-        let offsetY: CGFloat
-
-        var debugDescription: String {
-            var result = "squareSize: \(squareSize), stepSizeX: \(stepSizeX), stepSizeY: \(stepSizeY)"
-            result += ", offsetX: \(offsetX), offsetY: \(offsetY)"
-            return result
-        }
-
-        /// Sets all of the required parameters for the `TileConfiguration`.
-        ///
-        /// - Parameters:
-        ///   - size: The size of the tile to be rendered
-        ///   - sizeX: The size of the offset in the X-direction.
-        ///   - sizeY: The size of the offset in the Y-direction.
-        ///   - offsetX: The initial offset in the X-direction.
-        ///   - offsetY: The initial offset in the Y-direction
-        init(size: CGFloat, sizeX: CGFloat, sizeY: CGFloat, offsetX: CGFloat, offsetY: CGFloat) {
-            squareSize = size
-            stepSizeX = sizeX
-            stepSizeY = sizeY
-            self.offsetX = offsetX
-            self.offsetY = offsetY
-        }
-
-        /// Gives you the overlay configuration for the current device
-        static func currentConfiguration(_ skView: SKView) -> TileConfiguration {
-            let sizeX = skView.frame.size.width / 5.25
-            let sizeY = skView.frame.size.height / 5.25
-            return TileConfiguration(size: sizeX * 0.6, sizeX: sizeX, sizeY: sizeY,
-                                     offsetX: sizeX / 2, offsetY: sizeY / 2)
-        }
-    }
 }
 
 // MARK: - Selection Visualization
@@ -250,7 +258,7 @@ extension GameSceneController {
         let label = SKLabelNode(fontNamed: UIFont.Scroggle.defaultFontName)
         label.text = currentWord
         label.fontSize = 24
-        label.fontColor = .green  // TODO: Color based on right / wrong / dupe
+        label.fontColor = .green
         label.position = CGPoint(x: scene.frame.midX, y: scene.frame.midY)
         label.zPosition = 200
         scene.addChild(label)
@@ -258,35 +266,6 @@ extension GameSceneController {
         label.run(SKAction.scale(to: 10, duration: 0.5)) {
             label.removeFromParent()
         }
-    }
-
-    /// Draws a line from the provided starting index to the provided ending index.
-    ///
-    /// - Parameters:
-    ///   - from: The index of the shape node to start drawing at
-    ///   - to: The index of the shape node to end drawing at
-    private func drawLine(from: Int, to index: Int, name: String) -> SKShapeNode? {
-        guard let scene = skView.scene else {
-            DLog("ERROR: No scene to draw a line on")
-            return nil
-        }
-        let startPoint = CGPoint(x: tiles[from].frame.midX, y: tiles[from].frame.midY)
-        let endPoint = CGPoint(x: tiles[index].frame.midX, y: tiles[index].frame.midY)
-
-        // Create line with SKShapeNode
-        let line = SKShapeNode()
-        let path = UIBezierPath()
-        path.move(to: startPoint)
-        path.addLine(to: endPoint)
-        line.path = path.cgPath
-        line.strokeColor = UIColor.green.withAlphaComponent(0.7)
-        line.lineWidth = 5
-        line.zPosition = 150
-        line.lineCap = .round
-
-        scene.addChild(line)
-
-        return line
     }
 }
 
@@ -316,4 +295,161 @@ extension GameSceneController {
         }
     }
 
+}
+
+// MARK: - Implenentation
+
+private extension GameSceneController {
+
+    /// Guesses a word
+    private func guessWord(swiped: Bool = false) {
+        let currentWord = self.currentWord
+        DLog("Guessing word: '\(currentWord)'")
+
+        defer {
+            selection.removeAll()
+            clearSelection()
+        }
+        guard currentWord.count > 2 else {
+            return
+        }
+
+        let isValidWord = LexiconProvider.instance.isValidWord(currentWord)
+
+        if isValidWord {
+            guard !gameContext.alreadyGuessed(currentWord) else {
+                playWrongOrDupe()
+                return selectionPath.forEach {
+                    $0.fillColor = .yellow
+                    $0.strokeColor = .yellow
+                }
+            }
+            playCorrect()
+            gameContext.addAndScoreWord(currentWord)
+            showGuess()
+        } else {
+            playWrongOrDupe()
+            selectionPath.forEach {
+                $0.fillColor = .red
+                $0.strokeColor = .red
+            }
+        }
+
+        if swiped {
+            AnalyticsProvider.instance.swipedGuess(word: currentWord, valid: isValidWord)
+        } else {
+            AnalyticsProvider.instance.clickedWord(word: currentWord, valid: isValidWord)
+        }
+    }
+
+    /// Gets you the index or the tile based on a point in the SKView.
+    /// This has to be converted, so this function is a convenience to that end.
+    ///
+    /// - Parameter scenePoint: The point in the scene (SKView)
+    /// - Returns: The index of the tile at the point you clicked, or nil
+    func tile(for scenePoint: CGPoint) -> Int? {
+        guard tileContainer.contains(scenePoint),
+            let tilePoint = skView.scene?.convert(scenePoint, to: tileContainer) else {
+                return nil
+        }
+
+        return tiles.index(where: { $0.contains(tilePoint) })
+    }
+
+    func xPosition(for row: Int, in scene: SKScene, with config: TileConfiguration) -> CGFloat {
+        return scene.frame.midX - config.offsetX + CGFloat(row-1) * config.stepSizeX
+    }
+
+    func yPosition(for column: Int, in scene: SKScene, with config: TileConfiguration) -> CGFloat {
+        return scene.frame.midY + config.offsetY + CGFloat(column-2) * config.stepSizeY
+    }
+
+    func playWrongOrDupe() {
+        guard let rootNode = gameScene?.rootNode else {
+            return
+        }
+        SoundProvider.instance.playDupeOrIncorrectSound(node: rootNode)
+    }
+
+    func playCorrect() {
+        guard let rootNode = gameScene?.rootNode else {
+            return
+        }
+        SoundProvider.instance.playCorrectGuessSound(node: rootNode)
+    }
+
+    func playAddTile() {
+        guard let rootNode = gameScene?.rootNode else {
+            return
+        }
+        SoundProvider.instance.playDiceSelectionSound(node: rootNode)
+    }
+
+    /// Data structure to give you values to build the overlays
+    struct TileConfiguration: CustomDebugStringConvertible {
+        let squareSize: CGFloat
+        let stepSizeX: CGFloat
+        let stepSizeY: CGFloat
+        let offsetX: CGFloat
+        let offsetY: CGFloat
+
+        var debugDescription: String {
+            var result = "squareSize: \(squareSize), stepSizeX: \(stepSizeX), stepSizeY: \(stepSizeY)"
+            result += ", offsetX: \(offsetX), offsetY: \(offsetY)"
+            return result
+        }
+
+        /// Sets all of the required parameters for the `TileConfiguration`.
+        ///
+        /// - Parameters:
+        ///   - size: The size of the tile to be rendered
+        ///   - sizeX: The size of the offset in the X-direction.
+        ///   - sizeY: The size of the offset in the Y-direction.
+        ///   - offsetX: The initial offset in the X-direction.
+        ///   - offsetY: The initial offset in the Y-direction
+        init(size: CGFloat, sizeX: CGFloat, sizeY: CGFloat, offsetX: CGFloat, offsetY: CGFloat) {
+            squareSize = size
+            stepSizeX = sizeX
+            stepSizeY = sizeY
+            self.offsetX = offsetX
+            self.offsetY = offsetY
+        }
+
+        /// Gives you the overlay configuration for the current device
+        static func currentConfiguration(_ skView: SKView) -> TileConfiguration {
+            let sizeX = skView.frame.size.width / 5.25
+            let sizeY = skView.frame.size.height / 5.25
+            return TileConfiguration(size: sizeX * 0.6, sizeX: sizeX, sizeY: sizeY,
+                                     offsetX: sizeX / 2, offsetY: sizeY / 2)
+        }
+    }
+
+    /// Draws a line from the provided starting index to the provided ending index.
+    ///
+    /// - Parameters:
+    ///   - from: The index of the shape node to start drawing at
+    ///   - to: The index of the shape node to end drawing at
+    func drawLine(from: Int, to index: Int, name: String) -> SKShapeNode? {
+        guard skView.scene != nil else {
+            DLog("ERROR: No scene to draw a line on")
+            return nil
+        }
+        let startPoint = CGPoint(x: tiles[from].frame.midX, y: tiles[from].frame.midY)
+        let endPoint = CGPoint(x: tiles[index].frame.midX, y: tiles[index].frame.midY)
+
+        // Create line with SKShapeNode
+        let line = SKShapeNode()
+        let path = UIBezierPath()
+        path.move(to: startPoint)
+        path.addLine(to: endPoint)
+        line.path = path.cgPath
+        line.strokeColor = UIColor.green.withAlphaComponent(0.7)
+        line.lineWidth = 5
+        line.zPosition = 150
+        line.lineCap = .round
+
+        tileContainer.addChild(line)
+
+        return line
+    }
 }

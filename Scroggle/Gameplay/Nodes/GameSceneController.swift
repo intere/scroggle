@@ -8,6 +8,7 @@
 
 import SpriteKit
 import SceneKit
+import UIKit
 
 /// A class that will render a Scroggle Game Board in the provided SKView.
 /// 1. A new SKScene is created (consuming the entire SKView screen)
@@ -19,8 +20,20 @@ class GameSceneController {
     /// The SKView that the Game Scene is being rendered within.
     let skView: SKView
 
+    /// The current rotation amount
+    var rotation = 0 {
+        didSet {
+            DLog("Set rotation: \(rotation)")
+        }
+    }
+
+    var isRotating = false
+
     /// The SCNScene (DiceTray.scn)
     weak var gameScene: SCNScene?
+
+    /// The 3D Scene node
+    var sceneNode: SK3DNode!
 
     /// The Camera
     var camera: SCNCamera?
@@ -34,12 +47,19 @@ class GameSceneController {
     /// The Clickable Tiles (laid over the dice)
     var tiles: [SKShapeNode] = []
 
+    /// The container that holds the tiles
+    var tileContainer = SKShapeNode()
+
     /// An array of the current selection
     var selection: [Int] = []
 
     /// The visualization for a selection
     var selectionPath: [SKShapeNode] = []
 
+    /// Handles the rotation gesture for the game scene
+    var rotateGesture: UIRotationGestureRecognizer!
+
+    /// The current game's context
     var gameContext: GameContext
 
     /// Initializes the SCNGameScene with
@@ -54,6 +74,8 @@ class GameSceneController {
         }
         self.gameContext = gameContext
         bootstrapScene()
+        Notification.GameScreen.sizeChanged.addObserver(self, selector: #selector(viewSizeChanged(_:)))
+        Notification.HUDEvent.playTimeSound.addObserver(self, selector: #selector(playTimeSound(_:)))
     }
 
 }
@@ -64,7 +86,7 @@ extension GameSceneController {
 
     /// Bootstraps the scene and delegates off to other helper functions.
     func bootstrapScene() {
-        let sceneNode = SK3DNode(viewportSize: skView.frame.size)
+        sceneNode = SK3DNode(viewportSize: skView.frame.size)
 
         guard let trayScene = SCNScene(named: "art.scnassets/DiceTray.scn") else {
             return assertionFailure("Failed to create the dice tray scene")
@@ -88,6 +110,7 @@ extension GameSceneController {
         readCameraReference()
         setDiceMaterial()
         addClickableTiles()
+        setupRotationGesture()
 
         guard !Platform.isSimulator else {
             // If we're running in the simulator, just set the intended Euler Angles,
@@ -147,16 +170,103 @@ extension GameSceneController {
                 continue
             }
             box.materials = diceArray[index].sides.map({self.createMaterialForText(text: $0)})
-            // Let the intro animation do this part
-//            dice[index].eulerAngles = eulerAngle(for: diceArray[index].selectedSide)
         }
     }
 
 }
 
+// MARK: - Rotate Gesture
+
+extension GameSceneController {
+
+    @objc
+    /// Handles the user gesture events
+    ///
+    /// - Parameter rotateGesture: The rotation gesture.
+    func didRotate(_ rotateGesture: UIRotationGestureRecognizer) {
+        switch rotateGesture.state {
+        case .cancelled, .ended, .failed:
+            isRotating = false
+        default:
+            isRotating = true
+        }
+
+        guard rotateGesture.state == .ended else {
+            return
+        }
+        let degrees = (Float(100) * rotateGesture.rotation.degrees) / 100
+
+        if degrees > 30 {
+            DLog("Rotated clockwise")
+            rotateBoard(clockwise: true)
+        } else if degrees < -30 {
+            DLog("Rotated counter clockwise")
+            rotateBoard(clockwise: false)
+        }
+    }
+
+}
+
+// MARK: - Notification
+
+extension GameSceneController {
+
+    @objc
+    func viewSizeChanged(_ notification: NSNotification) {
+        guard let view = notification.object as? SKView, view == skView else {
+            return DLog("Wrong object")
+        }
+        DispatchQueue.main.async {
+            view.scene?.size = view.frame.size
+        }
+    }
+
+    @objc
+    func playTimeSound(_ notification: NSNotification) {
+        guard let rootNode = gameScene?.rootNode else {
+            return
+        }
+        SoundProvider.instance.playTimeSound(node: rootNode)
+    }
+}
+
 // MARK: - Dice rotation
 
 extension GameSceneController {
+
+    /// Handles rotating the board for us.
+    ///
+    /// - Parameter clockwise: The direction of the rotation, clockwise or otherwise.
+    func rotateBoard(clockwise: Bool) {
+        guard let cameraNode = gameScene?.rootNode.childNodes.filter({ $0.camera != nil }).first else {
+            return assertionFailure("No cameraNode")
+        }
+        clearSelection()
+
+        let rotateDegrees = clockwise ? 90 : -90
+        rotation += rotateDegrees
+
+        if rotation < 0 {
+            rotation += 360
+        } else if rotation >= 360 {
+            rotation = rotation % 360
+        }
+
+        tileContainer.run(SKAction.rotate(byAngle: CGFloat((0 - rotateDegrees).radians), duration: 0.3))
+        cameraNode.runAction(SCNAction.rotateBy(x: 0, y: 0, z: CGFloat(rotateDegrees.radians), duration: 0.3))
+
+        for die in dice {
+            die.runAction(SCNAction.rotateBy(x: 0, y: 0, z: CGFloat(rotateDegrees.radians), duration: 0.3))
+        }
+
+        AnalyticsProvider.instance.rotatedBoard(clockwise: clockwise)
+    }
+
+    /// Creates / adds the rotation gesture to the SKView.
+    func setupRotationGesture() {
+        rotateGesture = UIRotationGestureRecognizer(target: self, action: #selector(didRotate(_:)))
+        skView.addGestureRecognizer(rotateGesture)
+    }
 
     /// Gets you an Euler Angle for the provided side
     ///
@@ -168,14 +278,19 @@ extension GameSceneController {
         switch side {
         case 1:
             euler = SCNVector3Make(0, 270.radians, 0)
+
         case 2:
             euler = SCNVector3Make(180.radians, 0, 180.radians)
+
         case 3:
             euler = SCNVector3Make(0, 90.radians, 0)
+
         case 4:
             euler = SCNVector3Make(90.radians, 0, 0)
+
         case 5:
             euler = SCNVector3Make(270.radians, 0, 0)
+
         default:
             euler = SCNVector3Make(0, 0, 0)
         }

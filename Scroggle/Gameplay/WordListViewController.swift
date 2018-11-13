@@ -12,16 +12,9 @@ import UIKit
 /// word, it shows up in the TableView that this controls.
 class WordListViewController: UITableViewController {
 
-    class func loadFromStoryboard() -> WordListViewController {
-        return UIStoryboard(name: "WordList", bundle: nil)
-            .instantiateViewController(withIdentifier: "WordListViewController") as! WordListViewController
-        // swiftlint:disable:previous force_cast
-
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        Notification.Scroggle.GameEvent.scoreUpdated.addObserver(tableView, selector: #selector(tableView.reloadData))
+        Notification.Scroggle.GameEvent.scoreUpdated.addObserver(self, selector: #selector(scoreUpdated(_:)))
         Notification.Scroggle.GameEvent.gameEnded.addObserver(tableView, selector: #selector(tableView.reloadData))
     }
 
@@ -37,7 +30,6 @@ class WordListViewController: UITableViewController {
         default:
             return wordList.count
         }
-
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -51,8 +43,46 @@ class WordListViewController: UITableViewController {
         default:
             return dequeWordCell(for: tableView, indexPath: indexPath)
         }
-
     }
+
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+        Notification.Scroggle.GameEvent.scoreUpdated.notify()
+    }
+}
+
+// MARK: - API
+
+extension WordListViewController {
+
+    class func loadFromStoryboard() -> WordListViewController {
+        return UIStoryboard(name: "WordList", bundle: nil)
+            .instantiateViewController(withIdentifier: "WordListViewController") as! WordListViewController
+        // swiftlint:disable:previous force_cast
+    }
+
+}
+
+// MARK: - FontSizeDelegate
+
+extension WordListViewController: FontSizeDelegate {
+
+    var fontSize: CGFloat {
+        return tableView.frame.width / 8
+    }
+    
+}
+
+// MARK: - Notification
+
+extension WordListViewController {
+
+    @objc
+    func scoreUpdated(_ notification: NSNotification) {
+        tableView.reloadData()
+        tableView.setNeedsLayout()
+        tableView.setNeedsDisplay()
+    }
+
 }
 
 // MARK: - Implementation
@@ -109,6 +139,7 @@ extension WordListViewController {
             return cell
         }
 
+        wordCell.fontSizeDelegate = self
         wordCell.word = wordList[indexPath.row]
 
         return wordCell

@@ -121,7 +121,7 @@ extension GameScene {
     ///
     /// - Parameter point: The center point of the circle
     func showTouch(at point: CGPoint) {
-        let size: CGFloat = 40
+        let size: CGFloat = 35
         let rect = CGRect(origin: CGPoint(x: point.x - size/2, y: point.y - size/2),
                           size: CGSize(width: size, height: size))
         let circle = SKShapeNode(ellipseIn: rect)

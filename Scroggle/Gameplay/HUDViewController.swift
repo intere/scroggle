@@ -73,6 +73,10 @@ extension HUDViewController {
     func beginTimer(_ notification: NSNotification) {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self,
                                      selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        guard let timeType = GameContextProvider.instance.currentGame?.game.timeType else {
+            return
+        }
+        AnalyticsProvider.instance.startedGameWithTime(timeType: timeType)
     }
 
     @objc
@@ -91,7 +95,11 @@ extension HUDViewController {
 
         if seconds <= 10 {
             flashTimerColor()
-            SoundProvider.instance.playTimeSound()
+
+            // Only play the time sound every other second
+            if seconds % 2 == 0 {
+                Notification.HUDEvent.playTimeSound.notify()
+            }
         }
         seconds -= 1
     }
@@ -105,6 +113,16 @@ extension HUDViewController {
     func gameEnded() {
         DLog("Game Ended")
         timer?.invalidate()
+        timer = nil
+
+        guard let timeType = GameContextProvider.instance.currentGame?.game.timeType,
+            let score = GameContextProvider.instance.currentGame?.game.score else {
+            return
+        }
+        guard seconds == 0 else {
+            return AnalyticsProvider.instance.exitedGame()
+        }
+        AnalyticsProvider.instance.finishedGame(timeType: timeType, score: score)
     }
 
 }
@@ -161,8 +179,7 @@ extension HUDViewController {
     func endGame() {
         GameContextProvider.instance.currentGame?.gameState = .done
         timeLabel.textColor = .red
-        timer?.invalidate()
-        timer = nil
+        gameEnded()
         NotificationCenter.default.removeObserver(self)
     }
 
@@ -305,10 +322,27 @@ extension HUDViewController {
             scoreLabel.left == timeLabel.left
             scoreLabel.right == timeLabel.right
 
-            wordTable.left == timeTitleLabel.left
+            wordTable.left == exitButton.left
             wordTable.right == timeLabel.right
             wordTable.top == scoreLabel.bottom + 8
             wordTable.bottom == view.bottom - 8
+        }
+    }
+}
+
+// MARK: - HUDEvent Notification
+
+extension Notification {
+
+    enum HUDEvent: String, Notifiable, CustomStringConvertible {
+        case playTimeSound = "play.time.sound"
+
+        static var notificationBase: String {
+            return "com.scroggle.hud.event"
+        }
+
+        var description: String {
+            return rawValue
         }
     }
 }
