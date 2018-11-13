@@ -43,8 +43,8 @@ extension Notification {
         /// - replay: replay this same board
         enum GameOverAction: String, Notifiable, CustomStringConvertible {
             case mainMenu = "Main Menu"
-            case playAgain = "Play Again"
-            case replay = "Replay"
+            case playAgain = "New Board"
+            case replay = "Same Board"
             // TODO: Challenge Friends
             //        case challengeFriends = "Challenge Friends"
 
