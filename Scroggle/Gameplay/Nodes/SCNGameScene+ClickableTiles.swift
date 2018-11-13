@@ -112,56 +112,12 @@ extension GameSceneController {
         guessWord(swiped: true)
     }
 
-    /// Guesses a word
-    private func guessWord(swiped: Bool = false) {
-        let currentWord = self.currentWord
-        DLog("Guessing word: '\(currentWord)'")
-
-        defer {
-            selection.removeAll()
-            clearSelection()
-        }
-
-        let isValidWord = LexiconProvider.instance.isValidWord(currentWord)
-
-        if isValidWord {
-            guard !gameContext.alreadyGuessed(currentWord) else {
-                return selectionPath.forEach({$0.fillColor = .yellow ; $0.strokeColor = .yellow })
-            }
-            playCorrect()
-            gameContext.addAndScoreWord(currentWord)
-            showGuess()
-        } else {
-            playWrongOrDupe()
-            selectionPath.forEach({$0.fillColor = .red ; $0.strokeColor = .red })
-        }
-
-        if swiped {
-            AnalyticsProvider.instance.swipedGuess(word: currentWord, valid: isValidWord)
-        } else {
-            AnalyticsProvider.instance.clickedWord(word: currentWord, valid: isValidWord)
-        }
-    }
-
-    private func playWrongOrDupe() {
-        guard let rootNode = gameScene?.rootNode else {
-            return
-        }
-        SoundProvider.instance.playDupeOrIncorrectSound(node: rootNode)
-    }
-
-    private func playCorrect() {
-        guard let rootNode = gameScene?.rootNode else {
-            return
-        }
-        SoundProvider.instance.playCorrectGuessSound(node: rootNode)
-    }
-
     @discardableResult
     func addSelected(index: Int) -> Bool {
-        guard isValid(move: index) else {
+        guard !isRotating, isValid(move: index) else {
             return false
         }
+        playAddTile()
         selection.append(index)
         renderSelection()
         return true
@@ -259,66 +215,6 @@ extension GameSceneController {
 //        debugAnimateImages()
     }
 
-    /// Gets you the index or the tile based on a point in the SKView.
-    /// This has to be converted, so this function is a convenience to that end.
-    ///
-    /// - Parameter scenePoint: The point in the scene (SKView)
-    /// - Returns: The index of the tile at the point you clicked, or nil
-    private func tile(for scenePoint: CGPoint) -> Int? {
-        guard tileContainer.contains(scenePoint),
-            let tilePoint = skView.scene?.convert(scenePoint, to: tileContainer) else {
-            return nil
-        }
-
-        return tiles.index(where: { $0.contains(tilePoint) })
-    }
-
-    private func xPosition(for row: Int, in scene: SKScene, with config: TileConfiguration) -> CGFloat {
-        return scene.frame.midX - config.offsetX + CGFloat(row-1) * config.stepSizeX
-    }
-
-    private func yPosition(for column: Int, in scene: SKScene, with config: TileConfiguration) -> CGFloat {
-        return scene.frame.midY + config.offsetY + CGFloat(column-2) * config.stepSizeY
-    }
-
-    /// Data structure to give you values to build the overlays
-    private struct TileConfiguration: CustomDebugStringConvertible {
-        let squareSize: CGFloat
-        let stepSizeX: CGFloat
-        let stepSizeY: CGFloat
-        let offsetX: CGFloat
-        let offsetY: CGFloat
-
-        var debugDescription: String {
-            var result = "squareSize: \(squareSize), stepSizeX: \(stepSizeX), stepSizeY: \(stepSizeY)"
-            result += ", offsetX: \(offsetX), offsetY: \(offsetY)"
-            return result
-        }
-
-        /// Sets all of the required parameters for the `TileConfiguration`.
-        ///
-        /// - Parameters:
-        ///   - size: The size of the tile to be rendered
-        ///   - sizeX: The size of the offset in the X-direction.
-        ///   - sizeY: The size of the offset in the Y-direction.
-        ///   - offsetX: The initial offset in the X-direction.
-        ///   - offsetY: The initial offset in the Y-direction
-        init(size: CGFloat, sizeX: CGFloat, sizeY: CGFloat, offsetX: CGFloat, offsetY: CGFloat) {
-            squareSize = size
-            stepSizeX = sizeX
-            stepSizeY = sizeY
-            self.offsetX = offsetX
-            self.offsetY = offsetY
-        }
-
-        /// Gives you the overlay configuration for the current device
-        static func currentConfiguration(_ skView: SKView) -> TileConfiguration {
-            let sizeX = skView.frame.size.width / 5.25
-            let sizeY = skView.frame.size.height / 5.25
-            return TileConfiguration(size: sizeX * 0.6, sizeX: sizeX, sizeY: sizeY,
-                                     offsetX: sizeX / 2, offsetY: sizeY / 2)
-        }
-    }
 }
 
 // MARK: - Selection Visualization
@@ -371,35 +267,6 @@ extension GameSceneController {
             label.removeFromParent()
         }
     }
-
-    /// Draws a line from the provided starting index to the provided ending index.
-    ///
-    /// - Parameters:
-    ///   - from: The index of the shape node to start drawing at
-    ///   - to: The index of the shape node to end drawing at
-    private func drawLine(from: Int, to index: Int, name: String) -> SKShapeNode? {
-        guard skView.scene != nil else {
-            DLog("ERROR: No scene to draw a line on")
-            return nil
-        }
-        let startPoint = CGPoint(x: tiles[from].frame.midX, y: tiles[from].frame.midY)
-        let endPoint = CGPoint(x: tiles[index].frame.midX, y: tiles[index].frame.midY)
-
-        // Create line with SKShapeNode
-        let line = SKShapeNode()
-        let path = UIBezierPath()
-        path.move(to: startPoint)
-        path.addLine(to: endPoint)
-        line.path = path.cgPath
-        line.strokeColor = UIColor.green.withAlphaComponent(0.7)
-        line.lineWidth = 5
-        line.zPosition = 150
-        line.lineCap = .round
-
-        tileContainer.addChild(line)
-
-        return line
-    }
 }
 
 // MARK: - Debugging
@@ -428,4 +295,158 @@ extension GameSceneController {
         }
     }
 
+}
+
+// MARK: - Implenentation
+
+private extension GameSceneController {
+
+    /// Guesses a word
+    private func guessWord(swiped: Bool = false) {
+        let currentWord = self.currentWord
+        DLog("Guessing word: '\(currentWord)'")
+
+        defer {
+            selection.removeAll()
+            clearSelection()
+        }
+
+        let isValidWord = LexiconProvider.instance.isValidWord(currentWord)
+
+        if isValidWord {
+            guard !gameContext.alreadyGuessed(currentWord) else {
+                playWrongOrDupe()
+                return selectionPath.forEach {
+                    $0.fillColor = .yellow
+                    $0.strokeColor = .yellow
+                }
+            }
+            playCorrect()
+            gameContext.addAndScoreWord(currentWord)
+            showGuess()
+        } else {
+            playWrongOrDupe()
+            selectionPath.forEach {
+                $0.fillColor = .red
+                $0.strokeColor = .red
+            }
+        }
+
+        if swiped {
+            AnalyticsProvider.instance.swipedGuess(word: currentWord, valid: isValidWord)
+        } else {
+            AnalyticsProvider.instance.clickedWord(word: currentWord, valid: isValidWord)
+        }
+    }
+
+    /// Gets you the index or the tile based on a point in the SKView.
+    /// This has to be converted, so this function is a convenience to that end.
+    ///
+    /// - Parameter scenePoint: The point in the scene (SKView)
+    /// - Returns: The index of the tile at the point you clicked, or nil
+    func tile(for scenePoint: CGPoint) -> Int? {
+        guard tileContainer.contains(scenePoint),
+            let tilePoint = skView.scene?.convert(scenePoint, to: tileContainer) else {
+                return nil
+        }
+
+        return tiles.index(where: { $0.contains(tilePoint) })
+    }
+
+    func xPosition(for row: Int, in scene: SKScene, with config: TileConfiguration) -> CGFloat {
+        return scene.frame.midX - config.offsetX + CGFloat(row-1) * config.stepSizeX
+    }
+
+    func yPosition(for column: Int, in scene: SKScene, with config: TileConfiguration) -> CGFloat {
+        return scene.frame.midY + config.offsetY + CGFloat(column-2) * config.stepSizeY
+    }
+
+    func playWrongOrDupe() {
+        guard let rootNode = gameScene?.rootNode else {
+            return
+        }
+        SoundProvider.instance.playDupeOrIncorrectSound(node: rootNode)
+    }
+
+    func playCorrect() {
+        guard let rootNode = gameScene?.rootNode else {
+            return
+        }
+        SoundProvider.instance.playCorrectGuessSound(node: rootNode)
+    }
+
+    func playAddTile() {
+        guard let rootNode = gameScene?.rootNode else {
+            return
+        }
+        SoundProvider.instance.playDiceSelectionSound(node: rootNode)
+    }
+
+    /// Data structure to give you values to build the overlays
+    struct TileConfiguration: CustomDebugStringConvertible {
+        let squareSize: CGFloat
+        let stepSizeX: CGFloat
+        let stepSizeY: CGFloat
+        let offsetX: CGFloat
+        let offsetY: CGFloat
+
+        var debugDescription: String {
+            var result = "squareSize: \(squareSize), stepSizeX: \(stepSizeX), stepSizeY: \(stepSizeY)"
+            result += ", offsetX: \(offsetX), offsetY: \(offsetY)"
+            return result
+        }
+
+        /// Sets all of the required parameters for the `TileConfiguration`.
+        ///
+        /// - Parameters:
+        ///   - size: The size of the tile to be rendered
+        ///   - sizeX: The size of the offset in the X-direction.
+        ///   - sizeY: The size of the offset in the Y-direction.
+        ///   - offsetX: The initial offset in the X-direction.
+        ///   - offsetY: The initial offset in the Y-direction
+        init(size: CGFloat, sizeX: CGFloat, sizeY: CGFloat, offsetX: CGFloat, offsetY: CGFloat) {
+            squareSize = size
+            stepSizeX = sizeX
+            stepSizeY = sizeY
+            self.offsetX = offsetX
+            self.offsetY = offsetY
+        }
+
+        /// Gives you the overlay configuration for the current device
+        static func currentConfiguration(_ skView: SKView) -> TileConfiguration {
+            let sizeX = skView.frame.size.width / 5.25
+            let sizeY = skView.frame.size.height / 5.25
+            return TileConfiguration(size: sizeX * 0.6, sizeX: sizeX, sizeY: sizeY,
+                                     offsetX: sizeX / 2, offsetY: sizeY / 2)
+        }
+    }
+
+    /// Draws a line from the provided starting index to the provided ending index.
+    ///
+    /// - Parameters:
+    ///   - from: The index of the shape node to start drawing at
+    ///   - to: The index of the shape node to end drawing at
+    func drawLine(from: Int, to index: Int, name: String) -> SKShapeNode? {
+        guard skView.scene != nil else {
+            DLog("ERROR: No scene to draw a line on")
+            return nil
+        }
+        let startPoint = CGPoint(x: tiles[from].frame.midX, y: tiles[from].frame.midY)
+        let endPoint = CGPoint(x: tiles[index].frame.midX, y: tiles[index].frame.midY)
+
+        // Create line with SKShapeNode
+        let line = SKShapeNode()
+        let path = UIBezierPath()
+        path.move(to: startPoint)
+        path.addLine(to: endPoint)
+        line.path = path.cgPath
+        line.strokeColor = UIColor.green.withAlphaComponent(0.7)
+        line.lineWidth = 5
+        line.zPosition = 150
+        line.lineCap = .round
+
+        tileContainer.addChild(line)
+
+        return line
+    }
 }

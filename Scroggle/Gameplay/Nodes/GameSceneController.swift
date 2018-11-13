@@ -238,6 +238,11 @@ extension GameSceneController {
     ///
     /// - Parameter clockwise: The direction of the rotation, clockwise or otherwise.
     func rotateBoard(clockwise: Bool) {
+        guard let cameraNode = gameScene?.rootNode.childNodes.filter({ $0.camera != nil }).first else {
+            return assertionFailure("No cameraNode")
+        }
+        clearSelection()
+
         let rotateDegrees = clockwise ? 90 : -90
         rotation += rotateDegrees
 
@@ -245,10 +250,6 @@ extension GameSceneController {
             rotation += 360
         } else if rotation >= 360 {
             rotation = rotation % 360
-        }
-
-        guard let cameraNode = gameScene?.rootNode.childNodes.filter({ $0.camera != nil }).first else {
-            return assertionFailure("No cameraNode")
         }
 
         tileContainer.run(SKAction.rotate(byAngle: CGFloat((0 - rotateDegrees).radians), duration: 0.3))
