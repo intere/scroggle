@@ -61,6 +61,7 @@ extension MainMenuViewController: MenuBuilding {
             self?.navigationController?.pushViewController(
                 TimeMenuViewController.loadFromStoryboard(), animated: true)
         }))
+        
         menuItems.append(ButtonCellInfo(title: gcTitle, action: { [weak self] in
             DLog("Clicked GameCenter")
             SoundProvider.instance.playMenuSelectionSound()
@@ -77,6 +78,7 @@ extension MainMenuViewController: MenuBuilding {
         #if DEBUG
         menuItems.append(ButtonCellInfo(title: "Developer", action: { [weak self] in
             DLog("Clicked Developer")
+            SoundProvider.instance.playMenuSelectionSound()
             self?.navigationController?.pushViewController(
                 DebugToolsViewController.loadFromStoryboard(), animated: true)
         }))
@@ -84,6 +86,7 @@ extension MainMenuViewController: MenuBuilding {
 
         menuItems.append(ButtonCellInfo(title: "Help", action: { [weak self] in
             DLog("Clicked Help")
+            SoundProvider.instance.playMenuSelectionSound()
             self?.navigationController?.pushViewController(
                 HelpMenuViewController.loadFromStoryboard(), animated: true)
         }))

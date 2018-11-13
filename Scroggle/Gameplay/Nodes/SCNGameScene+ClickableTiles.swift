@@ -258,7 +258,7 @@ extension GameSceneController {
         let label = SKLabelNode(fontNamed: UIFont.Scroggle.defaultFontName)
         label.text = currentWord
         label.fontSize = 24
-        label.fontColor = .green  // TODO: Color based on right / wrong / dupe
+        label.fontColor = .green
         label.position = CGPoint(x: scene.frame.midX, y: scene.frame.midY)
         label.zPosition = 200
         scene.addChild(label)
@@ -309,6 +309,9 @@ private extension GameSceneController {
         defer {
             selection.removeAll()
             clearSelection()
+        }
+        guard currentWord.count > 2 else {
+            return
         }
 
         let isValidWord = LexiconProvider.instance.isValidWord(currentWord)
