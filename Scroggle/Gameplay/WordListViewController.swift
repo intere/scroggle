@@ -69,7 +69,7 @@ extension WordListViewController: FontSizeDelegate {
     var fontSize: CGFloat {
         return tableView.frame.width / 8
     }
-    
+
 }
 
 // MARK: - Notification

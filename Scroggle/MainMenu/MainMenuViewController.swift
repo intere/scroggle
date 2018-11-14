@@ -61,7 +61,7 @@ extension MainMenuViewController: MenuBuilding {
             self?.navigationController?.pushViewController(
                 TimeMenuViewController.loadFromStoryboard(), animated: true)
         }))
-        
+
         menuItems.append(ButtonCellInfo(title: gcTitle, action: { [weak self] in
             DLog("Clicked GameCenter")
             SoundProvider.instance.playMenuSelectionSound()
