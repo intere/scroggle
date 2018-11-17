@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import GameplayKit
 
 /// Represents the "Game Board" itself (which is more or less just a container for the dice on the baord).
 class GameBoard {
@@ -133,7 +134,7 @@ extension GameBoard {
     ///   - columnIndex: The column that you want to check.
     /// - Returns: True if it's a valid index, false otherwise.
     func validRow(_ rowIndex: Int, andColumn columnIndex: Int) -> Bool {
-        let multiplier: Int = self.getRowMultiplier()
+        let multiplier: Int = getRowMultiplier()
         return (rowIndex >= 0) && (columnIndex >= 0) && (rowIndex < multiplier) && (columnIndex < multiplier)
     }
 

@@ -6,6 +6,7 @@
 //  Copyright © 2017 Eric Internicola. All rights reserved.
 //
 
+import GameplayKit
 import UIKit
 
 /// A Provider that will generate you GameBoards.
@@ -29,33 +30,49 @@ class DiceProvider {
     /// Using the 4x4 board, this function will roll you dice and hand that game board back to you.
     ///
     /// - Returns: A GameBoard that's been shuffled and a side has been randomly selected for each die.
-    func rollDice() -> GameBoard? {
-        var board: GameBoard?
-        let copyFrom = NSMutableArray(array: fourByFour)
-        let shuffled = NSMutableArray()
+    func rollDice(with seed: String? = nil) -> GameBoard {
+        let random = randomSource(with: seed)
+        var board = rollDice(source: random)
 
-        while copyFrom.count > 0 {
-            let index: Int = Int(arc4random_uniform(UInt32(copyFrom.count)))
-            shuffled.add(copyFrom.object(at: index))
-            copyFrom.removeObject(at: index)
+        while !hasEnoughVowels(board) {
+            board = rollDice(source: random)
         }
 
-        if let shuffledArray = shuffled as NSArray as? [[String]] {
-            board = GameBoard(dice: shuffledArray)
-            if let board = board {
-                if !hasEnoughVowels(board) {
-                    return rollDice()
-                }
-            }
+        return board
+    }
+
+    func rollDice(source: GKARC4RandomSource) -> GameBoard {
+        var copyFrom = Array(fourByFour)
+        var shuffled = [[String]]()
+
+        while copyFrom.count > 0 {
+            let index = source.nextInt(upperBound: copyFrom.count)
+            shuffled.append(copyFrom.remove(at: index))
+        }
+
+        let board = GameBoard(dice: shuffled)
+        for die in board.board {
+            die.selectedSide = source.nextInt(upperBound: 6)
         }
 
         return board
     }
 }
 
-// MARK: - Helper Methods
+// MARK: - Implementatioon
 
 extension DiceProvider {
+
+    /// Gets you the random source.
+    ///
+    /// - Parameter seed: The seed to seed the random source with.
+    /// - Returns: A GKARC4RandomSource with the provided seed, or a generated one.
+    func randomSource(with seed: String?) -> GKARC4RandomSource {
+        guard let seed = seed, let seedData = Data(base64Encoded: seed) else {
+            return GKARC4RandomSource()
+        }
+        return GKARC4RandomSource(seed: seedData)
+    }
 
     /// Tells you if the provided board has enough vowels selected in it.
     ///

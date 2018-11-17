@@ -57,9 +57,8 @@ extension GameContextProvider {
                 context.addAndScoreWord("RIB")
             }
         } else {
-            if let dice = DiceProvider.instance.rollDice() {
-                context.game.board = dice
-            }
+            let dice = DiceProvider.instance.rollDice()
+            context.game.board = dice
         }
 
         context.game.timeType = timeType

@@ -28,6 +28,7 @@
 		3650077220FA657200DAF1A9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3650077020FA654900DAF1A9 /* AVFoundation.framework */; };
 		3650077420FA659700DAF1A9 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3650077320FA659700DAF1A9 /* SceneKit.framework */; };
 		3650077620FA659C00DAF1A9 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3650077520FA659C00DAF1A9 /* SpriteKit.framework */; };
+		36562E9A219FE29700C97B57 /* DiceProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36562E99219FE29700C97B57 /* DiceProviderTests.swift */; };
 		365630341F8A8EE600E4312B /* ButtonCellInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365630331F8A8EE600E4312B /* ButtonCellInfo.swift */; };
 		365630361F8A8F5000E4312B /* MenuInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365630351F8A8F5000E4312B /* MenuInfo.swift */; };
 		365630381F8A937B00E4312B /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365630371F8A937B00E4312B /* Logging.swift */; };
@@ -136,6 +137,7 @@
 		3650077020FA654900DAF1A9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		3650077320FA659700DAF1A9 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
 		3650077520FA659C00DAF1A9 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		36562E99219FE29700C97B57 /* DiceProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceProviderTests.swift; sourceTree = "<group>"; };
 		365630331F8A8EE600E4312B /* ButtonCellInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCellInfo.swift; sourceTree = "<group>"; };
 		365630351F8A8F5000E4312B /* MenuInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInfo.swift; sourceTree = "<group>"; };
 		365630371F8A937B00E4312B /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
@@ -500,6 +502,7 @@
 			isa = PBXGroup;
 			children = (
 				36C0913220F1045600CC7A54 /* SoundProviderTest.swift */,
+				36562E99219FE29700C97B57 /* DiceProviderTests.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -868,6 +871,7 @@
 				36D9DE7920C59FFF007F3FC1 /* RandomTests.swift in Sources */,
 				36A77BEA1F8A64AB0057A874 /* ScroggleTests.swift in Sources */,
 				36C0913320F1045600CC7A54 /* SoundProviderTest.swift in Sources */,
+				36562E9A219FE29700C97B57 /* DiceProviderTests.swift in Sources */,
 				361F5D5020EA5844003F50FE /* GameContextTest.swift in Sources */,
 				361F5D5220EA5BFC003F50FE /* GameTest.swift in Sources */,
 			);
